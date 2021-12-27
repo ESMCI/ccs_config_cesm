@@ -24,8 +24,8 @@
     And if there is no ocnice grid (such as for single column, the mask is null since it does not mean anything)
   </help>
 
-  <xi:include href="grids_nuopc.xml"/>
-  <xi:include href="domains_nuopc.xml"/>
+  <xi:include href="modelgrid_aliases_nuopc.xml"/>
+  <xi:include href="component_grids_nuopc.xml"/>
 
   <required_gridmaps>
     <!-- The following are the required grid maps that must not be idmap if the   -->
