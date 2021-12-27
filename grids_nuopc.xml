@@ -346,7 +346,7 @@
     <grid name="lnd">TL319</grid>
     <grid name="ocnice">tx0.66v1</grid>
     <grid name="rof">JRA025</grid>
-    <grid name="wav">tx0.66v1</grid>
+    <grid name="wav">wtx0.66v1</grid>
   </model_grid>
 
   <model_grid alias="TL319_t12" not_compset="_CAM">

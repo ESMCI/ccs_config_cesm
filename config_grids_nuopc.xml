@@ -54,6 +54,6 @@
     <required_gridmap grid1="wav_grid" grid2="ocn_grid">WAV2OCN_SMAPNAME</required_gridmap>
   </required_gridmaps>
 
-  <xi:include href="gridmaps_nuopc.xml"/>
+  <xi:include href="maps_nuopc.xml"/>
 
 </grid_data>
