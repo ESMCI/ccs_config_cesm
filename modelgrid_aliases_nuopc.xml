@@ -1169,6 +1169,13 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="mpasa240_mpasa240" not_compset="_POP">
+    <grid name="atm">mpasa240</grid>
+    <grid name="lnd">mpasa240</grid>
+    <grid name="ocnice">mpasa240</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
   <model_grid alias="mpasa120_mpasa120" not_compset="_POP">
     <grid name="atm">mpasa120</grid>
     <grid name="lnd">mpasa120</grid>
@@ -1208,6 +1215,27 @@
     <grid name="atm">mpasa15-3</grid>
     <grid name="lnd">mpasa15-3</grid>
     <grid name="ocnice">mpasa15-3</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa15-3-conus_mpasa15-3-conus" not_compset="_POP">
+    <grid name="atm">mpasa15-3</grid>
+    <grid name="lnd">mpasa15-3</grid>
+    <grid name="ocnice">mpasa15-3</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa7p5_mpasa7p5_mg17" not_compset="_POP">
+    <grid name="atm">mpasa7p5</grid>
+    <grid name="lnd">mpasa7p5</grid>
+    <grid name="ocnice">mpasa7p5</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa3p75_mpasa3p75_mg17" not_compset="_POP">
+    <grid name="atm">mpasa3p75</grid>
+    <grid name="lnd">mpasa3p75</grid>
+    <grid name="ocnice">mpasa3p75</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
