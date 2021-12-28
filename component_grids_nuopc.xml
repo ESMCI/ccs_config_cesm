@@ -236,7 +236,6 @@
   </domain>
   <domain name="mpasa15-3conus">
     <nx>6488066</nx> <ny>1</ny>
-    <desc>MPAS-A 15-3-km variable-uniform mesh:</desc>
     <mesh driver="nuopc">$DIN_LOC_ROOT/share/meshes/mpasa15-3.conus_ESMF_desc.210816.nc</mesh>
     <desc>MPAS-A 15-3-km variable-uniform mesh centered over CONUS:</desc>
   </domain>
