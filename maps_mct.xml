@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<gridmaps driver="mct">
+<gridmaps>
 
   <!-- ======================================================== -->
   <!--- atm to ocean and ocean to atm mapping files -->
