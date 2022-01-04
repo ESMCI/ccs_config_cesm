@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-  <gridmaps>
+<gridmaps>
 
     <!-- ======================================================== -->
     <!--- river to ocn -->
@@ -34,11 +34,6 @@
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/cpl6/map_rx1_to_tx0.1v3_nnsm_e1000r200_170914.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/cpl6/map_rx1_to_tx0.1v3_nnsm_e1000r200_170914.nc</map>
     </gridmap>
-    <gridmap rof_grid="rx1" ocn_grid="oQU120" >
-      <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/rx1/map_rx1_to_oQU120_nn.160527.nc</map>
-      <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/rx1/map_rx1_to_oQU120_nn.160527.nc</map>
-    </gridmap>
-
     <gridmap rof_grid="r05" ocn_grid="gx3v7" >
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/r05/map_r05_to_gx3v7_nnsm_e1000r500_180430.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/r05/map_r05_to_gx3v7_nnsm_e1000r500_180430.nc</map>
@@ -59,12 +54,10 @@
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/cpl6/map_r05_to_tx0.1v2_r500e1000_080620.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/cpl6/map_r05_to_tx0.1v2_r500e1000_080620.nc</map>
     </gridmap>
-
     <gridmap rof_grid="r01" ocn_grid="gx1v6" >
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/cpl6/map_r01_to_gx1v6_120711.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/cpl6/map_r01_to_gx1v6_120711.nc</map>
     </gridmap>
-
     <gridmap rof_grid="JRA025v2" ocn_grid="gx1v7" >
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/rJRA025/map_JRA025m_to_gx1v7_nn_open_ocean_nnsm_e1000r300_marginal_sea_190214.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/rJRA025/map_JRA025m_to_gx1v7_e1000r300_190214.nc</map>
@@ -113,13 +106,11 @@
       <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_gx1v7_nn_open_ocean_nnsm_e1000r300_marginal_sea_171105.nc</map>
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_gx1v7_nnsm_e1000r300_171105.nc</map>
     </gridmap>
-    <!-- POP's estuary box model is currently not active for gx3v7, so
-         we need nnsm maps for liquid as well as ice. -->
+    <!-- POP's estuary box model is currently not active for gx3v7, so we need nnsm maps for liquid as well as ice. -->
     <gridmap ocn_grid="gx3v7" glc_grid="gris4" >
       <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_gx3v7_nnsm_e1000r500_180502.nc</map>
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_gx3v7_nnsm_e1000r500_180502.nc</map>
     </gridmap>
-
     <gridmap ocn_grid="gx1v6" glc_grid="gris20" >
       <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland20km/map_gland20km_to_gx1v6_nn_open_ocean_nnsm_e1000r300_marginal_sea_171105.nc</map>
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland20km/map_gland20km_to_gx1v6_nnsm_e1000r300_171105.nc</map>
@@ -128,20 +119,23 @@
       <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland20km/map_gland20km_to_gx1v7_nn_open_ocean_nnsm_e1000r300_marginal_sea_171105.nc</map>
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland20km/map_gland20km_to_gx1v7_nnsm_e1000r300_171105.nc</map>
     </gridmap>
-    <!-- POP's estuary box model is currently not active for gx3v7, so
-         we need nnsm maps for liquid as well as ice. -->
+    <!-- POP's estuary box model is currently not active for gx3v7, so we need nnsm maps for liquid as well as ice. -->
     <gridmap ocn_grid="gx3v7" glc_grid="gris20" >
       <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland20km/map_gland20km_to_gx3v7_nnsm_e1000r500_180502.nc</map>
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland20km/map_gland20km_to_gx3v7_nnsm_e1000r500_180502.nc</map>
     </gridmap>
-
     <gridmap ocn_grid="gx1v7" glc_grid="ais8" >
       <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/ais8/map_ais8_to_gx1v7_nn_open_ocean_nnsm_e1000r300_marginal_sea_TOBECREATED.nc</map>
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/ais8/map_ais8_to_gx1v7_nnsm_e1000r300_TOBECREATED.nc</map>
     </gridmap>
+    <gridmap ocn_grid="tx0.66v1" glc_grid="gris4" >
+      <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx0.66v1_nnsm_e1000r300_190314.nc</map>
+      <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx0.66v1_nnsm_e1000r300_190314.nc</map>
+    </gridmap>
 
     <!-- ======================================================== -->
     <!-- wav->ocn, ocn->wav, ice->wav -->
+    <!-- TODO: these should be removed - only here for backwards compatibility with MCT -->
     <!-- ======================================================== -->
 
     <gridmap ocn_grid="gx3v7" wav_grid="ww3a">
@@ -159,9 +153,75 @@
       <map name="OCN2WAV_SMAPNAME">cpl/gridmaps/gx1v7/map_gx1v7_TO_ww3a_splice_170214.nc</map>
       <map name="ICE2WAV_SMAPNAME">cpl/gridmaps/gx1v7/map_gx1v7_TO_ww3a_splice_170214.nc</map>
     </gridmap>
-    <gridmap ocn_grid="tx0.66v1" glc_grid="gris4" >
-      <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx0.66v1_nnsm_e1000r300_190314.nc</map>
-      <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx0.66v1_nnsm_e1000r300_190314.nc</map>
+
+    <!-- ======================================================== -->
+    <!-- MizuRoute mapping files -->
+    <!-- ======================================================== -->
+
+    <!-- By default NUOPC mapping is done on the fly, so mapping files do NOT need to be created to go between grids -->
+    <!-- The exception to this are when mapping files need to be created to cut down on the time, CPU, and memory requirements
+         for creating remapping on the fly -->
+
+    <!-- f19 grids -->
+    <gridmap lnd_grid="1.9x2.5" rof_grid="HDMAmz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_f19_TO_HDMAmz_aave.200901.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAmz_TO_f19_aave.200901.nc</map>
+    </gridmap>
+    <gridmap lnd_grid="1.9x2.5" rof_grid="MERITmz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_f19_TO_MERITmz_aave.210103.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_MERITmz_TO_f19_aave.210103.nc</map>
     </gridmap>
 
-  </gridmaps>
+    <!-- f09 grids -->
+    <gridmap lnd_grid="0.9x1.25" rof_grid="HDMAmz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_f09_TO_HDMAmz_aave.210321.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAmz_TO_f09_aave.210321.nc</map>
+    </gridmap>
+    <gridmap lnd_grid="0.9x1.25" rof_grid="MERITmz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_f09_TO_MERITmz_aave.210320.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_MERITmz_TO_f09_aave.210320.nc</map>
+    </gridmap>
+
+    <!-- hcru grids -->
+    <gridmap lnd_grid="360x720cru" rof_grid="HDMAmz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_hcru_TO_HDMAmz_aave.210924.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAmz_TO_hcru_aave.210924.nc</map>
+    </gridmap>
+    <gridmap lnd_grid="360x720cru" rof_grid="MERITmz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_hcru_TO_MERITmz_aave.210909.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_MERITmz_TO_hcru_aave.210909.nc</map>
+    </gridmap>
+
+    <!-- NLDAS2 grids -->
+    <gridmap lnd_grid="0.125nldas2" rof_grid="HDMA_CONUSmz">
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_0.125nldas2_TO_HDMAmz_CONUS_aave.201104.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAmz_CONUS_TO_0.125nldas2_aave.201104.nc</map>
+    </gridmap>
+    <gridmap lnd_grid="0.125nldas2" rof_grid="MERIT_CONUSmz">
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_0.125nldas2_TO_MERITmz_CONUS_aave.210609.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_MERITmz_CONUS_TO_0.125nldas2_aave.210609.nc</map>
+    </gridmap>
+    <gridmap lnd_grid="0.125nldas2" rof_grid="USGS_GFmz">
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_0.125nldas2_TO_USGS_GFmz_aave.201028.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_USGS_GFmz_TO_0.125nldas2_aave.201028.nc</map>
+    </gridmap>
+
+    <!-- 5x5 amazon grids -->
+    <gridmap lnd_grid="5x5_amazon" rof_grid="HDMAmz_5x5_amazon">
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_5x5_amazon_TO_HDMAmz_5x5_amazon_aave.201028.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAmz_5x5_amazon_TO_5x5_amazon_aave.201028.nc</map>
+    </gridmap>
+
+</gridmaps>
