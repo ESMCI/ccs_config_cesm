@@ -372,6 +372,44 @@
     <support>Test support only</support>
   </domain>
 
+  <!-- CAM/MPAS  entries - only valid for held-suarez -->
+  <domain name="mpasa480">
+    <nx>2562</nx> <ny>1</ny>
+    <desc>MPAS-A 480-km quasi-uniform mesh:</desc>
+  </domain>
+  <domain name="mpasa240">
+    <nx>10242</nx> <ny>1</ny>
+    <desc>MPAS-A 240-km quasi-uniform mesh:</desc>
+  </domain>
+  <domain name="mpasa120">
+    <nx>40962</nx> <ny>1</ny>
+    <desc>MPAS-A 120-km quasi-uniform mesh:</desc>
+  </domain>
+  <domain name="mpasa60">
+    <nx>163842</nx> <ny>1</ny>
+    <desc>MPAS-A 60-km quasi-uniform mesh:</desc>
+  </domain>
+  <domain name="mpasa30">
+    <nx>655362</nx> <ny>1</ny>
+    <desc>MPAS-A 30-km quasi-uniform mesh:</desc>
+  </domain>
+  <domain name="mpasa15">
+    <nx>2621442</nx> <ny>1</ny>
+    <desc>MPAS-A 15-km quasi-uniform mesh:</desc>
+  </domain>
+  <domain name="mpasa15-3conus">
+    <nx>6488066</nx> <ny>1</ny>
+    <desc>MPAS-A 15-3-km variable-uniform mesh centered over CONUS:</desc>
+  </domain>
+  <domain name="mpasa7p5">
+    <nx>10485762</nx> <ny>1</ny>
+    <desc>MPAS-A 7.5-km quasi-uniform mesh:</desc>
+  </domain>
+  <domain name="mpasa3p75">
+    <nx>41943042</nx> <ny>1</ny>
+    <desc>MPAS-A 3.75-km variable-uniform mesh:</desc>
+  </domain>
+
   <domain name="TL319">
     <nx>640</nx> <ny>320</ny>
     <file grid="atm|lnd" mask="gx1v7">$DIN_LOC_ROOT/share/domains/domain.lnd.TL319_gx1v7.170705.nc</file>
@@ -536,6 +574,21 @@
   <!-- ======================================================== -->
   <!-- GLC domains -->
   <!-- ======================================================== -->
+
+  <domain name="gris20">
+    <nx>76</nx> <ny>141</ny>
+    <desc>20-km Greenland grid</desc>
+  </domain>
+
+  <domain name="gris4">
+    <nx>416</nx> <ny>704</ny>
+    <desc>4-km Greenland grid, for use with the glissade dycore</desc>
+  </domain>
+
+  <domain name="ais8">
+    <nx>704</nx> <ny>576</ny>
+    <desc>8-km Antarctica grid</desc>
+  </domain>
 
   <!-- ======================================================== -->
   <!-- WW3 domains-->
