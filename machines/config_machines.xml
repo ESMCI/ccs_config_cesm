@@ -761,6 +761,9 @@ This allows using a different mpirun command to launch unit tests
       <modules>
         <command name="load">ncarcompilers/0.5.0</command>
       </modules>
+      <modules mpilib="mpi-serial">
+        <command name="load">mpi-serial/2.11.0</command>
+      </modules>
       <modules compiler="gnu" mpilib="mpi-serial">
         <command name="load">netcdf/4.7.4</command>
       </modules>
@@ -769,6 +772,9 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="pgi" mpilib="mpi-serial">
         <command name="load">netcdf/4.7.4</command>
+      </modules>
+      <modules>
+        <command name="load">pio/2.5.5</command>
       </modules>
     </module_system>
     <environment_variables>
