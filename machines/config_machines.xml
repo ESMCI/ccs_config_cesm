@@ -582,9 +582,10 @@ This allows using a different mpirun command to launch unit tests
     <MPIRUN_RETRY_REGEX>MPT: Launcher network accept (MPI_LAUNCH_TIMEOUT) timed out</MPIRUN_RETRY_REGEX>
     <MPIRUN_RETRY_COUNT>10</MPIRUN_RETRY_COUNT>
     <OS>LINUX</OS>
-    <COMPILERS>intel,gnu,pgi</COMPILERS>
+    <COMPILERS>intel,gnu,nvhpc,pgi</COMPILERS>
     <MPILIBS compiler="intel" >mpt,openmpi</MPILIBS>
     <MPILIBS compiler="pgi" >openmpi,mpt</MPILIBS>
+    <MPILIBS compiler="nvhpc" >openmpi,mpt</MPILIBS>
     <MPILIBS compiler="gnu" >mpt,openmpi</MPILIBS>
     <CIME_OUTPUT_ROOT>/glade/scratch/$USER</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{CESMDATAROOT}/inputdata</DIN_LOC_ROOT>
@@ -670,6 +671,9 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="pgi">
         <command name="load">pgi/20.4</command>
       </modules>
+      <modules compiler="nvhpc">
+        <command name="load">nvhpc/21.11</command>
+      </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-mpt-g</command>
@@ -719,6 +723,22 @@ This allows using a different mpirun command to launch unit tests
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-mpt-O</command>
       </modules>
+      <modules compiler="nvhpc" mpilib="mpt" DEBUG="FALSE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="load">esmf-8.3.0b05-ncdfio-mpt-O</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="mpt" DEBUG="TRUE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="load">esmf-8.3.0b05-ncdfio-mpt-g</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="openmpi" DEBUG="FALSE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="load">esmf-8.3.0b05-ncdfio-openmpi-O</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="openmpi" DEBUG="TRUE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="load">esmf-8.3.0b05-ncdfio-openmpi-g</command>
+      </modules>
       <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-openmpi-g</command>
@@ -735,10 +755,18 @@ This allows using a different mpirun command to launch unit tests
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-mpiuni-O</command>
       </modules>
+      <modules compiler="nvhpc" mpilib="mpi-serial" DEBUG="TRUE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="load">esmf-8.3.0b05-ncdfio-mpiuni-O</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="mpi-serial" DEBUG="FALSE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="load">esmf-8.3.0b05-ncdfio-mpiuni-O</command>
+      </modules>
       <modules mpilib="mpt" compiler="gnu">
-        <command name="load">mpt/2.21</command>
-        <command name="load">netcdf-mpi/4.7.3</command>
-        <command name="load">pnetcdf/1.12.1</command>
+        <command name="load">mpt/2.25</command>
+        <command name="load">netcdf-mpi/4.8.1</command>
+        <command name="load">pnetcdf/1.12.2</command>
       </modules>
       <modules mpilib="mpt" compiler="intel">
         <command name="load">mpt/2.22</command>
@@ -746,9 +774,19 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">pnetcdf/1.12.2</command>
       </modules>
       <modules mpilib="mpt" compiler="pgi">
-        <command name="load">mpt/2.19</command>
+        <command name="load">mpt/2.22</command>
         <command name="load">netcdf-mpi/4.7.4</command>
         <command name="load">pnetcdf/1.12.1</command>
+      </modules>
+      <modules mpilib="mpt" compiler="nvhpc">
+        <command name="load">mpt/2.25</command>
+        <command name="load">netcdf-mpi/4.8.1</command>
+        <command name="load">pnetcdf/1.12.2</command>
+      </modules>
+      <modules mpilib="openmpi" compiler="nvhpc">
+        <command name="load">openmpi/4.1.1</command>
+        <command name="load">netcdf-mpi/4.8.1</command>
+        <command name="load">pnetcdf/1.12.2</command>
       </modules>
       <modules mpilib="openmpi" compiler="pgi">
         <command name="load">openmpi/4.0.5</command>
@@ -761,6 +799,9 @@ This allows using a different mpirun command to launch unit tests
       <modules>
         <command name="load">ncarcompilers/0.5.0</command>
       </modules>
+      <modules mpilib="mpi-serial">
+        <command name="load">mpi-serial/2.11.0</command>
+      </modules>
       <modules compiler="gnu" mpilib="mpi-serial">
         <command name="load">netcdf/4.7.4</command>
       </modules>
@@ -769,6 +810,12 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="pgi" mpilib="mpi-serial">
         <command name="load">netcdf/4.7.4</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="mpi-serial">
+        <command name="load">netcdf/4.8.1</command>
+      </modules>
+      <modules compiler="!pgi">
+        <command name="load">pio/2.5.5</command>
       </modules>
     </module_system>
     <environment_variables>
