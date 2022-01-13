@@ -723,6 +723,14 @@ This allows using a different mpirun command to launch unit tests
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-mpt-O</command>
       </modules>
+      <modules compiler="nvhpc" mpilib="mpt" DEBUG="FALSE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="load">esmf-8.3.0b05-ncdfio-mpt-O</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="mpt" DEBUG="TRUE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="load">esmf-8.3.0b05-ncdfio-mpt-g</command>
+      </modules>
       <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-openmpi-g</command>
