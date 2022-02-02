@@ -3557,20 +3557,20 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">impi20.1/parallel-netcdf/1.12.1</command>
       </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="TRUE">
-        <command name="load">impi20.1/esmf/8.0.1-intelmpi-64-g</command>
+        <command name="load">impi20.1/esmf/8.1.1-intelmpi-64-g</command>
       </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="FALSE">
-        <command name="load">impi20.1/esmf/8.0.1-intelmpi-64-O</command>
+        <command name="load">impi20.1/esmf/8.1.1-intelmpi-64-O</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">intel20.1/esmf/8.0.1-mpiuni-64-g</command>
+        <command name="load">intel20.1/esmf/8.1.1-mpiuni-64-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">intel20.1/esmf/8.0.1-mpiuni-64-O</command>
+        <command name="load">intel20.1/esmf/8.1.1-mpiuni-64-O</command>
       </modules>
     </module_system>
     <environment_variables>
-      <env name="XIOS_PATH">/work/csp/cmip01/csm/xios</env>
+      <env name="XIOS_PATH">/data/inputs/CESM/xios-2.5</env>
     </environment_variables>
     <environment_variables compiler="intel">
       <env name="I_MPI_EXTRA_FILESYSTEM">1</env>
