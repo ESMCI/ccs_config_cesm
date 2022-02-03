@@ -489,6 +489,13 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="f05_n0253">
+    <grid name="atm">0.47x0.63</grid>
+    <grid name="lnd">0.47x0.63</grid>
+    <grid name="ocnice">tn0.25v3</grid>
+    <mask>tn0.25v3</mask>
+  </model_grid>
+
   <model_grid alias="f05_t12">
     <grid name="atm">0.47x0.63</grid>
     <grid name="lnd">0.47x0.63</grid>
@@ -831,6 +838,13 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="ne30_n0253">
+    <grid name="atm">ne30np4</grid>
+    <grid name="lnd">ne30np4</grid>
+    <grid name="ocnice">tn0.25v3</grid>
+    <mask>tn0.25v3</mask>
+  </model_grid>
+
   <model_grid alias="ne30pg3_g17">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
@@ -896,6 +910,13 @@
     <grid name="lnd">ne60np4</grid>
     <grid name="ocnice">gx1v7</grid>
     <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="ne60_n0253">
+    <grid name="atm">ne60np4</grid>
+    <grid name="lnd">ne60np4</grid>
+    <grid name="ocnice">tn0.25v3</grid>
+    <mask>tn0.25v3</mask>
   </model_grid>
 
   <model_grid alias="ne60_ne60_mg16" not_compset="_POP">
