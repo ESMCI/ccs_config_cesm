@@ -639,8 +639,8 @@
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
     </directives>
     <queues>
-      <queue walltimemin="" walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
-      <queue walltimemin="" walltimemax="02:00:00" nodemin="1" nodemax="1800" default="false">devel</queue>
+      <queue walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
+      <queue walltimemax="02:00:00" nodemin="1" nodemax="1800" default="false">devel</queue>
     </queues>
   </batch_system>
 
@@ -654,8 +654,8 @@
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
     </directives>
     <queues>
-      <queue walltimemin="" walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
-      <queue walltimemin="" walltimemax="02:00:00" nodemin="1" nodemax="1800" default="false">devel</queue>
+      <queue walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
+      <queue walltimemax="02:00:00" nodemin="1" nodemax="1800" default="false">devel</queue>
     </queues>
   </batch_system>
 
@@ -669,8 +669,8 @@
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
     </directives>
     <queues>
-      <queue walltimemin="" walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
-      <queue walltimemin="" walltimemax="02:00:00" nodemin="1" nodemax="1800" default="false">devel</queue>
+      <queue walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
+      <queue walltimemax="02:00:00" nodemin="1" nodemax="1800" default="false">devel</queue>
     </queues>
   </batch_system>
 
@@ -684,8 +684,8 @@
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
     </directives>
     <queues>
-      <queue walltimemin="" walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
-      <queue walltimemin="" walltimemax="02:00:00" nodemin="1" nodemax="1800" default="false">devel</queue>
+      <queue walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
+      <queue walltimemax="02:00:00" nodemin="1" nodemax="1800" default="false">devel</queue>
     </queues>
   </batch_system>
 
