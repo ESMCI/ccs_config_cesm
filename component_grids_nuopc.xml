@@ -81,6 +81,12 @@
   </domain>
 
   <!-- CAM/SE meshes -->
+  <domain name="ne5np4">
+    <nx>1352</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne5_ESMFmesh_cdf5_c20210923.nc</mesh>
+    <desc>ne5np4 is Spectral Elem 6-deg grid:</desc>
+    <support>For ultra-low resolution spectral element grid testing</support>
+  </domain>
   <domain name="ne16np4">
     <nx>13826</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/ne16np4_scrip_171002_ESMFmesh.nc</mesh>
