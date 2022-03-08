@@ -36,14 +36,14 @@
   <domain name="0.9x1.25">
     <nx>288</nx>  <ny>192</ny>
     <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
-    <file>domain.lnd.fv0.9x1.25_gx1v7.151020.nc</file>
+    <file>$DIN_LOC_ROOT/share/domains/domain.lnd.fv0.9x1.25_gx1v7.151020.nc</file>
     <mesh>$DIN_LOC_ROOT/share/meshes/fv0.9x1.25_141008_polemod_ESMFmesh.nc</mesh>
     <desc>0.9x1.25 is FV 1-deg grid:</desc>
   </domain>
   <domain name="1.9x2.5">
     <nx>144</nx>  <ny>96</ny>
     <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
-    <file>domain.lnd.fv1.9x2.5_gx1v7.181205.nc</file>
+    <file>$DIN_LOC_ROOT/share/domains/domain.lnd.fv1.9x2.5_gx1v7.181205.nc</file>
     <!-- TODO: the lats for the gx1v7 and gx1v6 mask are different at
          the poles- the 141008 should be used for both but would change answers -->
     <mesh>$DIN_LOC_ROOT/share/meshes/fv1.9x2.5_141008_ESMFmesh.nc</mesh>
@@ -52,7 +52,7 @@
   <domain name="4x5">
     <nx>72</nx> <ny>46</ny>
     <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
-    <file>domain.lnd.fv4x5_gx3v7.091218.nc</file>
+    <file>$DIN_LOC_ROOT/share/domains/domain.lnd.fv4x5_gx3v7.091218.nc</file>
     <mesh>$DIN_LOC_ROOT/share/meshes/fv4x5_050615_polemod_ESMFmesh.nc</mesh>
     <desc>4x5 is FV 4-deg grid:</desc>
   </domain>
