@@ -485,6 +485,12 @@ This allows using a different mpirun command to launch unit tests
       <modules>
         <command name="load">ncarcompilers/0.5.0</command>
       </modules>
+      <modules compiler="!pgi" DEBUG="FALSE">
+        <command name="load">pio/2.5.6</command>
+      </modules>
+      <modules compiler="!pgi" DEBUG="TRUE">
+        <command name="load">pio/2.5.6d</command>
+      </modules>
     </module_system>
     <environment_variables>
       <env name="MODULEPATH">/glade/u/apps/dav/modulefiles/default/compilers:/glade/u/apps/dav/modulefiles/default/idep</env>
@@ -831,8 +837,11 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="nvhpc" mpilib="mpi-serial">
         <command name="load">netcdf/4.8.1</command>
       </modules>
-      <modules compiler="!pgi">
-        <command name="load">pio/2.5.5</command>
+      <modules compiler="!pgi" DEBUG="FALSE">
+        <command name="load">pio/2.5.6</command>
+      </modules>
+      <modules compiler="!pgi" DEBUG="TRUE">
+        <command name="load">pio/2.5.6d</command>
       </modules>
     </module_system>
     <environment_variables>
