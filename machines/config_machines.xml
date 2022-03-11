@@ -542,12 +542,12 @@ This allows using a different mpirun command to launch unit tests
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
       <modules compiler="cray">
-        <command name="load">PrgEnv-cray/8.1.0</command>
-        <command name="switch">cce cce/12.0.3</command>
+        <command name="load">PrgEnv-cray/8.2.0</command>
+        <command name="switch">cce cce/13.0.1</command>
       </modules>
       <modules compiler="gnu">
-        <command name="load">PrgEnv-gnu/8.1.0</command>
-        <command name="switch">gcc gcc/9.3.0</command>
+        <command name="load">PrgEnv-gnu/8.2.0</command>
+        <command name="switch">gcc gcc/11.2.0</command>
       </modules>
       <modules>
         <command name="load">perftools-base</command>
@@ -558,7 +558,7 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules>
         <command name="unload">cray-mpich</command>
-        <command name="load">cray-mpich/8.1.9</command>
+        <command name="load">cray-mpich/8.1.13</command>
       </modules>
       <modules mpilib="mpich">
         <command name="unload">cray-netcdf</command>
@@ -590,10 +590,10 @@ This allows using a different mpirun command to launch unit tests
       <env name="ESMFMKFILE">/glade/work/jedwards/CPE/lib/libg/Unicos.gfortran.64.mpi.default/esmf.mk</env>
     </environment_variables>
     <environment_variables  compiler="cray">
-      <env name="PKG_CONFIG_PATH">/opt/cray/pe/mpich/8.1.6.55/ucx/cray/10.0/lib/pkgconfig/:$ENV{PKG_CONFIG_PATH}</env>
+      <env name="PKG_CONFIG_PATH">/opt/cray/pe/mpich/default/ucx/cray/10.0/lib/pkgconfig/:$ENV{PKG_CONFIG_PATH}</env>
     </environment_variables>
     <environment_variables  compiler="gnu">
-      <env name="PKG_CONFIG_PATH">/opt/cray/pe/mpich/8.1.6.55/ucx/gnu/9.1/lib/pkgconfig/:$ENV{PKG_CONFIG_PATH}</env>
+      <env name="PKG_CONFIG_PATH">/opt/cray/pe/mpich/default/ucx/gnu/9.1/lib/pkgconfig/:$ENV{PKG_CONFIG_PATH}</env>
     </environment_variables>
   </machine>
 
@@ -646,7 +646,8 @@ This allows using a different mpirun command to launch unit tests
       <arguments>
         <arg name="labelstdout">-p "%g:"</arg>
         <arg name="num_tasks"> -np {{ total_tasks }}</arg>
-        <arg name="zthreadplacement"> omplace -tm open64 -vv</arg>
+        <!-- NOTE: This option cannot be used if ESMF_AWARE_THREADING=TRUE -->
+        <arg name="zthreadplacement"> omplace -tm open64 -vv</arg> 
       </arguments>
     </mpirun>
     <mpirun mpilib="mpt" queue="share" comp_interface="nuopc">
@@ -704,6 +705,9 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-mpt-O</command>
+      </modules> 
+      <modules mpilib="mpi-serial">
+        <command name="load">mpi-serial/2.3.0</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
@@ -821,9 +825,6 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules>
         <command name="load">ncarcompilers/0.5.0</command>
-      </modules>
-      <modules mpilib="mpi-serial">
-        <command name="load">mpi-serial/2.11.0</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial">
         <command name="load">netcdf/4.7.4</command>
