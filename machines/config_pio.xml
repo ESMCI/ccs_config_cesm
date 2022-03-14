@@ -235,6 +235,7 @@
     <values>
       <value>pnetcdf</value>
       <value mpilib="mpi-serial">netcdf</value>
+      <value compset="SCAM">netcdf</value>
     </values>
   </entry>
 <!--
