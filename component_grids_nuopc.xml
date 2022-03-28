@@ -62,6 +62,16 @@
     <desc>10x15 is FV 10-deg grid:</desc>
     <support>For low resolution testing</support>
   </domain>
+  <domain name="0.47x0.63">
+    <nx>576</nx> <ny>384</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/fv0.47x0.63_141008_ESMFmesh.nc</mesh>
+    <desc>0.47x0.63 is FV 0.5-deg grid:</desc>
+  </domain>
+  <domain name="T5">
+    <nx>16</nx> <ny>8</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/T5_ESMFmesh_cdf5_c20210923.nc</mesh>
+    <desc>T5 is Gaussian grid:</desc>
+  </domain>
   <domain name="T62">
     <nx>192</nx>  <ny>94</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/T62_040121_ESMFmesh.nc</mesh>
@@ -81,6 +91,30 @@
   </domain>
 
   <!-- CAM/SE meshes -->
+  <domain name="ne5np4">
+    <nx>1352</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne5np4_esmf_mesh_c210121.nc</mesh>
+    <desc>ne5np4 is Spectral Elem 6-deg grid:</desc>
+    <support>For ultra-low resolution spectral element grid testing</support>
+  </domain>
+  <domain name="ne5np4.pg2">
+    <nx>1350</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne5pg2_ESMFmesh_cdf5_c20210118.nc</mesh>
+    <desc>ne5np4 is Spectral Elem 6-deg grid with a 3x3 FVM physics grid:</desc>
+    <support>EXPERIMENTAL FVM physics grid</support>
+  </domain>
+  <domain name="ne5np4.pg3">
+    <nx>1350</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne5pg3_ESMFmesh_cdf5_c20210118.nc</mesh>
+    <desc>ne5np4 is Spectral Elem 6-deg grid with a 3x3 FVM physics grid:</desc>
+    <support>EXPERIMENTAL FVM physics grid</support>
+  </domain>
+  <domain name="ne5np4.pg4">
+    <nx>1350</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne5pg4_ESMFmesh_cdf5_c20210118.nc</mesh>
+    <desc>ne5np4 is Spectral Elem 6-deg grid with a 3x3 FVM physics grid:</desc>
+    <support>EXPERIMENTAL FVM physics grid</support>
+  </domain>
   <domain name="ne16np4">
     <nx>13826</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/ne16np4_scrip_171002_ESMFmesh.nc</mesh>
