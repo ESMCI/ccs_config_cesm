@@ -65,7 +65,7 @@
   <domain name="0.47x0.63">
     <nx>576</nx> <ny>384</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/fv0.47x0.63_141008_ESMFmesh.nc</mesh>
-    <desc>0.47x0.63 is a FV 0.5-deg grid</desc>
+    <desc>0.47x0.63 is FV 0.5-deg grid:</desc>
   </domain>
   <domain name="T5">
     <nx>16</nx> <ny>8</ny>
