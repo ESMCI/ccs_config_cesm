@@ -236,12 +236,6 @@
     <desc>ne0np4.ARCTICGRIS.ne30x8 is a Spectral Elem 1-deg grid with a 1/8 deg refined region over Greenland:</desc>
     <support>Test support only</support>
   </domain>
-  <domain name="0.47x0.63">
-    <nx></nx> <ny>1</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/fv0.47x0.63_141008_ESMFmesh.nc
-    <desc>0.47x0.63 is a FV grid with 0.5 degree resolution</desc>
-    <support>Test support only</support>
-  </domain>
 
   <!-- CAM/MPAS meshes -->
   <domain name="mpasa480">
