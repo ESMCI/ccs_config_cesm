@@ -507,7 +507,7 @@ This allows using a different mpirun command to launch unit tests
 <!-- this machine needs to precede cheyenne so that NODENAME_REGEX works -->
   <machine MACH="CPE">
     <DESC>This is using the cray env emulator on cheyenne </DESC>
-    <NODENAME_REGEX>$ENV{CRAY_CPU_TARGET}:broadwell</NODENAME_REGEX>
+    <NODENAME_REGEX>$ENV{SCR_IMAGEROOT}:/glade/u/apps/ch/opt/hpe-cpe/22.02/cray_hpe_cpe_22.02-021622</NODENAME_REGEX>
     <OS>CNL</OS>
     <COMPILERS>cray,gnu</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
