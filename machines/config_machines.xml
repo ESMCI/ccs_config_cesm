@@ -3558,7 +3558,7 @@ This allows using a different mpirun command to launch unit tests
     <DESC>
       used for github testing
     </DESC>
-    <NODENAME_REGEX/>
+    <NODENAME_REGEX>$ENV{CIME_TEST_PLATFORM}:ubuntu-latest</NODENAME_REGEX>
     <OS>LINUX</OS>
     <PROXY/>
     <COMPILERS>gnu</COMPILERS>
