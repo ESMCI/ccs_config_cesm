@@ -99,7 +99,7 @@
   </domain>
   <domain name="ne5np4.pg2">
     <nx>1350</nx> <ny>1</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/ne5pg2_ESMFmesh_cdf5_c20210118.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne5pg2_ESMFmesh_cdf5_c20211018.nc</mesh>
     <desc>ne5np4 is Spectral Elem 6-deg grid with a 3x3 FVM physics grid:</desc>
     <support>EXPERIMENTAL FVM physics grid</support>
   </domain>
