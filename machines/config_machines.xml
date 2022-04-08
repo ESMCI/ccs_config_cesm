@@ -698,13 +698,21 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="nvhpc">
         <command name="load">nvhpc/22.2</command>
       </modules>
-      <modules compiler="intel" mpilib="!mpi-serial" DEBUG="TRUE">
+      <modules compiler="intel" mpilib="mpt" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-mpt-g</command>
       </modules>
-      <modules compiler="intel" mpilib="!mpi-serial" DEBUG="FALSE">
+      <modules compiler="intel" mpilib="mpt" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
         <command name="load">esmf-8.2.0b23-ncdfio-mpt-O</command>
+      </modules> 
+      <modules compiler="intel" mpilib="openmpi" DEBUG="TRUE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
+        <command name="load">esmf-8.2.0b23-ncdfio-openmpi-g</command>
+      </modules>
+      <modules compiler="intel" mpilib="openmpi" DEBUG="FALSE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
+        <command name="load">esmf-8.2.0b23-ncdfio-openmpi-O</command>
       </modules> 
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
@@ -807,6 +815,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules mpilib="mpt" compiler="nvhpc">
         <command name="load">mpt/2.25</command>
+        <command name="load">netcdf-mpi/4.8.1</command>
+        <command name="load">pnetcdf/1.12.2</command>
+      </modules>
+      <modules mpilib="openmpi" compiler="intel">
+        <command name="load">openmpi/4.1.1</command>
         <command name="load">netcdf-mpi/4.8.1</command>
         <command name="load">pnetcdf/1.12.2</command>
       </modules>
