@@ -406,22 +406,14 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">pgi/20.4</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/21.11</command>
+        <command name="load">nvhpc/22.2</command>
       </modules>
       <modules compiler="nvhpc-gpu">
-        <command name="load">nvhpc/21.11</command>
+        <command name="load">nvhpc/22.2</command>
       </modules>
       <modules compiler="intel">
         <command name="load">intel/19.1.1</command>
         <command name="load">mkl/2020.0.1</command>
-      </modules>
-      <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
-        <command name="load">esmf-8.2.0b11_casper-ncdfio-openmpi-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
-        <command name="load">esmf-8.2.0b11_casper-ncdfio-openmpi-O</command>
       </modules>
       <modules mpilib="openmpi" compiler="pgi">
         <command name="load">openmpi/4.1.0</command>
@@ -475,12 +467,20 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">esmf-8.3.0b06_casper-ncdfio-openmpi-O</command>
       </modules>
       <modules compiler="nvhpc-gpu" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11/</command>
-        <command name="load">esmf-8.3.0b06_casper-ncdfio-openmpi-g</command>
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
+        <command name="load">esmf-8.3.0b09_casper-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="nvhpc-gpu" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11/</command>
-        <command name="load">esmf-8.3.0b06_casper-ncdfio-openmpi-O</command>
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
+        <command name="load">esmf-8.3.0b09_casper-ncdfio-openmpi-O</command>
+      </modules>
+      <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
+        <command name="load">esmf-8.2.0b11_casper-ncdfio-openmpi-g</command>
+      </modules>
+      <modules compiler="pgi" mpilib="openmpi" DEBUG="FALSE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
+        <command name="load">esmf-8.2.0b11_casper-ncdfio-openmpi-O</command>
       </modules>
       <modules>
         <command name="load">ncarcompilers/0.5.0</command>
