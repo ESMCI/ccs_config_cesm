@@ -838,6 +838,13 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="ne30pg3_t061">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">tx0.66v1</grid>
+    <mask>tx0.66v1</mask>
+  </model_grid>
+
   <model_grid alias="ne30_f19_g16">
     <grid name="atm">ne30np4</grid>
     <grid name="lnd">1.9x2.5</grid>
