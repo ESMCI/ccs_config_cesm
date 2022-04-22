@@ -1357,23 +1357,6 @@ using a fortran linker.
   <LAPACK_LIBDIR>/global/software/sl-6.x86_64/modules/intel/2016.1.150/lapack/3.6.0-intel/lib</LAPACK_LIBDIR>
 </compiler>
 
-<compiler COMPILER="intel" MACH="lawrencium-lr2">
-  <CPPDEFS>
-    <append MODEL="gptl"> -DHAVE_VPRINTF -DHAVE_TIMES -DHAVE_GETTIMEOFDAY </append>
-  </CPPDEFS>
-  <SLIBS>
-    <append> -lnetcdff -lnetcdf -mkl </append>
-  </SLIBS>
-  <FFLAGS>
-    <append DEBUG="TRUE"> -ftrapuv </append>
-  </FFLAGS>
-  <CFLAGS>
-    <append DEBUG="TRUE"> -ftrapuv </append>
-  </CFLAGS>
-  <NETCDF_PATH>$ENV{NETCDF_DIR}</NETCDF_PATH>
-  <LAPACK_LIBDIR>/global/software/sl-6.x86_64/modules/intel/2016.1.150/lapack/3.6.0-intel/lib</LAPACK_LIBDIR>
-</compiler>
-
 <compiler MACH="melvin" COMPILER="gnu">
   <ALBANY_PATH>/projects/install/rhel6-x86_64/ACME/AlbanyTrilinos/Albany/build/install</ALBANY_PATH>
   <CFLAGS>

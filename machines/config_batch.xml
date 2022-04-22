@@ -545,19 +545,6 @@
     </queues>
   </batch_system>
 
-  <batch_system MACH="lawrencium-lr2" type="slurm">
-    <batch_submit>sbatch</batch_submit>
-    <directives>
-       <directive>--qos=lr_normal</directive>
-       <directive>--partition=lr2</directive>
-       <directive>--account={{ project }}</directive>
-       <directive>--ntasks-per-node={{ tasks_per_node }}</directive>
-    </directives>
-    <queues>
-      <queue walltimemin="00:00:00" walltimemax="72:00:00" nodemin="1" nodemax="64" default="true">lr2</queue>
-    </queues>
-  </batch_system>
-
   <batch_system MACH="lonestar5" type="slurm" >
     <batch_submit>ssh login1.ls5.tacc.utexas.edu cd $CASEROOT ; sbatch</batch_submit>
     <submit_args>
