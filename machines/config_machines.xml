@@ -486,10 +486,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">ncarcompilers/0.5.0</command>
       </modules>
       <modules compiler="!pgi" DEBUG="FALSE" mpilib="openmpi">
-        <command name="load">pio/2.5.6</command>
+        <command name="load">pio/2.5.7</command>
       </modules>
       <modules compiler="!pgi" DEBUG="TRUE" mpilib="openmpi">
-        <command name="load">pio/2.5.6d</command>
+        <command name="load">pio/2.5.7d</command>
       </modules>
     </module_system>
     <environment_variables>
