@@ -567,14 +567,11 @@ This allows using a different mpirun command to launch unit tests
     <MAX_TASKS_PER_NODE>36</MAX_TASKS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>36</MAX_MPITASKS_PER_NODE>
     <PROJECT_REQUIRED>FALSE</PROJECT_REQUIRED>
-    <CONTAINER_ENVIRONMENT>/glade/u/apps/ch/opt/hpe-cpe/22.02/bin/crayenv</CONTAINER_ENVIRONMENT>
     <mpirun mpilib="default">
-      <executable>aprun</executable>
+      <executable>mpiexec</executable>
       <arguments>
-        <arg name="num_tasks" > -n {{ total_tasks }}</arg>
-        <arg name="tasks_per_numa" > -S {{ tasks_per_numa }}</arg>
-        <arg name="tasks_per_node" > -N $MAX_MPITASKS_PER_NODE</arg>
-        <arg name="thread_count" > -d $ENV{OMP_NUM_THREADS}</arg>
+        <arg name="num_tasks"> -n {{ total_tasks }} </arg>
+        <arg name="addrank"> --label </arg>
       </arguments>
     </mpirun>
     <module_system type="module">
