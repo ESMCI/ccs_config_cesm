@@ -2279,6 +2279,9 @@ This allows using a different mpirun command to launch unit tests
       <!-- The following is needed in order to run qsub from the compute nodes -->
       <env name="PATH">$ENV{PATH}:/cluster/torque/bin</env>
     </environment_variables>
+    <environment_variables compiler="intel">
+      <env name="PIO">/home/jedwards/pio/2.5.7/intel</env>
+    </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
     </resource_limits>
