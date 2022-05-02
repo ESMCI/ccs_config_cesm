@@ -723,7 +723,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="purge"/>
         <command name="load">ncarenv/1.3</command>
         <command name="load">python/3.7.9</command>
-        <command name="load">cmake</command>
+        <command name="load">cmake/3.18.2</command>
       </modules>
       <modules compiler="intel">
         <command name="load">intel/19.1.1</command>
@@ -742,11 +742,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.2.0b23-ncdfio-mpt-g</command>
+        <command name="load">esmf-8.3.0b13-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.2.0b23-ncdfio-mpt-O</command>
+        <command name="load">esmf-8.3.0b13-ncdfio-mpt-O</command>
       </modules>
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
@@ -838,8 +838,8 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">pnetcdf/1.12.2</command>
       </modules>
       <modules mpilib="mpt" compiler="intel">
-        <command name="load">mpt/2.22</command>
-        <command name="load">netcdf-mpi/4.8.0</command>
+        <command name="load">mpt/2.25</command>
+        <command name="load">netcdf-mpi/4.8.1</command>
         <command name="load">pnetcdf/1.12.2</command>
       </modules>
       <modules mpilib="mpt" compiler="pgi">
@@ -881,10 +881,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">netcdf/4.8.1</command>
       </modules>
       <modules compiler="!pgi" DEBUG="FALSE">
-        <command name="load">pio/2.5.6</command>
+        <command name="load">pio/2.5.7</command>
       </modules>
       <modules compiler="!pgi" DEBUG="TRUE">
-        <command name="load">pio/2.5.6d</command>
+        <command name="load">pio/2.5.7d</command>
       </modules>
     </module_system>
     <environment_variables>
