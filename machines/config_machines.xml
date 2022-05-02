@@ -2251,11 +2251,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="TRUE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmf-8.2.0b13-ncdfio-mvapich2-g</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="FALSE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmf-8.2.0b13-ncdfio-mvapich2-O</command>
       </modules>
       <modules compiler="pgi" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
