@@ -220,12 +220,9 @@ This allows using a different mpirun command to launch unit tests
     <MAX_MPITASKS_PER_NODE>96</MAX_MPITASKS_PER_NODE>
     <PROJECT_REQUIRED>FALSE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
-      <executable>srun</executable>
+      <executable>scontrol show hostnames $SLURM_JOB_NODELIST > hostfile ; mpirun -f hostfile </executable>
       <arguments>
         <arg name="num_tasks">-n {{ total_tasks }}</arg>
-        <arg name="bindinfo"> --cpu-bind=verbose </arg>
-        <arg name="cpu_bind">--cpu_bind=sockets --cpu_bind=verbose</arg>
-        <arg name="kill-on-bad-exit">--kill-on-bad-exit</arg>
       </arguments>
     </mpirun>
     <module_system type="none"/>
