@@ -207,12 +207,12 @@ This allows using a different mpirun command to launch unit tests
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>impi</MPILIBS>
     <CIME_OUTPUT_ROOT>/scratch/$USER</CIME_OUTPUT_ROOT>
-    <DIN_LOC_ROOT>/scratch/$USER/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT>/scratch/inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>$DIN_LOC_ROOT/atm/datm7</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
     <BASELINE_ROOT>$ENV{CESMDATAROOT}/cesm_baselines</BASELINE_ROOT>
     <CCSM_CPRNC>$ENV{CESMDATAROOT}/tools/cime/tools/cprnc/cprnc</CCSM_CPRNC>
-    <GMAKE_J>6</GMAKE_J>
+    <GMAKE_J>8</GMAKE_J>
     <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
     <SUPPORTED_BY>cseg</SUPPORTED_BY>
     <!-- have not seen any performance benefit in smt -->
@@ -221,6 +221,12 @@ This allows using a different mpirun command to launch unit tests
     <PROJECT_REQUIRED>FALSE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>scontrol show hostnames $SLURM_JOB_NODELIST > hostfile ; mpirun -f hostfile </executable>
+      <arguments>
+        <arg name="num_tasks">-n {{ total_tasks }}</arg>
+      </arguments>
+    </mpirun>
+    <mpirun mpilib="default" queue="serial">
+      <executable>env -u I_MPI_OFI_PROVIDER mpirun </executable>
       <arguments>
         <arg name="num_tasks">-n {{ total_tasks }}</arg>
       </arguments>
