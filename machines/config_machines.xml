@@ -546,6 +546,10 @@ This allows using a different mpirun command to launch unit tests
       <env name="CESMDATAROOT">/glade/p/cesmdata/cseg</env>
       <env name="NETCDF_PATH">$ENV{NETCDF}</env>
     </environment_variables>
+    <environment_variables comp_interface="nuopc">
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
+    </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
     </resource_limits>
