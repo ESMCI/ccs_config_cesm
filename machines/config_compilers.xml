@@ -1382,22 +1382,22 @@ using a fortran linker.
   <LAPACK_LIBDIR>/global/software/sl-6.x86_64/modules/intel/2016.1.150/lapack/3.6.0-intel/lib</LAPACK_LIBDIR>
 </compiler>
 
-<compiler COMPILER="intel" MACH="lawrencium-lr2">
+<compiler COMPILER="gnu" MACH="lobata">
+  <SUPPORTS_CXX>TRUE</SUPPORTS_CXX>
   <CPPDEFS>
-    <append MODEL="gptl"> -DHAVE_VPRINTF -DHAVE_TIMES -DHAVE_GETTIMEOFDAY </append>
+    <append MODEL="gptl"> -DHAVE_VPRINTF -DHAVE_GETTIMEOFDAY -DHAVE_BACKTRACE </append>
   </CPPDEFS>
-  <SLIBS>
-    <append> -lnetcdff -lnetcdf -mkl </append>
-  </SLIBS>
   <FFLAGS>
-    <append DEBUG="TRUE"> -ftrapuv </append>
+    <append DEBUG="FALSE">-fno-unsafe-math-optimizations</append>
+    <append DEBUG="TRUE"> -g -fbacktrace -fbounds-check -ffpe-trap=invalid,zero,overflow</append>
   </FFLAGS>
-  <CFLAGS>
-    <append DEBUG="TRUE"> -ftrapuv </append>
-  </CFLAGS>
-  <NETCDF_PATH>$ENV{NETCDF_DIR}</NETCDF_PATH>
-  <LAPACK_LIBDIR>/global/software/sl-6.x86_64/modules/intel/2016.1.150/lapack/3.6.0-intel/lib</LAPACK_LIBDIR>
+  <SLIBS>
+    <append> -L$ENV{NETCDF_FORTRAN_PATH}/lib/ -lnetcdff -L$ENV{NETCDF_C_PATH}/lib/ -lnetcdf -lcurl -llapack -lblas </append>
+  </SLIBS>
+  <SCC MPILIB="mpi-serial">gcc</SCC>
+  <SFC MPILIB="mpi-serial">gfortran</SFC>
 </compiler>
+
 
 <compiler MACH="melvin" COMPILER="gnu">
   <ALBANY_PATH>/projects/install/rhel6-x86_64/ACME/AlbanyTrilinos/Albany/build/install</ALBANY_PATH>
