@@ -55,6 +55,13 @@
     </values>
   </entry>
 
+  <entry id="PIO_REARRANGER">
+    <values>
+      <value mach="aws-hpc6a">1</value> <!-- Until we sort out the PNetCDF issue on AWS, we'll stick with NetCDF, which needs this -->
+    </values>
+  </entry>
+
+
   <!--- uncomment and fill in relevant sections
   <entry id="PIO_DEBUG_LEVEL">
     <values>
@@ -236,8 +243,10 @@
       <value>pnetcdf</value>
       <value mpilib="mpi-serial">netcdf</value>
       <value compset="SCAM">netcdf</value>
+      <value mach="aws-hpc6a">netcdf</value> <!-- Until we sort out the PNetCDF issue on AWS, we'll stick with NetCDF -->
     </values>
   </entry>
+
 <!--
   <entry id="ATM_PIO_TYPENAME">
     <values>
