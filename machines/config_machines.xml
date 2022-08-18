@@ -813,19 +813,19 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">esmf-8.2.0b23-ncdfio-mpt-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpt" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
         <command name="load">esmf-8.4.0b08-ncdfio-mpt-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpt" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
         <command name="load">esmf-8.4.0b08-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="nvhpc" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
         <command name="load">esmf-8.4.0b08-ncdfio-openmpi-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
         <command name="load">esmf-8.4.0b08-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
@@ -845,11 +845,11 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">esmf-8.2.0b23-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
         <command name="load">esmf-8.4.0b08-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/21.11</command>
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
         <command name="load">esmf-8.4.0b08-ncdfio-mpiuni-O</command>
       </modules>
       <modules mpilib="mpt" compiler="gnu">
