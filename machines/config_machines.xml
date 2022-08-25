@@ -1430,7 +1430,7 @@ This allows using a different mpirun command to launch unit tests
 
   <machine MACH="gust">
     <DESC>NCAR AMD EPYC test system 16 CPU nodes 2 GPU nodes</DESC>
-    <NODENAME_REGEX>gust.*.hpc.ucar.edu</NODENAME_REGEX>
+    <NODENAME_REGEX>gu.*.hpc.ucar.edu</NODENAME_REGEX>
     <OS>CNL</OS>
     <COMPILERS>intel,gnu,cray,nvhpc,oneapi</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
@@ -1493,6 +1493,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">netcdf/4.8.1</command>
       </modules>
       <modules mpilib="!mpi-serial">
+        <command name="rm">hdf5</command>
         <command name="rm">netcdf</command>
         <command name="load">netcdf-mpi/4.8.1</command>
         <command name="load">pnetcdf/1.12.2</command>
