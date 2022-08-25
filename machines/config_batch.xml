@@ -389,19 +389,6 @@
     </queues>
   </batch_system>
 
-  <batch_system MACH="gust" type="pbs" >
-    <batch_submit>qsub</batch_submit>
-<!--    <submit_args>
-    </submit_args> -->
-    <directives queue="main">
-      <directive default="/bin/bash" > -S {{ shell }}  </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}</directive>
-    </directives>
-    <queues>
-      <queue walltimemax="4:00:00" nodemin="1" nodemax="4" >main</queue>
-    </queues>
-  </batch_system>
-
   <!-- euler2 is LSF -->
   <batch_system MACH="euler2" type="lsf" >
     <directives>
@@ -499,6 +486,19 @@
            to jobs that use 8 tasks or fewer; other jobs will land in sky2.4        -->
       <queue nodemin="1" nodemax="13">sky2.4</queue>
       <queue default="true" jobmin="1" jobmax="8">sib2.9,sky2.4</queue>
+    </queues>
+  </batch_system>
+
+  <batch_system MACH="gust" type="pbs" >
+    <batch_submit>qsub</batch_submit>
+<!--    <submit_args>
+    </submit_args> -->
+    <directives queue="main">
+      <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}</directive>
+    </directives>
+    <queues>
+      <queue walltimemax="4:00:00" nodemin="1" nodemax="4" >main</queue>
     </queues>
   </batch_system>
 
