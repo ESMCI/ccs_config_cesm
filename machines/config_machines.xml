@@ -1978,6 +1978,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">cray-mpich/8.1.18</command>
         <command name="load">cray-libsci/22.08.1.1</command>
       </modules>
+      <modules compiler="intel">
+        <command name="rm">cray-libsci/22.08.1.1</command>
+        <command name="load">mkl</command>
+      </modules>	
       <modules mpilib="mpi-serial">
         <command name="load">netcdf/4.8.1</command>
       </modules>
