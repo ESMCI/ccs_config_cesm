@@ -2,7 +2,3 @@ wrap_mpi.o: wrap_mpi.F90
 	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) -mismatch_all $(FFLAGS_NOOPT) $(FREEFLAGS) $<
 fft99.o: fft99.F90
 	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) -mismatch_all $(FFLAGS_NOOPT) $(FREEFLAGS) $<
-ndrop.o: ndrop.F90
-	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) -mismatch $(FFLAGS_NOOPT) $(FREEFLAGS) $<
-stepon.o: stepon.F90
-	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) -mismatch $(FFLAGS_NOOPT) $(FREEFLAGS) $<
