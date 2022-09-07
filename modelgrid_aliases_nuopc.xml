@@ -1238,21 +1238,21 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="mpasa60_mpasa60" not_compset="_POP">
+  <model_grid alias="mpasa060_mpasa060" not_compset="_POP">
     <grid name="atm">mpasa60</grid>
     <grid name="lnd">mpasa60</grid>
     <grid name="ocnice">mpasa60</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="mpasa30_mpasa30" not_compset="_POP">
+  <model_grid alias="mpasa030_mpasa030" not_compset="_POP">
     <grid name="atm">mpasa30</grid>
     <grid name="lnd">mpasa30</grid>
     <grid name="ocnice">mpasa30</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="mpasa15_mpasa15" not_compset="_POP">
+  <model_grid alias="mpasa015_mpasa015" not_compset="_POP">
     <grid name="atm">mpasa15</grid>
     <grid name="lnd">mpasa15</grid>
     <grid name="ocnice">mpasa15</grid>
@@ -1323,15 +1323,15 @@
   </model_grid>
 
   <model_grid alias="mpasa060_oEC60to30v3" not_compset="_POP">
-    <grid name="atm">mpasa060</grid>
-    <grid name="lnd">mpasa060</grid>
+    <grid name="atm">mpasa60</grid>
+    <grid name="lnd">mpasa60</grid>
     <grid name="ocnice">oEC60to30v3</grid>
     <mask>oEC60to30v3</mask>
   </model_grid>
 
   <model_grid alias="mpasa030_oEC60to30v3" not_compset="_POP">
-    <grid name="atm">mpasa030</grid>
-    <grid name="lnd">mpasa030</grid>
+    <grid name="atm">mpasa30</grid>
+    <grid name="lnd">mpasa30</grid>
     <grid name="ocnice">oEC60to30v3</grid>
     <mask>oEC60to30v3</mask>
   </model_grid>
