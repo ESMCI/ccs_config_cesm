@@ -559,98 +559,6 @@ This allows using a different mpirun command to launch unit tests
     </resource_limits>
   </machine>
 
-<!-- this machine needs to precede cheyenne so that NODENAME_REGEX works -->
-  <machine MACH="CPE">
-    <DESC>This is using the cray env emulator on cheyenne </DESC>
-    <NODENAME_REGEX>$ENV{SCR_IMAGEROOT}:/glade/u/apps/ch/opt/hpe-cpe/22.02/cray_hpe_cpe_22.02-021622</NODENAME_REGEX>
-    <OS>CNL</OS>
-    <COMPILERS>cray,gnu</COMPILERS>
-    <MPILIBS>mpich</MPILIBS>
-<!--    <PROJECT></PROJECT> -->
-    <CIME_OUTPUT_ROOT>/glade/scratch/$USER/CPE</CIME_OUTPUT_ROOT>
-    <DIN_LOC_ROOT>/glade/p/cesmdata/cseg/inputdata</DIN_LOC_ROOT>
-    <DIN_LOC_ROOT_CLMFORC>/glade/p/cgd/tss/CTSM_datm_forcing_data</DIN_LOC_ROOT_CLMFORC>
-    <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
-    <BASELINE_ROOT>/glade/p/cesmdata/cseg/CPE/cesm_baselines</BASELINE_ROOT>
-    <CCSM_CPRNC>/glade/p/cesmdata/cseg/tools/CPE/cprnc</CCSM_CPRNC>
-    <GMAKE_J>8</GMAKE_J>
-    <BATCH_SYSTEM>none</BATCH_SYSTEM>
-    <SUPPORTED_BY>jedwards</SUPPORTED_BY>
-    <MAX_TASKS_PER_NODE>36</MAX_TASKS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>36</MAX_MPITASKS_PER_NODE>
-    <PROJECT_REQUIRED>FALSE</PROJECT_REQUIRED>
-    <mpirun mpilib="default">
-      <executable>mpiexec</executable>
-      <arguments>
-        <arg name="num_tasks"> -n {{ total_tasks }} </arg>
-        <arg name="addrank"> --label </arg>
-      </arguments>
-    </mpirun>
-    <module_system type="module">
-      <init_path lang="perl">/opt/cray/pe/modules/default/init/perl.pm</init_path>
-      <init_path lang="python">/opt/cray/pe/modules/default/init/python.py</init_path>
-      <init_path lang="sh">/opt/cray/pe/modules/default/init/sh</init_path>
-      <init_path lang="csh">/opt/cray/pe/modules/default/init/csh</init_path>
-      <cmd_path lang="perl">/opt/cray/pe/modules/default/bin/modulecmd perl</cmd_path>
-      <cmd_path lang="python">/opt/cray/pe/modules/default/bin/modulecmd python</cmd_path>
-      <cmd_path lang="sh">module</cmd_path>
-      <cmd_path lang="csh">module</cmd_path>
-      <modules compiler="cray">
-        <command name="load">PrgEnv-cray/8.2.0</command>
-        <command name="switch">cce cce/13.0.1</command>
-      </modules>
-      <modules compiler="gnu">
-        <command name="load">PrgEnv-gnu/8.2.0</command>
-        <command name="switch">gcc gcc/11.2.0</command>
-      </modules>
-      <modules>
-        <command name="load">perftools-base</command>
-        <command name="swap">craype craype/2.7.9</command>
-      </modules>
-      <modules compiler="!intel">
-        <command name="switch">cray-libsci/21.08.1.2</command>
-      </modules>
-      <modules>
-        <command name="unload">cray-mpich</command>
-        <command name="load">cray-mpich/8.1.13</command>
-      </modules>
-      <modules mpilib="mpich">
-        <command name="unload">cray-netcdf</command>
-        <command name="unload">cray-hdf5</command>
-<!--  Due to a bug in romio these are not working -->
-        <command name="load">cray-netcdf-hdf5parallel</command>
-        <command name="load">cray-hdf5-parallel</command>
-        <command name="load">cray-parallel-netcdf</command>
-<!--
-        <command name="load">cray-hdf5</command>
-        <command name="load">cray-netcdf</command>
--->
-      </modules>
-      <modules mpilib="mpi-serial">
-        <command name="unload">cray-netcdf-hdf5parallel</command>
-        <command name="unload">cray-hdf5-parallel</command>
-        <command name="load">cray-hdf5</command>
-        <command name="load">cray-netcdf</command>
-      </modules>
-    </module_system>
-    <environment_variables comp_interface="nuopc">
-      <env name="ESMF_RUNTIME_PROFILE">ON</env>
-      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
-    </environment_variables>
-    <environment_variables comp_interface="nuopc" compiler="cray">
-      <env name="ESMFMKFILE">/glade/work/jedwards/CPE/lib/libg/Unicos.cce.64.mpi.default/esmf.mk</env>
-    </environment_variables>
-    <environment_variables comp_interface="nuopc" compiler="gnu">
-      <env name="ESMFMKFILE">/glade/work/jedwards/CPE/lib/libg/Unicos.gfortran.64.mpi.default/esmf.mk</env>
-    </environment_variables>
-    <environment_variables  compiler="cray">
-      <env name="PKG_CONFIG_PATH">/opt/cray/pe/mpich/default/ucx/cray/10.0/lib/pkgconfig/:$ENV{PKG_CONFIG_PATH}</env>
-    </environment_variables>
-    <environment_variables  compiler="gnu">
-      <env name="PKG_CONFIG_PATH">/opt/cray/pe/mpich/default/ucx/gnu/9.1/lib/pkgconfig/:$ENV{PKG_CONFIG_PATH}</env>
-    </environment_variables>
-  </machine>
-
   <machine MACH="cheyenne">
     <DESC>NCAR SGI platform, os is Linux, 36 pes/node, batch system is PBS</DESC>
     <NODENAME_REGEX>.*.?cheyenne\d?.ucar.edu</NODENAME_REGEX>
@@ -714,6 +622,7 @@ This allows using a different mpirun command to launch unit tests
       <executable>mpirun</executable>
       <arguments>
         <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
+        <arg name="labelstdout"> --tag-output</arg>
       </arguments>
     </mpirun>
     <mpirun mpilib="default" unit_testing="true">
@@ -873,9 +782,9 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">pnetcdf/1.12.3</command>
       </modules>
       <modules mpilib="openmpi" compiler="intel">
-        <command name="load">openmpi/4.1.1</command>
-        <command name="load">netcdf-mpi/4.8.1</command>
-        <command name="load">pnetcdf/1.12.2</command>
+        <command name="load">openmpi/4.1.4</command>
+        <command name="load">netcdf-mpi/4.9.0</command>
+        <command name="load">pnetcdf/1.12.3</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc">
         <command name="load">openmpi/4.1.4</command>
@@ -895,29 +804,28 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">ncarcompilers/0.5.0</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial">
-        <command name="load">netcdf/4.7.4</command>
+        <command name="load">netcdf/4.9.0</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial">
-        <command name="load">netcdf/4.7.4</command>
+        <command name="load">netcdf/4.9.0</command>
       </modules>
       <modules compiler="pgi" mpilib="mpi-serial">
-        <command name="load">netcdf/4.7.4</command>
+        <command name="load">netcdf/4.9.0</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpi-serial">
-        <command name="load">netcdf/4.8.1</command>
+        <command name="load">netcdf/4.9.0</command>
       </modules>
       <modules compiler="!pgi" DEBUG="FALSE">
-        <command name="load">pio/2.5.8</command>
+        <command name="load">pio/2.5.9</command>
       </modules>
       <modules compiler="!pgi" DEBUG="TRUE">
-        <command name="load">pio/2.5.8d</command>
+        <command name="load">pio/2.5.9d</command>
       </modules>
     </module_system>
     <environment_variables>
       <env name="OMP_STACKSIZE">1024M</env>
       <env name="TMPDIR">/glade/scratch/$USER</env>
       <env name="MPI_TYPE_DEPTH">16</env>
-      <env name="MPI_IB_CONGESTED">1</env>
       <env name="MPI_USE_ARRAY"/>
     </environment_variables>
     <environment_variables comp_interface="nuopc">
