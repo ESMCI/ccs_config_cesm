@@ -377,6 +377,60 @@
     <desc>tripole v1 1-deg grid: testing proxy for high-res tripole ocean grids- do not use for scientific experiments</desc>
     <support>Experimental tripole ocean grid</support>
   </domain>
+    <domain name="oQU480">
+      <nx>7234</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU480_ESMFmesh.nc</mesh>
+      <desc>oQU480 is a MPAS ocean grid that is roughly 4 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+    <domain name="oQU240">
+      <nx>7234</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU240_ESMFmesh.nc</mesh>
+      <desc>oQU240 is a MPAS ocean grid that is roughly 2 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+    <domain name="oQU120">
+      <nx>28571</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU120_ESMFmesh.nc</mesh>
+      <desc>oQU120 is a MPAS ocean grid that is roughly 1 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+    <domain name="oEC60to30v3">
+      <nx>28571</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/work/dazlich/ec60_30/oEC60to30_ESMFmesh.nc</mesh>
+      <desc>oEC60to30v3 is a MPAS ocean grid that is roughly 1/2 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+    <domain name="oQU060">
+      <nx>115528</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU060_ESMFmesh.nc</mesh>
+      <desc>oQU060 is a MPAS ocean grid that is roughly 1/2 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+    <domain name="oQU030">
+      <nx>463535</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU030_ESMFmesh.nc</mesh>
+      <desc>oQU030 is a MPAS ocean grid that is roughly 1/4 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+    <domain name="oQU015">
+      <nx>1849027</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU015_ESMFmesh.nc</mesh>
+      <desc>oQU015 is a MPAS ocean grid that is roughly 1/8 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+    <domain name="oQU0075">
+      <nx>1849027</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU0075_ESMFmesh.nc</mesh>
+      <desc>oQU00375 is a MPAS ocean grid that is roughly 1/16 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+    <domain name="oQU00375">
+      <nx>1849027</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU00375_ESMFmesh.nc</mesh>
+      <desc>oQU00375 is a MPAS ocean grid that is roughly 1/32 degree resolution:</desc>
+      <support>Experimental, under development</support>
+    </domain>
 
   <!-- ======================================================== -->
   <!-- ROF domains -->
