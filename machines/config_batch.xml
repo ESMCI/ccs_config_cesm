@@ -148,7 +148,7 @@
     <batch_mail_type>, bea, b, e, a</batch_mail_type>
     <submit_args>
       <argument> -q $JOB_QUEUE</argument>
-      <argument> -l $JOB_WALLCLOCK_TIME</argument>
+      <argument> -l walltime=$JOB_WALLCLOCK_TIME</argument>
       <argument> -A $PROJECT</argument>
     </submit_args>
     <directives>
