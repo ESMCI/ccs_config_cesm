@@ -4,4 +4,6 @@ endif()
 set(NETCDF_PATH "$ENV{NETCDF}")
 set(PIO_FILESYSTEM_HINTS "lustre")
 set(PNETCDF_PATH "$ENV{PNETCDF}")
-#string(REPLACE "-mkl=cluster" "" SLIBS "${SLIBS}") 
+# If we want to use cray-libsci instead of mkl uncomment this line as well as the module in config_machines.xml
+#string(REPLACE "-mkl=cluster" "" SLIBS "${SLIBS}")
+string(APPEND CPPDEFS " -DNO_SHR_VMATH ")
