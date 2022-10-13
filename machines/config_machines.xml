@@ -1970,41 +1970,46 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="nvhpc">
         <command name="load">nvhpc/22.7</command>
       </modules>
-
+      <modules mpilib="mpich">
+	<command name="load">cray-mpich/8.1.18</command>
+      </modules>
+      <modules mpilib="mpi-serial">
+        <command name="load">mpi-serial/2.3.0</command>
+      </modules>
+      
       <modules>
-	<command name="use">/glade/u/apps/cseg/modules/$ENV{LMOD_FAMILY_COMPILER}/$ENV{LMOD_FAMILY_COMPILER_VERSION}</command>
         <command name="load">cmake/3.23.2</command>
-        <command name="load">cray-mpich/8.1.18</command>
         <command name="load">cray-libsci/22.08.1.1</command>
-	<command name="use">/glade/u/apps/cseg/modules/$ENV{LMOD_FAMILY_MPI}/$ENV{LMOD_FAMILY_MPI_VERSION}/$ENV{LMOD_FAMILY_COMPILER}/$ENV{LMOD_FAMILY_COMPILER_VERSION}</command>
       </modules>
       <!-- to use cray-libsci instead of mkl comment these out and
 	   edit cmake_macros/gust.cmake -->
       <modules compiler="intel">
-        <command name="rm">cray-libsci</command>
         <command name="load">mkl/2022.1.0</command>
       </modules>
 
       <modules compiler="oneapi">
-        <command name="rm">cray-libsci</command>
         <command name="load">mkl/2022.1.0</command>
       </modules>	
       <modules mpilib="mpi-serial">
         <command name="load">netcdf/4.8.1</command>
       </modules>
+
       <modules mpilib="!mpi-serial">
 	<command name="rm">hdf5</command>
         <command name="rm">netcdf</command>
         <command name="load">netcdf-mpi/4.8.1</command>
         <command name="load">pnetcdf/1.12.2</command>
       </modules>
-      <modules mpilib="!mpi-serial" DEBUG="TRUE">
-	<command name="load">parallelio-2.5.9-debug</command>
-	<command name="load">esmf-8.4.0b18-debug</command>
+      <modules DEBUG="TRUE">
+	<command name="load">parallelio/2.5.9-debug</command>
+	<command name="load">esmf/8.4.0b18-debug</command>
       </modules>
-      <modules mpilib="!mpi-serial" DEBUG="FALSE">
-	<command name="load">parallelio-2.5.9</command>
-	<command name="load">esmf-8.4.0b18</command>
+      <modules DEBUG="FALSE">
+	<command name="load">parallelio/2.5.9</command>
+	<command name="load">esmf/8.4.0b18</command>
+      </modules>
+      <modules>
+	<command name="list"/>
       </modules>
     </module_system>
 
