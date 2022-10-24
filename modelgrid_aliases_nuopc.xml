@@ -1160,6 +1160,27 @@
     <mask>tx0.1v2</mask>
   </model_grid>
 
+  <model_grid alias="ne0ARCTICne30x4_t12_mt12" not_compset="_POP">
+    <grid name="atm">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="lnd">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="ocnice">tx0.1v2</grid>
+    <mask>tx0.1v2</mask>
+  </model_grid>
+
+  <model_grid alias="ne0ARCTICne30x4_ne0ARCTICne30x4_mg17" not_compset="_POP">
+    <grid name="atm">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="lnd">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="ocnice">ne0np4.ARCTIC.ne30x4</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="ne0ARCTICne30x4_g17_mg17" not_compset="_POP">
+    <grid name="atm">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="lnd">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="ocnice">gx1v7</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
   <model_grid alias="ne0ARCTICGRISne30x8_ne0ARCTICGRISne30x8_mt12" not_compset="_POP">
     <grid name="atm">ne0np4.ARCTICGRIS.ne30x8</grid>
     <grid name="lnd">ne0np4.ARCTICGRIS.ne30x8</grid>
