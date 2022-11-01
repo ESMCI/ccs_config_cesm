@@ -417,6 +417,7 @@ This allows using a different mpirun command to launch unit tests
     <DIN_LOC_ROOT_CLMFORC>/glade/p/cgd/tss/CTSM_datm_forcing_data</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
     <BASELINE_ROOT>$ENV{CESMDATAROOT}/cesm_baselines</BASELINE_ROOT>
+    <CCSM_CPRNC>$ENV{CESMDATAROOT}/tools/cime/tools/cprnc/cprnc</CCSM_CPRNC>
     <GMAKE_J>8</GMAKE_J>
     <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
     <SUPPORTED_BY>ASAP/CISL</SUPPORTED_BY>
@@ -478,15 +479,17 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">openmpi/4.1.0</command>
         <command name="load">netcdf-mpi/4.7.4</command>
         <command name="load">pnetcdf/1.12.2</command>
+      </modules>
+      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="OpenACC">
         <command name="load">cuda/11.0.3</command>
       </modules>
       <modules mpilib="mpi-serial" compiler="pgi-gpu">
         <command name="load">netcdf/4.7.4</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc">
-        <command name="load">openmpi/4.1.1</command>
+        <command name="load">openmpi/4.1.4</command>
         <command name="load">netcdf-mpi/4.8.1</command>
-        <command name="load">pnetcdf/1.12.2</command>
+        <command name="load">pnetcdf/1.12.3</command>
       </modules>
       <modules mpilib="mpi-serial" compiler="nvhpc">
         <command name="load">netcdf/4.8.1</command>
@@ -525,6 +528,14 @@ This allows using a different mpirun command to launch unit tests
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
         <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-O</command>
       </modules>
+      <modules compiler="nvhpc" mpilib="openmpi" DEBUG="TRUE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
+        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-g</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="openmpi" DEBUG="FALSE">
+        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
+        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-O</command>
+      </modules>
       <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
         <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-g</command>
@@ -537,10 +548,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">ncarcompilers/0.5.0</command>
       </modules>
       <modules compiler="!pgi" DEBUG="FALSE" mpilib="openmpi">
-        <command name="load">pio/2.5.7</command>
+        <command name="load">pio/2.5.9</command>
       </modules>
       <modules compiler="!pgi" DEBUG="TRUE" mpilib="openmpi">
-        <command name="load">pio/2.5.7d</command>
+        <command name="load">pio/2.5.9d</command>
       </modules>
     </module_system>
     <environment_variables>
@@ -577,7 +588,7 @@ This allows using a different mpirun command to launch unit tests
     <DIN_LOC_ROOT_CLMFORC>/glade/p/cgd/tss/CTSM_datm_forcing_data</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
     <BASELINE_ROOT>$ENV{CESMDATAROOT}/cesm_baselines</BASELINE_ROOT>
-    <CCSM_CPRNC>$ENV{CESMDATAROOT}/tools/cime/tools/cprnc/cprnc.cheyenne</CCSM_CPRNC>
+    <CCSM_CPRNC>$ENV{CESMDATAROOT}/tools/cime/tools/cprnc/cprnc</CCSM_CPRNC>
     <GMAKE_J>8</GMAKE_J>
     <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
     <SUPPORTED_BY>cseg</SUPPORTED_BY>
