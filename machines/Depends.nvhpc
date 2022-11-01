@@ -1,0 +1,7 @@
+# 10/13/2022 nvhpc compiler on gust.hpc.ucar.edu produced incorrect mpitask cound when esm.F90 was optimized
+#
+REDUCED_OPT_OBJS=\
+esm.o
+
+$(REDUCED_OPT_OBJS): %.o: %.F90
+		     $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS)  -O1 $<

@@ -388,19 +388,6 @@
     </queues>
   </batch_system>
 
-  <batch_system MACH="edison" type="slurm" >
-    <batch_submit>sbatch</batch_submit>
-    <submit_args>
-      <argument> --time $JOB_WALLCLOCK_TIME </argument>
-      <argument> -q $JOB_QUEUE </argument>
-      <argument> --account $PROJECT </argument>
-    </submit_args>
-    <queues>
-      <queue walltimemax="36:00:00" nodemin="1" nodemax="2712" >regular</queue>
-      <queue walltimemax="00:30:00" nodemin="1" nodemax="256" default="true">debug</queue>
-    </queues>
-  </batch_system>
-
   <!-- euler2 is LSF -->
   <batch_system MACH="euler2" type="lsf" >
     <directives>
@@ -498,6 +485,18 @@
            to jobs that use 8 tasks or fewer; other jobs will land in sky2.4        -->
       <queue nodemin="1" nodemax="13">sky2.4</queue>
       <queue default="true" jobmin="1" jobmax="8">sib2.9,sky2.4</queue>
+    </queues>
+  </batch_system>
+
+  <batch_system MACH="gust" type="pbs" >
+    <batch_submit>qsub</batch_submit>
+    <directives>
+      <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}</directive>
+    </directives>
+    <queues>
+      <queue walltimemax="4:00:00" nodemin="1" nodemax="8" >main</queue>
+      <queue walltimemax="1:00:00" nodemin="9" nodemax="16" >bigcpu</queue>
     </queues>
   </batch_system>
 
