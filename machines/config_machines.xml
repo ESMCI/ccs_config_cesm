@@ -481,7 +481,13 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">pnetcdf/1.12.2</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="OpenACC">
-        <command name="load">cuda/11.0.3</command>
+        <command name="load">cuda/11.6</command>
+      </modules>
+      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="OpenMP">
+        <command name="load">cuda/11.6</command>
+      </modules>
+      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="combined">
+        <command name="load">cuda/11.6</command>
       </modules>
       <modules mpilib="mpi-serial" compiler="pgi-gpu">
         <command name="load">netcdf/4.7.4</command>
