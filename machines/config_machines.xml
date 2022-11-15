@@ -663,7 +663,7 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="intel" mpilib="mpt" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.0b18-ncdfio-mpt-g</command>
+        <command name="load">esmf-8.4.0b21-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpt" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
@@ -820,6 +820,7 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="!pgi" DEBUG="TRUE">
         <command name="load">pio/2.5.9d</command>
+        <command name="load">arm-forge/22.1.0</command>
       </modules>
     </module_system>
     <environment_variables>
@@ -842,6 +843,9 @@ This allows using a different mpirun command to launch unit tests
     </environment_variables>
     <environment_variables queue="share">
       <env name="TMPDIR">/glade/scratch/$USER</env>
+    </environment_variables>
+    <environment_variables DEBUG="TRUE">
+      <env name="USER_SLIBS">-L/glade/u/apps/opt/arm-forge/22.1.0/lib/64 -ldmallocthcxx</env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
