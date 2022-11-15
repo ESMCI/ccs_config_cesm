@@ -845,7 +845,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="TMPDIR">/glade/scratch/$USER</env>
     </environment_variables>
     <environment_variables DEBUG="TRUE">
-      <env name="USER_SLIBS">-L/glade/u/apps/opt/arm-forge/22.1.0/lib/64 -ldmallocthcxx -Wl,-rpath=/glade/u/apps/opt/arm-forge/22.1.0/lib/64 </env>
+      <env name="USER_SLIBS">"-L/glade/u/apps/opt/arm-forge/22.1.0/lib/64 -ldmallocthcxx -Wl,-rpath=/glade/u/apps/opt/arm-forge/22.1.0/lib/64" </env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
