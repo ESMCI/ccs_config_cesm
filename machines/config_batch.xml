@@ -61,6 +61,8 @@
     </submit_args>
     <queues>
       <queue walltimemax="144:00:00" nodemin="1" nodemax="96">regular</queue>
+      <queue walltimemax="1:00:00"   nodemin="1" nodemax="1">build</queue>
+      <queue default="true" walltimemax="4:00:00"   jobmin="1" jobmax="1">serial</queue>
     </queues>
   </batch_system>
 
@@ -553,19 +555,6 @@
     </directives>
     <queues>
       <queue walltimemin="00:00:00" walltimemax="72:00:00" nodemin="1" nodemax="64" default="true">lr3</queue>
-    </queues>
-  </batch_system>
-
-  <batch_system MACH="lawrencium-lr2" type="slurm">
-    <batch_submit>sbatch</batch_submit>
-    <directives>
-       <directive>--qos=lr_normal</directive>
-       <directive>--partition=lr2</directive>
-       <directive>--account={{ project }}</directive>
-       <directive>--ntasks-per-node={{ tasks_per_node }}</directive>
-    </directives>
-    <queues>
-      <queue walltimemin="00:00:00" walltimemax="72:00:00" nodemin="1" nodemax="64" default="true">lr2</queue>
     </queues>
   </batch_system>
 

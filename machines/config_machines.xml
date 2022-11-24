@@ -207,12 +207,12 @@ This allows using a different mpirun command to launch unit tests
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>impi</MPILIBS>
     <CIME_OUTPUT_ROOT>/scratch/$USER</CIME_OUTPUT_ROOT>
-    <DIN_LOC_ROOT>/scratch/$USER/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT>/scratch/inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>$DIN_LOC_ROOT/atm/datm7</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
     <BASELINE_ROOT>$ENV{CESMDATAROOT}/cesm_baselines</BASELINE_ROOT>
     <CCSM_CPRNC>$ENV{CESMDATAROOT}/tools/cime/tools/cprnc/cprnc</CCSM_CPRNC>
-    <GMAKE_J>6</GMAKE_J>
+    <GMAKE_J>8</GMAKE_J>
     <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
     <SUPPORTED_BY>cseg</SUPPORTED_BY>
     <!-- have not seen any performance benefit in smt -->
@@ -221,6 +221,12 @@ This allows using a different mpirun command to launch unit tests
     <PROJECT_REQUIRED>FALSE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>scontrol show hostnames $SLURM_JOB_NODELIST > hostfile ; mpirun -f hostfile </executable>
+      <arguments>
+        <arg name="num_tasks">-n {{ total_tasks }}</arg>
+      </arguments>
+    </mpirun>
+    <mpirun mpilib="default" queue="serial">
+      <executable>env -u I_MPI_OFI_PROVIDER mpirun </executable>
       <arguments>
         <arg name="num_tasks">-n {{ total_tasks }}</arg>
       </arguments>
@@ -235,6 +241,10 @@ This allows using a different mpirun command to launch unit tests
       <env name="I_MPI_F90">ifort</env>
       <env name="NETCDF_PATH">/opt/ncar/software</env>
       <env name="ESMFMKFILE">/opt/ncar/esmf/lib/esmf.mk</env>
+    </environment_variables>
+     <environment_variables comp_interface="nuopc">
+       <env name="ESMF_RUNTIME_PROFILE">ON</env>
+       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
@@ -539,6 +549,10 @@ This allows using a different mpirun command to launch unit tests
       <env name="TMPDIR">/glade/scratch/$USER</env>
       <env name="CESMDATAROOT">/glade/p/cesmdata/cseg</env>
       <env name="NETCDF_PATH">$ENV{NETCDF}</env>
+    </environment_variables>
+    <environment_variables comp_interface="nuopc">
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
@@ -2381,7 +2395,7 @@ This allows using a different mpirun command to launch unit tests
     <CCSM_CPRNC>/$CIME_OUTPUT_ROOT/cesm_tools/cprnc/cprnc</CCSM_CPRNC>
     <GMAKE_J>4</GMAKE_J>
     <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
-    <SUPPORTED_BY>rgknox at lbl dot gov</SUPPORTED_BY>
+    <SUPPORTED_BY>rgknox at lbl dot gov and glemieux at lbl dot gov</SUPPORTED_BY>
     <MAX_TASKS_PER_NODE>16</MAX_TASKS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>16</MAX_MPITASKS_PER_NODE>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
@@ -2404,7 +2418,7 @@ This allows using a different mpirun command to launch unit tests
       <modules>
         <command name="purge"/>
         <command name="load">cmake</command>
-        <command name="load">perl xml-libxml switch python/2.7</command>
+        <command name="load">perl xml-libxml switch python/3.6</command>
       </modules>
       <modules compiler="intel">
         <command name="load">intel/2016.4.072</command>
@@ -2420,57 +2434,51 @@ This allows using a different mpirun command to launch unit tests
     </module_system>
   </machine>
 
-  <machine MACH="lawrencium-lr2">
-    <DESC>Lawrencium LR2 cluster at LBL, OS is Linux (intel), batch system is SLURM</DESC>
+  <machine MACH="lobata">
+    <DESC>FATES development machine at LBNL, System76 Thelio Massive Workstation Pop!_OS 20.04</DESC>
+    <NODENAME_REGEX>lobata</NODENAME_REGEX>
     <OS>LINUX</OS>
-    <COMPILERS>intel</COMPILERS>
+    <COMPILERS>gnu</COMPILERS>
     <MPILIBS>openmpi</MPILIBS>
-    <CIME_OUTPUT_ROOT>/global/scratch/$ENV{USER}</CIME_OUTPUT_ROOT>
-    <DIN_LOC_ROOT>/global/scratch/$ENV{USER}/cesm_input_datasets/</DIN_LOC_ROOT>
-    <DIN_LOC_ROOT_CLMFORC>/global/scratch/$ENV{USER}/cesm_input_datasets/atm/datm7</DIN_LOC_ROOT_CLMFORC>
-    <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/cesm_archive/$CASE</DOUT_S_ROOT>
-    <BASELINE_ROOT>$CIME_OUTPUT_ROOT/cesm_baselines</BASELINE_ROOT>
-    <CCSM_CPRNC>/$CIME_OUTPUT_ROOT/cesm_tools/cprnc/cprnc</CCSM_CPRNC>
-    <GMAKE_J>4</GMAKE_J>
-    <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
-    <SUPPORTED_BY>rgknox and gbisht at lbl dot gov</SUPPORTED_BY>
-    <MAX_TASKS_PER_NODE>12</MAX_TASKS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>12</MAX_MPITASKS_PER_NODE>
-    <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
-    <mpirun mpilib="default">
+    <CIME_OUTPUT_ROOT>$ENV{HOME}/scratch/</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>/data/cesmdataroot/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/data/cesmdataroot/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>$ENV{HOME}/scratch/ctsm-baselines</BASELINE_ROOT>
+    <CCSM_CPRNC>/home/glemieux/Repos/cime/tools/cprnc/cprnc</CCSM_CPRNC>
+    <GMAKE>make</GMAKE>
+    <GMAKE_J>16</GMAKE_J>
+    <BATCH_SYSTEM>none</BATCH_SYSTEM>
+    <SUPPORTED_BY>glemieux at lbl dot gov</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>4</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>4</MAX_MPITASKS_PER_NODE>
+    <PROJECT_REQUIRED>FALSE</PROJECT_REQUIRED>
+    <mpirun mpilib="openmpi">
       <executable>mpirun</executable>
       <arguments>
         <arg name="num_tasks"> -np {{ total_tasks }}</arg>
-        <arg name="tasks_per_node"> -npernode $MAX_MPITASKS_PER_NODE</arg>
+        <arg name="tasks_per_node"> --map-by ppr:{{ tasks_per_node }}:socket:PE=$ENV{OMP_NUM_THREADS} --bind-to hwthread</arg>
       </arguments>
     </mpirun>
     <module_system type="module">
-      <init_path lang="sh">/etc/profile.d/modules.sh</init_path>
-      <init_path lang="csh">/etc/profile.d/modules.csh</init_path>
-      <init_path lang="perl">/usr/Modules/init/perl.pm</init_path>
-      <init_path lang="python">/usr/Modules/python.py</init_path>
-      <cmd_path lang="sh">module</cmd_path>
+      <init_path lang="python">/usr/share/modules/init/python.py</init_path>
+      <init_path lang="perl">/usr/share/modules/init/perl.pm</init_path>
+      <init_path lang="sh">/usr/share/modules/init/sh</init_path>
+      <init_path lang="csh">/usr/share/modules/init/csh</init_path>
+      <cmd_path lang="python">/usr/bin/modulecmd python</cmd_path>
+      <cmd_path lang="perl">/usr/bin/modulecmd perl</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
-      <cmd_path lang="perl">/usr/Modules/bin/modulecmd perl</cmd_path>
-      <cmd_path lang="python">/usr/Modules/bin/modulecmd python</cmd_path>
+      <cmd_path lang="sh">module</cmd_path>
       <modules>
         <command name="purge"/>
-        <command name="load">cmake</command>
-        <command name="load">perl xml-libxml switch python/2.7</command>
-      </modules>
-      <modules compiler="intel">
-        <command name="load">intel/2016.4.072</command>
-        <command name="load">mkl</command>
-      </modules>
-      <modules compiler="intel" mpilib="mpi-serial">
-        <command name="load">netcdf/4.4.1.1-intel-s</command>
-      </modules>
-      <modules compiler="intel" mpilib="!mpi-serial">
-        <command name="load">openmpi</command>
-        <command name="load">netcdf/4.4.1.1-intel-p</command>
+        <command name="load">hdf5</command>
+        <command name="load">netcdf-c</command>
+        <command name="load">netcdf-fortran</command>
+        <command name="load">esmf</command>
       </modules>
     </module_system>
-  </machine>
+</machine>
+
 
   <machine MACH="lonestar5">
     <DESC>Lonestar5 cluster at TACC, OS is Linux (intel), batch system is SLURM</DESC>
