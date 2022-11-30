@@ -1583,6 +1583,8 @@ This allows using a different mpirun command to launch unit tests
       <env name="OMP_STACKSIZE">256M</env>
       <env name="UCX_DC_MLX5_RETRY_COUNT">20</env>
       <env name="ESMFMKFILE">/scratch3/projects/csa_gettelman/esmf-8.4.0b21_intel22.2.0_impi22.2.0/lib/libO/Linux.intel.64.intelmpi.default/esmf.mk</env>
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
     <environment_variables mpilib="impi">
       <env name="MY_MPIRUN_OPTIONS">-prepend-rank </env>
