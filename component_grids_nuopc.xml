@@ -419,7 +419,7 @@
          <mesh></mesh>
     -->
     <!-- This is a simplified mesh that only includes the polygon centers, so requires a mapping file with it -->
-    <mesh>$DIN_LOC_ROOT/rof/mizuRoute/meshes/polygon_centroid/HDMAmz_global_ctrcrd_sqr_cdf5_ESMFmesh_c20201005.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/rof/mizuRoute/meshes/polygon_centroid/HDMA_lake_mz_global_ctrcrd_sqr_cdf5_ESMFmesh_c20221117.nc</mesh>
     <desc>HDMA_lake_mz is a medium resolution global river routing grid that includes lakes for mizuRoute:</desc>
   </domain>
   <domain name="MERITmz">
