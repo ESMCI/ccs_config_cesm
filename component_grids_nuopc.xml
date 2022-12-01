@@ -308,6 +308,12 @@
     <mesh>$DIN_LOC_ROOT/share/meshes/gx1v7_151008_ESMFmesh.nc</mesh>
     <desc>gx1v7 is displaced Greenland pole 1-deg grid with Caspian as a land feature:</desc>
   </domain>
+  <domain name="tn0.25v3">
+    <nx>1440</nx>  <ny>1050</ny>
+<!--    <mesh>$DIN_LOC_ROOT/share/meshes/tn0.25v3_160721_ESMFmesh.nc</mesh> -->
+    <mesh>$DIN_LOC_ROOT/share/scripgrids/tn0.25v3_160721.nc</mesh>
+    <desc>tn0.25v3 is NEMO ORCA1 tripole grid at 1/4 deg (reduced eORCA):</desc>
+  </domain>
   <domain name="gx3v7">
     <nx>100</nx> <ny>116</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/gx3v7_120309_ESMFmesh.nc</mesh>

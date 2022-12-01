@@ -3589,7 +3589,7 @@ This allows using a different mpirun command to launch unit tests
 
   <machine MACH="zeus">
     <DESC> CMCC Lenovo ThinkSystem SD530, os is Linux, 36 pes/node, batch system is LSF</DESC>
-    <NODENAME_REGEX>(login[1,2]-ib|n[0-9][0-9][0-9]-ib)</NODENAME_REGEX>
+    <NODENAME_REGEX>(login[1,2].cluster.net|n[0-9][0-9][0-9].cluster.net)</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>impi,mpi-serial</MPILIBS>
@@ -3639,20 +3639,24 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">impi20.1/parallel-netcdf/1.12.1</command>
       </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="TRUE">
-        <command name="load">impi20.1/esmf/8.1.1-intelmpi-64-g</command>
+        <command name="load">impi20.1/esmf/8.2.0-intelmpi-64-g</command>
       </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="FALSE">
-        <command name="load">impi20.1/esmf/8.1.1-intelmpi-64-O</command>
+        <command name="load">impi20.1/esmf/8.2.0-intelmpi-64-O</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">intel20.1/esmf/8.1.1-mpiuni-64-g</command>
+        <command name="load">intel20.1/esmf/8.2.0-mpiuni-64-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">intel20.1/esmf/8.1.1-mpiuni-64-O</command>
+        <command name="load">intel20.1/esmf/8.2.0-mpiuni-64-O</command>
       </modules>
     </module_system>
     <environment_variables>
       <env name="XIOS_PATH">/data/inputs/CESM/xios-2.5</env>
+    </environment_variables>
+    <environment_variables comp_interface="nuopc">
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
     <environment_variables compiler="intel">
       <env name="I_MPI_EXTRA_FILESYSTEM">1</env>
