@@ -1560,11 +1560,12 @@ This allows using a different mpirun command to launch unit tests
       <modules>
         <command name="purge"></command>
         <command name="load">TACC</command>
-        <command name="load">intel/19.1.1</command>
-        <command name="load">cmake/3.16.1</command>
+        <command name="use">/scratch1/projects/compilers/modulefiles</command>
+        <command name="load">intel/22.2.0</command>
+        <command name="load">cmake/3.24.2</command>
       </modules>
       <modules mpilib="impi">
-        <command name="load">impi/19.0.9</command>
+        <command name="load">impi/22.2.0</command>
         <command name="load">pnetcdf/1.11.2</command>
         <command name="load">parallel-netcdf/4.6.2</command>
       </modules>
@@ -1581,6 +1582,9 @@ This allows using a different mpirun command to launch unit tests
     <environment_variables>
       <env name="OMP_STACKSIZE">256M</env>
       <env name="UCX_DC_MLX5_RETRY_COUNT">20</env>
+      <env name="ESMFMKFILE">/scratch3/projects/csa_gettelman/esmf-8.4.0b21_intel22.2.0_impi22.2.0/lib/libO/Linux.intel.64.intelmpi.default/esmf.mk</env>
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
     <environment_variables mpilib="impi">
       <env name="MY_MPIRUN_OPTIONS">-prepend-rank </env>
