@@ -33,6 +33,11 @@
     <mesh>$DIN_LOC_ROOT/share/meshes/0.125nldas2_ESMFmesh_cd5_241220.nc</mesh>
     <desc>Regional NLDAS-2 grid over the U.S. (0.125 degree resolution; 25-53N, 235-293E)</desc>
   </domain>
+  <domain name="0.47x0.63">
+    <nx>576</nx> <ny>384</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/fv0.47x0.63_141008_FIX102722_polemod_ESMFMesh.nc</mesh>
+    <desc>0.47x0.63 is FV 1/2-deg grid:</desc>
+  </domain>
   <domain name="0.9x1.25">
     <nx>288</nx>  <ny>192</ny>
     <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
@@ -307,6 +312,12 @@
     <nx>320</nx>  <ny>384</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/gx1v7_151008_ESMFmesh.nc</mesh>
     <desc>gx1v7 is displaced Greenland pole 1-deg grid with Caspian as a land feature:</desc>
+  </domain>
+  <domain name="tn0.25v3">
+    <nx>1440</nx>  <ny>1050</ny>
+<!--    <mesh>$DIN_LOC_ROOT/share/meshes/tn0.25v3_160721_ESMFmesh.nc</mesh> -->
+    <mesh>$DIN_LOC_ROOT/share/scripgrids/tn0.25v3_160721.nc</mesh>
+    <desc>tn0.25v3 is NEMO ORCA1 tripole grid at 1/4 deg (reduced eORCA):</desc>
   </domain>
   <domain name="gx3v7">
     <nx>100</nx> <ny>116</ny>
