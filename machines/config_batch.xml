@@ -768,7 +768,7 @@
       <arg flag="-x" />
     </submit_args>
     <directives>
-      <directive                       > -R "span[ptile={{ tasks_per_node }}]"</directive>
+      <directive                       > -R "span[ptile=30]"</directive>
     </directives>
     <queues>
       <queue walltimemin="00:00" walltimemax="02:00" default="true">p_short</queue>
