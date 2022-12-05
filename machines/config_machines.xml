@@ -3605,7 +3605,7 @@ This allows using a different mpirun command to launch unit tests
     <BATCH_SYSTEM>lsf</BATCH_SYSTEM>
     <SUPPORTED_BY>cmcc</SUPPORTED_BY>
     <MAX_TASKS_PER_NODE>72</MAX_TASKS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>36</MAX_MPITASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>30</MAX_MPITASKS_PER_NODE>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable> mpirun </executable>
