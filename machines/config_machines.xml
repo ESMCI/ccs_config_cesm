@@ -1560,11 +1560,12 @@ This allows using a different mpirun command to launch unit tests
       <modules>
         <command name="purge"></command>
         <command name="load">TACC</command>
-        <command name="load">intel/19.1.1</command>
-        <command name="load">cmake/3.16.1</command>
+        <command name="use">/scratch1/projects/compilers/modulefiles</command>
+        <command name="load">intel/22.2.0</command>
+        <command name="load">cmake/3.24.2</command>
       </modules>
       <modules mpilib="impi">
-        <command name="load">impi/19.0.9</command>
+        <command name="load">impi/22.2.0</command>
         <command name="load">pnetcdf/1.11.2</command>
         <command name="load">parallel-netcdf/4.6.2</command>
       </modules>
@@ -1581,6 +1582,9 @@ This allows using a different mpirun command to launch unit tests
     <environment_variables>
       <env name="OMP_STACKSIZE">256M</env>
       <env name="UCX_DC_MLX5_RETRY_COUNT">20</env>
+      <env name="ESMFMKFILE">/scratch3/projects/csa_gettelman/esmf-8.4.0b21_intel22.2.0_impi22.2.0/lib/libO/Linux.intel.64.intelmpi.default/esmf.mk</env>
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
     <environment_variables mpilib="impi">
       <env name="MY_MPIRUN_OPTIONS">-prepend-rank </env>
@@ -1872,7 +1876,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">oneapi/2022.1.0</command>
       </modules>
       <modules compiler="cray">
-        <command name="load">cce/14.0.3</command>
+        <command name="load">cce/15.0.0</command>
       </modules>
       <modules compiler="gnu">
         <command name="load">gcc/12.1.0</command>
@@ -1880,8 +1884,11 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="nvhpc">
         <command name="load">nvhpc/22.7</command>
       </modules>
-      <modules mpilib="mpich">
+      <modules mpilib="mpich" compiler="!cray">
 	<command name="load">cray-mpich/8.1.19</command>
+      </modules>
+      <modules mpilib="mpich" compiler="cray">
+	<command name="switch">cray-mpich/8.1.21</command>
       </modules>
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
@@ -1901,22 +1908,28 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">mkl/2022.1.0</command>
       </modules>	
       <modules mpilib="mpi-serial">
-        <command name="load">netcdf/4.8.1</command>
+        <command name="load">netcdf/4.9.0</command>
       </modules>
 
       <modules mpilib="!mpi-serial">
 	<command name="rm">hdf5</command>
         <command name="rm">netcdf</command>
-        <command name="load">netcdf-mpi/4.8.1</command>
-        <command name="load">parallel-netcdf/1.12.2</command>
+        <command name="load">netcdf-mpi/4.9.0</command>
+        <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
-      <modules DEBUG="TRUE">
+      <modules DEBUG="TRUE" compiler="!cray">
 	<command name="load">parallelio/2.5.9-debug</command>
 	<command name="load">esmf/8.4.0b20-debug</command>
       </modules>
-      <modules DEBUG="FALSE">
+      <modules DEBUG="FALSE" compiler="!cray">
 	<command name="load">parallelio/2.5.9</command>
 	<command name="load">esmf/8.4.0b20</command>
+      </modules>
+      <modules DEBUG="TRUE" compiler="cray">
+	<command name="load">esmf/8.4.0b21-debug</command>
+      </modules>
+      <modules DEBUG="FALSE" compiler="cray">
+	<command name="load">esmf/8.4.0b21</command>
       </modules>
     </module_system>
 
