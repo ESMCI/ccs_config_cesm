@@ -3613,16 +3613,16 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">impi20.1/parallel-netcdf/1.12.1</command>
       </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="TRUE">
-        <command name="load">impi20.1/esmf/8.1.1-intelmpi-64-g</command>
+        <command name="load">impi20.1/esmf/8.2.0-intelmpi-64-g</command>
       </modules>
       <modules compiler="intel" mpilib="!mpi-serial" DEBUG="FALSE">
-        <command name="load">impi20.1/esmf/8.1.1-intelmpi-64-O</command>
+        <command name="load">impi20.1/esmf/8.2.0-intelmpi-64-O</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">intel20.1/esmf/8.1.1-mpiuni-64-g</command>
+        <command name="load">intel20.1/esmf/8.2.0-mpiuni-64-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">intel20.1/esmf/8.1.1-mpiuni-64-O</command>
+        <command name="load">intel20.1/esmf/8.2.0-mpiuni-64-O</command>
       </modules>
     </module_system>
     <environment_variables>
