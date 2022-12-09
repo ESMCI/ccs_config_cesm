@@ -56,8 +56,8 @@
   <batch_system MACH="aws-hpc6a" type="slurm">
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
     </submit_args>
     <queues>
       <queue walltimemax="144:00:00" nodemin="1" nodemax="96">regular</queue>
@@ -79,12 +79,12 @@
     <batch_mail_type_flag></batch_mail_type_flag>
     <batch_mail_type></batch_mail_type>
     <submit_args>
-      <arg> --cwd CASEROOT </arg>
-      <arg> -A PROJECT </arg>
-      <arg> -t JOB_WALLCLOCK_TIME </arg>
-      <arg> -n  $TOTALPES / $MAX_MPITASKS_PER_NODE </arg>
-      <arg> -q JOB_QUEUE </arg>
-      <arg> --mode script </arg>
+      <argument> --cwd CASEROOT </argument>
+      <argument> -A PROJECT </argument>
+      <argument> -t JOB_WALLCLOCK_TIME </argument>
+      <argument> -n  $TOTALPES / $MAX_MPITASKS_PER_NODE </argument>
+      <argument> -q JOB_QUEUE </argument>
+      <argument> --mode script </argument>
     </submit_args>
   </batch_system>
 
@@ -100,11 +100,11 @@
     <batch_mail_type_flag></batch_mail_type_flag>
     <batch_mail_type></batch_mail_type>
     <submit_args>
-      <arg> -A PROJECT </arg>
-      <arg> -t JOB_WALLCLOCK_TIME </arg>
-      <arg> -n  $TOTALPES / $MAX_MPITASKS_PER_NODE </arg>
-      <arg> -q JOB_QUEUE </arg>
-      <arg> --mode script </arg>
+      <argument> -A PROJECT </argument>
+      <argument> -t JOB_WALLCLOCK_TIME </argument>
+      <argument> -n  $TOTALPES / $MAX_MPITASKS_PER_NODE </argument>
+      <argument> -q JOB_QUEUE </argument>
+      <argument> --mode script </argument>
     </submit_args>
   </batch_system>
 
@@ -147,9 +147,9 @@
     <batch_mail_type_flag>-m</batch_mail_type_flag>
     <batch_mail_type>, bea, b, e, a</batch_mail_type>
     <submit_args>
-      <arg> -q $JOB_QUEUE</arg>
-      <arg> -l walltime=$JOB_WALLCLOCK_TIME</arg>
-      <arg> -A $PROJECT</arg>
+      <argument> -q $JOB_QUEUE</argument>
+      <argument> -l walltime=$JOB_WALLCLOCK_TIME</argument>
+      <argument> -A $PROJECT</argument>
     </submit_args>
     <directives>
       <directive>-N {{ job_id }}</directive>
@@ -194,9 +194,9 @@
   <!-- athena is lsf -->
   <batch_system MACH="athena" type="lsf">
     <submit_args>
-      <arg> -q $JOB_QUEUE </arg>
-      <arg> -W $JOB_WALLCLOCK_TIME </arg>
-      <arg> -P $PROJECT </arg>
+      <argument> -q $JOB_QUEUE </argument>
+      <argument> -W $JOB_WALLCLOCK_TIME </argument>
+      <argument> -P $PROJECT </argument>
     </submit_args>
     <directives>
       <directive                       > -R "span[ptile={{ tasks_per_node }}]"</directive>
@@ -325,18 +325,18 @@
   <batch_system type="slurm" MACH="constance">
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
   </batch_system>
 
   <batch_system MACH="cori-haswell" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -q $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -q $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-C haswell </directive>
@@ -350,9 +350,9 @@
   <batch_system MACH="cori-knl" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -q $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -q $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-C knl,quad,cache </directive>
@@ -367,9 +367,9 @@
   <batch_system MACH="daint" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <queues>
       <queue default="true">default</queue>
@@ -379,9 +379,9 @@
   <batch_system MACH="eastwind" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <queues>
       <queue nodemin="1" nodemax="833" default="true">batch</queue>
@@ -426,9 +426,9 @@
     because env variables are not forwarded -->
     <batch_submit>ssh login1 cd $CASEROOT ; sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <directives>
       <directive> --export=ALL            </directive>
@@ -462,8 +462,8 @@
   <batch_system type="slurm" MACH="greenplanet-sib29">
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
     </submit_args>
     <queues>
       <!-- Want case.st_archiver to run on first available queue, but case.run to use sib2.9
@@ -476,8 +476,8 @@
   <batch_system type="slurm" MACH="greenplanet-sky24">
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
     </submit_args>
     <queues>
       <!-- Want case.st_archiver to run on first available queue, but case.run to use sky2.4
@@ -559,9 +559,9 @@
   <batch_system MACH="lonestar5" type="slurm" >
     <batch_submit>ssh login1.ls5.tacc.utexas.edu cd $CASEROOT ; sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <queues>
       <queue walltimemax="48:00:00" nodemin="1" nodemax="171" default="true">normal</queue>
@@ -590,9 +590,9 @@
   <batch_system MACH="olympus" type="slurm">
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <queues>
       <queue walltimemin="0" walltimemax="00:59:00" nodemin="0" nodemax="312" default="true">queue</queue>
@@ -602,9 +602,9 @@
   <batch_system MACH="perlmutter" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -q $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -q $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-C gpu </directive>
@@ -618,7 +618,7 @@
   <!-- NAS pleiades machines -->
   <batch_system type="pbs" MACH="pleiades-bro" >
     <submit_args>
-      <arg> -W group_list= $PROJECT </arg>
+      <argument> -W group_list= $PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=bro</directive>
@@ -633,7 +633,7 @@
 
   <batch_system type="pbs" MACH="pleiades-has" >
     <submit_args>
-      <arg> -W group_list= $PROJECT </arg>
+      <argument> -W group_list= $PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=has</directive>
@@ -648,7 +648,7 @@
 
   <batch_system type="pbs" MACH="pleiades-ivy" >
     <submit_args>
-      <arg> -W group_list= $PROJECT </arg>
+      <argument> -W group_list= $PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=ivy</directive>
@@ -663,7 +663,7 @@
 
   <batch_system type="pbs" MACH="pleiades-san" >
     <submit_args>
-      <arg> -W group_list= $PROJECT </arg>
+      <argument> -W group_list= $PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=san</directive>
@@ -679,9 +679,9 @@
   <batch_system MACH="stampede2-skx" type="slurm" >
     <batch_submit>ssh stampede2.tacc.utexas.edu cd $CASEROOT ; sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <queues>
       <queue walltimemax="48:00:00" nodemin="1" nodemax="256" default="true">skx-normal</queue>
@@ -692,9 +692,9 @@
   <batch_system MACH="stampede2-knl" type="slurm" >
     <batch_submit>ssh stampede2.tacc.utexas.edu cd $CASEROOT ; sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -p $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <queues>
       <queue walltimemax="48:00:00" nodemin="1" nodemax="256" >normal</queue>
@@ -714,9 +714,9 @@
   <batch_system MACH="theia" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -q $JOB_QUEUE </arg>
-      <arg> --account $PROJECT </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -q $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
     </submit_args>
     <directives>
       <directive>--partition=theia</directive>
@@ -734,8 +734,8 @@
   <batch_system MACH="thunder" type="slurm">
     <batch_submit>sbatch</batch_submit>
     <submit_args>
-      <arg> --time $JOB_WALLCLOCK_TIME </arg>
-      <arg> -q $JOB_QUEUE </arg>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -q $JOB_QUEUE </argument>
     </submit_args>
     <directives>
       <directive>--ntasks-per-node=64</directive>
@@ -749,9 +749,9 @@
   <batch_system MACH="zeus" type="lsf">
     <batch_env>-env</batch_env>
     <submit_args>
-      <arg> -q $JOB_QUEUE </arg>
-      <arg> -W $JOB_WALLCLOCK_TIME </arg>
-      <arg> -P $PROJECT </arg>
+      <argument> -q $JOB_QUEUE </argument>
+      <argument> -W $JOB_WALLCLOCK_TIME </argument>
+      <argument> -P $PROJECT </argument>
     </submit_args>
     <directives>
       <directive                       > -R "span[ptile={{ tasks_per_node }}]"</directive>
