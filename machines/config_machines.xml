@@ -1865,15 +1865,15 @@ This allows using a different mpirun command to launch unit tests
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
       <modules>
+	<command name="load"> ncarenv/22.12</command>
         <command name="reset"/>
-	<command name="use">/opt/cray/pe/craype-targets/default/modulefiles</command>
       </modules>
 
       <modules compiler="intel">
-        <command name="load">intel/2021.6.0</command>
+        <command name="load">intel/2021.7.1</command>
       </modules>
       <modules compiler="oneapi">
-        <command name="load">oneapi/2022.1.0</command>
+        <command name="load">oneapi/2022.2.1</command>
       </modules>
       <modules compiler="cray">
         <command name="load">cce/15.0.0</command>
@@ -1882,30 +1882,26 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">gcc/12.1.0</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/22.7</command>
+        <command name="load">nvhpc/22.11</command>
       </modules>
-      <modules mpilib="mpich" compiler="!cray">
-	<command name="load">cray-mpich/8.1.19</command>
-      </modules>
-      <modules mpilib="mpich" compiler="cray">
-	<command name="switch">cray-mpich/8.1.21</command>
+      <modules mpilib="mpich">
+	<command name="load">cray-mpich/8.1.21</command>
       </modules>
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
       </modules>
-      
       <modules>
-        <command name="load">cmake/3.23.2</command>
-        <command name="load">cray-libsci/22.08.1.1</command>
+        <command name="load">cmake/3.25.0</command>
+        <command name="load">cray-libsci/22.11.1.2</command>
       </modules>
       <!-- to use cray-libsci instead of mkl comment these out and
 	   edit cmake_macros/gust.cmake -->
       <modules compiler="intel">
-        <command name="load">mkl/2022.1.0</command>
+        <command name="load">mkl/2022.2.1</command>
       </modules>
 
       <modules compiler="oneapi">
-        <command name="load">mkl/2022.1.0</command>
+        <command name="load">mkl/2022.2.1</command>
       </modules>	
       <modules mpilib="mpi-serial">
         <command name="load">netcdf/4.9.0</command>
@@ -1917,19 +1913,13 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">netcdf-mpi/4.9.0</command>
         <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
-      <modules DEBUG="TRUE" compiler="!cray">
-	<command name="load">parallelio/2.5.9-debug</command>
-	<command name="load">esmf/8.4.0b20-debug</command>
+      <modules DEBUG="TRUE" >
+	<command name="load">parallelio/2.5.10-debug</command>
+	<command name="load">esmf/8.4.0-debug</command>
       </modules>
-      <modules DEBUG="FALSE" compiler="!cray">
-	<command name="load">parallelio/2.5.9</command>
-	<command name="load">esmf/8.4.0b20</command>
-      </modules>
-      <modules DEBUG="TRUE" compiler="cray">
-	<command name="load">esmf/8.4.0b21-debug</command>
-      </modules>
-      <modules DEBUG="FALSE" compiler="cray">
-	<command name="load">esmf/8.4.0b21</command>
+      <modules DEBUG="FALSE" >
+	<command name="load">parallelio/2.5.10</command>
+	<command name="load">esmf/8.4.0</command>
       </modules>
     </module_system>
 
