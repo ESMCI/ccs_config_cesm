@@ -618,7 +618,7 @@
   <!-- NAS pleiades machines -->
   <batch_system type="pbs" MACH="pleiades-bro" >
     <submit_args>
-      <argument> -W group_list= $PROJECT </argument>
+      <argument> -W group_list=$PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=bro</directive>
@@ -633,7 +633,7 @@
 
   <batch_system type="pbs" MACH="pleiades-has" >
     <submit_args>
-      <argument> -W group_list= $PROJECT </argument>
+      <argument> -W group_list=$PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=has</directive>
@@ -648,7 +648,7 @@
 
   <batch_system type="pbs" MACH="pleiades-ivy" >
     <submit_args>
-      <argument> -W group_list= $PROJECT </argument>
+      <argument> -W group_list=$PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=ivy</directive>
@@ -663,7 +663,7 @@
 
   <batch_system type="pbs" MACH="pleiades-san" >
     <submit_args>
-      <argument> -W group_list= $PROJECT </argument>
+      <argument> -W group_list=$PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=san</directive>
