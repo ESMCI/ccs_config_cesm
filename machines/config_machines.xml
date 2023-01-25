@@ -816,10 +816,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">netcdf/4.9.0</command>
       </modules>
       <modules compiler="!pgi" DEBUG="FALSE">
-        <command name="load">pio/2.5.9</command>
+        <command name="load">pio/2.5.10</command>
       </modules>
       <modules compiler="!pgi" DEBUG="TRUE">
-        <command name="load">pio/2.5.9d</command>
+        <command name="load">pio/2.5.10d</command>
       </modules>
     </module_system>
     <environment_variables>
