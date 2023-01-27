@@ -5,5 +5,10 @@ set(LAPACK_LIBDIR "/usr/lib64")
 if (MPILIB STREQUAL mvapich2)
   set(MPI_LIB_NAME "mpich")
 endif()
-set(NETCDF_PATH "$ENV{NETCDF_PATH}")
-string(APPEND SLIBS " -L${NETCDF_PATH}/lib -lnetcdff -lnetcdf")
+# These should not be evaluated until build time
+
+string(APPEND LDFLAGS " -Wl,-rpath,\$(PARALLELIO_PATH)/lib")
+string(APPEND LDFLAGS " -Wl,-rpath,\$(NETCDF_PATH)/lib")
+
+set(NETCDF_PATH "\$ENV{NETCDF_PATH}")
+string(APPEND SLIBS "  -lnetcdff -lnetcdf")
