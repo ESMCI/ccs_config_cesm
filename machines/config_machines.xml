@@ -2121,6 +2121,8 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="gnu">
         <command name="load">compiler/gnu/9.3.0</command>
+	<command name="unload">tool/hdf5</command>
+	<command name="unload">tool/netcdf</command>
 	<command name="load">/fs/cgd/data0/modules/modulefiles/gcc/9.3.0/netcdf/4.9.0</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial">
@@ -2135,9 +2137,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="nvhpc">
         <command name="load">compiler/nvhpc/22.11</command>
+	<command name="load">tool/netcdf/4.9.0/hpc-sdk</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpi-serial">
 	<command name="use">/fs/cgd/data0/modules/modulefiles/nvhpc/22.11</command>
+	
       </modules>
 
       <modules compiler="nvhpc" mpilib="openmpi">
@@ -2146,6 +2150,8 @@ This allows using a different mpirun command to launch unit tests
 
       <modules compiler="intel">
         <command name="load">compiler/intel/20.0.1</command>
+	<command name="unload">tool/hdf5</command>
+	<command name="unload">tool/netcdf</command>
 	<command name="load">/fs/cgd/data0/modules/modulefiles/intel/20.0.1/netcdf/4.9.0</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial">
@@ -2155,12 +2161,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">mpi/2.3.3/intel/20.0.1</command>
 	<command name="use">/fs/cgd/data0/modules/modulefiles/mvapich2/2.3.3/intel/20.0.1</command>
       </modules>
-      <modules compiler="pgi">
-        <command name="load">compiler/pgi/20.1</command>
-        <command name="load">tool/netcdf/4.7.4/pgi/20.1</command>
-      </modules>
       <modules compiler="nag">
         <command name="load">compiler/nag/6.2-8.1.0</command>
+	<command name="unload">tool/hdf5</command>
+	<command name="unload">tool/netcdf</command>
 	<command name="load">/fs/cgd/data0/modules/modulefiles/nag/7.0/netcdf/4.9.0</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial">
@@ -2175,12 +2179,13 @@ This allows using a different mpirun command to launch unit tests
         <command name="unload">openmpi</command>
 	<command name="load">mpi-serial</command>
       </modules>
+
       <modules>
-	<command name="unload">tool/hdf5</command>
-	<command name="unload">tool/netcdf</command>
 	<command name="load">parallelio/2.5.10</command>
 	<command name="load">esmf/8.4.1b02</command>
       </modules>
+
+
     </module_system>
     <environment_variables>
       <env name="OMP_STACKSIZE">64M</env>

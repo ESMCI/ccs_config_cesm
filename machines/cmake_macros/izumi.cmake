@@ -9,6 +9,4 @@ endif()
 
 string(APPEND LDFLAGS " -Wl,-rpath,\$(PARALLELIO_PATH)/lib")
 string(APPEND LDFLAGS " -Wl,-rpath,\$(NETCDF_PATH)/lib")
-
-set(NETCDF_PATH "\$ENV{NETCDF_PATH}")
 string(APPEND SLIBS "  -lnetcdff -lnetcdf")
