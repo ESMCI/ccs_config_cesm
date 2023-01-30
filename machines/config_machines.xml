@@ -2087,8 +2087,9 @@ This allows using a different mpirun command to launch unit tests
     <DESC>NCAR CGD Linux Cluster 48 pes/node, batch system is PBS</DESC>
     <NODENAME_REGEX>^i.*\.ucar\.edu</NODENAME_REGEX>
     <OS>LINUX</OS>
-    <COMPILERS>intel,pgi,nag,gnu</COMPILERS>
-    <MPILIBS>mvapich2,openmpi</MPILIBS>
+    <COMPILERS>intel,nvhpc,nag,gnu</COMPILERS>
+    <MPILIBS compiler="!nvhpc">mvapich2,openmpi</MPILIBS>
+    <MPILIBS compiler="nvhpc">openmpi</MPILIBS>
     <CIME_OUTPUT_ROOT>/scratch/cluster/$USER</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/fs/cgd/csm/inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>/project/tss</DIN_LOC_ROOT_CLMFORC>
@@ -2114,6 +2115,7 @@ This allows using a different mpirun command to launch unit tests
       <arguments>
               <arg name="num_tasks"> -n {{ total_tasks }} </arg>
               <arg name="addrank"> --tag-output </arg>
+	      <arg name="cudasupport">  --mca mpi_cuda_support 0 </arg>
       </arguments>
     </mpirun>
     <module_system type="module" allow_error="true">
@@ -2129,6 +2131,22 @@ This allows using a different mpirun command to launch unit tests
         <command name="purge"></command>
         <command name="load">lang/python/3.7.0</command>
       </modules>
+      <modules compiler="nvhpc">
+	<command name="load">compiler/nvhpc/22.11</command>
+	<command name="load">tool/netcdf/4.9.0/hpc-sdk</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="openmpi">
+        <command name="use">/fs/cgd/data0/modules/modulefiles/openmpi/3.1.5/nvhpc/22.11</command>
+	<command name="load">parallelio/2.5.10</command>
+	<command name="load">esmf/8.4.1b02</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="mpi-serial">
+        <command name="use">/fs/cgd/data0/modules/modulefiles/mpi-serial/2.3.0/nvhpc/22.11</command>
+	<command name="load">/fs/cgd/data0/modules/modulefiles/nvhpc/22.11/mpi-serial/2.3.0</command>
+	<command name="load">parallelio/2.5.10</command>
+	<command name="load">esmf/8.4.1b02</command>
+      </modules>
+
       <modules compiler="gnu">
         <command name="load">compiler/gnu/9.3.0</command>
         <command name="load">tool/netcdf/4.7.4/gnu/9.3.0</command>
@@ -2146,10 +2164,7 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="intel" mpilib="mvapich2">
         <command name="load">mpi/2.3.3/intel/20.0.1</command>
       </modules>
-      <modules compiler="pgi">
-        <command name="load">compiler/pgi/20.1</command>
-        <command name="load">tool/netcdf/4.7.4/pgi/20.1</command>
-      </modules>
+
       <modules compiler="nag">
         <command name="load">compiler/nag/6.2-8.1.0</command>
         <command name="load">tool/netcdf/c4.6.1-f4.4.4/nag-gnu/6.2-8.1.0</command>
@@ -2209,22 +2224,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
         <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
       </modules>
-      <modules compiler="pgi" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
-      </modules>
+
     </module_system>
     <environment_variables>
       <env name="OMP_STACKSIZE">64M</env>
