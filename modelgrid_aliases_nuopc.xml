@@ -1291,6 +1291,14 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="mpasa3p75_mpasa3p75_mt13" not_compset="_POP">
+    <grid name="atm">mpasa3p75</grid>
+    <grid name="lnd">mpasa3p75</grid>
+    <grid name="ocnice">mpasa3p75</grid>
+    <mask>tx0.1v3</mask>
+  </model_grid>
+
+
   <!-- new runoff grids for data runoff model DROF -->
 
   <model_grid alias="T31_g37_rx1" compset="_DROF">
