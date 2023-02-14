@@ -819,6 +819,12 @@
   </model_grid>
 
   <!--  spectral element grids -->
+  <model_grid alias="ne3pg3_ne3pg3_mg37" not_compset="_POP">
+    <grid name="atm">ne3np4.pg3</grid>
+    <grid name="lnd">ne3np4.pg3</grid>
+    <grid name="ocnice">ne3np4.pg3</grid>
+    <mask>gx3v7</mask>
+  </model_grid>
 
   <model_grid alias="ne5_ne5_mg37" not_compset="_POP">
     <grid name="atm">ne5np4</grid>
