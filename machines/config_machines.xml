@@ -2088,7 +2088,7 @@ This allows using a different mpirun command to launch unit tests
     <DESC>NCAR CGD Linux Cluster 48 pes/node, batch system is PBS</DESC>
     <NODENAME_REGEX>^i.*\.ucar\.edu</NODENAME_REGEX>
     <OS>LINUX</OS>
-    <COMPILERS>intel,pgi,nag,gnu</COMPILERS>
+    <COMPILERS>intel,nag,gnu</COMPILERS>
     <MPILIBS>mvapich2,openmpi</MPILIBS>
     <CIME_OUTPUT_ROOT>/scratch/cluster/$USER</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/fs/cgd/csm/inputdata</DIN_LOC_ROOT>
@@ -2147,10 +2147,6 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="intel" mpilib="mvapich2">
         <command name="load">mpi/2.3.3/intel/20.0.1</command>
       </modules>
-      <modules compiler="pgi">
-        <command name="load">compiler/pgi/20.1</command>
-        <command name="load">tool/netcdf/4.7.4/pgi/20.1</command>
-      </modules>
       <modules compiler="nag">
         <command name="load">compiler/nag/6.2-8.1.0</command>
         <command name="load">tool/netcdf/c4.6.1-f4.4.4/nag-gnu/6.2-8.1.0</command>
@@ -2163,68 +2159,52 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="FALSE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/gfortran/9.3.0</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mvapich2-O</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="TRUE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/gfortran/9.3.0</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mvapich2-g</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/gfortran/9.3.0</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/gfortran/9.3.0</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mpiuni-g</command>
       </modules>
 
       <modules compiler="nag" mpilib="mvapich2" DEBUG="FALSE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/nag/6.2</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mvapich2-O</command>
       </modules>
       <modules compiler="nag" mpilib="mvapich2" DEBUG="TRUE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/nag/6.2</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mvapich2-g</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/nag/6.2</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mpiuni-g</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/nag/6.2</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mpiuni-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="TRUE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mvapich2-g</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="FALSE">
         <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmf-8.4.1b05-ncdfio-mvapich2-O</command>
       </modules>
     </module_system>
     <environment_variables>
