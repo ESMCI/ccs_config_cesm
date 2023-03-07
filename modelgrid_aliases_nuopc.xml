@@ -431,6 +431,20 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="T62_oQU480" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oQU480</grid>
+    <mask>oQU480</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oQU240" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oQU240</grid>
+    <mask>oQU240</mask>
+  </model_grid>
+
   <model_grid alias="T62_oQU120" not_compset="_CAM">
     <grid name="atm">T62</grid>
     <grid name="lnd">T62</grid>
@@ -438,6 +452,47 @@
     <mask>oQU120</mask>
   </model_grid>
 
+   <model_grid alias="T62_oEC60to30v3" not_compset="_CAM">
+     <grid name="atm">T62</grid>
+     <grid name="lnd">T62</grid>
+     <grid name="ocnice">oEC60to30v3</grid>
+     <mask>oEC60to30v3</mask>
+   </model_grid>
+
+   <model_grid alias="T62_oQU060" not_compset="_CAM">
+     <grid name="atm">T62</grid>
+     <grid name="lnd">T62</grid>
+     <grid name="ocnice">oQU060</grid>
+     <mask>oQU060</mask>
+   </model_grid>
+
+   <model_grid alias="T62_oQU030" not_compset="_CAM">
+     <grid name="atm">T62</grid>
+     <grid name="lnd">T62</grid>
+     <grid name="ocnice">oQU030</grid>
+     <mask>oQU030</mask>
+   </model_grid>
+
+   <model_grid alias="T62_oQU015" not_compset="_CAM">
+     <grid name="atm">T62</grid>
+     <grid name="lnd">T62</grid>
+     <grid name="ocnice">oQU015</grid>
+     <mask>oQU015</mask>
+   </model_grid>
+
+   <model_grid alias="T62_oQU0075" not_compset="_CAM">
+     <grid name="atm">T62</grid>
+     <grid name="lnd">T62</grid>
+     <grid name="ocnice">oQU0075</grid>
+     <mask>oQU0075</mask>
+   </model_grid>
+
+   <model_grid alias="T62_oQU00375" not_compset="_CAM">
+     <grid name="atm">T62</grid>
+     <grid name="lnd">T62</grid>
+     <grid name="ocnice">oQU00375</grid>
+     <mask>oQU00375</mask>
+   </model_grid>
   <!-- finite volume grids -->
 
   <model_grid alias="f02_g16">
@@ -1211,21 +1266,21 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="mpasa60_mpasa60" not_compset="_POP">
+  <model_grid alias="mpasa060_mpasa060" not_compset="_POP">
     <grid name="atm">mpasa60</grid>
     <grid name="lnd">mpasa60</grid>
     <grid name="ocnice">mpasa60</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="mpasa30_mpasa30" not_compset="_POP">
+  <model_grid alias="mpasa030_mpasa030" not_compset="_POP">
     <grid name="atm">mpasa30</grid>
     <grid name="lnd">mpasa30</grid>
     <grid name="ocnice">mpasa30</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="mpasa15_mpasa15" not_compset="_POP">
+  <model_grid alias="mpasa015_mpasa015" not_compset="_POP">
     <grid name="atm">mpasa15</grid>
     <grid name="lnd">mpasa15</grid>
     <grid name="ocnice">mpasa15</grid>
@@ -1265,6 +1320,83 @@
     <grid name="lnd">mpasa3p75</grid>
     <grid name="ocnice">mpasa3p75</grid>
     <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa480_oQU480" not_compset="_POP">
+    <grid name="atm">mpasa480</grid>
+    <grid name="lnd">mpasa480</grid>
+    <grid name="ocnice">oQU480</grid>
+    <mask>oQU480</mask>
+  </model_grid>
+  
+  <model_grid alias="mpasa240_oQU240" not_compset="_POP">
+    <grid name="atm">mpasa240</grid>
+    <grid name="lnd">mpasa240</grid>
+    <grid name="ocnice">oQU240</grid>
+    <mask>oQU240</mask>
+  </model_grid>
+  
+  <model_grid alias="mpasa120_oQU120" not_compset="_POP">
+    <grid name="atm">mpasa120</grid>
+    <grid name="lnd">mpasa120</grid>
+    <grid name="ocnice">oQU120</grid>
+    <mask>oQU120</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa120_oEC60to30v3" not_compset="_POP">
+    <grid name="atm">mpasa120</grid>
+    <grid name="lnd">mpasa120</grid>
+    <grid name="ocnice">oEC60to30v3</grid>
+    <mask>oEC60to30v3</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa060_oEC60to30v3" not_compset="_POP">
+    <grid name="atm">mpasa60</grid>
+    <grid name="lnd">mpasa60</grid>
+    <grid name="ocnice">oEC60to30v3</grid>
+    <mask>oEC60to30v3</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa030_oEC60to30v3" not_compset="_POP">
+    <grid name="atm">mpasa30</grid>
+    <grid name="lnd">mpasa30</grid>
+    <grid name="ocnice">oEC60to30v3</grid>
+    <mask>oEC60to30v3</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa060_oQU060" not_compset="_POP">
+    <grid name="atm">mpasa60</grid>
+    <grid name="lnd">mpasa60</grid>
+    <grid name="ocnice">oQU060</grid>
+    <mask>oQU060</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa030_oQU030" not_compset="_POP">
+    <grid name="atm">mpasa30</grid>
+    <grid name="lnd">mpasa30</grid>
+    <grid name="ocnice">oQU030</grid>
+    <mask>oQU030</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa015_oQU015" not_compset="_POP">
+    <grid name="atm">mpasa15</grid>
+    <grid name="lnd">mpasa15</grid>
+    <grid name="ocnice">oQU015</grid>
+    <mask>oQU015</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa0075_oQU0075" not_compset="_POP">
+    <grid name="atm">mpasa7p5</grid>
+    <grid name="lnd">mpasa7p5</grid>
+    <grid name="ocnice">oQU0075</grid>
+    <mask>oQU0075</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa00375_oQU00375" not_compset="_POP">
+    <grid name="atm">mpasa3p75</grid>
+    <grid name="lnd">mpasa3p75</grid>
+    <grid name="ocnice">oQU00375</grid>
+    <mask>oQU00375</mask>
   </model_grid>
 
   <!-- new runoff grids for data runoff model DROF -->
