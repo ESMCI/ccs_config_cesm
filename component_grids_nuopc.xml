@@ -91,6 +91,12 @@
   </domain>
 
   <!-- CAM/SE meshes -->
+  <domain name="ne3np4.pg3">
+    <nx>486</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne3pg3_ESMFmesh_c221214_cdf5.nc</mesh>
+    <desc>ne3np4 is Spectral Elem 10-deg grid with a 3x3 FVM physics grid:</desc>
+    <support>EXPERIMENTAL FVM physics grid</support>
+  </domain>
   <domain name="ne5np4">
     <nx>1352</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/ne5np4_esmf_mesh_c210121.nc</mesh>
@@ -412,6 +418,15 @@
     <!-- This is a simplified mesh that only includes the polygon centers, so requires a mapping file with it -->
     <mesh>$DIN_LOC_ROOT/rof/mizuRoute/meshes/polygon_centroid/HDMAmz_global_ctrcrd_sqr_cdf5_ESMFmesh_c20201005.nc</mesh>
     <desc>HDMAmz is a medium resolution global river routing grid for mizuRoute:</desc>
+  </domain>
+  <domain name="HDMA_lake_mz">
+    <nx>298277</nx> <ny>1</ny>
+    <!-- This is the actual full mesh, but it's complex and takes hours to read
+         <mesh></mesh>
+    -->
+    <!-- This is a simplified mesh that only includes the polygon centers, so requires a mapping file with it -->
+    <mesh>$DIN_LOC_ROOT/rof/mizuRoute/meshes/polygon_centroid/HDMA_lake_mz_global_ctrcrd_sqr_cdf5_ESMFmesh_c20221117.nc</mesh>
+    <desc>HDMA_lake_mz is a medium resolution global river routing grid that includes lakes for mizuRoute:</desc>
   </domain>
   <domain name="MERITmz">
     <nx>2996635</nx> <ny>1</ny>
