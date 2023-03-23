@@ -424,6 +424,9 @@ This allows using a different mpirun command to launch unit tests
     <MAX_TASKS_PER_NODE>36</MAX_TASKS_PER_NODE>
     <MAX_GPUS_PER_NODE compiler="nvhpc">8</MAX_GPUS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>36</MAX_MPITASKS_PER_NODE>
+    <MAX_CPUTASKS_PER_GPU_NODE>36</MAX_CPUTASKS_PER_GPU_NODE>
+    <GPU_TYPE>none,v100</GPU_TYPE>
+    <GPU_OFFLOAD>none,openacc,openmp,combined</GPU_TYPE>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>mpirun</executable>
@@ -1815,6 +1818,9 @@ This allows using a different mpirun command to launch unit tests
     <SUPPORTED_BY>cseg</SUPPORTED_BY>
     <MAX_TASKS_PER_NODE>128</MAX_TASKS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
+    <MAX_CPUTASKS_PER_GPU_NODE>64</MAX_CPUTASKS_PER_GPU_NODE>
+    <GPU_TYPE>none,a100</GPU_TYPE>
+    <GPU_OFFLOAD>none,openacc,openmp,combined</GPU_TYPE>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>mpiexec</executable>
