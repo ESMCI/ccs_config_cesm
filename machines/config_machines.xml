@@ -1866,28 +1866,29 @@ This allows using a different mpirun command to launch unit tests
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
       <modules>
+	<command name="load">ncarenv/23.03</command>
         <command name="reset"/>
-	<command name="use">/opt/cray/pe/craype-targets/default/modulefiles</command>
+<!--	<command name="use">/opt/cray/pe/craype-targets/default/modulefiles</command> -->
         <command name="load">cmake</command>
       </modules>
 
       <modules compiler="intel">
-        <command name="load">intel/2021.7.1</command>
+        <command name="load">intel-classic/2023.0.0</command>
       </modules>
       <modules compiler="oneapi">
-        <command name="load">oneapi/2023.0.0</command>
+        <command name="load">intel/2023.0.0</command>
       </modules>
       <modules compiler="cray">
         <command name="load">cce/15.0.1</command>
       </modules>
       <modules compiler="gnu">
-        <command name="load">gcc/12.1.0</command>
+        <command name="load">gcc/12.2.0</command>
       </modules>
       <modules compiler="nvhpc">
         <command name="load">nvhpc/23.1</command>
       </modules>
       <modules mpilib="mpich">
-	<command name="load">cray-mpich/8.1.24</command>
+	<command name="load">cray-mpich/8.1.25</command>
       </modules>
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
@@ -1898,12 +1899,12 @@ This allows using a different mpirun command to launch unit tests
       <!-- to use cray-libsci instead of mkl comment these out and
 	   edit cmake_macros/gust.cmake -->
       <modules compiler="intel">
-        <command name="load">mkl/2022.2.1</command>
+        <command name="load">mkl/2023.0.0</command>
       </modules>
-
       <modules compiler="oneapi">
-        <command name="load">mkl/2022.2.1</command>
+        <command name="load">mkl/2023.0.0</command>
       </modules>	
+
       <modules mpilib="mpi-serial">
         <command name="load">netcdf/4.9.1</command>
       </modules>
@@ -1916,11 +1917,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules DEBUG="TRUE">
 	<command name="load">parallelio/2.5.10-debug</command>
-	<command name="load">esmf/8.5.0b17-debug</command>
+	<command name="load">esmf/8.5.0b18-debug</command>
       </modules>
       <modules DEBUG="FALSE">
 	<command name="load">parallelio/2.5.10</command>
-	<command name="load">esmf/8.5.0b17</command>
+	<command name="load">esmf/8.5.0b18</command>
       </modules>
     </module_system>
 
