@@ -1875,6 +1875,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">mkl/2022.2.1</command>
       </modules>
 
+      <modules gpu_type="!none">
+        <command name="load">cuda/11.7.1</command>
+      </modules>
+
       <modules compiler="oneapi">
         <command name="load">mkl/2022.2.1</command>
       </modules>	
