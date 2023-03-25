@@ -1879,13 +1879,13 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">mkl/2022.2.1</command>
       </modules>	
       <modules mpilib="mpi-serial">
-        <command name="load">netcdf/4.9.1</command>
+        <command name="load">netcdf/4.9.0</command>
       </modules>
 
       <modules mpilib="!mpi-serial">
 	<command name="rm">hdf5</command>
         <command name="rm">netcdf</command>
-        <command name="load">netcdf-mpi/4.9.1</command>
+        <command name="load">netcdf-mpi/4.9.0</command>
         <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
       <modules DEBUG="TRUE">
