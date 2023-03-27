@@ -44,6 +44,16 @@
     <!-- expected format is pathtofile,YYYY-MM-DD HH:MM:SS -->
     <!-- one per line where the date stamp indicates the last modification time of the file -->
     <inventory>../listing.csv</inventory>
+
+  </server>
+  <server CLM_USRDAT_NAME="NEON.PRISM">
+    <comment> NEON Tower data for datm </comment>
+    <protocol>wget</protocol>
+    <address>https://storage.neonscience.org/neon-ncar/NEON/</address>
+    <!-- inventory is a CSV list of available data files and the valid date for each -->
+    <!-- expected format is pathtofile,YYYY-MM-DD HH:MM:SS -->
+    <!-- one per line where the date stamp indicates the last modification time of the file -->
+    <inventory>../listing.csv</inventory>
   </server>
 
 </inputdata>
