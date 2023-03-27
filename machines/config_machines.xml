@@ -424,6 +424,9 @@ This allows using a different mpirun command to launch unit tests
     <MAX_TASKS_PER_NODE>36</MAX_TASKS_PER_NODE>
     <MAX_GPUS_PER_NODE compiler="nvhpc">8</MAX_GPUS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>36</MAX_MPITASKS_PER_NODE>
+    <MAX_CPUTASKS_PER_GPU_NODE>36</MAX_CPUTASKS_PER_GPU_NODE>
+    <GPU_TYPE>none,v100</GPU_TYPE>
+    <GPU_OFFLOAD>none,openacc,openmp,combined</GPU_OFFLOAD>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>mpirun</executable>
@@ -458,23 +461,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">intel/19.1.1</command>
         <command name="load">mkl/2020.0.1</command>
       </modules>
-      <modules mpilib="openmpi" compiler="pgi">
-        <command name="load">openmpi/4.1.0</command>
-        <command name="load">netcdf-mpi/4.8.0</command>
-        <command name="load">pnetcdf/1.12.2</command>
-      </modules>
-      <modules mpilib="mpi-serial" compiler="pgi">
-        <command name="load">netcdf/4.8.0</command>
-      </modules>
-      <modules mpilib="openmpi" compiler="pgi-gpu">
-        <command name="load">openmpi/4.1.0</command>
-        <command name="load">netcdf-mpi/4.7.4</command>
-        <command name="load">pnetcdf/1.12.2</command>
-      </modules>
-      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="OpenACC">
+      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="openacc">
         <command name="load">cuda/11.6</command>
       </modules>
-      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="OpenMP">
+      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="openmp">
         <command name="load">cuda/11.6</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="combined">
@@ -507,20 +497,20 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="nvhpc" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.4.1_casper-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="nvhpc" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.4.1_casper-ncdfio-openmpi-O</command>
       </modules>
       <modules>
         <command name="load">ncarcompilers/0.5.0</command>
       </modules>
       <modules DEBUG="FALSE" mpilib="openmpi">
-        <command name="load">pio/2.5.9</command>
+        <command name="load">pio/2.5.10</command>
       </modules>
       <modules DEBUG="TRUE" mpilib="openmpi">
-        <command name="load">pio/2.5.9d</command>
+        <command name="load">pio/2.5.10d</command>
       </modules>
     </module_system>
     <environment_variables>
@@ -1827,7 +1817,11 @@ This allows using a different mpirun command to launch unit tests
     <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
     <SUPPORTED_BY>cseg</SUPPORTED_BY>
     <MAX_TASKS_PER_NODE>128</MAX_TASKS_PER_NODE>
+    <MAX_GPUS_PER_NODE>4</MAX_GPUS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
+    <MAX_CPUTASKS_PER_GPU_NODE>64</MAX_CPUTASKS_PER_GPU_NODE>
+    <GPU_TYPE>none,a100</GPU_TYPE>
+    <GPU_OFFLOAD>none,openacc,openmp,combined</GPU_OFFLOAD>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>mpiexec</executable>
@@ -1880,14 +1874,15 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="intel">
         <command name="load">mkl/2022.2.1</command>
       </modules>
-
+      <modules gpu_type="!none">
+        <command name="load">cuda/11.7.1</command>
+      </modules>
       <modules compiler="oneapi">
         <command name="load">mkl/2022.2.1</command>
       </modules>	
       <modules mpilib="mpi-serial">
         <command name="load">netcdf/4.9.1</command>
       </modules>
-
       <modules mpilib="!mpi-serial">
 	<command name="rm">hdf5</command>
         <command name="rm">netcdf</command>
@@ -2058,7 +2053,7 @@ This allows using a different mpirun command to launch unit tests
     <DESC>NCAR CGD Linux Cluster 48 pes/node, batch system is PBS</DESC>
     <NODENAME_REGEX>^i.*\.ucar\.edu</NODENAME_REGEX>
     <OS>LINUX</OS>
-    <COMPILERS>intel,pgi,nag,gnu</COMPILERS>
+    <COMPILERS>intel,nag,gnu</COMPILERS>
     <MPILIBS>mvapich2,openmpi</MPILIBS>
     <CIME_OUTPUT_ROOT>/scratch/cluster/$USER</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/fs/cgd/csm/inputdata</DIN_LOC_ROOT>
@@ -2099,6 +2094,7 @@ This allows using a different mpirun command to launch unit tests
       <modules>
         <command name="purge"></command>
         <command name="load">lang/python/3.7.0</command>
+        <command name="use">/fs/cgd/data0/modules/modulefiles</command>
       </modules>
       <modules compiler="gnu">
         <command name="load">compiler/gnu/9.3.0</command>
@@ -2117,10 +2113,6 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="intel" mpilib="mvapich2">
         <command name="load">mpi/2.3.3/intel/20.0.1</command>
       </modules>
-      <modules compiler="pgi">
-        <command name="load">compiler/pgi/20.1</command>
-        <command name="load">tool/netcdf/4.7.4/pgi/20.1</command>
-      </modules>
       <modules compiler="nag">
         <command name="load">compiler/nag/6.2-8.1.0</command>
         <command name="load">tool/netcdf/c4.6.1-f4.4.4/nag-gnu/6.2-8.1.0</command>
@@ -2132,78 +2124,60 @@ This allows using a different mpirun command to launch unit tests
         <command name="rm">mpi</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/gfortran/9.3.0</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.4.1b05-ncdfio-mvapich2-O</command>
+        <command name="load">mvapich2/2.3.3/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/gfortran/9.3.0</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.4.1b05-ncdfio-mvapich2-g</command>
+        <command name="load">mvapich2/2.3.3/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/gfortran/9.3.0</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.4.1b05-ncdfio-mpiuni-O</command>
+        <command name="load">mpi-serial/2.3.0/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/gfortran/9.3.0</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.4.1b05-ncdfio-mpiuni-g</command>
+        <command name="load">mpi-serial/2.3.0/gnu/9.3.0/pio/2_5_10</command>
       </modules>
 
       <modules compiler="nag" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/nag/6.2</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.4.1b05-ncdfio-mvapich2-O</command>
+        <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/nag/6.2</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.4.1b05-ncdfio-mvapich2-g</command>
+        <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/nag/6.2</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.4.1b05-ncdfio-mpiuni-g</command>
+        <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/nag/6.2</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.4.1b05-ncdfio-mpiuni-O</command>
+        <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command>
       </modules>
+
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.4.1b05-ncdfio-mpiuni-g</command>
+        <command name="load">mpi-serial/2.3.0/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.4.1b05-ncdfio-mpiuni-O</command>
+        <command name="load">mpi-serial/2.3.0/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.4.1b05-ncdfio-mvapich2-g</command>
+        <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/intel/20.0.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mpiuni-O</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="use">/fs/cgd/data0/modules/modulefiles/esmfpkgs/pgi/20.1</command>
-        <command name="load">esmf-8.2.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.4.1b05-ncdfio-mvapich2-O</command>
+        <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command>
       </modules>
     </module_system>
     <environment_variables>
       <env name="OMP_STACKSIZE">64M</env>
       <!-- The following is needed in order to run qsub from the compute nodes -->
       <env name="PATH">$ENV{PATH}:/cluster/torque/bin</env>
-    </environment_variables>
-    <environment_variables compiler="intel">
-      <env name="PIO">/home/jedwards/pio/2.5.7/intel</env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
