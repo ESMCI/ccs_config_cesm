@@ -763,4 +763,23 @@
     </queues>
   </batch_system>
 
+    <batch_system MACH="betzy" type="slurm">
+    <batch_submit>sbatch</batch_submit>
+    <submit_args>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
+    </submit_args>
+    <directives>
+      <directive> --ntasks={{ total_tasks }}</directive>
+      <directive> --export=ALL</directive>
+      <directive> --switches=1</directive>
+    </directives>
+    <queues>
+      <queue walltimemax="00:59:00" nodemin="4" nodemax="288" default="true">normal</queue>
+      <queue walltimemax="00:59:00" nodemin="1" nodemax="1" >preproc</queue>
+      <queue walltimemax="00:30:00" nodemin="1" nodemax="4" >devel</queue>
+    </queues>
+  </batch_system>
+
 </config_batch>

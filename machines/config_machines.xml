@@ -3634,6 +3634,72 @@ This allows using a different mpirun command to launch unit tests
     </environment_variables>
   </machine>
 
+  <machine MACH="betzy">
+    <DESC> BullSequana XH2000 AMD® Epyc™ "Rome" 2.2GHz, 128-way nodes, os is Linux, batch system is SLURM</DESC>
+    <OS>LINUX</OS>
+    <COMPILERS>intel</COMPILERS>
+    <MPILIBS compiler="intel" >openmpi</MPILIBS>
+    <CIME_OUTPUT_ROOT>/cluster/work/users/$USER/noresm</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>/cluster/shared/noresm/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/cluster/shared/noresm/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>/cluster/work/users/$USER/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>UNSET</BASELINE_ROOT>
+    <CCSM_CPRNC>/cluster/shared/noresm/tools/cprnc/cprnc</CCSM_CPRNC>
+    <GMAKE_J>8</GMAKE_J>
+    <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
+    <SUPPORTED_BY>noresmCommunity</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>128</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
+    <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
+    <mpirun mpilib="mpi-serial">
+      <executable></executable>
+    </mpirun>
+    <mpirun mpilib="default">
+      <executable>srun</executable>
+    </mpirun>
+    <module_system type="module">
+      <init_path lang="perl">$ENV{LMOD_PKG}/init/perl</init_path>
+      <init_path lang="python">$ENV{LMOD_PKG}/init/env_modules_python.py</init_path>
+      <init_path lang="csh">$ENV{LMOD_PKG}/init/csh</init_path>
+      <init_path lang="sh">$ENV{LMOD_PKG}/init/sh</init_path>
+      <cmd_path lang="perl">$ENV{LMOD_PKG}/libexec/lmod perl</cmd_path>
+      <cmd_path lang="python">$ENV{LMOD_PKG}/libexec/lmod python</cmd_path>
+      <cmd_path lang="sh">module</cmd_path>
+      <cmd_path lang="csh">module</cmd_path>
+      <modules compiler="intel">
+        <command name="--force purge"></command>
+        <command name="load">StdEnv</command>
+        <command name="load">ESMF/8.2.0-iomkl-2021b</command>
+        <command name="load">CMake/3.21.1-GCCcore-11.2.0</command>
+        <command name="load">Python/3.9.6-GCCcore-11.2.0</command>
+        <!-- alok's pnetcdf settings 22/09/2022-->
+        <command name="load">PnetCDF/1.12.2-iompi-2021b</command>
+      </modules>
+    </module_system>
+    <environment_variables>
+      <env name="KMP_STACKSIZE">64M</env>
+      <env name="MKL_DEBUG_CPU_TYPE">5</env>
+      <env name="OMPI_MCA_mpi_leave_pinned">1</env>
+      <env name="OMPI_MCA_btl">self,vader</env>
+      <env name="OMPI_MCA_rmaps_rank_file_physical">1</env>
+      <env name="OMPI_MCA_coll_hcoll_enable">1</env>
+      <env name="OMPI_MCA_coll">^fca</env>
+      <env name="OMPI_MCA_coll_hcoll_priority">95</env>
+      <env name="OMPI_MCA_coll_hcoll_np">8</env>
+      <env name="HCOLL_MAIN_IB">mlx5_0:1</env>
+      <env name="HCOLL_ENABLE_MCAST_ALL">1</env>
+      <env name="ESMFMKFILE">$ENV{EBROOTESMF}/lib/esmf.mk</env>
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
+      <env name="OMPI_222MCA222222_io">ompio</env>
+      <env name="OMPI_MCA_fs_lustre_stripe_size">1048576</env>
+      <env name="OMPI_MCA_fs_lustre_stripe_width">8</env>
+    </environment_variables>
+    <resource_limits>
+      <resource name="RLIMIT_STACK">-1</resource>
+    </resource_limits>
+  </machine>
+
   <default_run_suffix>
     <default_run_exe>${EXEROOT}/cesm.exe </default_run_exe>
     <default_run_misc_suffix> >> cesm.log.$LID 2>&amp;1 </default_run_misc_suffix>
