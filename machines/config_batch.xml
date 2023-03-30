@@ -792,4 +792,38 @@
     </queues>
   </batch_system>
 
+    <batch_system MACH="fram" type="slurm">
+    <batch_submit>sbatch</batch_submit>
+    <submit_args>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> --account $PROJECT </argument>
+    </submit_args>
+    <directives>
+      <directive> --ntasks={{ total_tasks }}</directive>
+      <directive> --export=ALL</directive>
+      <directive> --switches=1</directive>
+    </directives>
+    <directives queue = "normal">
+      <directive> --partition=normal</directive>
+    </directives>
+    <directives queue = "devel">
+      <directive> --partition=normal</directive>
+      <directive> --qos=devel</directive>
+    </directives>
+    <directives queue = "short">
+      <directive> --partition=normal</directive>
+      <directive> --qos=short</directive>
+    </directives>
+    <directives queue = "bigmem">
+      <directive> --partition=bigmem</directive>
+      <directive> --mem-per-cpu=8G</directive>
+    </directives>
+    <queues>
+      <queue walltimemax="00:59:00" nodemin="1" nodemax="32" default="true">normal</queue>
+      <queue walltimemax="00:29:00" nodemin="1" nodemax="8" >devel</queue>
+      <queue walltimemax="00:59:00" nodemin="1" nodemax="10" >short</queue>
+      <queue walltimemax="00:29:00" nodemin="1" nodemax="8" >bigmem</queue>
+    </queues>
+  </batch_system>
+
 </config_batch>
