@@ -1,7 +1,10 @@
+if (MPILIB STREQUAL impi)
+ set(MPICC "mpiicc")
+ set(MPICXX "mpiicpc")
+ set(MPIFC "mpiifort")
+endif()
 
-#set(MPICC "mpiicc")
-#set(MPICXX "mpiicpc")
-#set(MPIFC "mpiifort")
+set(MPI_LIB_NAME "impi")
 
 set(SCC "icc")
 set(SCXX "icpc")

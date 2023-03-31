@@ -3638,7 +3638,7 @@ This allows using a different mpirun command to launch unit tests
     <DESC> BullSequana XH2000 AMD® Epyc™ "Rome" 2.2GHz, 128-way nodes, os is Linux, batch system is SLURM</DESC>
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
-    <MPILIBS compiler="intel" >openmpi</MPILIBS>
+    <MPILIBS compiler="intel" >openmpi,impi</MPILIBS>
     <CIME_OUTPUT_ROOT>/cluster/work/users/$USER/noresm</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/cluster/shared/noresm/inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>/cluster/shared/noresm/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
@@ -3666,7 +3666,7 @@ This allows using a different mpirun command to launch unit tests
       <cmd_path lang="python">$ENV{LMOD_PKG}/libexec/lmod python</cmd_path>
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
-      <modules compiler="intel">
+      <modules compiler="intel" mpilib="openmpi">
         <command name="--force purge"></command>
         <command name="load">StdEnv</command>
         <command name="load">ESMF/8.2.0-iomkl-2021b</command>
@@ -3674,6 +3674,14 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">Python/3.9.6-GCCcore-11.2.0</command>
         <!-- alok's pnetcdf settings 22/09/2022-->
         <command name="load">PnetCDF/1.12.2-iompi-2021b</command>
+      </modules>
+      <modules compiler="intel" mpilib="impi">
+        <command name="--force purge"></command>
+        <command name="load">StdEnv</command>
+        <command name="load">ESMF/8.2.0-intel-2021b</command>
+        <command name="load">CMake/3.21.1-GCCcore-11.2.0</command>
+        <command name="load">Python/3.9.6-GCCcore-11.2.0</command>
+        <command name="load">PnetCDF/1.12.2-iimpi-2021b</command>
       </modules>
     </module_system>
     <environment_variables>
