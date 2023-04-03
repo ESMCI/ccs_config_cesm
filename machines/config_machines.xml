@@ -3762,6 +3762,54 @@ This allows using a different mpirun command to launch unit tests
     </resource_limits>
   </machine>
 
+  <machine MACH="saga">
+    <DESC>Hewlett Packard Enterprise - CentOS Linux release 7.6.1810 (Core)</DESC>
+    <NODENAME_REGEX>$HOSTNAME</NODENAME_REGEX>
+    <OS>LINUX</OS>
+    <COMPILERS>intel</COMPILERS>
+    <MPILIBS>impi</MPILIBS>
+    <CIME_OUTPUT_ROOT>/cluster/work/users/$USER/noresm</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>/cluster/shared/noresm/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/cluster/shared/noresm/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>/cluster/work/users/$USER/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>UNSET</BASELINE_ROOT>
+    <CCSM_CPRNC>UNSET</CCSM_CPRNC>
+    <GMAKE_J>8</GMAKE_J>
+    <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
+    <SUPPORTED_BY>noresmCommunity</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>40</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>40</MAX_MPITASKS_PER_NODE>
+    <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
+    <mpirun mpilib="default">
+      <executable>mpirun</executable>
+    </mpirun>
+    <module_system type="module">
+      <init_path lang="python">$ENV{LMOD_PKG}/init/env_modules_python.py</init_path>
+      <init_path lang="sh">$ENV{LMOD_PKG}/init/sh</init_path>
+      <cmd_path lang="python">$ENV{LMOD_PKG}/libexec/lmod python</cmd_path>
+      <cmd_path lang="sh">module</cmd_path>
+      <modules>
+        <command name="--force purge"></command>
+        <command name="load">StdEnv</command>
+        <command name="load">CMake/3.22.1-GCCcore-11.2.0</command>
+        <command name="load">XML-LibXML/2.0207-GCCcore-11.2.0</command>
+        <command name="load">ESMF/8.2.0-intel-2021b</command>
+      </modules>
+    </module_system>
+    <environment_variables>
+      <env name="KMP_STACKSIZE">256M</env>
+      <env name="I_MPI_EXTRA_FILESYSTEM_LIST">lustre</env>
+      <env name="I_MPI_EXTRA_FILESYSTEM">on</env>
+      <env name="ESMFMKFILE">$ENV{EBROOTESMF}/lib/esmf.mk</env>
+      <env name="ESMF_LIBDIR">$ENV{EBROOTESMF}/lib</env>
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
+    </environment_variables>
+    <resource_limits>
+      <resource name="RLIMIT_STACK">-1</resource>
+    </resource_limits>
+  </machine>
+
   <default_run_suffix>
     <default_run_exe>${EXEROOT}/cesm.exe </default_run_exe>
     <default_run_misc_suffix> >> cesm.log.$LID 2>&amp;1 </default_run_misc_suffix>
