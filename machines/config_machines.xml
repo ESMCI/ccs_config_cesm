@@ -2107,7 +2107,6 @@ This allows using a different mpirun command to launch unit tests
       <arguments>
                <arg name="machine_file">--machinefile $ENV{PBS_NODEFILE}</arg>
                <arg name="num_tasks"> -n {{ total_tasks }} </arg>
-               <arg name="addrank"> --prepend-rank </arg>
       </arguments>
     </mpirun>
     <mpirun mpilib="openmpi">
