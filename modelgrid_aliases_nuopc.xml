@@ -1067,7 +1067,7 @@
     <mask>gx3v7</mask>
   </model_grid>
 
-  <model_grid alias="ne16pg3_ne16pg3_mg17" not_compset="_POP|_CLM">
+  <model_grid alias="ne16pg3_ne16pg3_mg17" not_compset="_POP">
     <grid name="atm">ne16np4.pg3</grid>
     <grid name="lnd">ne16np4.pg3</grid>
     <grid name="ocnice">ne16np4.pg3</grid>
