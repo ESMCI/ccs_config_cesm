@@ -519,11 +519,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="nvhpc-gpu" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.1_casper-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.4.1b01-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="nvhpc-gpu" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.1_casper-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.4.1b01-ncdfio-openmpi-O</command>
       </modules>
       <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
