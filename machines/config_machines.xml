@@ -647,7 +647,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="purge"/>
         <command name="load">ncarenv/1.3</command>
         <command name="load">python/3.7.9</command>
-        <command name="load">cmake/3.18.2</command>
+        <command name="load">cmake/3.22.0</command>
       </modules>
       <modules compiler="intel">
         <command name="load">intel/19.1.1</command>
@@ -2110,7 +2110,6 @@ This allows using a different mpirun command to launch unit tests
       <arguments>
                <arg name="machine_file">--machinefile $ENV{PBS_NODEFILE}</arg>
                <arg name="num_tasks"> -n {{ total_tasks }} </arg>
-               <arg name="addrank"> --prepend-rank </arg>
       </arguments>
     </mpirun>
     <mpirun mpilib="openmpi">
