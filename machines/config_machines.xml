@@ -1846,10 +1846,10 @@ This allows using a different mpirun command to launch unit tests
       </modules>
 
       <modules compiler="intel">
-        <command name="load">intel/2021.7.1</command>
+        <command name="load">intel/2023.0.0</command>
       </modules>
       <modules compiler="oneapi">
-        <command name="load">oneapi/2023.0.0</command>
+        <command name="load">intel-oneapi/2023.0.0</command>
       </modules>
       <modules compiler="cray">
         <command name="load">cce/15.0.1</command>
@@ -1861,7 +1861,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">nvhpc/23.1</command>
       </modules>
       <modules mpilib="mpich">
-	<command name="load">cray-mpich/8.1.24</command>
+	<command name="load">cray-mpich/8.1.25</command>
       </modules>
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
@@ -1872,16 +1872,16 @@ This allows using a different mpirun command to launch unit tests
       <!-- to use cray-libsci instead of mkl comment these out and
 	   edit cmake_macros/gust.cmake -->
       <modules compiler="intel">
-        <command name="load">mkl/2022.2.1</command>
+        <command name="load">mkl/2023.0.0</command>
       </modules>
       <modules gpu_type="!none">
         <command name="load">cuda/11.7.1</command>
       </modules>
       <modules compiler="oneapi">
-        <command name="load">mkl/2022.2.1</command>
+        <command name="load">mkl/2023.0.0</command>
       </modules>	
       <modules mpilib="mpi-serial">
-        <command name="load">netcdf/4.9.0</command>
+        <command name="load">netcdf/4.9.1</command>
       </modules>
       <modules mpilib="!mpi-serial">
 	<command name="rm">hdf5</command>
@@ -1891,11 +1891,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules DEBUG="TRUE">
 	<command name="load">parallelio/2.5.10-debug</command>
-	<command name="load">esmf/8.5.0b17-debug</command>
+	<command name="load">esmf/8.5.0b19-debug</command>
       </modules>
       <modules DEBUG="FALSE">
 	<command name="load">parallelio/2.5.10</command>
-	<command name="load">esmf/8.5.0b17</command>
+	<command name="load">esmf/8.5.0b19</command>
       </modules>
     </module_system>
 
