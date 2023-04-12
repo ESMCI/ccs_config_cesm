@@ -1419,4 +1419,20 @@
     <grid name="wav">ww3a</grid>
   </model_grid>
 
+  <!-- NorESM ww3 testing configurations -->
+  <model_grid alias="TL319_wtnx1v4" not_compset="_CAM|_MOM|_POP">
+    <grid name="atm">TL319</grid>
+    <grid name="wav">wtnx1v4</grid>
+  </model_grid>
+
+  <model_grid alias="TL319_wtri1deg" not_compset="_CAM|_MOM|_POP">
+    <grid name="atm">TL319</grid>
+    <grid name="wav">tri1degmask</grid>
+  </model_grid>
+
+  <model_grid alias="TL319_wtnx1v4100k" not_compset="_CAM|_MOM|_POP">
+    <grid name="atm">TL319</grid>
+    <grid name="wav">wise.tnx1v4.100k</grid>
+  </model_grid>
+
 </grids>

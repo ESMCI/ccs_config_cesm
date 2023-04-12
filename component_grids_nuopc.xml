@@ -518,6 +518,24 @@
     <desc>wtx0.66v1 is tripole v1 0.66-deg WW3 grid based on MOM6 grid</desc>
     <support>MOM6 tx0.66v1-based WW3 grid where cells above 88N are masked</support>
   </domain>
+  <domain name="wtnx1v4">
+    <nx>360</nx> <ny>384</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wtnx1v4_20170601_ESMFmesh.nc</mesh>
+    <desc>tnx1v4 is tripole v4 1-deg BLOM grid:</desc>
+    <support>Experimental for BLOM experiments</support>
+  </domain>
+  <domain name="tri1degmask">
+    <nx>40767</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/trip1degmask_ESMFmesh_cdf5_c20230330.nc</mesh>
+    <desc>1 degree tripole grid created from a lat/lon grid</desc>
+    <support>Experimental for BLOM experiments</support>
+  </domain>
+  <domain name="wise.tnx1v4.100k">
+    <nx>99798</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wise.tnx1v4.100k_ESMFmesh_cdf5_c20230410.nc</mesh>
+    <desc>refined 1 degree tripole grid</desc>
+    <support>Experimental for BLOM experiments</support>
+  </domain>
 
   <!-- ======================================================== -->
   <!-- ATM/LND domains for single point cmeps driver -->
