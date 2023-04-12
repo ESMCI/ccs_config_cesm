@@ -22,3 +22,5 @@ if (COMP_NAME STREQUAL blom)
    string(APPEND FFLAGS FC_AUTO_R8)
 endif()
 
+string(APPEND SLIBS "-L/cluster/home/mvertens/ParMETIS/4.0.3-iompi  -lparmetis -lmetis")
+
