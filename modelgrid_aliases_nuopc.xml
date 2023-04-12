@@ -1423,16 +1423,19 @@
   <model_grid alias="TL319_wtnx1v4" not_compset="_CAM|_MOM|_POP">
     <grid name="atm">TL319</grid>
     <grid name="wav">wtnx1v4</grid>
+    <mask>wtnx1v4</mask>
   </model_grid>
 
   <model_grid alias="TL319_wtri1deg" not_compset="_CAM|_MOM|_POP">
     <grid name="atm">TL319</grid>
     <grid name="wav">tri1degmask</grid>
+    <mask>tri1degmask</mask>
   </model_grid>
 
   <model_grid alias="TL319_wtnx1v4100k" not_compset="_CAM|_MOM|_POP">
     <grid name="atm">TL319</grid>
     <grid name="wav">wise.tnx1v4.100k</grid>
+    <mask>wise.tnx1v4.100k</mask>
   </model_grid>
 
 </grids>
