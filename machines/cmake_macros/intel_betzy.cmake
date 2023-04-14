@@ -4,7 +4,6 @@ if (MPILIB STREQUAL impi)
  set(MPIFC "mpiifort")
 endif()
 
-set(MPI_LIB_NAME "impi")
 
 set(SCC "icc")
 set(SCXX "icpc")
