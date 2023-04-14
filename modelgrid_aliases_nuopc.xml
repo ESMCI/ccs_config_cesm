@@ -1434,8 +1434,8 @@
 
   <model_grid alias="TL319_wtnx1v4100k" not_compset="_CAM|_MOM|_POP">
     <grid name="atm">TL319</grid>
-    <grid name="wav">wise.tnx1v4.100k</grid>
-    <mask>wise.tnx1v4.100k</mask>
+    <grid name="wav">wise.tnx1v4p.100k</grid>
+    <mask>wise.tnx1v4p.100k</mask>
   </model_grid>
 
 </grids>

@@ -530,9 +530,9 @@
     <desc>1 degree tripole grid created from a lat/lon grid</desc>
     <support>Experimental for BLOM experiments</support>
   </domain>
-  <domain name="wise.tnx1v4.100k">
-    <nx>99798</nx> <ny>1</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/wise.tnx1v4.100k_ESMFmesh_cdf5_c20230410.nc</mesh>
+  <domain name="wise.tnx1v4p.100k">
+    <nx>99797</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wise.tnx1v4p.100k_ESMFmesh_cdf5_c20230414.nc</mesh>
     <desc>refined 1 degree tripole grid</desc>
     <support>Experimental for BLOM experiments</support>
   </domain>
