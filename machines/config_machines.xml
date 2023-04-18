@@ -425,8 +425,7 @@ This allows using a different mpirun command to launch unit tests
     <MAX_GPUS_PER_NODE compiler="nvhpc">8</MAX_GPUS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>36</MAX_MPITASKS_PER_NODE>
     <MAX_CPUTASKS_PER_GPU_NODE>36</MAX_CPUTASKS_PER_GPU_NODE>
-    <GPU_TYPE>none,v100</GPU_TYPE>
-    <GPU_OFFLOAD>none,openacc,openmp,combined</GPU_OFFLOAD>
+    <GPU_TYPES>v100,a100</GPU_TYPES>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>mpirun</executable>
@@ -461,16 +460,8 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">intel/19.1.1</command>
         <command name="load">mkl/2020.0.1</command>
       </modules>
-      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="openacc">
-        <command name="load">cuda/11.6</command>
-      </modules>
-      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="openmp">
-        <command name="load">cuda/11.6</command>
-      </modules>
-      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="combined">
-        <command name="load">cuda/11.6</command>
-      </modules>
       <modules mpilib="openmpi" compiler="nvhpc">
+        <command name="load">cuda/11.6</command>
         <command name="load">openmpi/4.1.4</command>
         <command name="load">netcdf-mpi/4.8.1</command>
         <command name="load">pnetcdf/1.12.3</command>
@@ -1820,8 +1811,7 @@ This allows using a different mpirun command to launch unit tests
     <MAX_GPUS_PER_NODE>4</MAX_GPUS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
     <MAX_CPUTASKS_PER_GPU_NODE>64</MAX_CPUTASKS_PER_GPU_NODE>
-    <GPU_TYPE>none,a100</GPU_TYPE>
-    <GPU_OFFLOAD>none,openacc,openmp,combined</GPU_OFFLOAD>
+    <GPU_TYPES>a100</GPU_TYPES>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>mpiexec</executable>
@@ -1868,9 +1858,10 @@ This allows using a different mpirun command to launch unit tests
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
       </modules>
-      <modules compiler="!intel-classic">
+<!--      <modules compiler="!intel">
         <command name="load">cray-libsci/23.02.1.1</command>
-      </modules>
+	</modules>
+-->
       <modules gpu_type="!none">
         <command name="load">cuda/11.7.1</command>
       </modules>
@@ -1886,12 +1877,12 @@ This allows using a different mpirun command to launch unit tests
 
       <modules DEBUG="TRUE">
 	<command name="load">parallelio/2.5.10-debug</command>
-	<command name="load">esmf/8.5.0b18-debug</command>
+	<command name="load">esmf/8.5.0b19-debug</command>
       </modules>
 
       <modules DEBUG="FALSE">
 	<command name="load">parallelio/2.5.10</command>
-	<command name="load">esmf/8.5.0b18</command>
+	<command name="load">esmf/8.5.0b19</command>
       </modules>
     </module_system>
 
