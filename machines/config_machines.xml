@@ -1844,7 +1844,9 @@ This allows using a different mpirun command to launch unit tests
 	<command name="use">/opt/cray/pe/craype-targets/default/modulefiles</command>
         <command name="load">cmake</command>
       </modules>
-
+      <modules>
+        <command name="load">ncarenv/23.03</command>
+      </modules>
       <modules compiler="intel">
         <command name="load">intel/2023.0.0</command>
       </modules>
@@ -1896,6 +1898,9 @@ This allows using a different mpirun command to launch unit tests
       <modules DEBUG="FALSE">
 	<command name="load">parallelio/2.5.10</command>
 	<command name="load">esmf/8.5.0b19</command>
+      </modules>
+      <modules>
+        <command name="load">ncarcompilers/0.8.0</command>
       </modules>
     </module_system>
 
