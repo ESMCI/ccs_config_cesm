@@ -4,8 +4,6 @@ if (MPILIB STREQUAL impi)
  set(MPIFC "mpiifort")
 endif()
 
-set(MPI_LIB_NAME "impi")
-
 set(SCC "icc")
 set(SCXX "icpc")
 set(SFC "ifort")
@@ -22,5 +20,8 @@ if (COMP_NAME STREQUAL blom)
    string(APPEND FFLAGS FC_AUTO_R8)
 endif()
 
-string(APPEND SLIBS " -L/cluster/home/mvertens/ParMETIS/4.0.3-iompi/lib -lparmetis -lmetis")
-
+if (MPILIB STREQUAL openmpi)
+  if (COMP_WAV STREQUAL ww3dev)
+     string(APPEND SLIBS " -L/cluster/home/mvertens/ParMETIS/4.0.3-iompi/lib -lparmetis -lmetis")
+  endif()
+endif() 
