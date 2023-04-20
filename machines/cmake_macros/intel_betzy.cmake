@@ -1,13 +1,3 @@
-if (MPILIB STREQUAL impi)
- set(MPICC "mpiicc")
- set(MPICXX "mpiicpc")
- set(MPIFC "mpiifort")
-endif()
-
-set(SCC "icc")
-set(SCXX "icpc")
-set(SFC "ifort")
-
 set(PIO_FILESYSTEM_HINTS "lustre")
 
 set(NETCDF_C_PATH	$ENV{EBROOTNETCDF})
@@ -20,8 +10,8 @@ if (COMP_NAME STREQUAL blom)
    string(APPEND FFLAGS FC_AUTO_R8)
 endif()
 
-if (MPILIB STREQUAL openmpi)
-  if (COMP_WAV STREQUAL ww3dev)
-     string(APPEND SLIBS " -L/cluster/home/mvertens/ParMETIS/4.0.3-iompi/lib -lparmetis -lmetis")
+if (COMP_WAV STREQUAL ww3dev)
+  if (MPILIB STREQUAL openmpi)
+     string(APPEND SLIBS " -L/cluster/software/ParMETIS/4.0.3-iompi-2021b/lib -l:libparmetis.a -lmetis")
   endif()
 endif() 
