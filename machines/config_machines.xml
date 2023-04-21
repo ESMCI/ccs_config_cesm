@@ -3674,6 +3674,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">Python/3.9.6-GCCcore-11.2.0</command>
         <!-- alok's pnetcdf settings 22/09/2022-->
         <command name="load">PnetCDF/1.12.2-iompi-2021b</command>
+        <command name="load">ParMETIS/4.0.3-iompi-2021b</command>
       </modules>
       <modules compiler="intel" mpilib="impi">
         <command name="--force purge"></command>

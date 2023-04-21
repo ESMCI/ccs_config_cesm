@@ -3,11 +3,18 @@ on:
   push:
     branches:
       - main
+      - noresm
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Check branch name
+        id: check_branch_name
+        run: |
+          prefix=""
+          [ "${{ github.ref_name }}" == "main" ] && prefix="ccs_config_cesm"
+          [ "${{ github.ref_name }}" == "noresm" ] && prefix="ccs_config_noresm"
+          echo "TAG_PREFIX=$prefix" >> $GITHUB_OUTPUT
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v5.5
@@ -16,4 +23,4 @@ jobs:
           create_annotated_tag: true
           default_bump: patch
           dry_run: false
-          tag_prefix: ccs_config_cesm
+          tag_prefix: "${{ steps.check_branch_name.outputs.TAG_PREFIX }}"
