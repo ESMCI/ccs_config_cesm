@@ -383,6 +383,12 @@
     <desc>tripole v1 1-deg grid: testing proxy for high-res tripole ocean grids- do not use for scientific experiments</desc>
     <support>Experimental tripole ocean grid</support>
   </domain>
+  <domain name="tnx1v4">
+    <nx>360</nx> <ny>384</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/tnx1v4_20170601_ESMFmesh.nc</mesh>
+    <desc>tnx1v4 is tripole v4 1-deg BLOM grid:</desc>
+    <support>Experimental for BLOM experiments</support>
+  </domain>
 
   <!-- ======================================================== -->
   <!-- ROF domains -->
