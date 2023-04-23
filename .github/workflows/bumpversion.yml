@@ -22,5 +22,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           create_annotated_tag: true
           default_bump: patch
+          release_branches: master,main,noresm
           dry_run: false
           tag_prefix: "${{ steps.check_branch_name.outputs.TAG_PREFIX }}"
