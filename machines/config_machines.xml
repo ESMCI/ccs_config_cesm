@@ -3669,20 +3669,21 @@ This allows using a different mpirun command to launch unit tests
       <modules compiler="intel" mpilib="openmpi">
         <command name="--force purge"></command>
         <command name="load">StdEnv</command>
-        <command name="load">ESMF/8.2.0-iomkl-2021b</command>
+        <command name="use">/cluster/projects/nn9560k/mdeb/extra_mods/modules/all</command>
+        <command name="load">ESMF/8.4.1-iomkl-2021b</command>
         <command name="load">CMake/3.21.1-GCCcore-11.2.0</command>
         <command name="load">Python/3.9.6-GCCcore-11.2.0</command>
-        <!-- alok's pnetcdf settings 22/09/2022-->
-        <command name="load">PnetCDF/1.12.2-iompi-2021b</command>
+        <command name="load">PnetCDF/1.12.3-iompi-2021b</command>
         <command name="load">ParMETIS/4.0.3-iompi-2021b</command>
       </modules>
       <modules compiler="intel" mpilib="impi">
         <command name="--force purge"></command>
         <command name="load">StdEnv</command>
-        <command name="load">ESMF/8.2.0-intel-2021b</command>
+        <command name="use">/cluster/projects/nn9560k/mdeb/extra_mods/modules/all</command>
+        <command name="load">ESMF/8.4.1-intel-2021b</command>
         <command name="load">CMake/3.21.1-GCCcore-11.2.0</command>
         <command name="load">Python/3.9.6-GCCcore-11.2.0</command>
-        <command name="load">PnetCDF/1.12.2-iimpi-2021b</command>
+        <command name="load">PnetCDF/1.12.3-iimpi-2021b</command>
         <command name="load">ParMETIS/4.0.3-iimpi-2021b</command>
       </modules>
     </module_system>
@@ -3746,8 +3747,12 @@ This allows using a different mpirun command to launch unit tests
       <modules>
         <command name="--force purge"></command>
         <command name="load">StdEnv</command>
+        <command name="use">/cluster/projects/nn9560k/mdeb/extra_mods/modules/all</command>
+        <command name="load">ESMF/8.4.1-intel-2021b</command>
         <command name="load">CMake/3.21.1-GCCcore-11.2.0</command>
-        <command name="load">ESMF/8.2.0-intel-2021b</command>
+        <command name="load">Python/3.9.6-GCCcore-11.2.0</command>
+        <command name="load">PnetCDF/1.12.3-iimpi-2021b</command>
+        <command name="load">ParMETIS/4.0.3-iimpi-2021b</command>
       </modules>
     </module_system>
     <environment_variables>
