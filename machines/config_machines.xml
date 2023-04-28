@@ -2817,7 +2817,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="MPI_TYPE_MAX">100000</env>
       <env name="MPI_TYPE_DEPTH">16</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="ESMFMKFILE">/home6/fvitt/esmf-8_2_0/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
     </environment_variables>
   </machine>
 
@@ -2871,7 +2871,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="MPI_TYPE_MAX">100000</env>
       <env name="MPI_TYPE_DEPTH">16</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="ESMFMKFILE">/home6/fvitt/esmf-8_2_0/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
     </environment_variables>
   </machine>
 
@@ -2925,7 +2925,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="MPI_TYPE_MAX">100000</env>
       <env name="MPI_TYPE_DEPTH">16</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="ESMFMKFILE">/home6/fvitt/esmf-8_2_0/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
     </environment_variables>
   </machine>
 
@@ -2979,7 +2979,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="MPI_TYPE_MAX">100000</env>
       <env name="MPI_TYPE_DEPTH">16</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="ESMFMKFILE">/home6/fvitt/esmf-8_2_0/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
     </environment_variables>
   </machine>
 
