@@ -3687,8 +3687,17 @@ This allows using a different mpirun command to launch unit tests
       </modules>
     </module_system>
     <environment_variables>
+      <env name="ESMFMKFILE">$ENV{EBROOTESMF}/lib/esmf.mk</env>
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
+      <env name="HCOLL_MAIN_IB">mlx5_0:1</env>
+      <env name="HCOLL_ENABLE_MCAST">1</env>
       <env name="KMP_STACKSIZE">64M</env>
       <env name="MKL_DEBUG_CPU_TYPE">5</env>
+      <env name="PIO_VERSION_MAJOR">2</env>
+      <env name="PIO_LIBDIR">$ENV{EBROOTPARALLELIO}/lib</env>
+      <env name="PIO_INCDIR">$ENV{EBROOTPARALLELIO}/include</env>
+      <env name="PIO_TYPENAME_VALID_VALUES">pnetcdf,netcdf,netcdf4p,netcdf4c</env>
       <env name="OMPI_MCA_mpi_leave_pinned">1</env>
       <env name="OMPI_MCA_btl">self,vader</env>
       <env name="OMPI_MCA_rmaps_rank_file_physical">1</env>
@@ -3696,11 +3705,6 @@ This allows using a different mpirun command to launch unit tests
       <env name="OMPI_MCA_coll">^fca</env>
       <env name="OMPI_MCA_coll_hcoll_priority">95</env>
       <env name="OMPI_MCA_coll_hcoll_np">8</env>
-      <env name="HCOLL_MAIN_IB">mlx5_0:1</env>
-      <env name="HCOLL_ENABLE_MCAST_ALL">1</env>
-      <env name="ESMFMKFILE">$ENV{EBROOTESMF}/lib/esmf.mk</env>
-      <env name="ESMF_RUNTIME_PROFILE">ON</env>
-      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
       <env name="OMPI_222MCA222222_io">ompio</env>
       <env name="OMPI_MCA_fs_lustre_stripe_size">1048576</env>
       <env name="OMPI_MCA_fs_lustre_stripe_width">8</env>
