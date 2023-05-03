@@ -484,17 +484,17 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">netcdf/4.7.4</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc">
-        <command name="load">openmpi/4.1.1</command>
+        <command name="load">openmpi/4.1.4</command>
         <command name="load">netcdf-mpi/4.8.1</command>
-        <command name="load">pnetcdf/1.12.2</command>
+        <command name="load">pnetcdf/1.12.3</command>
       </modules>
       <modules mpilib="mpi-serial" compiler="nvhpc">
         <command name="load">netcdf/4.8.1</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc-gpu">
-        <command name="load">openmpi/4.1.1</command>
+        <command name="load">openmpi/4.1.4</command>
         <command name="load">netcdf-mpi/4.8.1</command>
-        <command name="load">pnetcdf/1.12.2</command>
+        <command name="load">pnetcdf/1.12.3</command>
         <command name="load">cuda/11.4.0</command>
       </modules>
       <modules mpilib="mpi-serial" compiler="nvhpc-gpu">
@@ -519,11 +519,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="nvhpc-gpu" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.4.1b01-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="nvhpc-gpu" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.4.1b01-ncdfio-openmpi-O</command>
       </modules>
       <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
@@ -537,10 +537,10 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">ncarcompilers/0.5.0</command>
       </modules>
       <modules compiler="!pgi" DEBUG="FALSE" mpilib="openmpi">
-        <command name="load">pio/2.5.7</command>
+        <command name="load">pio/2.5.10</command>
       </modules>
       <modules compiler="!pgi" DEBUG="TRUE" mpilib="openmpi">
-        <command name="load">pio/2.5.7d</command>
+        <command name="load">pio/2.5.10d</command>
       </modules>
     </module_system>
     <environment_variables>
@@ -553,6 +553,9 @@ This allows using a different mpirun command to launch unit tests
     <environment_variables comp_interface="nuopc">
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
+    </environment_variables>
+    <environment_variables compiler="nvhpc-gpu">
+      <env name="RTE_KERNELS">openacc</env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
