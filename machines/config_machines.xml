@@ -3765,6 +3765,10 @@ This allows using a different mpirun command to launch unit tests
       <env name="ESMF_LIBDIR">$ENV{EBROOTESMF}/lib</env>
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
+      <env name="PIO_VERSION_MAJOR">2</env>
+      <env name="PIO_LIBDIR">$ENV{EBROOTPARALLELIO}/lib</env>
+      <env name="PIO_INCDIR">$ENV{EBROOTPARALLELIO}/include</env>
+      <env name="PIO_TYPENAME_VALID_VALUES">pnetcdf,netcdf,netcdf4p,netcdf4c</env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
