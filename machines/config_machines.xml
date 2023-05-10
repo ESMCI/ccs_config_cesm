@@ -1919,12 +1919,12 @@ This allows using a different mpirun command to launch unit tests
 
       <modules DEBUG="TRUE">
 	<command name="load">parallelio/2.5.10-debug</command>
-	<command name="load">esmf/8.5.0b19-debug</command>
+	<command name="load">esmf/8.5.0b21-debug</command> 
       </modules>
 
       <modules DEBUG="FALSE">
 	<command name="load">parallelio/2.5.10</command>
-	<command name="load">esmf/8.5.0b19</command>
+	<command name="load">esmf/8.5.0b21</command>
       </modules>
     </module_system>
 
