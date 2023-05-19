@@ -385,7 +385,7 @@
   </domain>
   <domain name="tnx1v4">
     <nx>360</nx> <ny>384</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/tnx1v4_20170601_ESMFmesh.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/share/meshes/tnx1v4_20170601_cdf5_ESMFmesh.nc</mesh>
     <desc>tnx1v4 is tripole v4 1-deg BLOM grid:</desc>
     <support>Experimental for BLOM experiments</support>
   </domain>
@@ -526,7 +526,7 @@
   </domain>
   <domain name="wtnx1v4">
     <nx>360</nx> <ny>384</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/wtnx1v4_20170601_ESMFmesh.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wtnx1v4_20170601_cdf5_ESMFmesh.nc</mesh>
     <desc>tnx1v4 is tripole v4 1-deg BLOM grid:</desc>
     <support>Experimental for BLOM experiments</support>
   </domain>
@@ -593,3 +593,7 @@
   </domain>
 
 </domains>
+
+
+-rw-r--r--. 1 mvertens mvertens   8852592 May 19 10:37 
+-rw-r--r--. 1 mvertens mvertens   8853196 May 19 11:00 wtnx1v4_20170601_ESMFmesh_cdf5.nc
