@@ -515,6 +515,9 @@ This allows using a different mpirun command to launch unit tests
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
+    <environment_variables compiler="nvhpc-gpu">
+      <env name="RTE_KERNELS">openacc</env>
+    </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
     </resource_limits>
@@ -605,7 +608,7 @@ This allows using a different mpirun command to launch unit tests
         <command name="purge"/>
         <command name="load">ncarenv/1.3</command>
         <command name="load">python/3.7.9</command>
-        <command name="load">cmake/3.18.2</command>
+        <command name="load">cmake/3.22.0</command>
       </modules>
       <modules compiler="intel">
         <command name="load">intel/19.1.1</command>
@@ -624,54 +627,54 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="intel" mpilib="mpt" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpt-g</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpt" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpt-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpt-O</command>
       </modules> 
       <modules compiler="intel" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="intel" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-O</command>
       </modules> 
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpiuni-g</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="gnu" mpilib="mpt" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpt-g</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="gnu" mpilib="mpt" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpt-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpt-O</command>
       </modules>
       <modules compiler="gnu" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="gnu" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-O</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpiuni-g</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-g</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-O</command>
       </modules>
 
       <modules compiler="pgi" mpilib="mpt" DEBUG="TRUE">
@@ -684,19 +687,19 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="nvhpc" mpilib="mpt" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpt-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpt-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpt" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpt-g</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="nvhpc" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
@@ -716,11 +719,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="nvhpc" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.4.1.b01-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.5.0.b19-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.4.1b02-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-O</command>
       </modules>
       <modules mpilib="mpt" compiler="gnu">
         <command name="load">mpt/2.25</command>
@@ -728,9 +731,9 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">pnetcdf/1.12.3</command>
       </modules>
       <modules mpilib="mpt" compiler="intel">
-        <command name="load">mpt/2.25</command>
-        <command name="load">netcdf-mpi/4.9.0</command>
-        <command name="load">pnetcdf/1.12.3</command>
+        <command name="load">mpt/2.22</command>
+        <command name="load">netcdf-mpi/4.8.1</command>
+        <command name="load">pnetcdf/1.12.2</command>
       </modules>
       <modules mpilib="mpt" compiler="pgi">
         <command name="load">mpt/2.22</command>
@@ -1798,7 +1801,7 @@ This allows using a different mpirun command to launch unit tests
     <OS>CNL</OS>
     <COMPILERS>intel,gnu,cray,nvhpc,intel-oneapi,intel-classic</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
-    <CIME_OUTPUT_ROOT>/glade/gust/scratch/$ENV{USER}</CIME_OUTPUT_ROOT>
+    <CIME_OUTPUT_ROOT>$ENV{SCRATCH}</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/glade/p/cesmdata/inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>/glade/p/cesmdata/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
@@ -1830,27 +1833,37 @@ This allows using a different mpirun command to launch unit tests
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
       <modules>
-	<command name="load">ncarenv/23.03</command>
-        <command name="reset"/>
-        <command name="load">cmake</command>
+	<command name="load">cesmdev/1.0</command>
+	<command name="load">ncarenv/23.04</command>
+        <command name="purge"/>
+	<command name="load">craype</command>
       </modules>
       <modules compiler="intel">
         <command name="load">intel/2023.0.0</command>
+	<command name="load">mkl</command>
       </modules>
       <modules compiler="intel-oneapi">
         <command name="load">intel-oneapi/2023.0.0</command>
+	<command name="load">mkl</command>
       </modules>
       <modules compiler="intel-classic">
         <command name="load">intel-classic/2023.0.0</command>
+	<command name="load">mkl</command>
       </modules>
       <modules compiler="cray">
         <command name="load">cce/15.0.1</command>
+        <command name="load">cray-libsci/23.02.1.1</command>
       </modules>
       <modules compiler="gnu">
         <command name="load">gcc/12.2.0</command>
+        <command name="load">cray-libsci/23.02.1.1</command>
       </modules>
       <modules compiler="nvhpc">
         <command name="load">nvhpc/23.1</command>
+      </modules>
+      <modules>
+	<command name="load">ncarcompilers/0.8.0</command>
+        <command name="load">cmake</command>
       </modules>
       <modules mpilib="mpich">
 	<command name="load">cray-mpich/8.1.25</command>
@@ -1858,10 +1871,6 @@ This allows using a different mpirun command to launch unit tests
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
       </modules>
-<!--      <modules compiler="!intel">
-        <command name="load">cray-libsci/23.02.1.1</command>
-	</modules>
--->
       <modules gpu_type="!none">
         <command name="load">cuda/11.7.1</command>
       </modules>
@@ -1869,20 +1878,18 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">netcdf/4.9.1</command>
       </modules>
       <modules mpilib="!mpi-serial">
-	<command name="rm">hdf5</command>
-        <command name="rm">netcdf</command>
         <command name="load">netcdf-mpi/4.9.1</command>
         <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
 
       <modules DEBUG="TRUE">
 	<command name="load">parallelio/2.5.10-debug</command>
-	<command name="load">esmf/8.5.0b19-debug</command>
+	<command name="load">esmf/8.5.0b21-debug</command> 
       </modules>
 
       <modules DEBUG="FALSE">
 	<command name="load">parallelio/2.5.10</command>
-	<command name="load">esmf/8.5.0b19</command>
+	<command name="load">esmf/8.5.0b21</command>
       </modules>
     </module_system>
 
@@ -2059,7 +2066,6 @@ This allows using a different mpirun command to launch unit tests
       <arguments>
                <arg name="machine_file">--machinefile $ENV{PBS_NODEFILE}</arg>
                <arg name="num_tasks"> -n {{ total_tasks }} </arg>
-               <arg name="addrank"> --prepend-rank </arg>
       </arguments>
     </mpirun>
     <mpirun mpilib="openmpi">
@@ -2770,7 +2776,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="MPI_TYPE_MAX">100000</env>
       <env name="MPI_TYPE_DEPTH">16</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="ESMFMKFILE">/home6/fvitt/esmf-8_2_0/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
     </environment_variables>
   </machine>
 
@@ -2824,7 +2830,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="MPI_TYPE_MAX">100000</env>
       <env name="MPI_TYPE_DEPTH">16</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="ESMFMKFILE">/home6/fvitt/esmf-8_2_0/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
     </environment_variables>
   </machine>
 
@@ -2878,7 +2884,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="MPI_TYPE_MAX">100000</env>
       <env name="MPI_TYPE_DEPTH">16</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="ESMFMKFILE">/home6/fvitt/esmf-8_2_0/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
     </environment_variables>
   </machine>
 
@@ -2932,7 +2938,7 @@ This allows using a different mpirun command to launch unit tests
       <env name="MPI_TYPE_MAX">100000</env>
       <env name="MPI_TYPE_DEPTH">16</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="ESMFMKFILE">/home6/fvitt/esmf-8_2_0/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
     </environment_variables>
   </machine>
 
