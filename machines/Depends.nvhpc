@@ -13,8 +13,6 @@ REDUCED_OPT_OBJS=\
 SatellitePhenologyMod.o \
 esm.o
 
-<<<<<<< HEAD
-=======
 REDUCED_PRECISION_OBJS=\
 shr_wv_sat_mod.o
 
@@ -30,7 +28,6 @@ dSFMT_utils.o \
 kissvec.o
 
 # Apply GPU flags to the following code
->>>>>>> esmci/main
 PUMAS_OBJS=\
 micro_mg1_0.o \
 micro_pumas_v1.o \
@@ -42,13 +39,6 @@ wv_saturation.o \
 macrop_driver.o \
 shr_spfn_mod.o
 
-<<<<<<< HEAD
-$(REDUCED_OPT_OBJS): %.o: %.F90
-	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O1 $<
-
-$(PUMAS_OBJS): %.o: %.F90
-	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
-=======
 RRTMGP_OBJS=\
 mo_rte_util_array.o \
 mo_rte_sw.o \
@@ -102,4 +92,3 @@ ifeq ($(DEBUG),FALSE)
   $(RRTMGP_NOOPT): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O0 $<
 endif
->>>>>>> esmci/main
