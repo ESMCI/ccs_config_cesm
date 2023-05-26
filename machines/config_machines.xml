@@ -461,10 +461,12 @@ This allows using a different mpirun command to launch unit tests
         <command name="load">mkl/2020.0.1</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc">
-        <command name="load">cuda/11.6</command>
         <command name="load">openmpi/4.1.4</command>
         <command name="load">netcdf-mpi/4.8.1</command>
         <command name="load">pnetcdf/1.12.3</command>
+      </modules>
+      <modules gpu_type="!none">
+        <command name="load">cuda/11.6</command>
       </modules>
       <modules mpilib="mpi-serial" compiler="nvhpc">
         <command name="load">netcdf/4.8.1</command>
@@ -1815,6 +1817,7 @@ This allows using a different mpirun command to launch unit tests
     <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
     <MAX_CPUTASKS_PER_GPU_NODE>64</MAX_CPUTASKS_PER_GPU_NODE>
     <GPU_TYPES>a100</GPU_TYPES>
+    <GPU_OFFLOAD>openacc,openmp,combined</GPU_OFFLOAD>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>mpiexec</executable>
