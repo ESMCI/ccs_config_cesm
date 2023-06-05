@@ -8,6 +8,11 @@
   <!-- it will be searched for filename and chksum of each downloaded file.  -->
   <!-- see the file ftp://ftp.cgd.ucar.edu/cesm/inputdata_chksum.dat for proper format. -->
   <server>
+    <protocol>wget</protocol>
+    <address>https://www.noresm.org/inputdata</address>
+  </server>
+
+  <server>
     <comment>grid ftp requires the globus-url-copy tool on the client side </comment>
     <protocol>gftp</protocol>
     <address>ftp://gridanon.cgd.ucar.edu:2811/cesm/inputdata/</address>
