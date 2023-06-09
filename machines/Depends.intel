@@ -1,3 +1,4 @@
+#PROFOBJS=fvm_reconstruction_mod.o
 #
 PERFOBJS=\
 prim_advection_mod.o \
@@ -35,6 +36,8 @@ wv_sat_methods.o
 
 
 ifeq ($(DEBUG),FALSE)
+#  $(PROFOBJS): %.o: %.F90
+#	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS)  -pg $<
   $(PERFOBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS)  -O3  -no-prec-div $<
   $(REDUCED_OPT_OBJS): %.o: %.F90
