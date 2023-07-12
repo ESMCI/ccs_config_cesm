@@ -389,6 +389,12 @@
     <desc>tnx1v4 is tripole v4 1-deg BLOM grid:</desc>
     <support>Experimental for BLOM experiments</support>
   </domain>
+  <domain name="tnx1v4nowall">
+    <nx>360</nx> <ny>384</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/tnx1v4_20170601_cdf5_ESMFmesh.nc</mesh>
+    <desc>tnx1v4 is tripole v4 1-deg BLOM grid:</desc>
+    <support>Experimental for BLOM experiments</support>
+  </domain>
 
   <!-- ======================================================== -->
   <!-- ROF domains -->
@@ -534,13 +540,19 @@
     <nx>40767</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/trip1degmask_ESMFmesh_cdf5_c20230330.nc</mesh>
     <desc>1 degree tripole grid created from a lat/lon grid</desc>
-    <support>Experimental for BLOM experiments</support>
+    <support>Experimental for Making Waves experiments</support>
   </domain>
   <domain name="wise.tnx1v4p.100k">
     <nx>99798</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/wise.tnx1v4p.100k_ESMFmesh_cdf5_c20230414.nc</mesh>
     <desc>refined 1 degree tripole grid</desc>
-    <support>Experimental for BLOM experiments</support>
+    <support>Experimental for Making Waves experiments</support>
+  </domain>
+  <domain name="w025unstr">
+    <nx>575697</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/w025unstr_ESMFmesh_cdf5_c20230707.nc</mesh>
+    <desc>1/4 degree unstructured mesh</desc>
+    <support>Experimental for Making Waves experiments</support>
   </domain>
 
   <!-- ======================================================== -->
