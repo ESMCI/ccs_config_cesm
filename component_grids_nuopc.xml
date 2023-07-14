@@ -44,8 +44,6 @@
     <nx>144</nx>  <ny>96</ny>
     <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
     <file>$DIN_LOC_ROOT/share/domains/domain.lnd.fv1.9x2.5_gx1v7.181205.nc</file>
-    <!-- TODO: the lats for the gx1v7 and gx1v6 mask are different at
-         the poles- the 141008 should be used for both but would change answers -->
     <mesh>$DIN_LOC_ROOT/share/meshes/fv1.9x2.5_141008_ESMFmesh.nc</mesh>
     <desc>1.9x2.5 is FV 2-deg grid:</desc>
   </domain>
@@ -302,47 +300,10 @@
     <desc>TL639 grid for ERA5</desc>
   </domain>
 
-  <!-- fvcubed domains-->
-  <domain name="C24">
-    <nx>3456</nx> <ny>1</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/C24_181018_ESMFmesh.nc</mesh>
-    <desc>C24 is a fvcubed xx-deg grid:</desc>
-    <support>Experimental for fv3 dycore</support>
-  </domain>
-  <domain name="C48">
-    <nx>13824</nx> <ny>1</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/C48_181018_ESMFmesh.nc</mesh>
-    <desc>C48 is a fvcubed xx-deg grid:</desc>
-    <support>Experimental for fv3 dycore</support>
-  </domain>
-  <domain name="C96">
-    <nx>55296</nx> <ny>1</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/C96_181018_ESMFmesh.nc</mesh>
-    <desc>C96 is a fvcubed xx-deg grid:</desc>
-    <support>Experimental for fv3 dycore</support>
-  </domain>
-  <domain name="C192">
-    <nx>221184</nx> <ny>1</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/C192_181018_ESMFmesh.nc</mesh>
-    <desc>C192 is a fvcubed xx-deg grid:</desc>
-    <support>Experimental for fv3 dycore</support>
-  </domain>
-  <domain name="C384">
-    <nx>884736</nx> <ny>1</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/C384_181018_ESMFmesh.nc</mesh>
-    <desc>C384 is a fvcubed xx-deg grid:</desc>
-    <support>Experimental for fv3 dycore</support>
-  </domain>
-
   <!-- ======================================================== -->
   <!-- OCN/ICE domains -->
   <!-- ======================================================== -->
 
-  <domain name="gx1v6">
-    <nx>320</nx>  <ny>384</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/gx1v6_090205_ESMFmesh.nc</mesh>
-    <desc>gx1v6 is displaced Greenland pole v6 1-deg grid:</desc>
-  </domain>
   <domain name="gx1v7">
     <nx>320</nx>  <ny>384</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/gx1v7_151008_ESMFmesh.nc</mesh>
@@ -376,12 +337,6 @@
     <mesh>$DIN_LOC_ROOT/share/meshes/tx0.1v3_ESMFmesh_cdf5_c20211011.nc</mesh>
     <desc>tx0.1v3 is tripole v3 1/10-deg grid:</desc>
     <support>Experimental for high resolution experiments</support>
-  </domain>
-  <domain name="tx1v1">
-    <nx>360</nx> <ny>240</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/tx1v1_ESMFMesh_cd5_c20210105.nc</mesh>
-    <desc>tripole v1 1-deg grid: testing proxy for high-res tripole ocean grids- do not use for scientific experiments</desc>
-    <support>Experimental tripole ocean grid</support>
   </domain>
   <domain name="tnx1v4">
     <nx>360</nx> <ny>384</ny>
