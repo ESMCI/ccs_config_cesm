@@ -56,7 +56,7 @@
   </domain>
   <domain name="10x15">
     <nx>24</nx>   <ny>19</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/10x15_nomask_c110308_ESMFmesh.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/share/meshes/10x15_nomask_c110308_cdf5_ESMFmesh.nc</mesh>
     <desc>10x15 is FV 10-deg grid:</desc>
     <support>For low resolution testing</support>
   </domain>
