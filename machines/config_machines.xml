@@ -666,54 +666,54 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="intel" mpilib="mpt" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpt-g</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpt" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpt-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpt-O</command>
       </modules> 
       <modules compiler="intel" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.5.0-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="intel" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-openmpi-O</command>
       </modules> 
       <modules mpilib="mpi-serial">
         <command name="load">mpi-serial/2.3.0</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-g</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpiuni-g</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="gnu" mpilib="mpt" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpt-g</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="gnu" mpilib="mpt" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpt-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpt-O</command>
       </modules>
       <modules compiler="gnu" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.5.0-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="gnu" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-openmpi-O</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-g</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpiuni-g</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/gnu/10.1.0/</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpiuni-O</command>
       </modules>
 
       <modules compiler="pgi" mpilib="mpt" DEBUG="TRUE">
@@ -726,19 +726,19 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="nvhpc" mpilib="mpt" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpt-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpt-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpt" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpt-g</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpt-g</command>
       </modules>
       <modules compiler="nvhpc" mpilib="openmpi" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-openmpi-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-openmpi-g</command>
+        <command name="load">esmf-8.5.0-ncdfio-openmpi-g</command>
       </modules>
       <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
@@ -758,11 +758,11 @@ This allows using a different mpirun command to launch unit tests
       </modules>
       <modules compiler="nvhpc" mpilib="mpi-serial" DEBUG="TRUE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.5.0.b19-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpiuni-O</command>
       </modules>
       <modules compiler="nvhpc" mpilib="mpi-serial" DEBUG="FALSE">
         <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2</command>
-        <command name="load">esmf-8.5.0b19-ncdfio-mpiuni-O</command>
+        <command name="load">esmf-8.5.0-ncdfio-mpiuni-O</command>
       </modules>
       <modules mpilib="mpt" compiler="gnu">
         <command name="load">mpt/2.25</command>
@@ -2265,53 +2265,53 @@ This allows using a different mpirun command to launch unit tests
         <command name="rm">mpi</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.4.1b05-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mvapich2-O</command>
         <command name="load">mvapich2/2.3.3/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.4.1b05-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mvapich2-g</command>
         <command name="load">mvapich2/2.3.3/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.4.1b05-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mpiuni-O</command>
         <command name="load">mpi-serial/2.3.0/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.4.1b05-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mpiuni-g</command>
         <command name="load">mpi-serial/2.3.0/gnu/9.3.0/pio/2_5_10</command>
       </modules>
 
       <modules compiler="nag" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.4.1b05-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mvapich2-O</command>
         <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.4.1b05-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mvapich2-g</command>
         <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.4.1b05-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mpiuni-g</command>
         <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.4.1b05-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mpiuni-O</command>
         <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command>
       </modules>
 
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.4.1b05-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mpiuni-g</command>
         <command name="load">mpi-serial/2.3.0/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.4.1b05-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mpiuni-O</command>
         <command name="load">mpi-serial/2.3.0/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.4.1b05-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mvapich2-g</command>
         <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.4.1b05-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mvapich2-O</command>
         <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command>
       </modules>
     </module_system>
