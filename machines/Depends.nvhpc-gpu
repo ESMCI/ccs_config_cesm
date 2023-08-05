@@ -69,7 +69,9 @@ mo_optical_props_kernels.o\
 mo_rte_solver_kernels.o\
 mo_optical_props_kernels.o\
 mo_rte_solver_kernels.o\
-rrtmgp_driver.o\
+rrtmgp_driver.o
+
+RRTMGP_NOOPT=\
 mo_gas_optics_kernels.o
 
 ifeq ($(DEBUG),FALSE)
@@ -84,7 +86,9 @@ ifeq ($(DEBUG),FALSE)
 #  $(SHR_RANDNUM_C_OBJS): %.o: %.c
 #	  $(CC) -c $(INCLDIR) $(INCS) $(CFLAGS) -O3 -fast $<
   $(PUMAS_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $(GPUFLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt -acc -gpu=cc70,lineinfo,nofma,flushz,fastmath -Minfo=accel $<
   $(RRTMGP_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -acc -gpu=cc70,lineinfo,nofma -Minfo=accel -Mnoopenmp $<
+  $(RRTMGP_NOOPT): %.o: %.F90
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -acc -gpu=cc70,lineinfo,nofma -Minfo=accel -O0 $<
 endif
