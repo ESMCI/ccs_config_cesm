@@ -350,6 +350,12 @@
     <desc>tnx1v4 is tripole v4 1-deg BLOM grid:</desc>
     <support>Experimental for BLOM experiments</support>
   </domain>
+  <domain name="tnx2v1">
+    <nx>180</nx> <ny>192</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/tnx2v1_20230815_cdf5_ESMFmesh.nc</mesh>
+    <desc>tnx2v1 is tripole v1 2-deg BLOM grid:</desc>
+    <support>Experimental for BLOM experiments</support>
+  </domain>
 
   <!-- ======================================================== -->
   <!-- ROF domains -->
