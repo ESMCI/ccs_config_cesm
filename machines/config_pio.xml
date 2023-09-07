@@ -78,13 +78,14 @@
   </entry>
   -->
 
-  <!--- uncomment and fill in relevant sections
+
   <entry id="PIO_BUFFER_SIZE_LIMIT">
     <values>
-      <value></value>
+      <value compset="CAM%DEV%MT" mach="cheyenne">17108864</value>
     </values>
   </entry>
-  -->
+
+
 
   <!--- uncomment and fill in relevant sections
   <entry id="OCN_PIO_STRIDE">

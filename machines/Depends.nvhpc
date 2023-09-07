@@ -67,11 +67,7 @@ mo_rte_kind.o\
 mo_source_functions.o\
 mo_optical_props_kernels.o\
 mo_rte_solver_kernels.o\
-mo_optical_props_kernels.o\
-mo_rte_solver_kernels.o\
-rrtmgp_driver.o
-
-RRTMGP_NOOPT=\
+rrtmgp_driver.o\
 mo_gas_optics_kernels.o
 
 ifeq ($(DEBUG),FALSE)
@@ -86,9 +82,7 @@ ifeq ($(DEBUG),FALSE)
 #  $(SHR_RANDNUM_C_OBJS): %.o: %.c
 #	  $(CC) -c $(INCLDIR) $(INCS) $(CFLAGS) -O3 -fast $<
   $(PUMAS_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $(GPUFLAGS) $<
   $(RRTMGP_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -Mnoopenmp $<
-  $(RRTMGP_NOOPT): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O0 $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
 endif
