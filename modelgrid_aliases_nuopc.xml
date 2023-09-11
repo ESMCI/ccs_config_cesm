@@ -601,6 +601,12 @@
     <grid name="ocnice">ne0np4.ARCTIC.ne30x4</grid>
     <mask>tx0.1v2</mask>
   </model_grid>
+  <model_grid alias="ne0ARCTICne30x4_tnx1v4" compset="_BLOM">
+    <grid name="atm">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="lnd">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="ocnice">tnx1v4</grid>
+    <mask>tnx1v4</mask>
+  </model_grid>
   <model_grid alias="ne0ARCTICne30x4_t12_mt12" not_compset="_POP">
     <grid name="atm">ne0np4.ARCTIC.ne30x4</grid>
     <grid name="lnd">ne0np4.ARCTIC.ne30x4</grid>
