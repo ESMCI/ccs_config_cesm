@@ -1,5 +1,5 @@
-string(APPEND CFLAGS " -qopt-report -xCORE_AVX2 -no-fma")
-string(APPEND FFLAGS " -qopt-report -xCORE_AVX2 -no-fma")
+string(APPEND CFLAGS " -qopt-report -xCORE_AVX2")
+string(APPEND FFLAGS " -qopt-report -xCORE_AVX2")
 if (DEBUG)
   string(APPEND CMAKE_OPTS " -DPIO_ENABLE_LOGGING=ON")
 endif()

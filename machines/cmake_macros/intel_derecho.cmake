@@ -1,6 +1,6 @@
 set(CONFIG_ARGS "--host=cray")
-string(APPEND CFLAGS " -qopt-report -march=core-avx2 -no-fma")
-string(APPEND FFLAGS " -qopt-report -march=core-avx2 -no-fma")
+string(APPEND CFLAGS " -qopt-report -march=core-avx2")
+string(APPEND FFLAGS " -qopt-report -march=core-avx2")
 if (COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_SLASHPROC")
 endif()

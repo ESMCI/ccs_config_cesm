@@ -3,7 +3,7 @@ if (compile_threaded)
   string(APPEND CFLAGS " -mp")
 endif()
 if (NOT DEBUG)
-  string(APPEND CFLAGS " -O ")
+  string(APPEND CFLAGS " -O -Mnofma")
   string(APPEND FFLAGS " -O -Mnofma")
 endif()
 
