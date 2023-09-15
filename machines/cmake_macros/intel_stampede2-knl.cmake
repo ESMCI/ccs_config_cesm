@@ -1,5 +1,5 @@
-string(APPEND CFLAGS " -xCOMMON-AVX512 -no-fma")
-string(APPEND FFLAGS " -xCOMMON-AVX512 -no-fma")
+string(APPEND CFLAGS " -xCOMMON-AVX512")
+string(APPEND FFLAGS " -xCOMMON-AVX512")
 if (MPILIB STREQUAL mpi-serial)
   string(APPEND FFLAGS " -mcmodel medium")
 endif()

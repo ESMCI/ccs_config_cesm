@@ -1,5 +1,5 @@
-string(APPEND CFLAGS " -qopt-report -march=core-avx2 -mtune=core-avx2 -no-fma")
-string(APPEND FFLAGS " -qopt-report -march=core-avx2 -mtune=core-avx2 -no-fma")
+string(APPEND CFLAGS " -qopt-report -march=core-avx2 -mtune=core-avx2")
+string(APPEND FFLAGS " -qopt-report -march=core-avx2 -mtune=core-avx2")
 if (DEBUG)
   string(APPEND CMAKE_OPTS " -DPIO_ENABLE_LOGGING=ON")
 endif()
