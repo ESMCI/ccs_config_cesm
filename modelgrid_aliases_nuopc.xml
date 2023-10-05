@@ -473,6 +473,14 @@
     <mask>oQU120</mask>
   </model_grid>
 
+  <model_grid alias="TL319_oQU120" not_compset="_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">oQU120</grid>
+    <grid name="rof">JRA025v2</grid>
+    <mask>oQU120</mask>
+  </model_grid>
+
    <model_grid alias="T62_oEC60to30v3" not_compset="_CAM">
      <grid name="atm">T62</grid>
      <grid name="lnd">T62</grid>
@@ -487,11 +495,35 @@
      <mask>oQU060</mask>
    </model_grid>
 
+   <model_grid alias="TL319_oQU060" not_compset="_CAM">
+     <grid name="atm">TL319</grid>
+     <grid name="lnd">TL319</grid>
+     <grid name="ocnice">oQU060</grid>
+    <grid name="rof">JRA025v2</grid>
+     <mask>oQU060</mask>
+   </model_grid>
+
    <model_grid alias="T62_oQU030" not_compset="_CAM">
      <grid name="atm">T62</grid>
      <grid name="lnd">T62</grid>
      <grid name="ocnice">oQU030</grid>
      <mask>oQU030</mask>
+   </model_grid>
+
+   <model_grid alias="TL319_oQU030" not_compset="_CAM">
+     <grid name="atm">TL319</grid>
+     <grid name="lnd">TL319</grid>
+     <grid name="ocnice">oQU030</grid>
+     <grid name="rof">JRA025v2</grid>
+     <mask>oQU030</mask>
+   </model_grid>
+
+   <model_grid alias="TL319_oQU015" not_compset="_CAM">
+     <grid name="atm">TL319</grid>
+     <grid name="lnd">TL319</grid>
+     <grid name="ocnice">oQU015</grid>
+     <grid name="rof">JRA025v2</grid>
+     <mask>oQU015</mask>
    </model_grid>
 
    <model_grid alias="T62_oQU015" not_compset="_CAM">
@@ -508,10 +540,26 @@
      <mask>oQU0075</mask>
    </model_grid>
 
+   <model_grid alias="TL319_oQU0075" not_compset="_CAM">
+     <grid name="atm">TL319</grid>
+     <grid name="lnd">TL319</grid>
+     <grid name="ocnice">oQU0075</grid>
+     <grid name="rof">JRA025v2</grid>
+     <mask>oQU0075</mask>
+   </model_grid>
+
    <model_grid alias="T62_oQU00375" not_compset="_CAM">
      <grid name="atm">T62</grid>
      <grid name="lnd">T62</grid>
      <grid name="ocnice">oQU00375</grid>
+     <mask>oQU00375</mask>
+   </model_grid>
+
+   <model_grid alias="TL319_oQU00375" not_compset="_CAM">
+     <grid name="atm">TL319</grid>
+     <grid name="lnd">TL319</grid>
+     <grid name="ocnice">oQU00375</grid>
+     <grid name="rof">JRA025v2</grid>
      <mask>oQU00375</mask>
    </model_grid>
   <!-- finite volume grids -->

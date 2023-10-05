@@ -94,6 +94,26 @@
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/rJRA025/map_jra_to_tx2_3_nnsm_e333r100_230415.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/rJRA025/map_jra_to_tx2_3_nnsm_e333r100_230415.nc</map>
     </gridmap>
+    <gridmap rof_grid="rx1" ocn_grid="oQU120" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">rof/remap/wght_file_drof_qu120.230123.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">rof/remap/wght_file_drof_qu120.230123.nc</map>
+    </gridmap>
+    <gridmap rof_grid="r05" ocn_grid="oQU120" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">rof/remap/wght_file_mosart_qu120.230123.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">rof/remap/wght_file_mosart_qu120.230123.nc</map>
+    </gridmap>
+    <gridmap rof_grid="r05" ocn_grid="oQU060" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">rof/remap/wght_file_mosart_qu060.230613.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">rof/remap/wght_file_mosart_qu060.230613.nc</map>
+    </gridmap>
+    <gridmap rof_grid="JRA025v2" ocn_grid="oQU120" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">rof/remap/wght_file_jra_qu120.230517.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">rof/remap/wght_file_jra_qu120.230517.nc</map>
+    </gridmap>
+    <gridmap rof_grid="JRA025v2" ocn_grid="oQU060" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">rof/remap/wght_file_jra_qu060.230613.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">rof/remap/wght_file_jra_qu060.230613.nc</map>
+    </gridmap>
 
     <!-- ======================================================== -->
     <!-- GRIDS: glc to ocn mapping                                -->
