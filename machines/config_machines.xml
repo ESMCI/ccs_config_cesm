@@ -1320,9 +1320,9 @@ This allows using a different mpirun command to launch unit tests
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
       <modules>
+        <command name="purge">--force</command>
 	<command name="load">cesmdev/1.0</command>
 	<command name="load">ncarenv/23.06</command>
-        <command name="purge"/>
 	<command name="load">craype</command>
       </modules>
       <modules compiler="intel">
