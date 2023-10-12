@@ -33,6 +33,8 @@ micro_pumas_data.o \
 micro_pumas_utils.o \
 wv_sat_methods.o
 
+# RRTMGP contains openmp directives for running on GPUs.  These directives need to be
+# disabled to allow building CAM with threading on CPUs enabled.
 RRTMGP_OBJS=\
 mo_fluxes_byband.o                       mo_rrtmgp_clr_all_sky.o \
 mo_zenith_angle_spherical_correction.o   mo_gas_concentrations.o \
@@ -58,4 +60,4 @@ ifeq ($(DEBUG),FALSE)
 endif
 
 $(RRTMGP_OBJS): %.o: %.F90
-	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -fno-openmp $<
+	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -qno-openmp $<
