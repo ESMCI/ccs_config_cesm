@@ -756,9 +756,10 @@
   <batch_system MACH="zeus" type="lsf">
     <batch_env>-env</batch_env>
     <submit_args>
-      <argument> -q $JOB_QUEUE </argument>
-      <argument> -W $JOB_WALLCLOCK_TIME </argument>
-      <argument> -P $PROJECT </argument>
+      <arg flag="-q" name="$JOB_QUEUE"/>
+      <arg flag="-W" name="$JOB_WALLCLOCK_TIME"/>
+      <arg flag="-P" name="$PROJECT"/>
+      <arg flag="-x" />
     </submit_args>
     <directives>
       <directive                       > -R "span[ptile={{ tasks_per_node }}]"</directive>
