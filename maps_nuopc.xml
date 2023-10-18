@@ -83,7 +83,7 @@
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/r05/map_r05_to_tx0.66v1_e1000r300_190314.nc</map>
     </gridmap>
     <gridmap rof_grid="r05" ocn_grid="tx2_3v2" >
-      <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/r05/map_r05_to_tx2_3_nnsm_e1000r1000_230415.nc</map>
+      <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/r05/map_r05_to_tx2_3_nnsm_e250r250_230914.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/r05/map_r05_to_tx2_3_nnsm_e1000r1000_230415.nc</map>
     </gridmap>
     <gridmap rof_grid="JRA025" ocn_grid="tx0.66v1" >
@@ -141,7 +141,7 @@
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx0.66v1_nnsm_e1000r300_190314.nc</map>
     </gridmap>
     <gridmap ocn_grid="tx2_3v2" glc_grid="gris4" >
-      <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx2_3_nnsm_e1000r300_230415.nc</map>
+      <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx2_3_nnsm_e250r250_230914.nc</map>
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx2_3_nnsm_e1000r300_230415.nc</map>
     </gridmap>
 
