@@ -53,7 +53,7 @@
     <nx>72</nx> <ny>46</ny>
     <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
     <file>$DIN_LOC_ROOT/share/domains/domain.lnd.fv4x5_gx3v7.091218.nc</file>
-    <mesh>$DIN_LOC_ROOT/share/meshes/fv4x5_050615_polemod_ESMFmesh.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/share/meshes/fv4x5_050615_polemod_ESMFmesh_cdf5.nc</mesh>
     <desc>4x5 is FV 4-deg grid:</desc>
   </domain>
   <domain name="10x15">
@@ -91,6 +91,12 @@
   </domain>
 
   <!-- CAM/SE meshes -->
+  <domain name="ne3np4.pg3">
+    <nx>486</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne3pg3_ESMFmesh_c221214_cdf5.nc</mesh>
+    <desc>ne3np4 is Spectral Elem 10-deg grid with a 3x3 FVM physics grid:</desc>
+    <support>EXPERIMENTAL FVM physics grid</support>
+  </domain>
   <domain name="ne5np4">
     <nx>1352</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/ne5np4_esmf_mesh_c210121.nc</mesh>
@@ -353,6 +359,12 @@
     <desc>tx0.66v1 is tripole v1 0.66-deg MOM6 grid:</desc>
     <support>Experimental for MOM6 experiments</support>
   </domain>
+  <domain name="tx2_3v2">
+    <nx>540</nx> <ny>480</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/tx2_3v2_230415_ESMFmesh.nc</mesh>
+    <desc>tx2_3v2 is tripole v2 2/3-deg MOM6 grid:</desc>
+    <support>Experimental for MOM6 experiments</support>
+  </domain>
   <domain name="tx0.25v1">
     <nx>1440</nx> <ny>1080</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/tx0.25v1_190204_ESMFmesh.nc</mesh>
@@ -455,7 +467,7 @@
   <domain name="r05mz_amazon">
     <nx>816</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/rof/mizuRoute/meshes/r05_amazon_c110308_ctrcrd_cdf5_ESMFmesh_c20200624.nc</mesh>
-    <desc>r05_amazon is the regular 1/2 degree river routing grid, but over a region in the Amazon 
+    <desc>r05_amazon is the regular 1/2 degree river routing grid, but over a region in the Amazon
     (corresponds to the 5x5_amazon region for CTSM) </desc>
   </domain>
   <domain name="HDMAmz">
@@ -466,6 +478,15 @@
     <!-- This is a simplified mesh that only includes the polygon centers, so requires a mapping file with it -->
     <mesh>$DIN_LOC_ROOT/rof/mizuRoute/meshes/polygon_centroid/HDMAmz_global_ctrcrd_sqr_cdf5_ESMFmesh_c20201005.nc</mesh>
     <desc>HDMAmz is a medium resolution global river routing grid for mizuRoute:</desc>
+  </domain>
+  <domain name="HDMA_lake_mz">
+    <nx>298277</nx> <ny>1</ny>
+    <!-- This is the actual full mesh, but it's complex and takes hours to read
+         <mesh></mesh>
+    -->
+    <!-- This is a simplified mesh that only includes the polygon centers, so requires a mapping file with it -->
+    <mesh>$DIN_LOC_ROOT/rof/mizuRoute/meshes/polygon_centroid/HDMA_lake_mz_global_ctrcrd_sqr_cdf5_ESMFmesh_c20221117.nc</mesh>
+    <desc>HDMA_lake_mz is a medium resolution global river routing grid that includes lakes for mizuRoute:</desc>
   </domain>
   <domain name="MERITmz">
     <nx>2996635</nx> <ny>1</ny>

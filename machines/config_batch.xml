@@ -156,7 +156,6 @@
       <directive default="n"> -r {{ rerunnable }} </directive>
       <!-- <directive> -j oe {{ job_id }} </directive> -->
       <directive> -j oe </directive>
-      <directive> -V </directive>
     </directives>
   </batch_system>
 
@@ -226,34 +225,14 @@
   <!-- casper pbs -->
   <batch_system MACH="casper" type="pbs">
     <batch_submit>qsub</batch_submit>
-
-    <directives queue="casper" compiler="pgi-gpu">
-      <!-- Turn on MPS server manually -->
-      <!-- This is a temporary solution and should be removed once MPS is integrated into PBS on Casper -->
-      <directive default="/bin/bash" > -S /glade/u/apps/dav/opt/nvidia-mps/mps_bash </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=700GB:ngpus={{ ngpus_per_node }} </directive>
-      <directive> -l gpu_type=v100 </directive>
-    </directives>
-
-    <directives queue="casper" compiler="nvhpc-gpu">
-      <!-- Turn on MPS server manually -->
-      <!-- This is a temporary solution and should be removed once MPS is integrated into PBS on Casper -->
-      <directive default="/bin/bash" > -S /glade/u/apps/dav/opt/nvidia-mps/mps_bash </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=700GB:ngpus={{ ngpus_per_node }} </directive>
-      <directive> -l gpu_type=v100 </directive>
-    </directives>
-
-    <directives queue="casper" compiler="nvhpc">
+    <submit_args>
+      <argument> -l gpu_type=$GPU_TYPE </argument>
+    </submit_args>
+    <directives queue="casper" compiler="nvhpc" gpu_enabled="true">
       <directive default="/bin/bash" > -S {{ shell }} </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=700GB:ngpus={{ ngpus_per_node }} </directive>
+      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=700GB:ngpus={{ ngpus_per_node }}:mps=1 </directive>
     </directives>
-
-    <directives queue="casper" compiler="pgi">
-      <directive default="/bin/bash" > -S {{ shell }} </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=700GB:ngpus={{ ngpus_per_node }} </directive>
-    </directives>
-
-    <directives queue="casper" compiler="intel">
+    <directives queue="casper" gpu_enabled="false">
       <directive default="/bin/bash" > -S {{ shell }} </directive>
       <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=700GB:ngpus={{ ngpus_per_node }} </directive>
     </directives>
@@ -376,6 +355,21 @@
     </queues>
   </batch_system>
 
+  <batch_system MACH="derecho" type="pbs" >
+    <batch_submit>qsub</batch_submit>
+    <directives gpu_enabled="false">
+      <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=230GB</directive>
+    </directives>
+    <directives gpu_enabled="true">
+      <directive default="/bin/bash" > -S {{ shell }} </directive>
+      <directive> -l select={{ num_nodes }}:ncpus={{ max_cputasks_per_gpu_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=480GB:ngpus={{ ngpus_per_node }}:mps=1 </directive>
+    </directives>
+    <queues>
+      <queue walltimemax="4:00:00" nodemin="1" nodemax="2488" >main</queue>
+    </queues>
+  </batch_system>
+
   <batch_system MACH="eastwind" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
@@ -385,19 +379,6 @@
     </submit_args>
     <queues>
       <queue nodemin="1" nodemax="833" default="true">batch</queue>
-    </queues>
-  </batch_system>
-
-  <batch_system MACH="edison" type="slurm" >
-    <batch_submit>sbatch</batch_submit>
-    <submit_args>
-      <argument> --time $JOB_WALLCLOCK_TIME </argument>
-      <argument> -q $JOB_QUEUE </argument>
-      <argument> --account $PROJECT </argument>
-    </submit_args>
-    <queues>
-      <queue walltimemax="36:00:00" nodemin="1" nodemax="2712" >regular</queue>
-      <queue walltimemax="00:30:00" nodemin="1" nodemax="256" default="true">debug</queue>
     </queues>
   </batch_system>
 
@@ -503,17 +484,24 @@
 
   <batch_system MACH="gust" type="pbs" >
     <batch_submit>qsub</batch_submit>
-    <directives>
+    <submit_args>
+      <argument> -l gpu_type=$GPU_TYPE </argument>
+    </submit_args>
+    <directives queue="main" gpu_enabled="false">
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
       <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}</directive>
+    </directives>
+    <directives queue="main" gpu_enabled="true">
+      <directive default="/bin/bash" > -S {{ shell }} </directive>
+      <directive> -l select={{ num_nodes }}:ncpus={{ max_cputasks_per_gpu_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=430GB:ngpus={{ ngpus_per_node }} </directive>
+      <!-- Do not use MPS on Gust yet as it conflicts with cray-mpich library -->
+      <!-- <directive> -l select={{ num_nodes }}:ncpus={{ max_cputasks_per_gpu_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=430GB:ngpus={{ ngpus_per_node }}:mps=1 </directive> -->
     </directives>
     <queues>
       <queue walltimemax="4:00:00" nodemin="1" nodemax="8" >main</queue>
       <queue walltimemax="1:00:00" nodemin="9" nodemax="16" >bigcpu</queue>
     </queues>
   </batch_system>
-
-
 
   <!-- hobart is PBS -->
   <batch_system type="pbs" MACH="hobart" >
@@ -633,7 +621,7 @@
   <!-- NAS pleiades machines -->
   <batch_system type="pbs" MACH="pleiades-bro" >
     <submit_args>
-      <argument> -W group_list= $PROJECT </argument>
+      <argument> -W group_list=$PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=bro</directive>
@@ -648,7 +636,7 @@
 
   <batch_system type="pbs" MACH="pleiades-has" >
     <submit_args>
-      <argument> -W group_list= $PROJECT </argument>
+      <argument> -W group_list=$PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=has</directive>
@@ -663,7 +651,7 @@
 
   <batch_system type="pbs" MACH="pleiades-ivy" >
     <submit_args>
-      <argument> -W group_list= $PROJECT </argument>
+      <argument> -W group_list=$PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=ivy</directive>
@@ -678,7 +666,7 @@
 
   <batch_system type="pbs" MACH="pleiades-san" >
     <submit_args>
-      <argument> -W group_list= $PROJECT </argument>
+      <argument> -W group_list=$PROJECT </argument>
     </submit_args>
     <directives>
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=san</directive>
