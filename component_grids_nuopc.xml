@@ -104,6 +104,12 @@
     <desc>ne3np4 is Spectral Elem 10-deg grid with a 3x3 FVM physics grid:</desc>
     <support>EXPERIMENTAL FVM physics grid</support>
   </domain>
+  <domain name="ne4np4">
+    <nx>866</nx> <ny>1</ny>
+    <file>$DIN_LOC_ROOT/share/domains/domain.lnd.ne4np4_oQU240.160614.nc</file>
+    <desc>ne4np4 is Spectral Elem 10-deg grid:</desc>
+    <support>EXPERIMENTAL FVM physics grid</support>
+  </domain>
   <domain name="ne5np4">
     <nx>1352</nx> <ny>1</ny>
     <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
