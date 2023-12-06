@@ -408,7 +408,7 @@ This allows using a different mpirun command to launch unit tests
 
    <machine MACH="casper">
     <DESC>NCAR GPU platform, os is Linux, 36 pes/node, batch system is pbs</DESC>
-    <NODENAME_REGEX>casper*</NODENAME_REGEX>
+    <NODENAME_REGEX>$ENV{NCAR_HOST}:casper</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>nvhpc,intel</COMPILERS>
     <MPILIBS>openmpi</MPILIBS>
@@ -440,86 +440,55 @@ This allows using a different mpirun command to launch unit tests
         <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
       </arguments>
     </mpirun>
-    <module_system type="module">
-      <init_path lang="perl">/glade/u/apps/dav/opt/lmod/7.7.29/init/perl</init_path>
-      <init_path lang="python">/glade/u/apps/dav/opt/lmod/7.7.29/init/env_modules_python.py</init_path>
-      <init_path lang="sh">/glade/u/apps/dav/opt/lmod/7.7.29/init/sh</init_path>
-      <init_path lang="csh">/glade/u/apps/dav/opt/lmod/7.7.29/init/csh</init_path>
-      <cmd_path lang="perl">/glade/u/apps/dav/opt/lmod/7.7.29/libexec/lmod perl</cmd_path>
-      <cmd_path lang="python">/glade/u/apps/dav/opt/lmod/7.7.29/libexec/lmod python</cmd_path>
+    <module_system type="module" allow_error="true">
+      <init_path lang="perl">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/init/perl</init_path>
+      <init_path lang="python">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/init/env_modules_python.py</init_path>
+      <init_path lang="sh">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/init/sh</init_path>
+      <init_path lang="csh">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/init/csh</init_path>
+      <cmd_path lang="perl">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/libexec/lmod perl</cmd_path>
+      <cmd_path lang="python">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/libexec/lmod python</cmd_path>
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
       <modules>
         <command name="purge"/>
-        <command name="load">ncarenv/1.3</command>
-        <command name="load">cmake/3.18.2</command>
+        <command name="load">ncarenv/23.10</command>
+        <command name="load">cmake/3.26.3</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/22.2</command>
+        <command name="load">nvhpc/23.7</command>
       </modules>
       <modules compiler="intel">
-        <command name="load">intel/19.1.1</command>
-        <command name="load">mkl/2020.0.1</command>
+        <command name="load">intel/2023.2.1</command>
+        <command name="load">mkl/2023.2.0</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="!none">
-        <command name="load">cuda/11.6</command>
+        <command name="load">cuda/12.2.1</command>
       </modules>
       <modules mpilib="openmpi" compiler="nvhpc">
-        <command name="load">openmpi/4.1.4</command>
-        <command name="load">netcdf-mpi/4.8.1</command>
-        <command name="load">pnetcdf/1.12.3</command>
+        <command name="load">openmpi/4.1.6</command>
+        <command name="load">netcdf-mpi/4.9.2</command>
+        <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
       <modules mpilib="mpi-serial" compiler="nvhpc">
-        <command name="load">netcdf/4.8.1</command>
+        <command name="load">netcdf/4.9.2</command>
       </modules>
       <modules mpilib="openmpi" compiler="intel">
-        <command name="load">openmpi/4.1.1</command>
-        <command name="load">netcdf-mpi/4.8.1</command>
-        <command name="load">pnetcdf/1.12.2</command>
+        <command name="load">openmpi/4.1.6</command>
+        <command name="load">netcdf-mpi/4.9.2</command>
+        <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
-      <modules mpilib="mpi-serial" compiler="intel">
-        <command name="load">netcdf/4.7.4</command>
-      </modules>
-      <!-- prebuild ESMF lib for NUOPC driver -->
-      <modules compiler="intel" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-g</command>
-      </modules>
-      <modules compiler="intel" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-O</command>
-      </modules>
-      <modules compiler="nvhpc" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.1b01-ncdfio-openmpi-g</command>
-      </modules>
-      <modules compiler="nvhpc" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.1b01-ncdfio-openmpi-O</command>
-      </modules>
-      <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
-        <command name="load">esmf-8.2.0b11_casper-ncdfio-openmpi-O</command>
+      <modules mpilib="mpi-serial">
+        <command name="load">netcdf/4.9.2</command>
       </modules>
       <modules>
-        <command name="load">ncarcompilers/0.5.0</command>
-      </modules>
-      <modules compiler="!pgi" DEBUG="FALSE" mpilib="openmpi">
-        <command name="load">pio/2.5.10</command>
-      </modules>
-      <modules compiler="!pgi" DEBUG="TRUE" mpilib="openmpi">
-        <command name="load">pio/2.5.10d</command>
+        <command name="load">parallelio/2.6.2</command>
+        <command name="load">esmf/8.5.0</command>
+        <command name="load">ncarcompilers/1.0.0</command>
       </modules>
     </module_system>
     <environment_variables>
-      <env name="MODULEPATH">/glade/u/apps/dav/modulefiles/default/compilers:/glade/u/apps/dav/modulefiles/default/idep</env>
       <env name="OMP_STACKSIZE">256M</env>
       <env name="TMPDIR">/glade/scratch/$USER</env>
-      <env name="CESMDATAROOT">/glade/p/cesmdata/cseg</env>
       <env name="NETCDF_PATH">$ENV{NETCDF}</env>
     </environment_variables>
     <environment_variables comp_interface="nuopc">
@@ -1258,7 +1227,7 @@ This allows using a different mpirun command to launch unit tests
 
   <machine MACH="derecho">
     <DESC>NCAR AMD EPYC system</DESC>
-    <NODENAME_REGEX>de.*.hpc.ucar.edu</NODENAME_REGEX>
+    <NODENAME_REGEX>$ENV{NCAR_HOST}:derecho</NODENAME_REGEX>
     <OS>CNL</OS>
     <COMPILERS>intel,gnu,nvhpc,intel-oneapi,intel-classic</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
