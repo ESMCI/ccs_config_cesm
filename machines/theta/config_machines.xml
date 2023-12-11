@@ -1,6 +1,5 @@
   <machine MACH="theta">
     <DESC>ALCF Cray XC* KNL, os is CNL, 64 pes/node, batch system is cobalt</DESC>
-    <NODENAME_REGEX>theta.*</NODENAME_REGEX>
     <OS>CNL</OS>
     <COMPILERS>intel,gnu,cray</COMPILERS>
     <MPILIBS>mpt</MPILIBS>

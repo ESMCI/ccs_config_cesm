@@ -1,6 +1,5 @@
   <machine MACH="melvin">
     <DESC>Linux workstation for Jenkins testing</DESC>
-    <NODENAME_REGEX>(melvin|watson)</NODENAME_REGEX>
     <OS>LINUX</OS>
     <PROXY>sonproxy.sandia.gov:80</PROXY>
     <COMPILERS>gnu</COMPILERS>

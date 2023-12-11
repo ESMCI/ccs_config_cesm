@@ -1,7 +1,6 @@
 
   <machine MACH="stampede2-skx">
     <DESC>Intel Xeon Platinum 8160 ("Skylake"),48 cores on two sockets (24 cores/socket) , batch system is SLURM</DESC>
-    <NODENAME_REGEX>.*stampede2</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>impi,mvapich2</MPILIBS>

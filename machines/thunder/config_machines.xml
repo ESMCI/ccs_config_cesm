@@ -1,6 +1,5 @@
   <machine MACH="thunder">
     <DESC>NCAR ARM platform, os is Linux, 64/128 pes/node, batch system is SLURM</DESC>
-    <NODENAME_REGEX>.*.thunder.ucar.edu</NODENAME_REGEX>
     <OS>LINUX</OS>
     <!-- arm LLVM compiler support is a work in progress -->
     <COMPILERS>armgcc,gnu,arm</COMPILERS>

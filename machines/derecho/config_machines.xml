@@ -1,6 +1,5 @@
   <machine MACH="derecho">
     <DESC>NCAR AMD EPYC system</DESC>
-    <NODENAME_REGEX>$ENV{NCAR_HOST}:derecho</NODENAME_REGEX>
     <OS>CNL</OS>
     <COMPILERS>intel,gnu,nvhpc,intel-oneapi,intel-classic</COMPILERS>
     <MPILIBS>mpich</MPILIBS>

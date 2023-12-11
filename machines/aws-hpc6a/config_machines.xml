@@ -1,6 +1,5 @@
   <machine MACH="aws-hpc6a">
     <DESC>AWS HPC6a (96-core AMD) Nodes</DESC>
-    <NODENAME_REGEX>regular-dy-computehpc6a-.*</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>impi</MPILIBS>

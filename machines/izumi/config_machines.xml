@@ -1,6 +1,5 @@
     <machine MACH="izumi">
     <DESC>NCAR CGD Linux Cluster 48 pes/node, batch system is PBS</DESC>
-    <NODENAME_REGEX>^i.*\.ucar\.edu</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel,nag,gnu</COMPILERS>
     <MPILIBS>mvapich2,openmpi</MPILIBS>

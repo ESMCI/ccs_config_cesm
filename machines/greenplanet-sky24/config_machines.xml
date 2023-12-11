@@ -1,6 +1,5 @@
   <machine MACH="greenplanet-sky24">
     <DESC>UCI Linux Cluster; 40 pes/node, batch system is slurm</DESC>
-    <NODENAME_REGEX>gplogin\d.gp.local</NODENAME_REGEX>
     <OS>LINUX</OS>
     <!-- PROXY: optional http proxy for access to the internet-->
     <!-- <PROXY> https://howto.get.out </PROXY> -->

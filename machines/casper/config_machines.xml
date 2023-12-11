@@ -1,6 +1,5 @@
 <machine MACH="casper">
     <DESC>NCAR GPU platform, os is Linux, 36 pes/node, batch system is pbs</DESC>
-    <NODENAME_REGEX>casper*</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>nvhpc,intel</COMPILERS>
     <MPILIBS>openmpi</MPILIBS>

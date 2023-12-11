@@ -1,7 +1,6 @@
 
   <machine MACH="athena">
     <DESC> CMCC IBM iDataPlex, os is Linux, 16 pes/node, batch system is LSFd mpich</DESC>
-    <NODENAME_REGEX>.*.cluster.net</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel,intel15</COMPILERS>
     <MPILIBS>mpich2</MPILIBS>

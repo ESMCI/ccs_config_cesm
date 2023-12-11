@@ -1,6 +1,5 @@
   <machine MACH="gust">
     <DESC>NCAR AMD EPYC test system 16 CPU nodes 2 GPU nodes</DESC>
-    <NODENAME_REGEX>gu.*.hpc.ucar.edu</NODENAME_REGEX>
     <OS>CNL</OS>
     <COMPILERS>intel,gnu,cray,nvhpc,intel-oneapi,intel-classic</COMPILERS>
     <MPILIBS>mpich</MPILIBS>

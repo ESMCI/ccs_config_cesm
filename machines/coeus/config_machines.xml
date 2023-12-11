@@ -2,7 +2,6 @@
     <DESC>
       Portland State University Coeus Cluster Dec 2019 CentOS 7
     </DESC>
-    <NODENAME_REGEX>(login[1,2].cluster|compute[0-9]*.cluster)</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>gnu</COMPILERS>
     <MPILIBS>mvapich2</MPILIBS>

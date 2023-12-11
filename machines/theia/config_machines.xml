@@ -1,6 +1,5 @@
   <machine MACH="theia">
     <DESC>theia</DESC>
-    <NODENAME_REGEX>tfe</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>impi</MPILIBS>

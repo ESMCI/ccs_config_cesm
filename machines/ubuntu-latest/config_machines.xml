@@ -2,7 +2,6 @@
     <DESC>
       used for github testing
     </DESC>
-    <NODENAME_REGEX>$ENV{CIME_TEST_PLATFORM}:ubuntu-latest</NODENAME_REGEX>
     <OS>LINUX</OS>
     <PROXY/>
     <COMPILERS>gnu</COMPILERS>

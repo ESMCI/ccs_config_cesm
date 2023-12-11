@@ -1,6 +1,5 @@
   <machine MACH="lobata">
     <DESC>FATES development machine at LBNL, System76 Thelio Massive Workstation Pop!_OS 20.04</DESC>
-    <NODENAME_REGEX>lobata</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>gnu</COMPILERS>
     <MPILIBS>openmpi</MPILIBS>

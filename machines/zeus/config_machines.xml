@@ -1,7 +1,6 @@
 
   <machine MACH="zeus">
     <DESC> CMCC Lenovo ThinkSystem SD530, os is Linux, 36 pes/node, batch system is LSF</DESC>
-    <NODENAME_REGEX>(login[1,2]-ib|n[0-9][0-9][0-9]-ib)</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>impi,mpi-serial</MPILIBS>

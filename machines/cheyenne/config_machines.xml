@@ -1,6 +1,5 @@
   <machine MACH="cheyenne">
     <DESC>NCAR SGI platform, os is Linux, 36 pes/node, batch system is PBS</DESC>
-    <NODENAME_REGEX>.*.?cheyenne\d?.ucar.edu</NODENAME_REGEX>
     <!-- MPT sometimes timesout at model start time, the next two lines cause
     case_run.py to detect the timeout and retry FORCE_SPARE_NODES times -->
     <MPIRUN_RETRY_REGEX>MPT: Launcher network accept (MPI_LAUNCH_TIMEOUT) timed out</MPIRUN_RETRY_REGEX>

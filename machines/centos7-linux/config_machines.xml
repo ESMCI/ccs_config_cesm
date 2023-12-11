@@ -3,7 +3,9 @@
       Example port to centos7 linux system with gcc, netcdf, pnetcdf and mpich
       using modules from http://www.admin-magazine.com/HPC/Articles/Environment-Modules
     </DESC>
-    <NODENAME_REGEX>regex.expression.matching.your.machine</NODENAME_REGEX>
+    <!-- Moved to top level config_machines.xml
+         <NODENAME_REGEX>regex.expression.matching.your.machine</NODENAME_REGEX>
+         -->
     <OS>LINUX</OS>
     <PROXY> https://howto.get.out </PROXY>
     <COMPILERS>gnu</COMPILERS>

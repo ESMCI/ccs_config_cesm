@@ -1,6 +1,5 @@
   <machine MACH="perlmutter">
     <DESC>NERSC EX AMD EPYC, os is CNL, 64 pes/node, batch system is Slurm</DESC>
-    <NODENAME_REGEX>$ENV{NERSC_HOST}:perlmutter</NODENAME_REGEX>
     <OS>CNL</OS>
     <COMPILERS>gnu,cray,nvidia,aocc</COMPILERS>
     <MPILIBS>mpich</MPILIBS>

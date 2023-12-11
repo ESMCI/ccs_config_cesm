@@ -1,7 +1,5 @@
-
   <machine MACH="lonestar5">
     <DESC>Lonestar5 cluster at TACC, OS is Linux (intel), batch system is SLURM</DESC>
-    <NODENAME_REGEX>.*ls5\.tacc\.utexas\.edu</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>mpich</MPILIBS>

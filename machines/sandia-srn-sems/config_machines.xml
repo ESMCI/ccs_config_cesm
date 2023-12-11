@@ -1,7 +1,6 @@
 
   <machine MACH="sandia-srn-sems">
     <DESC>Linux workstation at Sandia on SRN with SEMS TPL modules</DESC>
-    <NODENAME_REGEX>(s999964|climate|penn)</NODENAME_REGEX>
     <OS>LINUX</OS>
     <PROXY>wwwproxy.sandia.gov:80</PROXY>
     <COMPILERS>gnu</COMPILERS>

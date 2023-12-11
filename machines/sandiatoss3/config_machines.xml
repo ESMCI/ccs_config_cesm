@@ -1,6 +1,5 @@
   <machine MACH="sandiatoss3">
     <DESC>SNL clust</DESC>
-    <NODENAME_REGEX>(skybridge|chama)-login</NODENAME_REGEX>
     <OS>LINUX</OS>
     <PROXY>wwwproxy.sandia.gov:80</PROXY>
     <COMPILERS>intel</COMPILERS>
