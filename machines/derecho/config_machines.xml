@@ -99,7 +99,7 @@
 	<command name="load">esmf/8.6.0</command>
       </modules>
 
-      <modules DEBUG="FALSE" mpilib="!mpi-serial">
+      <modules DEBUG="TRUE" mpilib="!mpi-serial">
 	<command name="load">parallelio/2.6.2-debug</command>
 	<command name="load">esmf/8.6.0-debug</command>
       </modules>
