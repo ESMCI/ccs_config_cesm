@@ -40,35 +40,24 @@ macrop_driver.o \
 shr_spfn_mod.o
 
 RRTMGP_OBJS=\
-mo_rte_util_array.o \
-mo_rte_sw.o \
-mo_rte_lw.o \
-mo_cloud_optics.o \
-mo_gas_optics_rrtmgp.o \
+rrtmgp_allsky.o \
+rrtmgp_rfmip_lw.o \
+rrtmgp_rfmip_sw.o \
+mo_fluxes_byband.o \
+mo_zenith_angle_spherical_correction.o \
+mo_rrtmgp_clr_all_sky.o \
 mo_gas_concentrations.o \
+mo_aerosol_optics_rrtmgp_merra.o \
+mo_cloud_optics_rrtmgp.o \
+mo_gas_optics_rrtmgp.o \
+mo_gas_optics_rrtmgp_kernels.o \
+mo_rte_lw.o \
+mo_rte_sw.o \
+mo_rte_util_array_validation.o \
+mo_rte_util_array.o \
 mo_fluxes_broadband_kernels.o \
-mo_fluxes_byband_kernels.o \
-mo_rrtmgp_util_reorder_kernels.o \
-mo_compute_bc.o\
-mo_fluxes_byband.o\
-mo_fluxes_bygpoint.o\
-mo_heating_rates.o\
-mo_rrtmgp_clr_all_sky.o\
-mo_cloud_sampling.o\
-mo_solar_variability.o\
-mo_gas_optics.o\
-mo_rrtmgp_constants.o\
-mo_rrtmgp_util_reorder.o\
-mo_rrtmgp_util_string.o\
-mo_fluxes.o\
-mo_optical_props.o\
-mo_rte_config.o\
-mo_rte_kind.o\
-mo_source_functions.o\
-mo_optical_props_kernels.o\
-mo_rte_solver_kernels.o\
-rrtmgp_driver.o\
-mo_gas_optics_kernels.o
+mo_rte_solver_kernels.o \
+mo_optical_props_kernels.o
 
 ifeq ($(DEBUG),FALSE)
   $(PERFOBJS): %.o: %.F90
