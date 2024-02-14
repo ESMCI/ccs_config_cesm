@@ -617,8 +617,8 @@
       <directive>-C gpu </directive>
     </directives>
     <queues>
-      <queue walltimemax="06:00:00" nodemin="1" nodemax="128">regular</queue>
-      <queue walltimemax="02:00:00" nodemin="1" nodemax="4" default="true">debug</queue>
+      <queue walltimemax="02:00:00" nodemin="1" nodemax="128">regular</queue>
+      <queue walltimemax="00:30:00" nodemin="1" nodemax="4" default="true">debug</queue>
     </queues>
   </batch_system>
 
