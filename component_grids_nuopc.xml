@@ -402,8 +402,8 @@
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU120">
-      <nx>28571</nx>  <ny>1</ny>
-      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU120_ESMFmesh.nc</mesh>
+      <nx>28876</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU120/oQU120_ESMFmesh.230524.nc</mesh>
       <desc>oQU120 is a MPAS ocean grid that is roughly 1 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
@@ -414,32 +414,32 @@
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU060">
-      <nx>115528</nx>  <ny>1</ny>
-      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU060_ESMFmesh.nc</mesh>
+      <nx>115494</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU060/oQU060_ESMFmesh.230907.nc</mesh>
       <desc>oQU060 is a MPAS ocean grid that is roughly 1/2 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU030">
-      <nx>463535</nx>  <ny>1</ny>
-      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU030_ESMFmesh.nc</mesh>
+      <nx>462075</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU030/oQU030_ESMFmesh.230907.nc</mesh>
       <desc>oQU030 is a MPAS ocean grid that is roughly 1/4 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU015">
-      <nx>1849027</nx>  <ny>1</ny>
-      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU015_ESMFmesh.nc</mesh>
+      <nx>1851581</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU015/oQU015_ESMFmesh.230907.nc</mesh>
       <desc>oQU015 is a MPAS ocean grid that is roughly 1/8 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU0075">
       <nx>1849027</nx>  <ny>1</ny>
-      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU0075_ESMFmesh.nc</mesh>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU0075/oQU0075_ESMFmesh.230907.nc</mesh>
       <desc>oQU00375 is a MPAS ocean grid that is roughly 1/16 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU00375">
       <nx>1849027</nx>  <ny>1</ny>
-      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU00375_ESMFmesh.nc</mesh>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU00375/oQU00375_ESMFmesh.230907nc</mesh>
       <desc>oQU00375 is a MPAS ocean grid that is roughly 1/32 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
