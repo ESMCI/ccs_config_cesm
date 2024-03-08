@@ -156,7 +156,7 @@
       <directive default="n"> -r {{ rerunnable }} </directive>
       <!-- <directive> -j oe {{ job_id }} </directive> -->
       <directive> -j oe </directive>
-      <directive> -V </directive>
+      <!--      <directive> -V </directive> -->
     </directives>
   </batch_system>
 
