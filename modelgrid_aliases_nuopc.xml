@@ -1245,6 +1245,13 @@
     <mask>tx0.1v2</mask>
   </model_grid>
 
+  <model_grid alias="ne0POLARCAPne30x4_ne0POALRCAPne30x4_mt12" not_compset="_POP">
+    <grid name="atm">ne0np4.POLARCAP.ne30x4</grid>
+    <grid name="lnd">ne0np4.POLARCAP.ne30x4</grid>
+    <grid name="ocnice">ne0np4.POLARCAP.ne30x4</grid>
+    <mask>tx0.1v2</mask>
+  </model_grid>
+
   <!-- MPAS-A grids -->
 
   <model_grid alias="mpasa480_mpasa480" not_compset="_POP">
@@ -1296,18 +1303,11 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="mpasa15-3_mpasa15-3" not_compset="_POP">
-    <grid name="atm">mpasa15-3</grid>
-    <grid name="lnd">mpasa15-3</grid>
-    <grid name="ocnice">mpasa15-3</grid>
-    <mask>gx1v7</mask>
-  </model_grid>
-
-  <model_grid alias="mpasa15-3-conus_mpasa15-3-conus" not_compset="_POP">
-    <grid name="atm">mpasa15-3</grid>
-    <grid name="lnd">mpasa15-3</grid>
-    <grid name="ocnice">mpasa15-3</grid>
-    <mask>gx1v7</mask>
+  <model_grid alias="mpasa15-3-conus_mpasa15-3-conus_mt13" not_compset="_POP">
+    <grid name="atm">mpasa15-3conus</grid>
+    <grid name="lnd">mpasa15-3conus</grid>
+    <grid name="ocnice">mpasa15-3conus</grid>
+    <mask>tx0.1v3</mask>
   </model_grid>
 
   <model_grid alias="mpasa7p5_mpasa7p5_mg17" not_compset="_POP">
