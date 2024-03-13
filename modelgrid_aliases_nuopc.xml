@@ -1245,7 +1245,7 @@
     <mask>tx0.1v2</mask>
   </model_grid>
 
-  <model_grid alias="ne0POLARCAPne30x4_ne0POALRCAPne30x4_mt12" not_compset="_POP">
+  <model_grid alias="ne0POLARCAPne30x4_ne0POLARCAPne30x4_mt12" not_compset="_POP">
     <grid name="atm">ne0np4.POLARCAP.ne30x4</grid>
     <grid name="lnd">ne0np4.POLARCAP.ne30x4</grid>
     <grid name="ocnice">ne0np4.POLARCAP.ne30x4</grid>
