@@ -93,10 +93,10 @@
   <!-- CAM/SE meshes -->
   <domain name="ne3np4">
     <nx>488</nx> <ny>1</ny>
+    <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
     <file>$DIN_LOC_ROOT/share/domains/domain.lnd.ne3np4_gx3v7.230718.nc</file>
     <mesh>$DIN_LOC_ROOT/share/meshes/ne3np4_ESMFmesh_c230714_cdf5.nc</mesh>
     <desc>ne3np4 is Spectral Elem 10-deg grid:</desc>
-    <support>EXPERIMENTAL FVM physics grid</support>
   </domain>
   <domain name="ne3np4.pg3">
     <nx>486</nx> <ny>1</ny>
