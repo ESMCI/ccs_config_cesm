@@ -847,6 +847,13 @@
     <mask>gx3v7</mask>
   </model_grid>
 
+  <model_grid alias="ne3_ne3_mg37" not_compset="_POP">
+    <grid name="atm">ne3np4</grid>
+    <grid name="lnd">ne3np4</grid>
+    <grid name="ocnice">ne3np4</grid>
+    <mask>gx3v7</mask>
+  </model_grid>
+
   <model_grid alias="ne5_ne5_mg37" not_compset="_POP">
     <grid name="atm">ne5np4</grid>
     <grid name="lnd">ne5np4</grid>

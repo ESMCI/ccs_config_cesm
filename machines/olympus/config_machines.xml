@@ -1,0 +1,45 @@
+  <machine MACH="olympus">
+    <DESC>PNL cluster, os is Linux (pgi), batch system is SLURM</DESC>
+    <OS>LINUX</OS>
+    <COMPILERS>pgi</COMPILERS>
+    <MPILIBS>mpich</MPILIBS>
+    <CIME_OUTPUT_ROOT>/pic/scratch/$USER</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>/pic/scratch/tcraig/IRESM/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/pic/scratch/tcraig/IRESM/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>/pic/scratch/$USER/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>/pic/scratch/tcraig/IRESM/ccsm_baselines</BASELINE_ROOT>
+    <CCSM_CPRNC>/pic/scratch/tcraig/IRESM/tools/cprnc/cprnc</CCSM_CPRNC>
+    <GMAKE_J>8</GMAKE_J>
+    <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
+    <SUPPORTED_BY>tcraig -at- ucar.edu</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>32</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>32</MAX_MPITASKS_PER_NODE>
+    <PROJECT_REQUIRED>FALSE</PROJECT_REQUIRED>
+    <mpirun mpilib="default">
+      <executable>mpiexec_mpt</executable>
+      <arguments>
+        <arg name="mpi">--mpi=none</arg>
+        <arg name="num_tasks">-n={{ total_tasks }}</arg>
+        <arg name="kill-on-bad-exit">--kill-on-bad-exit</arg>
+      </arguments>
+    </mpirun>
+    <module_system type="module">
+      <init_path lang="perl">/share/apps/modules/Modules/3.2.7/init/perl.pm</init_path>
+      <init_path lang="csh">/share/apps/modules/Modules/3.2.7/init/csh</init_path>
+      <init_path lang="sh">/share/apps/modules/Modules/3.2.7/init/sh</init_path>
+      <cmd_path lang="perl">/share/apps/modules/Modules/3.2.7/bin/modulecmd perl</cmd_path>
+      <cmd_path lang="csh">module</cmd_path>
+      <cmd_path lang="sh">module</cmd_path>
+      <modules>
+        <command name="purge"/>
+        <command name="load">precision/i4</command>
+        <command name="load">pgi/11.8</command>
+        <command name="load">mvapich2/1.7</command>
+        <command name="load">netcdf/4.1.3</command>
+      </modules>
+    </module_system>
+    <environment_variables>
+      <env name="OMP_STACKSIZE">64M</env>
+    </environment_variables>
+  </machine>
+
