@@ -431,6 +431,20 @@
     <grid name="ocnice">tx2_3v2</grid>
   </model_grid>
 
+  <model_grid alias="f09_t232_gris4">
+    <grid name="atm">0.9x1.25</grid>
+    <grid name="lnd">0.9x1.25</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="glc">gris4</grid>
+  </model_grid>
+
+    <model_grid alias="f09_t232_ais8gris4">
+    <grid name="atm">0.9x1.25</grid>
+    <grid name="lnd">0.9x1.25</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="glc">ais8:gris4</grid>
+  </model_grid>
+
   <model_grid alias="T62_g16" not_compset="_CAM">
     <grid name="atm">T62</grid>
     <grid name="lnd">T62</grid>
@@ -896,6 +910,22 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="ne30pg3_g17_gris4">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">gx1v7</grid>
+    <grid name="glc">gris4</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="ne30pg3_g17_ais8gris4">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">gx1v7</grid>
+    <grid name="glc">ais8:gris4</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
   <model_grid alias="ne30pg3_t061">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
@@ -907,6 +937,14 @@
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
+
+    <model_grid alias="ne30pg3_t232_gris4">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="glc">gris4</grid>
     <mask>tx2_3v2</mask>
   </model_grid>
 
