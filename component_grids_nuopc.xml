@@ -249,12 +249,6 @@
     <desc>ne0np4.ARCTICGRIS.ne30x8 is a Spectral Elem 1-deg grid with a 1/8 deg refined region over Greenland:</desc>
     <support>Test support only</support>
   </domain>
-  <domain name="ne0np4.POLARCAP.ne30x4">
-    <nx>186194</nx> <ny>1</ny>
-    <mesh>/glade/work/aherring/grids/var-res/ne0np4.POLARRES.ne30x4/grids/polarcap/POLARCAP_ne30x4_np4_MESH_cdf5.nc</mesh>
-    <desc>ne0np4.POLARCAP.ne30x4 is a Spectral Elem 1-deg grid with a 1/4 deg refined region over the Arctic and Antarctica:</desc>
-    <support>Test support only</support>
-  </domain>
 
   <!-- CAM/MPAS meshes -->
   <domain name="mpasa480">
