@@ -1137,10 +1137,10 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="mpasa15-3_mpasa15-3" not_compset="_POP">
-    <grid name="atm">mpasa15-3</grid>
-    <grid name="lnd">mpasa15-3</grid>
-    <grid name="ocnice">mpasa15-3</grid>
+  <model_grid alias="mpasa15-3conus_mpasa15-3conus" not_compset="_POP">
+    <grid name="atm">mpasa15-3conus</grid>
+    <grid name="lnd">mpasa15-3conus</grid>
+    <grid name="ocnice">mpasa15-3conus</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
