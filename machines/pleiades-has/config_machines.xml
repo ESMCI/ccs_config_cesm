@@ -1,0 +1,53 @@
+  <machine MACH="pleiades-has">
+    <DESC>NASA/AMES Linux Cluster, Linux (ia64), 2.5 GHz Haswell Intel Xeon E5-2680v3 processors, 24 pes/node (two 12-core processors) and 128 GB of memory/node, batch system is PBS</DESC>
+    <OS>LINUX</OS>
+    <COMPILERS>intel</COMPILERS>
+    <MPILIBS>mpt</MPILIBS>
+    <CIME_OUTPUT_ROOT>/nobackup/$USER</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>/nobackup/fvitt/csm/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/nobackup/fvitt/csm/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>/nobackup/$USER/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>/nobackup/fvitt/cesm_baselines</BASELINE_ROOT>
+    <CCSM_CPRNC>/u/fvitt/bin/cprnc</CCSM_CPRNC>
+    <GMAKE_J>8</GMAKE_J>
+    <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
+    <SUPPORTED_BY>fvitt -at- ucar.edu</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>24</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>24</MAX_MPITASKS_PER_NODE>
+    <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
+    <mpirun mpilib="default">
+      <executable>mpiexec_mpt</executable>
+      <arguments>
+        <arg name="num_tasks">-n {{ total_tasks }}</arg>
+      </arguments>
+    </mpirun>
+    <module_system type="module">
+      <init_path lang="perl">/usr/share/Modules/init/perl.pm</init_path>
+      <init_path lang="sh">/usr/share/Modules/init/sh</init_path>
+      <init_path lang="csh">/usr/share/Modules/init/csh</init_path>
+      <init_path lang="python">/usr/share/Modules/init/python.py</init_path>
+      <cmd_path lang="perl">/usr/bin/modulecmd perl</cmd_path>
+      <cmd_path lang="python">/usr/bin/modulecmd python</cmd_path>
+      <cmd_path lang="csh">module</cmd_path>
+      <cmd_path lang="sh">module</cmd_path>
+      <modules>
+        <command name="purge"/>
+        <command name="load">nas</command>
+        <command name="load">pkgsrc</command>
+        <command name="load">python3</command>
+        <command name="load">comp-intel/2020.4.304</command>
+        <command name="load">mpi-hpe/mpt.2.25</command>
+        <command name="load">szip/2.1.1</command>
+        <command name="load">hdf4/4.2.12</command>
+        <command name="load">hdf5/1.8.18_mpt</command>
+        <command name="load">netcdf/4.4.1.1_mpt</command>
+      </modules>
+    </module_system>
+    <environment_variables>
+      <env name="MPI_GROUP_MAX">1024</env>
+      <env name="MPI_TYPE_MAX">100000</env>
+      <env name="MPI_TYPE_DEPTH">16</env>
+      <env name="OMP_STACKSIZE">256M</env>
+      <env name="ESMFMKFILE">/home6/fvitt/ESMFv8.4.1/lib/libO/Linux.intel.64.mpt.default/esmf.mk</env>
+    </environment_variables>
+  </machine>
