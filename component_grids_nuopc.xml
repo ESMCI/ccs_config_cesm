@@ -91,6 +91,13 @@
   </domain>
 
   <!-- CAM/SE meshes -->
+  <domain name="ne3np4">
+    <nx>488</nx> <ny>1</ny>
+    <!-- This is needed for PTS_MODE - it specifies the xml variable PTS_DOMAINFILE -->
+    <file>$DIN_LOC_ROOT/share/domains/domain.lnd.ne3np4_gx3v7.230718.nc</file>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne3np4_ESMFmesh_c230714_cdf5.nc</mesh>
+    <desc>ne3np4 is Spectral Elem 10-deg grid:</desc>
+  </domain>
   <domain name="ne3np4.pg3">
     <nx>486</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/ne3pg3_ESMFmesh_c221214_cdf5.nc</mesh>
@@ -391,13 +398,13 @@
   </domain>
     <domain name="oQU480">
       <nx>7234</nx>  <ny>1</ny>
-      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU480_ESMFmesh.nc</mesh>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU480/oQU480_ESMFmesh.nc</mesh>
       <desc>oQU480 is a MPAS ocean grid that is roughly 4 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU240">
       <nx>7234</nx>  <ny>1</ny>
-      <mesh driver="nuopc">/glade/p/univ/ucsu0085/inputdata/oQU240_ESMFmesh.nc</mesh>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU240/oQU240_ESMFmesh.nc</mesh>
       <desc>oQU240 is a MPAS ocean grid that is roughly 2 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>

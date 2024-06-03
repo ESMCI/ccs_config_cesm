@@ -1,4 +1,4 @@
-NOOPTOBJS= ice_boundary.o dyn_comp.o unicon.o
+NOOPTOBJS= ice_boundary.o dyn_comp.o unicon.o SnowHydrologyMod.o
 
 # RRTMGP contains openmp directives for running on GPUs.  These directives need to be
 # disabled to allow building CAM with threading on CPUs enabled.

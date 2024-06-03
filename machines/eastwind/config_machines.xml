@@ -1,0 +1,55 @@
+  <machine MACH="eastwind">
+    <DESC>PNL IBM Xeon cluster, os is Linux (pgi), batch system is SLURM</DESC>
+    <OS>LINUX</OS>
+    <COMPILERS>pgi,intel</COMPILERS>
+    <MPILIBS>mvapich2,mvapich</MPILIBS>
+    <CIME_OUTPUT_ROOT>/lustre/$USER</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>/lustre/tcraig/IRESM/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/lustre/tcraig/IRESM/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>/lustre/$USER/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>/lustre/tcraig/IRESM/ccsm_baselines</BASELINE_ROOT>
+    <CCSM_CPRNC>/lustre/tcraig/IRESM/tools/cprnc/cprnc</CCSM_CPRNC>
+    <GMAKE_J>8</GMAKE_J>
+    <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
+    <SUPPORTED_BY>tcraig -at- ucar.edu</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>12</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>12</MAX_MPITASKS_PER_NODE>
+    <mpirun mpilib="mvapich">
+      <executable>srun</executable>
+      <arguments>
+        <arg name="num_tasks"> --ntasks={{ total_tasks }}</arg>
+        <arg name="cpubind"> --cpu_bind=sockets</arg>
+        <arg name="cpubind"> --cpu_bind=verbose</arg>
+        <arg name="killonbadexit"> --kill-on-bad-exit</arg>
+      </arguments>
+    </mpirun>
+    <mpirun mpilib="mvapich2">
+      <executable>srun</executable>
+      <arguments>
+        <arg name="mpinone"> --mpi=none</arg>
+        <arg name="num_tasks"> --ntasks={{ total_tasks }}</arg>
+        <arg name="cpubind"> --cpu_bind=sockets</arg>
+        <arg name="cpubind"> --cpu_bind=verbose</arg>
+        <arg name="killonbadexit"> --kill-on-bad-exit</arg>
+      </arguments>
+    </mpirun>
+    <module_system type="module">
+      <init_path lang="perl">/etc/profile.d/modules.perl</init_path>
+      <init_path lang="sh">/etc/profile.d/modules.sh</init_path>
+      <init_path lang="csh">/etc/profile.d/modules.csh</init_path>
+      <cmd_path lang="perl">/share/apps/modules/Modules/3.2.7/bin/modulecmd perl</cmd_path>
+      <cmd_path lang="sh">module</cmd_path>
+      <cmd_path lang="csh">module</cmd_path>
+      <modules>
+        <command name="purge"/>
+        <command name="load">perl/5.20.7</command>
+        <command name="load">cmake/3.0.0</command>
+        <command name="load">pgi/15.5</command>
+        <command name="load">mpi/mvapich2/1.5.1p1/pgi11.3</command>
+        <command name="load">netcdf/4.1.2/pgi</command>
+      </modules>
+    </module_system>
+    <environment_variables>
+      <env name="OMP_STACKSIZE">64M</env>
+    </environment_variables>
+  </machine>

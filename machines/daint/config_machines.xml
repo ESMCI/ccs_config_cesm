@@ -1,0 +1,28 @@
+  <machine MACH="daint">
+    <DESC>CSCS Cray XC50, os is SUSE SLES, 12 pes/node, batch system is SLURM</DESC>
+    <OS>CNL</OS>
+    <COMPILERS>pgi,cray,gnu</COMPILERS>
+    <MPILIBS>mpich</MPILIBS>
+    <CIME_OUTPUT_ROOT>/scratch/snx3000/$USER</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>/project/s824/cesm_inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/project/s824/cesm_inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>/project/s824/$USER/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>/project/s824/ccsm_baselines</BASELINE_ROOT>
+    <CCSM_CPRNC>/project/s824/cesm_tools/ccsm_cprnc/cprnc</CCSM_CPRNC>
+    <GMAKE_J>12</GMAKE_J>
+    <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
+    <SUPPORTED_BY>edouard.davin -at- env.ethz.ch</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>12</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>12</MAX_MPITASKS_PER_NODE>
+    <mpirun mpilib="default">
+      <executable>srun</executable>
+      <arguments>
+        <arg name="num_tasks"> -n {{ total_tasks }}</arg>
+        <arg name="thread_count"> -d $ENV{OMP_NUM_THREADS}</arg>
+      </arguments>
+    </mpirun>
+    <module_system type="none"/>
+    <environment_variables>
+      <env name="OMP_STACKSIZE">64M</env>
+    </environment_variables>
+  </machine>
