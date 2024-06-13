@@ -640,11 +640,6 @@
     <file grid="atm|lnd">$DIN_LOC_ROOT/share/domains/domain.clm/domain.lnd.1x1pt-smallvilleIA_test.110106.nc</file>
     <desc>1x1 Smallville Iowa Crop Test Case -- only valid for DATM/CLM compset</desc>
   </domain>
-  <domain name="1x1_cidadinhoBR">
-    <nx>1</nx> <ny>1</ny>
-    <file grid="atm|lnd">$DIN_LOC_ROOT/share/domains/domain.clm/domain.lnd.1x1pt-cidadinhoBR_test.240613.nc</file>
-    <desc>1x1 Cidadinho ("Smallville") Brazil Crop Test Case -- only valid for DATM/CLM compset</desc>
-  </domain>
   <domain name="1x1_camdenNJ">
     <nx>1</nx> <ny>1</ny>
     <file grid="atm|lnd">$DIN_LOC_ROOT/share/domains/domain.clm/domain.lnd.1x1pt-camdenNJ_navy.111004.nc</file>
