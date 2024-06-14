@@ -357,6 +357,14 @@
     <grid name="rof">JRA025</grid>
   </model_grid>
 
+  <model_grid alias="TL319_t232_wg37" compset="DATM%JRA">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="rof">JRA025</grid>
+    <grid name="wav">wgx3v7</grid>
+  </model_grid>
+
   <model_grid alias="TL319_t061_wt061" not_compset="_CAM">
     <grid name="atm">TL319</grid>
     <grid name="lnd">TL319</grid>
@@ -937,6 +945,14 @@
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
+
+  <model_grid alias="ne30pg3_t232_wg37">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="wav">wgx3v7</grid>
     <mask>tx2_3v2</mask>
   </model_grid>
 
