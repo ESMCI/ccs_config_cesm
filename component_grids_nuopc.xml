@@ -571,7 +571,12 @@
   <domain name="1x1_smallvilleIA">
     <lat>40.6878</lat>
     <lon>267.0228</lon>
-    <desc>1x1 Smallville Iowa Crop Test Case -- only valid for DATM/CLM compset</desc>
+    <desc>1x1 Smallville Iowa Crop Test Case w/ synthetic land data -- only valid for DATM/CLM compset</desc>
+  </domain>
+  <domain name="1x1_cidadinhoBR">
+    <lat>-12.9952</lat>
+    <lon>305.3233</lon>
+    <desc>1x1 Cidadinho ("Smallville") Brazil Crop Test Case w/ synthetic land data -- only valid for DATM/CLM compset</desc>
   </domain>
   <domain name="1x1_camdenNJ">
     <lat>40.0</lat>
