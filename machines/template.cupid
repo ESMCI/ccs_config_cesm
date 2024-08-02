@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Batch system directives
+{{ batchdirectives }}
+
+source .env_mach_specific.sh
+conda activate cupid-dev
+./generate_cupid_config_file.py  
+
+cupid-run 
