@@ -69,7 +69,6 @@ endif()
 if (GPU_TYPE STREQUAL a100 AND GPU_OFFLOAD STREQUAL combined)
    string(APPEND GPUFLAGS  " -acc -gpu=cc80,lineinfo,nofma -mp=gpu -Minfo=accel")
 endif()
-<<<<<<< HEAD
 if (GPU_TYPE STREQUAL h100 AND GPU_OFFLOAD STREQUAL openacc)
    string(APPEND GPUFLAGS  " -acc -gpu=ccnative,lineinfo,nofma -Minfo=accel ")
 endif()
