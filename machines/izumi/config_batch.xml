@@ -1,0 +1,18 @@
+
+   <batch_system type="pbs" MACH="izumi" >
+    <batch_submit>qsub</batch_submit>
+    <jobid_pattern>(\d+.izumi.cgd.ucar.edu)$</jobid_pattern>
+    <directives>
+      <directive>-l nodes={{ num_nodes }}:ppn={{ tasks_per_node }}</directive>
+      <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -V </directive>
+    </directives>
+    <queues>
+      <queue walltimemax="02:00:00"   strict="true" nodemin="1"  nodemax="8">short</queue>
+      <queue walltimemax="08:00:00"   strict="true" nodemin="1"  nodemax="6" default="true">medium</queue>
+      <queue walltimemax="40:00:00"   strict="true" nodemin="1"  nodemax="8">long</queue>
+      <queue walltimemax="120:00:00"   strict="true" nodemin="1"  nodemax="8">verylong</queue>
+      <queue walltimemax="32:00:00"   strict="true" nodemax="14" nodemin="1">overnight</queue>
+      <queue walltimemax="3000:00:00" strict="true" nodemax="14" nodemin="1">monster</queue>
+    </queues>
+  </batch_system>

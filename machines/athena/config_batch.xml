@@ -1,0 +1,20 @@
+<!-- athena is lsf -->
+<batch_system MACH="athena" type="lsf">
+  <submit_args>
+    <argument> -q $JOB_QUEUE </argument>
+    <argument> -W $JOB_WALLCLOCK_TIME </argument>
+    <argument> -P $PROJECT </argument>
+  </submit_args>
+  <directives>
+    <directive                       > -R "span[ptile={{ tasks_per_node }}]"</directive>
+    <directive                       > -N  </directive>
+    <directive default="poe"         > -a {{ poe }} </directive>
+  </directives>
+  <queues>
+    <queue walltimemin="00:00" walltimemax="02:00">poe_short</queue>
+    <queue walltimemin="02:00" walltimemax="04:00" default="true">poe_medium</queue>
+    <queue walltimemin="04:00" walltimemax="08:00">poe_long</queue>
+  </queues>
+</batch_system>
+
+                            
