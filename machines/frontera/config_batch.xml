@@ -1,0 +1,20 @@
+  <batch_system MACH="frontera" type="slurm" >
+    <!-- note this form of batch_submit causes some tests to fail on the system
+    because env variables are not forwarded -->
+    <batch_submit>ssh login1 cd $CASEROOT ; sbatch</batch_submit>
+    <submit_args>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
+    </submit_args>
+    <directives>
+      <directive> --export=ALL            </directive>
+    </directives>
+
+    <queues>
+      <queue walltimemax="02:00:00" nodemin="1" nodemax="40">development</queue>
+      <queue walltimemax="24:00:00" nodemin="3" nodemax="512" default="true">normal</queue>
+      <queue walltimemax="24:00:00" nodemin="513" nodemax="2048" >large</queue>
+    </queues>
+  </batch_system>
+
