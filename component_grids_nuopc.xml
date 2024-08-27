@@ -397,6 +397,12 @@
     <desc>tripole v1 1-deg grid: testing proxy for high-res tripole ocean grids- do not use for scientific experiments</desc>
     <support>Experimental tripole ocean grid</support>
   </domain>
+  <domain name="nwa12">
+    <nx>740</nx> <ny>780</ny>
+    <mesh>/glade/work/gmarques/Projects/CROCODILE/NWA12_CESM/mesh/NWA12_mesh_240806.nc</mesh>
+    <desc>Northwest Atlantic 1/12 deg:</desc>
+    <support>Experimental for the regional Northwest Atlantic model</support>
+  </domain>
 
   <!-- ======================================================== -->
   <!-- ROF domains -->
@@ -494,6 +500,11 @@
     <nx>1440</nx> <ny>720</ny>
     <mesh>$DIN_LOC_ROOT/lnd/dlnd7/JRA55/JRA.v1.4.runoff.1958_ESMFmesh_cdf5_20201020.nc</mesh>
     <desc>JRA is 0.25 degree runoff grid for use with JRA-55 runoff data</desc>
+  </domain>
+  <domain name="GLOFAS">
+    <nx>740</nx> <ny>780</ny>
+    <mesh>/glade/work/gmarques/Projects/CROCODILE/NWA12_CESM/mesh/NWA12_mesh_240806.nc</mesh>
+    <desc>GLOFAS 0.1 deg runoff for nwa12 config</desc>
   </domain>
 
   <!-- ======================================================== -->

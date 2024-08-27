@@ -25,6 +25,13 @@
     <grid name="iac"       compset="SIAC"        >null</grid>
   </model_grid_defaults>
 
+  <model_grid alias="TL319_nwa12" not_compset="_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">nwa12</grid>
+    <grid name="rof">GLOFAS</grid>
+  </model_grid>
+
   <model_grid alias="g16_g16" compset="DATM.+DROF">
     <grid name="atm">gx1v6</grid>
     <grid name="lnd">gx1v6</grid>
@@ -918,7 +925,7 @@
     <grid name="glc">ais8:gris4</grid>
     <mask>tx2_3v2</mask>
   </model_grid>
- 
+
   <model_grid alias="ne30_f19_g16">
     <grid name="atm">ne30np4</grid>
     <grid name="lnd">1.9x2.5</grid>
