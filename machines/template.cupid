@@ -5,6 +5,6 @@
 
 source .env_mach_specific.sh
 conda activate cupid-dev
-./generate_cupid_config_file.py  
+{{ srcroot }}/tools/CUPiD/cesm_scripts/generate_cupid_config_file.py
 
-cupid-run 
+cupid-run
