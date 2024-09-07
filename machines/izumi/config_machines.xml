@@ -71,53 +71,53 @@
         <command name="rm">mpi</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.6.1-ncdfio-mvapich2-O</command>
         <command name="load">mvapich2/2.3.3/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.6.1-ncdfio-mvapich2-g</command>
         <command name="load">mvapich2/2.3.3/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.6.1-ncdfio-mpiuni-O</command>
         <command name="load">mpi-serial/2.3.0/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.6.1-ncdfio-mpiuni-g</command>
         <command name="load">mpi-serial/2.3.0/gnu/9.3.0/pio/2_5_10</command>
       </modules>
 
       <modules compiler="nag" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.6.1-ncdfio-mvapich2-O</command>
         <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.6.1-ncdfio-mvapich2-g</command>
         <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.6.1-ncdfio-mpiuni-g</command>
         <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/nag/6.2/esmf-8.6.1-ncdfio-mpiuni-O</command>
         <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command>
       </modules>
 
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.6.1-ncdfio-mpiuni-g</command>
         <command name="load">mpi-serial/2.3.0/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.6.1-ncdfio-mpiuni-O</command>
         <command name="load">mpi-serial/2.3.0/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.6.1-ncdfio-mvapich2-g</command>
         <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.6.1-ncdfio-mvapich2-O</command>
         <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command>
       </modules>
     </module_system>
