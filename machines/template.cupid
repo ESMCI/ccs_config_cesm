@@ -5,9 +5,7 @@
 
 source .env_mach_specific.sh
 conda activate cupid-dev
-{{ srcroot }}/tools/CUPiD/cesm_scripts/generate_cupid_config_file.py \
-    --case {{ CASE }} \
-    --cesm-output-dir {{ DOUT_S_ROOT }} \
-    --cupid-root {{ SRCROOT }}/tools/CUPiD
+{{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
+    --cesm-root {{ SRCROOT }}
 
 cupid-run
