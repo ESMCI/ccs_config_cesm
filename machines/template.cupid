@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Batch system directives
+{{ batchdirectives }}
+
+source .env_mach_specific.sh
+conda activate cupid-dev
+{{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
+    --cesm-root {{ SRCROOT }}
+
+cupid-run
