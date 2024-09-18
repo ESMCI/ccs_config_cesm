@@ -8,7 +8,7 @@
     <DIN_LOC_ROOT_CLMFORC>/work2/02503/edwardsj/CESM/inputdata/lmwg</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
     <BASELINE_ROOT>/work2/02503/edwardsj/CESM/cesm_baselines</BASELINE_ROOT>
-    <CCSM_CPRNC>/work2/02503/edwardsj/CESM/cime/tools/cprnc/cprnc.vista</CCSM_CPRNC>
+    <CCSM_CPRNC>/work2/02503/edwardsj/vista/cprnc/cprnc</CCSM_CPRNC>
     <GMAKE_J>4</GMAKE_J>
     <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
     <SUPPORTED_BY></SUPPORTED_BY>
