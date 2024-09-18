@@ -1,0 +1,5 @@
+set(SUPPORTS_CXX "TRUE")
+string(APPEND SLIBS " -L$ENV{NETCDFHOME}/lib -lnetcdff -lnetcdf ")
+if (MPILIB STREQUAL openmpi)
+  string(APPEND SLIBS " -L$ENV{PNETCDFHOME}/lib -lpnetcdf ")
+endif()
