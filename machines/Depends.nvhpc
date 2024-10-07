@@ -154,9 +154,9 @@ ifeq ($(DEBUG),FALSE)
 #  $(SHR_RANDNUM_C_OBJS): %.o: %.c
 #	  $(CC) -c $(INCLDIR) $(INCS) $(CFLAGS) -O3 -fast $<
   $(PUMAS_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $(GPUFLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $(OPENACC_GPU_FLAGS) $<
   $(RRTMGP_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(OPENACC_GPU_FLAGS) $<
   $(CLUBB_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(OPENACC_GPU_FLAGS) $<
 endif
