@@ -1,0 +1,11 @@
+
+  <!-- euler4 is LSF -->
+  <batch_system MACH="euler4" type="lsf" >
+    <directives>
+      <directive> -R "select[model==XeonGold_6150]" </directive>
+    </directives>
+    <queues>
+      <queue walltimemax="23:59:00" default="true">normal.24h</queue>
+      <queue walltimemax="03:59:00" >normal.4h</queue>
+    </queues>
+  </batch_system>
