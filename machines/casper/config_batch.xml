@@ -1,0 +1,21 @@
+<!-- casper pbs -->
+<batch_system MACH="casper" type="pbs">
+  <batch_submit>qsub</batch_submit>
+  <submit_args>
+    <argument> -l gpu_type=$GPU_TYPE </argument>
+  </submit_args>
+  <directives queue="casper" compiler="nvhpc" gpu_enabled="true">
+    <directive default="/bin/bash" > -S {{ shell }} </directive>
+    <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=700GB:ngpus={{ ngpus_per_node }}:mps=1 </directive>
+  </directives>
+  <directives queue="casper" gpu_enabled="false">
+    <directive default="/bin/bash" > -S {{ shell }} </directive>
+    <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=300GB:ngpus={{ ngpus_per_node }} </directive>
+  </directives>
+  <!-- Unknown queues use the batch directives for the regular queue -->
+  <unknown_queue_directives>casper</unknown_queue_directives>
+  <queues>
+    <queue walltimemax="12:00:00" nodemin="1" nodemax="10">casper</queue>
+  </queues>
+</batch_system>
+

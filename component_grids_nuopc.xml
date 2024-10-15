@@ -367,12 +367,6 @@
     <mesh>$DIN_LOC_ROOT/share/meshes/gx3v7_120309_ESMFmesh.nc</mesh>
     <desc>gx3v7 is displaced Greenland pole v7 3-deg grid:</desc>
   </domain>
-  <domain name="tx0.66v1">
-    <nx>540</nx> <ny>458</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/tx0.66v1_190314_ESMFmesh.nc</mesh>
-    <desc>tx0.66v1 is tripole v1 0.66-deg MOM6 grid:</desc>
-    <support>Experimental for MOM6 experiments</support>
-  </domain>
   <domain name="tx2_3v2">
     <nx>540</nx> <ny>480</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/tx2_3v2_230415_ESMFmesh.nc</mesh>
@@ -592,11 +586,11 @@
     <desc>gx3v7 global grid</desc>
     <support>For testing of the WAV model</support>
   </domain>
-  <domain name="wtx0.66v1">
-    <nx>540</nx> <ny>458</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/wtx0.66v1_210917_ESMFmesh.nc</mesh>
-    <desc>wtx0.66v1 is tripole v1 0.66-deg WW3 grid based on MOM6 grid</desc>
-    <support>MOM6 tx0.66v1-based WW3 grid where cells above 88N are masked</support>
+  <domain name="wtx2_3v2">
+    <nx>540</nx> <ny>480</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wtx2_3v2_231005b_ESMFmesh.nc</mesh>
+    <desc>wtx2_3v2 is tripole v2 2/3-deg WW3 grid based on MOM6 grid</desc>
+    <support>MOM6 tx2_3v2-based WW3 grid where cells above 88N are masked</support>
   </domain>
 
   <!-- ======================================================== -->
