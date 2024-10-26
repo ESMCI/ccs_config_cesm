@@ -64,14 +64,19 @@
         <command name="load">cray-libsci/23.02.1.1</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/24.3</command>
+        <command name="load">nvhpc/24.9</command>
       </modules>
 
       <modules>
 	<command name="load">ncarcompilers/1.0.0</command>
         <command name="load">cmake</command>
       </modules>
-      <modules mpilib="mpich">
+
+      <modules mpilib="mpich" compiler="nvhpc">
+	<command name="load">cray-mpich/8.1.29</command>
+      </modules>
+
+      <modules mpilib="mpich" compiler="!nvhpc">
 	<command name="load">cray-mpich/8.1.27</command>
       </modules>
 
@@ -79,7 +84,12 @@
         <command name="load">cuda/12.2.1</command>
       </modules>
 
-      <modules mpilib="mpi-serial">
+      <modules mpilib="mpi-serial" compiler="nvhpc">
+        <command name="load">mpi-serial/2.5.0</command>
+        <command name="load">netcdf/4.9.2</command>
+      </modules>
+
+      <modules mpilib="mpi-serial" compiler="!nvhpc">
         <command name="load">mpi-serial/2.3.0</command>
         <command name="load">netcdf/4.9.2</command>
       </modules>
@@ -89,17 +99,27 @@
         <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
 
-      <modules DEBUG="FALSE">
+      <!-- The software stack for nvhpc/24.9 doesn't have debug modules -->
+      <modules compiler="nvhpc" mpilib="!mpi-serial">
+	<command name="load">parallelio/2.6.3</command>
+	<command name="load">esmf/8.7.0</command>
+      </modules>
+      <modules compiler="nvhpc" mpilib="mpi-serial">
+	<command name="load">parallelio/2.6.2</command>
+	<command name="load">esmf/8.7.0</command>
+      </modules>
+
+      <modules DEBUG="FALSE" compiler="!nvhpc">
 	<command name="load">parallelio/2.6.2</command>
 	<command name="load">esmf/8.6.0</command>
       </modules>
 
-      <modules DEBUG="TRUE" mpilib="mpi-serial">
+      <modules DEBUG="TRUE" mpilib="mpi-serial" compiler="!nvhpc">
 	<command name="load">parallelio/2.6.2</command>
 	<command name="load">esmf/8.6.0</command>
       </modules>
 
-      <modules DEBUG="TRUE" mpilib="!mpi-serial">
+      <modules DEBUG="TRUE" mpilib="!mpi-serial" compiler="!nvhpc">
 	<command name="load">parallelio/2.6.2-debug</command>
 	<command name="load">esmf/8.6.0-debug</command>
       </modules>
