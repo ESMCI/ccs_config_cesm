@@ -16,7 +16,7 @@
   <server>
     <comment> wget access to subversion </comment>
     <protocol>wget</protocol>
-    <address>https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata</address>
+    <address>https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/</address>
   </server>
 
   <server>
