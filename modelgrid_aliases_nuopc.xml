@@ -878,6 +878,7 @@
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">gx1v7</grid>
     <grid name="glc">ais8:gris4</grid>
+    <grid name="wav">wgx3v7</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
@@ -885,6 +886,7 @@
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
+    <grid name="wav">wgx3v7</grid>
     <mask>tx2_3v2</mask>
   </model_grid>
 
@@ -892,6 +894,7 @@
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
+    <grid name="wav">wgx3v7</grid>
     <mask>tx2_3v2</mask>
   </model_grid>
 
