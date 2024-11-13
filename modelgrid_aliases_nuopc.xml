@@ -19,9 +19,9 @@
     <grid name="glc"       compset="DGLC"        >gris4</grid>
     <grid name="glc"       compset="XGLC"        >gris4</grid>
     <grid name="wav"       compset="SWAV"        >null</grid>
-    <grid name="wav"       compset="DWAV"        >ww3a</grid>
-    <grid name="wav"       compset="WW3"         >ww3a</grid>
-    <grid name="wav"       compset="XWAV"        >ww3a</grid>
+    <grid name="wav"       compset="DWAV"        >wg37</grid>
+    <grid name="wav"       compset="WW3"         >wg37</grid>
+    <grid name="wav"       compset="XWAV"        >wg37</grid>
     <grid name="iac"       compset="SIAC"        >null</grid>
   </model_grid_defaults>
 
