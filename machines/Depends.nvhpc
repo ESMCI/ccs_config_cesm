@@ -14,6 +14,8 @@ SatellitePhenologyMod.o \
 esm.o
 
 REDUCED_ERRORCHKS_IN_DEBUG=\
+fvm_consistent_se_cslam.o \
+clm_instMod.o \
 mpp.o \
 horiz_interp_conserve.o \
 data_override.o \
