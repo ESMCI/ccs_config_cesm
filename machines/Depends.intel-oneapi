@@ -6,7 +6,8 @@ derivative_mod.o \
 bndry_mod.o \
 prim_advance_mod.o
 
-# FMS netcdf_io fails with optimization
+# FMS netcdf_io gives ICE in intel-oneapi/2024.0.2
+
 REDUCED_OPT_OBJS=\
 netcdf_io.o \
 fms_netcdf_domain_io.o \
@@ -14,7 +15,6 @@ fms_netcdf_unstructured_domain_io.o
 
 REDUCED_DEBUG_OBJS=\
 unicon.o
-
 
 # shr_wv_sat_mod does not need to have better than ~0.1% precision, and benefits
 # enormously from a lower precision in the vector functions.
