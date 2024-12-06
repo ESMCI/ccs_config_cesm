@@ -1,0 +1,14 @@
+
+  <batch_system MACH="lonestar5" type="slurm" >
+    <batch_submit>ssh login1.ls5.tacc.utexas.edu cd $CASEROOT ; sbatch</batch_submit>
+    <submit_args>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
+    </submit_args>
+    <queues>
+      <queue walltimemax="48:00:00" nodemin="1" nodemax="171" default="true">normal</queue>
+      <queue walltimemax="24:00:00" nodemin="160" nodemax="342">large</queue>
+      <queue walltimemax="02:00:00" nodemin="1" nodemax="11" >development</queue>
+    </queues>
+  </batch_system>

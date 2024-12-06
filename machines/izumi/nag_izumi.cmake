@@ -1,0 +1,1 @@
+string(APPEND SLIBS " -L${NETCDF_PATH}/lib -lnetcdff -lnetcdf -Wl,-Wl,,-rpath,$(NETCDF_PATH)/lib")
