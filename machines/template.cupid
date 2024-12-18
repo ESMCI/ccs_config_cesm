@@ -4,8 +4,9 @@
 {{ batchdirectives }}
 
 source .env_mach_specific.sh
-conda activate cupid-dev
+conda activate cupid-infrastructure
 {{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
     --cesm-root {{ SRCROOT }}
 
-cupid-run
+cupid-timeseries
+cupid-diagnostics
