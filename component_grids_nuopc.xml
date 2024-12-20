@@ -250,6 +250,13 @@
     <support>Test support only</support>
   </domain>
 
+  <domain name="ne0np4.POLARCAP.ne30x4">
+    <nx>186194</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/POLARCAP_ne30x4_np4_ESMFmesh_cdf5_c20240222.nc</mesh>
+    <desc>ne0np4.POLARCAP.ne30x4 is a Spectral Elem 1-deg grid with a 1/4 deg refined region over the Arctic and Antarctica:</desc>
+    <support>Test support only</support>
+  </domain>
+
   <!-- CAM/MPAS meshes -->
   <domain name="mpasa480">
     <nx>2562</nx> <ny>1</ny>
@@ -359,12 +366,6 @@
     <nx>100</nx> <ny>116</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/gx3v7_120309_ESMFmesh.nc</mesh>
     <desc>gx3v7 is displaced Greenland pole v7 3-deg grid:</desc>
-  </domain>
-  <domain name="tx0.66v1">
-    <nx>540</nx> <ny>458</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/tx0.66v1_190314_ESMFmesh.nc</mesh>
-    <desc>tx0.66v1 is tripole v1 0.66-deg MOM6 grid:</desc>
-    <support>Experimental for MOM6 experiments</support>
   </domain>
   <domain name="tx2_3v2">
     <nx>540</nx> <ny>480</ny>
@@ -579,11 +580,17 @@
     <desc>WW3 90 x 50 global grid</desc>
     <support>For testing of the WAV model</support>
   </domain>
-  <domain name="wtx0.66v1">
-    <nx>540</nx> <ny>458</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/wtx0.66v1_210917_ESMFmesh.nc</mesh>
-    <desc>wtx0.66v1 is tripole v1 0.66-deg WW3 grid based on MOM6 grid</desc>
-    <support>MOM6 tx0.66v1-based WW3 grid where cells above 88N are masked</support>
+  <domain name="wgx3v7">
+    <nx>100</nx>  <ny>116</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wgx3v7_2301208_ESMFmesh.nc</mesh>
+    <desc>gx3v7 global grid</desc>
+    <support>For testing of the WAV model</support>
+  </domain>
+  <domain name="wtx2_3v2">
+    <nx>540</nx> <ny>480</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wtx2_3v2_231005b_ESMFmesh.nc</mesh>
+    <desc>wtx2_3v2 is tripole v2 2/3-deg WW3 grid based on MOM6 grid</desc>
+    <support>MOM6 tx2_3v2-based WW3 grid where cells above 88N are masked</support>
   </domain>
 
   <!-- ======================================================== -->
@@ -612,7 +619,12 @@
   <domain name="1x1_smallvilleIA">
     <lat>40.6878</lat>
     <lon>267.0228</lon>
-    <desc>1x1 Smallville Iowa Crop Test Case -- only valid for DATM/CLM compset</desc>
+    <desc>1x1 Smallville Iowa Crop Test Case w/ synthetic land data -- only valid for DATM/CLM compset</desc>
+  </domain>
+  <domain name="1x1_cidadinhoBR">
+    <lat>-12.9952</lat>
+    <lon>305.3233</lon>
+    <desc>1x1 Cidadinho ("Smallville") Brazil Crop Test Case w/ synthetic land data -- only valid for DATM/CLM compset</desc>
   </domain>
   <domain name="1x1_camdenNJ">
     <lat>40.0</lat>

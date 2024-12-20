@@ -60,6 +60,88 @@ mo_fluxes_broadband_kernels.o \
 mo_rte_solver_kernels.o \
 mo_optical_props_kernels.o
 
+CLUBB_OBJS=\
+adg1_adg2_3d_luhar_pdf.o\
+advance_clubb_core_module.o\
+advance_helper_module.o\
+advance_windm_edsclrm_module.o\
+advance_wp2_wp3_module.o\
+advance_xm_wpxp_module.o\
+advance_xp2_xpyp_module.o\
+advance_xp3_module.o\
+array_index.o\
+calc_pressure.o\
+calc_roots.o\
+calendar.o\
+clip_explicit.o\
+clip_semi_implicit.o\
+clubb_api_module.o\
+clubb_precision.o\
+code_timer_module.o\
+constants_clubb.o\
+corr_varnce_module.o\
+diagnose_correlations_module.o\
+diffusion.o\
+endian.o\
+error_code.o\
+file_functions.o\
+fill_holes.o\
+grid_class.o\
+hydromet_pdf_parameter_module.o\
+index_mapping.o\
+input_names.o\
+input_reader.o\
+interpolation.o\
+lapack_interfaces.o\
+lapack_wrap.o\
+LY93_pdf.o\
+matrix_operations.o\
+matrix_solver_wrapper.o\
+mean_adv.o\
+mixing_length.o\
+model_flags.o\
+mono_flux_limiter.o\
+mt95.o\
+Nc_Ncn_eqns.o\
+new_hybrid_pdf.o\
+new_hybrid_pdf_main.o\
+new_pdf.o\
+new_pdf_main.o\
+new_tsdadg_pdf.o\
+numerical_check.o\
+output_grads.o\
+output_netcdf.o\
+parameter_indices.o\
+parameters_model.o\
+parameters_tunable.o\
+pdf_closure_module.o\
+pdf_parameter_module.o\
+pdf_utilities.o\
+penta_lu_solver.o\
+pos_definite_module.o\
+precipitation_fraction.o\
+saturation.o\
+setup_clubb_pdf_params.o\
+sfc_varnce_module.o\
+sigma_sqd_w_module.o\
+Skx_module.o\
+sponge_layer_damping.o\
+stat_file_module.o\
+stats_clubb_utilities.o\
+stats_lh_sfc_module.o\
+stats_lh_zt_module.o\
+stats_rad_zm_module.o\
+stats_rad_zt_module.o\
+stats_sfc_module.o\
+stats_type.o\
+stats_type_utilities.o\
+stats_variables.o\
+stats_zm_module.o\
+stats_zt_module.o\
+T_in_K_module.o\
+tridiag_lu_solver.o\
+turbulent_adv_pdf.o
+
 ifeq ($(DEBUG),FALSE)
   $(PERFOBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -Mfprelaxed=div $<
@@ -74,5 +156,7 @@ ifeq ($(DEBUG),FALSE)
   $(PUMAS_OBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $(GPUFLAGS) $<
   $(RRTMGP_OBJS): %.o: %.F90
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
+  $(CLUBB_OBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
 endif

@@ -1,0 +1,18 @@
+
+  <!-- gaea is PBS -->
+  <batch_system MACH="gaea" type="pbs" >
+    <directives>
+      <directive>-A cpo</directive>
+      <directive>-l {{ partition }}</directive>
+      <directive>-l size={{ mppsize }}</directive>
+      <directive>-E </directive>
+      <directive>-d $RUNDIR</directive>
+      <directive>-o $RUNDIR/$CASE.out </directive>
+      <directive>-S /bin/bash  </directive>
+      <directive>-V</directive>
+    </directives>
+    <queues>
+      <queue walltimemax="01:00:00" nodemin="1" nodemax="35">debug</queue>
+      <queue walltimemax="24:00:00" nodemin="861" nodemax="4166" default="true">batch</queue>
+    </queues>
+  </batch_system>
