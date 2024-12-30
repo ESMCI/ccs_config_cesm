@@ -33,7 +33,7 @@ if [ "${RUN_CUPID_ANALYSIS}" == "TRUE" ]; then
 
   # 3. Generate timeseries files and run ADF
   if [ "${RUN_CUPID_TIMESERIES}" == "TRUE" ]; then
-    cupid-timeseries
+    {{ srcroot }}/tools/CUPiD/cupid/run_timeseries.py
   fi
   conda deactivate
   conda activate cupid-analysis
@@ -42,6 +42,6 @@ if [ "${RUN_CUPID_ANALYSIS}" == "TRUE" ]; then
   # 4. Run CUPiD and build webpage
   conda deactivate
   conda activate cupid-infrastructure
-  cupid-diagnostics
-  cupid-webpage
+  {{ srcroot }}/tools/CUPiD/cupid/run_diagnostics.py
+  {{ srcroot }}/tools/CUPiD/cupid/cupid_webpage.py
 fi
