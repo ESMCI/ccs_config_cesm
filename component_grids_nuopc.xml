@@ -434,8 +434,8 @@
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU015">
-      <nx>1851581</nx>  <ny>1</ny>
-      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU015/oQU015_ESMFmesh.230907.nc</mesh>
+      <nx>1850090</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU015/oQU015_ESMFmesh.241221.nc</mesh>
       <desc>oQU015 is a MPAS ocean grid that is roughly 1/8 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
