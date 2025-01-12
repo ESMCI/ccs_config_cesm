@@ -9,6 +9,10 @@ derivative_mod.o \
 bndry_mod.o \
 prim_advance_mod.o
 
+REDUCED_OPT_OBJS=\
+SatellitePhenologyMod.o \
+esm.o
+
 REDUCED_ERRORCHKS_IN_DEBUG=\
 fvm_consistent_se_cslam.o \
 clm_instMod.o \
@@ -22,10 +26,6 @@ MARBL_forcing_mod.o \
 MOM_internal_tide_input.o \
 MOM_ice_shelf.o \
 mom_surface_forcing_nuopc.o
-
-REDUCED_OPT_OBJS=\
-SatellitePhenologyMod.o \
-esm.o
 
 REDUCED_PRECISION_OBJS=\
 shr_wv_sat_mod.o
