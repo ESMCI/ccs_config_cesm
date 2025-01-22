@@ -18,6 +18,7 @@ conda activate cupid-infrastructure
 CUPID_EXAMPLE=key_metrics
 RUN_CUPID_ANALYSIS=TRUE
 RUN_CUPID_TIMESERIES=TRUE
+LAND_CASE_TYPE=BGC
 
 if [ "${RUN_CUPID_ANALYSIS}" == "TRUE" ]; then
   # 1. Generate CUPiD config file
@@ -31,15 +32,32 @@ if [ "${RUN_CUPID_ANALYSIS}" == "TRUE" ]; then
       --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
       --out-file adf_config.yml
 
-  # 3. Generate timeseries files and run ADF
+  # 3. Generate ILAMB config files
+  {{ srcroot }}/tools/CUPiD/helper_scripts/generate_ilamb_config_files.py \
+      --cesm-root {{ SRCROOT }} \
+      --cupid-config-loc ${PWD} \
+      --run-type ${LAND_CASE_TYPE}
+
+  # 4. Generate timeseries files
   if [ "${RUN_CUPID_TIMESERIES}" == "TRUE" ]; then
     {{ srcroot }}/tools/CUPiD/cupid/run_timeseries.py
   fi
+
+  # 5. Do any necessary regridding
+
+  # 6. Run ADF & ILAMB
   conda deactivate
   conda activate cupid-analysis
   {{ SRCROOT }}/tools/CUPiD/externals/ADF/run_adf_diag adf_config.yml
+  ilamb-run --config  {{ srcroot }}/tools/CUPiD/helper_scripts/ilamb_aux/ilamb_nohoff_final_CLM_BGC.cfg \
+      --build_dir {{ srcroot }}/tools/CUPiD/examples/external_diag_packages//ILAMB_output/ \
+      --df_errs {{ srcroot }}/tools/CUPiD/ilamb_aux/quantiles_Whittaker_cmip5v6.parquet \
+      --define_regions {{ srcroot }}/tools/CUPiD/ilamb_aux/DATA/regions/LandRegions.nc \
+      {{ srcroot }}/tools/CUPiD/ilamb_aux/DATA/regions/Whittaker.nc \
+      --regions global --model_setup {{ srcroot }}/tools/CUPiD/helper_scripts/model_setup.txt \
+      --filter .clm2.h0.
 
-  # 4. Run CUPiD and build webpage
+  # 7. Run CUPiD and build webpage
   conda deactivate
   conda activate cupid-infrastructure
   {{ srcroot }}/tools/CUPiD/cupid/run_diagnostics.py
