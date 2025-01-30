@@ -11,15 +11,71 @@ source .env_mach_specific.sh
 #       by setting $PYTHONPATH; since this is conda-based we
 #       want an empty PYTHONPATH environment variable
 MACH=`./xmlquery --value MACH`
-unset PYTHONPATH
-conda activate cupid-infrastructure
 
 # Set variables that should eventually come from environment file
 CUPID_EXAMPLE=key_metrics
-RUN_CUPID_ANALYSIS=TRUE
-RUN_CUPID_TIMESERIES=TRUE
+RUN_POSTPROCESSING=TRUE
+CUPID_GEN_TIMESERIES=TRUE
+CUPID_GEN_DIAGNOSTICS=TRUE
+CUPID_GEN_HTML=TRUE
+CUPID_BASELINE_CASE=""
+CUPID_BASELINE_ROOT=DOUT_S_ROOT
+CUPID_START_YEAR=1
+CUPID_END_YEAR=100
+CUPID_BASE_START_YEAR=1
+CUPID_BASE_END_YEAR=100
+CUPID_RUN_ALL=TRUE
+CUPID_RUN_ATM=FALSE
+CUPID_RUN_OCN=FALSE
+CUPID_RUN_LND=FALSE
+CUPID_RUN_ICE=FALSE
+CUPID_RUN_ROF=FALSE
+CUPID_INFRASTRUCTURE_ENV=cupid-infrastructure
+CUPID_ANALYSIS_ENV=cupid-analysis
 
-if [ "${RUN_CUPID_ANALYSIS}" == "TRUE" ]; then
+# CUPID_EXAMPLE=`./xmlquery --value CUPID_EXAMPLE`
+# RUN_POSTPROCESSING=`./xmlquery --value RUN_POSTPROCESSING`
+# CUPID_GEN_TIMESERIES=`./xmlquery --value CUPID_GEN_TIMESERIES`
+# CUPID_GEN_DIAGNOSTICS=`./xmlquery --value CUPID_GEN_DIAGNOSTICS`
+# CUPID_GEN_HTML=`./xmlquery --value CUPID_GEN_HTML`
+# CUPID_BASELINE_CASE=`./xmlquery --value CUPID_BASELINE_CASE`
+# CUPID_BASELINE_ROOT=`./xmlquery --value CUPID_BASELINE_ROOT`
+# CUPID_START_YEAR=`./xmlquery --value CUPID_START_YEAR`
+# CUPID_END_YEAR=`./xmlquery --value CUPID_END_YEAR`
+# CUPID_BASE_START_YEAR=`./xmlquery --value CUPID_BASE_START_YEAR`
+# CUPID_BASE_END_YEAR=`./xmlquery --value CUPID_BASE_END_YEAR`
+# CUPID_RUN_ALL=`./xmlquery --value CUPID_RUN_ALL`
+# CUPID_RUN_ATM=`./xmlquery --value CUPID_RUN_ATM`
+# CUPID_RUN_OCN=`./xmlquery --value CUPID_RUN_OCN`
+# CUPID_RUN_LND=`./xmlquery --value CUPID_RUN_LND`
+# CUPID_RUN_ICE=`./xmlquery --value CUPID_RUN_ICE`
+# CUPID_RUN_ROF=`./xmlquery --value CUPID_RUN_ROF`
+# CUPID_INFRASTRUCTURE_ENV=`./xmlquery --value CUPID_INFRASTRUCTURE_ENV`
+# CUPID_ANALYSIS_ENV=`./xmlquery --value CUPID_ANALYSIS_ENV`
+
+CUPID_FLAG_STRING=""
+if [ "${CUPID_RUN_ALL}" == "FALSE" ]; then
+  if [ "${CUPID_RUN_ATM}" == "TRUE" ]; then
+    CUPID_FLAG_STRING=CUPID_FLAG_STRING+" --atm"
+  fi
+  if [ "${CUPID_RUN_OCN}" == "TRUE" ]; then
+    CUPID_FLAG_STRING=CUPID_FLAG_STRING+" --ocn"
+  fi
+  if [ "${CUPID_RUN_LND}" == "TRUE" ]; then
+    CUPID_FLAG_STRING=CUPID_FLAG_STRING+" --lnd"
+  fi
+  if [ "${CUPID_RUN_ICE}" == "TRUE" ]; then
+    CUPID_FLAG_STRING=CUPID_FLAG_STRING+" --ice"
+  fi
+  if [ "${CUPID_RUN_ROF}" == "TRUE" ]; then
+    CUPID_FLAG_STRING=CUPID_FLAG_STRING+" --rof"
+  fi
+fi
+
+unset PYTHONPATH
+conda activate $CUPID_INFRASTRUCTURE_ENV
+
+if [ "${RUN_POSTPROCESSING}" == "TRUE" ]; then
   # 1. Generate CUPiD config file
   {{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
       --cesm-root {{ SRCROOT }}
@@ -32,16 +88,20 @@ if [ "${RUN_CUPID_ANALYSIS}" == "TRUE" ]; then
       --out-file adf_config.yml
 
   # 3. Generate timeseries files and run ADF
-  if [ "${RUN_CUPID_TIMESERIES}" == "TRUE" ]; then
-    {{ srcroot }}/tools/CUPiD/cupid/run_timeseries.py
+  if [ "${CUPID_GEN_TIMESERIES}" == "TRUE" ]; then
+    {{ srcroot }}/tools/CUPiD/cupid/run_timeseries.py $CUPID_FLAG_STRING
   fi
   conda deactivate
-  conda activate cupid-analysis
+  conda activate $CUPID_ANALYSIS_ENV
   {{ SRCROOT }}/tools/CUPiD/externals/ADF/run_adf_diag adf_config.yml
 
   # 4. Run CUPiD and build webpage
   conda deactivate
-  conda activate cupid-infrastructure
-  {{ srcroot }}/tools/CUPiD/cupid/run_diagnostics.py
-  {{ srcroot }}/tools/CUPiD/cupid/cupid_webpage.py
+  conda activate $CUPID_INFRASTRUCTURE_ENV
+  if [ "${CUPID_GEN_DIAGNOSTICS}" == "TRUE" ]; then
+    {{ srcroot }}/tools/CUPiD/cupid/run_diagnostics.py $CUPID_FLAG_STRING
+  fi
+  if [ "${CUPID_GEN_HTML}" == "TRUE" ]; then
+    {{ srcroot }}/tools/CUPiD/cupid/cupid_webpage.py
+  fi
 fi
