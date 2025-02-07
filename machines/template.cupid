@@ -40,7 +40,6 @@ CUPID_INFRASTRUCTURE_ENV=cupid-infrastructure
 CUPID_ANALYSIS_ENV=cupid-analysis
 
 # CUPID_EXAMPLE=`./xmlquery --value CUPID_EXAMPLE`
-# RUN_POSTPROCESSING=`./xmlquery --value RUN_POSTPROCESSING`
 # CUPID_GEN_TIMESERIES=`./xmlquery --value CUPID_GEN_TIMESERIES`
 # CUPID_GEN_DIAGNOSTICS=`./xmlquery --value CUPID_GEN_DIAGNOSTICS`
 # CUPID_GEN_HTML=`./xmlquery --value CUPID_GEN_HTML`
@@ -91,33 +90,31 @@ fi
 unset PYTHONPATH
 conda activate $CUPID_INFRASTRUCTURE_ENV
 
-if [ "${RUN_POSTPROCESSING}" == "TRUE" ]; then
-  # 1. Generate CUPiD config file
-  {{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
-      --cesm-root {{ SRCROOT }}
+# 1. Generate CUPiD config file
+{{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
+   --cesm-root {{ SRCROOT }}
 
-  # 2. Generate ADF config file
-  {{ srcroot }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
-      --cesm-root {{ SRCROOT }} \
-      --cupid-config-loc ${PWD} \
-      --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
-      --out-file adf_config.yml
+# 2. Generate ADF config file
+{{ srcroot }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
+   --cesm-root {{ SRCROOT }} \
+   --cupid-config-loc ${PWD} \
+   --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
+   --out-file adf_config.yml
 
-  # 3. Generate timeseries files and run ADF
-  if [ "${CUPID_GEN_TIMESERIES}" == "TRUE" ]; then
-    {{ srcroot }}/tools/CUPiD/cupid/run_timeseries.py $CUPID_FLAG_STRING
-  fi
-  conda deactivate
-  conda activate $CUPID_ANALYSIS_ENV
-  {{ SRCROOT }}/tools/CUPiD/externals/ADF/run_adf_diag adf_config.yml
+# 3. Generate timeseries files and run ADF
+if [ "${CUPID_GEN_TIMESERIES}" == "TRUE" ]; then
+   {{ srcroot }}/tools/CUPiD/cupid/run_timeseries.py $CUPID_FLAG_STRING
+fi
+conda deactivate
+conda activate $CUPID_ANALYSIS_ENV
+{{ SRCROOT }}/tools/CUPiD/externals/ADF/run_adf_diag adf_config.yml
 
-  # 4. Run CUPiD and build webpage
-  conda deactivate
-  conda activate $CUPID_INFRASTRUCTURE_ENV
-  if [ "${CUPID_GEN_DIAGNOSTICS}" == "TRUE" ]; then
-    {{ srcroot }}/tools/CUPiD/cupid/run_diagnostics.py $CUPID_FLAG_STRING
-  fi
-  if [ "${CUPID_GEN_HTML}" == "TRUE" ]; then
-    {{ srcroot }}/tools/CUPiD/cupid/cupid_webpage.py
-  fi
+# 4. Run CUPiD and build webpage
+conda deactivate
+conda activate $CUPID_INFRASTRUCTURE_ENV
+if [ "${CUPID_GEN_DIAGNOSTICS}" == "TRUE" ]; then
+  {{ srcroot }}/tools/CUPiD/cupid/run_diagnostics.py $CUPID_FLAG_STRING
+fi
+if [ "${CUPID_GEN_HTML}" == "TRUE" ]; then
+  {{ srcroot }}/tools/CUPiD/cupid/cupid_webpage.py
 fi
