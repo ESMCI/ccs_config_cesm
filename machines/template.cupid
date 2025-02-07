@@ -13,6 +13,11 @@ source .env_mach_specific.sh
 MACH=`./xmlquery --value MACH`
 
 # Set variables that should eventually come from environment file
+RUN_POSTPROCESSING=TRUE
+# RUN_POSTPROCESSING=`./xmlquery --value RUN_POSTPROCESSING`
+if [ "${RUN_POSTPROCESSING}" == "FALSE" ]; then
+   exit 0
+fi
 CUPID_EXAMPLE=key_metrics
 RUN_POSTPROCESSING=TRUE
 CUPID_GEN_TIMESERIES=TRUE
@@ -55,6 +60,8 @@ CUPID_ANALYSIS_ENV=cupid-analysis
 # CUPID_INFRASTRUCTURE_ENV=`./xmlquery --value CUPID_INFRASTRUCTURE_ENV`
 # CUPID_ANALYSIS_ENV=`./xmlquery --value CUPID_ANALYSIS_ENV`
 
+# If CUPID_RUN_ALL is TRUE, we don't add any component flags.
+# The lack of any component flags tells CUPiD to run all components.
 CUPID_FLAG_STRING=""
 if [ "${CUPID_RUN_ALL}" == "FALSE" ]; then
   if [ "${CUPID_RUN_ATM}" == "TRUE" ]; then
@@ -75,6 +82,10 @@ if [ "${CUPID_RUN_ALL}" == "FALSE" ]; then
   if [ "${CUPID_RUN_GLC}" == "TRUE" ]; then
     CUPID_FLAG_STRING+=" --glc"
   fi
+fi
+if [ "${CUPID_FLAG_STRING}" == "" ]; then
+  echo "Need to set at least one component"
+  exit 1
 fi
 
 unset PYTHONPATH
