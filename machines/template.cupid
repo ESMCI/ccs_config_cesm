@@ -81,10 +81,13 @@ if [ "${CUPID_RUN_ALL}" == "FALSE" ]; then
   if [ "${CUPID_RUN_GLC}" == "TRUE" ]; then
     CUPID_FLAG_STRING+=" --glc"
   fi
+  if [ "${CUPID_FLAG_STRING}" == "" ]; then
+    echo "If CUPID_RUN_ALL is False, user must set at least one component"
+    exit 1
+  fi
 fi
-if [ "${CUPID_FLAG_STRING}" == "" ]; then
-  echo "Need to set at least one component"
-  exit 1
+if [ "${CUPID_RUN_ALL}" == "TRUE" ]; then
+  echo "CUPID_RUN_ALL is True, running diagnostics for all components"
 fi
 
 unset PYTHONPATH
