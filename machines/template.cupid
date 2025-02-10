@@ -95,7 +95,15 @@ conda activate $CUPID_INFRASTRUCTURE_ENV
 
 # 1. Generate CUPiD config file
 {{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
-   --cesm-root {{ SRCROOT }}
+   --cesm-root {{ SRCROOT }} \
+   --case-root {{ CASEROOT }} \
+   --cupid-example {{ CUPID_EXAMPLE }} \
+   --cupid-baseline-case {{ CUPID_BASELINE_CASE }} \
+   --cupid-baseline-root {{ CUPID_BASELINE_ROOT }} \
+   --cupid-start-year {{ CUPID_START_YEAR }} \
+   --cupid-end-year {{ CUPID_END_YEAR }} \
+   --cupid-base-start-year {{ CUPID_BASE_START_YEAR }} \
+   --cupid-base-end-year {{ CUPID_BASE_END_YEAR }} \
 
 # 2. Generate ADF config file
 {{ srcroot }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
