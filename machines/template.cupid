@@ -108,9 +108,9 @@ conda activate $CUPID_INFRASTRUCTURE_ENV
 # 2. Generate ADF config file
 {{ srcroot }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
    --cesm-root {{ SRCROOT }} \
-   --cupid-config-loc ${PWD} \
+   --cupid-config-loc {{ srcroot }}/tools/CUPiD/examples/{{ CUPID_EXAMPLE }} \
    --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
-   --out-file adf_config.yml
+   --out-file {{ srcroot }}/tools/CUPiD/examples/{{ CUPID_EXAMPLE }}/adf_config.yml
 
 # 3. Generate timeseries files and run ADF
 if [ "${CUPID_GEN_TIMESERIES}" == "TRUE" ]; then
