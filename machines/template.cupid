@@ -43,6 +43,7 @@ CUPID_RUN_LND=`./xmlquery --value CUPID_RUN_LND`
 CUPID_RUN_ICE=`./xmlquery --value CUPID_RUN_ICE`
 CUPID_RUN_ROF=`./xmlquery --value CUPID_RUN_ROF`
 CUPID_RUN_GLC=`./xmlquery --value CUPID_RUN_GLC`
+CUPID_RUN_ADF=`./xmlquery --value CUPID_RUN_ADF`
 CUPID_INFRASTRUCTURE_ENV=`./xmlquery --value CUPID_INFRASTRUCTURE_ENV`
 CUPID_ANALYSIS_ENV=`./xmlquery --value CUPID_ANALYSIS_ENV`
 
@@ -97,25 +98,27 @@ conda activate $CUPID_INFRASTRUCTURE_ENV
    --cupid-base-end-year $CUPID_BASE_END_YEAR \
 
 # 2. Generate ADF config file
-{{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
-   --cesm-root {{ SRCROOT }} \
-   --cupid-config-loc {{ SRCROOT }}/tools/CUPiD/examples/{{ CUPID_EXAMPLE }} \
-   --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
-   --out-file adf_config.yml
+if [ "${CUPID_RUN_ADF}" == "TRUE" ]; then
+  {{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
+     --cesm-root {{ SRCROOT }} \
+     --cupid-config-loc {{ SRCROOT }}/tools/CUPiD/examples/{{ CUPID_EXAMPLE }} \
+     --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
+     --out-file adf_config.yml
+fi
 
-
-# TODO: remove this before committing
-exit 0
-
-# 3. Generate timeseries files and run ADF
+# 3. Generate timeseries files
 if [ "${CUPID_GEN_TIMESERIES}" == "TRUE" ]; then
    {{ SRCROOT }}/tools/CUPiD/cupid/run_timeseries.py $CUPID_FLAG_STRING
 fi
-conda deactivate
-conda activate $CUPID_ANALYSIS_ENV
-{{ SRCROOT }}/tools/CUPiD/externals/ADF/run_adf_diag adf_config.yml
 
-# 4. Run CUPiD and build webpage
+#4. Run ADF
+if [ "${CUPID_RUN_ADF}" == "TRUE" ]; then
+  conda deactivate
+  conda activate $CUPID_ANALYSIS_ENV
+  {{ SRCROOT }}/tools/CUPiD/externals/ADF/run_adf_diag adf_config.yml
+fi
+
+# 5. Run CUPiD and build webpage
 conda deactivate
 conda activate $CUPID_INFRASTRUCTURE_ENV
 if [ "${CUPID_GEN_DIAGNOSTICS}" == "TRUE" ]; then
