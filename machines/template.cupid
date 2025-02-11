@@ -101,7 +101,7 @@ conda activate $CUPID_INFRASTRUCTURE_ENV
 if [ "${CUPID_RUN_ADF}" == "TRUE" ]; then
   {{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
      --cesm-root {{ SRCROOT }} \
-     --cupid-config-loc {{ SRCROOT }}/tools/CUPiD/examples/{{ CUPID_EXAMPLE }} \
+     --cupid-config-loc {{ SRCROOT }}/tools/CUPiD/examples/${CUPID_EXAMPLE} \
      --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
      --out-file adf_config.yml
 fi
