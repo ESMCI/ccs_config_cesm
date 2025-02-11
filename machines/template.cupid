@@ -1,5 +1,16 @@
 #!/bin/bash -e
 
+# Function to add some number of years to a string that
+# is formatted as YYYY-MM-DD and print out the updated
+# string in the same format
+add_years() {
+  YEAR=`echo $1 | cut -d '-' -f 1`
+  MM=`echo $1 | cut -d '-' -f 2`
+  DD=`echo $1 | cut -d '-' -f 3`
+  NEW_YEAR=`printf '%04d' "$((YEAR + $2))"`-`printf '%02d' "${MM}"`-`printf '%02d' "${DD}"`
+  echo $NEW_YEAR
+}
+
 # Batch system directives
 {{ batchdirectives }}
 
@@ -12,52 +23,32 @@ source .env_mach_specific.sh
 #       want an empty PYTHONPATH environment variable
 MACH=`./xmlquery --value MACH`
 
-# Set variables that should eventually come from environment file
-RUN_POSTPROCESSING=TRUE
-# RUN_POSTPROCESSING=`./xmlquery --value RUN_POSTPROCESSING`
-if [ "${RUN_POSTPROCESSING}" == "FALSE" ]; then
-   exit 0
-fi
-CUPID_EXAMPLE=key_metrics
-RUN_POSTPROCESSING=TRUE
-CUPID_GEN_TIMESERIES=TRUE
-CUPID_GEN_DIAGNOSTICS=TRUE
-CUPID_GEN_HTML=TRUE
-CUPID_BASELINE_CASE=""
-CUPID_BASELINE_ROOT=DOUT_S_ROOT
-CUPID_START_YEAR=1
-CUPID_END_YEAR=100
-CUPID_BASE_START_YEAR=1
-CUPID_BASE_END_YEAR=100
-CUPID_RUN_ALL=TRUE
-CUPID_RUN_ATM=FALSE
-CUPID_RUN_OCN=FALSE
-CUPID_RUN_LND=FALSE
-CUPID_RUN_ICE=FALSE
-CUPID_RUN_ROF=FALSE
-CUPID_RUN_GLC=FALSE
-CUPID_INFRASTRUCTURE_ENV=cupid-infrastructure
-CUPID_ANALYSIS_ENV=cupid-analysis
+# Set variables that come from environment file
+CUPID_EXAMPLE=`./xmlquery --value CUPID_EXAMPLE`
+CUPID_GEN_TIMESERIES=`./xmlquery --value CUPID_GEN_TIMESERIES`
+CUPID_GEN_DIAGNOSTICS=`./xmlquery --value CUPID_GEN_DIAGNOSTICS`
+CUPID_GEN_HTML=`./xmlquery --value CUPID_GEN_HTML`
+CUPID_BASELINE_CASE=`./xmlquery --value CUPID_BASELINE_CASE`
+CUPID_BASELINE_ROOT=`./xmlquery --value CUPID_BASELINE_ROOT`
+CUPID_START_YEAR=`./xmlquery --value CUPID_START_YEAR`
+CUPID_NYEARS=`./xmlquery --value CUPID_NYEARS`
+CUPID_END_YEAR=`add_years $CUPID_START_YEAR $CUPID_NYEARS`
+CUPID_BASE_START_YEAR=`./xmlquery --value CUPID_BASE_START_YEAR`
+CUPID_BASE_NYEARS=`./xmlquery --value CUPID_BASE_NYEARS`
+CUPID_BASE_END_YEAR=`add_years $CUPID_BASE_START_YEAR $CUPID_BASE_NYEARS`
+CUPID_RUN_ALL=`./xmlquery --value CUPID_RUN_ALL`
+CUPID_RUN_ATM=`./xmlquery --value CUPID_RUN_ATM`
+CUPID_RUN_OCN=`./xmlquery --value CUPID_RUN_OCN`
+CUPID_RUN_LND=`./xmlquery --value CUPID_RUN_LND`
+CUPID_RUN_ICE=`./xmlquery --value CUPID_RUN_ICE`
+CUPID_RUN_ROF=`./xmlquery --value CUPID_RUN_ROF`
+CUPID_RUN_GLC=`./xmlquery --value CUPID_RUN_GLC`
+CUPID_INFRASTRUCTURE_ENV=`./xmlquery --value CUPID_INFRASTRUCTURE_ENV`
+CUPID_ANALYSIS_ENV=`./xmlquery --value CUPID_ANALYSIS_ENV`
 
-# CUPID_EXAMPLE=`./xmlquery --value CUPID_EXAMPLE`
-# CUPID_GEN_TIMESERIES=`./xmlquery --value CUPID_GEN_TIMESERIES`
-# CUPID_GEN_DIAGNOSTICS=`./xmlquery --value CUPID_GEN_DIAGNOSTICS`
-# CUPID_GEN_HTML=`./xmlquery --value CUPID_GEN_HTML`
-# CUPID_BASELINE_CASE=`./xmlquery --value CUPID_BASELINE_CASE`
-# CUPID_BASELINE_ROOT=`./xmlquery --value CUPID_BASELINE_ROOT`
-# CUPID_START_YEAR=`./xmlquery --value CUPID_START_YEAR`
-# CUPID_END_YEAR=`./xmlquery --value CUPID_END_YEAR`
-# CUPID_BASE_START_YEAR=`./xmlquery --value CUPID_BASE_START_YEAR`
-# CUPID_BASE_END_YEAR=`./xmlquery --value CUPID_BASE_END_YEAR`
-# CUPID_RUN_ALL=`./xmlquery --value CUPID_RUN_ALL`
-# CUPID_RUN_ATM=`./xmlquery --value CUPID_RUN_ATM`
-# CUPID_RUN_OCN=`./xmlquery --value CUPID_RUN_OCN`
-# CUPID_RUN_LND=`./xmlquery --value CUPID_RUN_LND`
-# CUPID_RUN_ICE=`./xmlquery --value CUPID_RUN_ICE`
-# CUPID_RUN_ROF=`./xmlquery --value CUPID_RUN_ROF`
-# CUPID_RUN_GLC=`./xmlquery --value CUPID_RUN_GLC`
-# CUPID_INFRASTRUCTURE_ENV=`./xmlquery --value CUPID_INFRASTRUCTURE_ENV`
-# CUPID_ANALYSIS_ENV=`./xmlquery --value CUPID_ANALYSIS_ENV`
+# Create directory for running CUPiD
+mkdir -p cupid-postprocessing
+cd cupid-postprocessing
 
 # If CUPID_RUN_ALL is TRUE, we don't add any component flags.
 # The lack of any component flags tells CUPiD to run all components.
@@ -94,27 +85,31 @@ unset PYTHONPATH
 conda activate $CUPID_INFRASTRUCTURE_ENV
 
 # 1. Generate CUPiD config file
-{{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
+{{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
    --cesm-root {{ SRCROOT }} \
    --case-root {{ CASEROOT }} \
-   --cupid-example {{ CUPID_EXAMPLE }} \
-   --cupid-baseline-case {{ CUPID_BASELINE_CASE }} \
-   --cupid-baseline-root {{ CUPID_BASELINE_ROOT }} \
-   --cupid-start-year {{ CUPID_START_YEAR }} \
-   --cupid-end-year {{ CUPID_END_YEAR }} \
-   --cupid-base-start-year {{ CUPID_BASE_START_YEAR }} \
-   --cupid-base-end-year {{ CUPID_BASE_END_YEAR }} \
+   --cupid-example $CUPID_EXAMPLE \
+   --cupid-baseline-case $CUPID_BASELINE_CASE \
+   --cupid-baseline-root $CUPID_BASELINE_ROOT \
+   --cupid-start-year $CUPID_START_YEAR \
+   --cupid-end-year $CUPID_END_YEAR \
+   --cupid-base-start-year $CUPID_BASE_START_YEAR \
+   --cupid-base-end-year $CUPID_BASE_END_YEAR \
 
 # 2. Generate ADF config file
-{{ srcroot }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
+{{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
    --cesm-root {{ SRCROOT }} \
-   --cupid-config-loc {{ srcroot }}/tools/CUPiD/examples/{{ CUPID_EXAMPLE }} \
+   --cupid-config-loc {{ SRCROOT }}/tools/CUPiD/examples/{{ CUPID_EXAMPLE }} \
    --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
-   --out-file {{ srcroot }}/tools/CUPiD/examples/{{ CUPID_EXAMPLE }}/adf_config.yml
+   --out-file adf_config.yml
+
+
+# TODO: remove this before committing
+exit 0
 
 # 3. Generate timeseries files and run ADF
 if [ "${CUPID_GEN_TIMESERIES}" == "TRUE" ]; then
-   {{ srcroot }}/tools/CUPiD/cupid/run_timeseries.py $CUPID_FLAG_STRING
+   {{ SRCROOT }}/tools/CUPiD/cupid/run_timeseries.py $CUPID_FLAG_STRING
 fi
 conda deactivate
 conda activate $CUPID_ANALYSIS_ENV
@@ -124,8 +119,8 @@ conda activate $CUPID_ANALYSIS_ENV
 conda deactivate
 conda activate $CUPID_INFRASTRUCTURE_ENV
 if [ "${CUPID_GEN_DIAGNOSTICS}" == "TRUE" ]; then
-  {{ srcroot }}/tools/CUPiD/cupid/run_diagnostics.py $CUPID_FLAG_STRING
+  {{ SRCROOT }}/tools/CUPiD/cupid/run_diagnostics.py $CUPID_FLAG_STRING
 fi
 if [ "${CUPID_GEN_HTML}" == "TRUE" ]; then
-  {{ srcroot }}/tools/CUPiD/cupid/cupid_webpage.py
+  {{ SRCROOT }}/tools/CUPiD/cupid/cupid_webpage.py
 fi
