@@ -43,9 +43,20 @@
       <dependency>case.run or case.test</dependency>
       <prereq>$DOUT_S</prereq>
       <runtime_parameters>
-	<task_count>1</task_count>
-	<tasks_per_node>1</tasks_per_node>
-	<walltime>0:20:00</walltime>
+        <task_count>1</task_count>
+        <tasks_per_node>1</tasks_per_node>
+        <walltime>0:20:00</walltime>
+      </runtime_parameters>
+    </job>
+    <job name="case.cupid">
+      <template>template.cupid</template>
+      <hidden>false</hidden>
+      <dependency>case.st_archive</dependency>
+      <prereq>$RUN_POSTPROCESSING</prereq>
+      <runtime_parameters MACH="derecho">
+        <task_count>1</task_count>
+        <tasks_per_node>1</tasks_per_node>
+        <walltime>0:20:00</walltime>
       </runtime_parameters>
     </job>
   </workflow_jobs>
@@ -56,28 +67,14 @@
       <dependency>case.st_archive</dependency>
       <prereq>1</prereq>
       <runtime_parameters MACH="aleph">
-	<task_count>200</task_count>
-	<tasks_per_node>10</tasks_per_node>
-	<walltime>12:00:00</walltime>
+        <task_count>200</task_count>
+        <tasks_per_node>10</tasks_per_node>
+        <walltime>12:00:00</walltime>
       </runtime_parameters>
       <runtime_parameters MACH="cheyenne">
-	<task_count>72</task_count>
-	<tasks_per_node>9</tasks_per_node>
-	<walltime>0:20:00</walltime>
-      </runtime_parameters>
-    </job>
-  </workflow_jobs>
-
-  <workflow_jobs id="case.cupid" prepend="default">
-    <job name="case.cupid">
-      <template>template.cupid</template>
-      <hidden>false</hidden>
-      <dependency>case.st_archive</dependency>
-      <prereq>1</prereq>
-      <runtime_parameters MACH="derecho">
-	<task_count>1</task_count>
-	<tasks_per_node>1</tasks_per_node>
-	<walltime>0:20:00</walltime>
+        <task_count>72</task_count>
+        <tasks_per_node>9</tasks_per_node>
+        <walltime>0:20:00</walltime>
       </runtime_parameters>
     </job>
   </workflow_jobs>
