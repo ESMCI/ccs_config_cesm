@@ -1520,6 +1520,28 @@
     <grid name="ocnice">oQU00375</grid>
     <mask>oQU00375</mask>
   </model_grid>
+
+  <model_grid alias="mpasa60-3wus_oRR60-3WUS" not_compset="_MOM">
+    <grid name="atm">mpasa60-3wus</grid>
+    <grid name="lnd">mpasa60-3wus</grid>
+    <grid name="ocnice">oRR60-3WUS</grid>
+    <mask>oRR60-3WUS</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa60-3wus_mpasa60-3wus" not_compset="_MOM">
+    <grid name="atm">mpasa60-3wus</grid>
+    <grid name="lnd">mpasa60-3wus</grid>
+    <grid name="ocnice">mpasa60-3wus</grid>
+    <mask>mpasa60-3wus</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oRR60-3WUS" not_compset="_MOM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oRR60-3WUS</grid>
+    <mask>oRR60-3WUS</mask>
+  </model_grid>
+
   <!-- END EarthWorks Specific, MPAS-A+MPAS-O grids -->
 
 

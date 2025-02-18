@@ -440,17 +440,24 @@
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU0075">
-      <nx>1849027</nx>  <ny>1</ny>
-      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU0075/oQU0075_ESMFmesh.230907.nc</mesh>
-      <desc>oQU00375 is a MPAS ocean grid that is roughly 1/16 degree resolution:</desc>
+      <nx>7399783</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU0075/oQU0075_ESMFmesh.241221.nc</mesh>
+      <desc>oQU0075 is a MPAS ocean grid that is roughly 1/16 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU00375">
-      <nx>1849027</nx>  <ny>1</ny>
-      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU00375/oQU00375_ESMFmesh.230907nc</mesh>
+      <nx>29598824</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU00375/oQU00375_ESMFmesh.241221.nc</mesh>
       <desc>oQU00375 is a MPAS ocean grid that is roughly 1/32 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
+    <domain name="oRR60-3WUS">
+      <nx>835536</nx>  <ny>1</ny>
+      <mesh driver="nuopc">/glade/work/dazlich/oRR60-3/oRR60-3WUS_ESMFmesh.nc</mesh>
+      <desc>oQU60-3wus is a MPAS ocean grid that s 3km region refinement over the western US:</desc>
+      <support>Experimental, under development</support>
+    </domain>
+
 
   <!-- ======================================================== -->
   <!-- ROF domains -->
