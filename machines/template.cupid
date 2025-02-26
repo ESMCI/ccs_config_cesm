@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# Batch system directives
+{{ batchdirectives }}
+
 # Function to add some number of years to a string that
 # is formatted as YYYY-MM-DD and print out the updated
 # string in the same format
@@ -8,11 +11,8 @@ add_years() {
   MM=`echo $1 | cut -d '-' -f 2`
   DD=`echo $1 | cut -d '-' -f 3`
   NEW_YEAR=`printf '%04d' "$((YEAR + $2))"`-`printf '%02d' "${MM}"`-`printf '%02d' "${DD}"`
-  echo $NEW_YEAR
+  echo ${NEW_YEAR}
 }
-
-# Batch system directives
-{{ batchdirectives }}
 
 # Set environment for CESM
 source .env_mach_specific.sh
@@ -32,10 +32,10 @@ CUPID_BASELINE_CASE=`./xmlquery --value CUPID_BASELINE_CASE`
 CUPID_BASELINE_ROOT=`./xmlquery --value CUPID_BASELINE_ROOT`
 CUPID_START_YEAR=`./xmlquery --value CUPID_START_YEAR`
 CUPID_NYEARS=`./xmlquery --value CUPID_NYEARS`
-CUPID_END_YEAR=`add_years $CUPID_START_YEAR $CUPID_NYEARS`
+CUPID_END_YEAR=`add_years ${CUPID_START_YEAR} ${CUPID_NYEARS}`
 CUPID_BASE_START_YEAR=`./xmlquery --value CUPID_BASE_START_YEAR`
 CUPID_BASE_NYEARS=`./xmlquery --value CUPID_BASE_NYEARS`
-CUPID_BASE_END_YEAR=`add_years $CUPID_BASE_START_YEAR $CUPID_BASE_NYEARS`
+CUPID_BASE_END_YEAR=`add_years ${CUPID_BASE_START_YEAR} ${CUPID_BASE_NYEARS}`
 CUPID_RUN_ALL=`./xmlquery --value CUPID_RUN_ALL`
 CUPID_RUN_ATM=`./xmlquery --value CUPID_RUN_ATM`
 CUPID_RUN_OCN=`./xmlquery --value CUPID_RUN_OCN`
@@ -83,46 +83,47 @@ if [ "${CUPID_RUN_ALL}" == "TRUE" ]; then
 fi
 
 unset PYTHONPATH
-conda activate $CUPID_INFRASTRUCTURE_ENV
+conda activate ${CUPID_INFRASTRUCTURE_ENV}
 
 # 1. Generate CUPiD config file
 {{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
    --cesm-root {{ SRCROOT }} \
    --case-root {{ CASEROOT }} \
-   --cupid-example $CUPID_EXAMPLE \
-   --cupid-baseline-case $CUPID_BASELINE_CASE \
-   --cupid-baseline-root $CUPID_BASELINE_ROOT \
-   --cupid-start-year $CUPID_START_YEAR \
-   --cupid-end-year $CUPID_END_YEAR \
-   --cupid-base-start-year $CUPID_BASE_START_YEAR \
-   --cupid-base-end-year $CUPID_BASE_END_YEAR \
+   --adf-output-root ${PWD} \
+   --cupid-example ${CUPID_EXAMPLE} \
+   --cupid-baseline-case ${CUPID_BASELINE_CASE} \
+   --cupid-baseline-root ${CUPID_BASELINE_ROOT} \
+   --cupid-start-year ${CUPID_START_YEAR} \
+   --cupid-end-year ${CUPID_END_YEAR} \
+   --cupid-base-start-year ${CUPID_BASE_START_YEAR} \
+   --cupid-base-end-year ${CUPID_BASE_END_YEAR} \
 
 # 2. Generate ADF config file
 if [ "${CUPID_RUN_ADF}" == "TRUE" ]; then
   {{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
      --cesm-root {{ SRCROOT }} \
-     --cupid-config-loc {{ SRCROOT }}/tools/CUPiD/examples/${CUPID_EXAMPLE} \
+     --cupid-config-loc . \
      --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
      --out-file adf_config.yml
 fi
 
 # 3. Generate timeseries files
 if [ "${CUPID_GEN_TIMESERIES}" == "TRUE" ]; then
-   {{ SRCROOT }}/tools/CUPiD/cupid/run_timeseries.py $CUPID_FLAG_STRING
+   {{ SRCROOT }}/tools/CUPiD/cupid/run_timeseries.py ${CUPID_FLAG_STRING}
 fi
 
 #4. Run ADF
 if [ "${CUPID_RUN_ADF}" == "TRUE" ]; then
   conda deactivate
-  conda activate $CUPID_ANALYSIS_ENV
+  conda activate ${CUPID_ANALYSIS_ENV}
   {{ SRCROOT }}/tools/CUPiD/externals/ADF/run_adf_diag adf_config.yml
 fi
 
 # 5. Run CUPiD and build webpage
 conda deactivate
-conda activate $CUPID_INFRASTRUCTURE_ENV
+conda activate ${CUPID_INFRASTRUCTURE_ENV}
 if [ "${CUPID_GEN_DIAGNOSTICS}" == "TRUE" ]; then
-  {{ SRCROOT }}/tools/CUPiD/cupid/run_diagnostics.py $CUPID_FLAG_STRING
+  {{ SRCROOT }}/tools/CUPiD/cupid/run_diagnostics.py ${CUPID_FLAG_STRING}
 fi
 if [ "${CUPID_GEN_HTML}" == "TRUE" ]; then
   {{ SRCROOT }}/tools/CUPiD/cupid/cupid_webpage.py
