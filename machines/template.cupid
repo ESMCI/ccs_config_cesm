@@ -30,12 +30,12 @@ CUPID_GEN_DIAGNOSTICS=`./xmlquery --value CUPID_GEN_DIAGNOSTICS`
 CUPID_GEN_HTML=`./xmlquery --value CUPID_GEN_HTML`
 CUPID_BASELINE_CASE=`./xmlquery --value CUPID_BASELINE_CASE`
 CUPID_BASELINE_ROOT=`./xmlquery --value CUPID_BASELINE_ROOT`
-CUPID_START_YEAR=`./xmlquery --value CUPID_START_YEAR`
+CUPID_STARTDATE=`./xmlquery --value CUPID_STARTDATE`
 CUPID_NYEARS=`./xmlquery --value CUPID_NYEARS`
-CUPID_END_YEAR=`add_years ${CUPID_START_YEAR} ${CUPID_NYEARS}`
-CUPID_BASE_START_YEAR=`./xmlquery --value CUPID_BASE_START_YEAR`
+CUPID_ENDDATE=`add_years ${CUPID_STARTDATE} ${CUPID_NYEARS}`
+CUPID_BASE_STARTDATE=`./xmlquery --value CUPID_BASE_STARTDATE`
 CUPID_BASE_NYEARS=`./xmlquery --value CUPID_BASE_NYEARS`
-CUPID_BASE_END_YEAR=`add_years ${CUPID_BASE_START_YEAR} ${CUPID_BASE_NYEARS}`
+CUPID_BASE_ENDDATE=`add_years ${CUPID_BASE_STARTDATE} ${CUPID_BASE_NYEARS}`
 CUPID_RUN_ALL=`./xmlquery --value CUPID_RUN_ALL`
 CUPID_RUN_ATM=`./xmlquery --value CUPID_RUN_ATM`
 CUPID_RUN_OCN=`./xmlquery --value CUPID_RUN_OCN`
@@ -86,6 +86,11 @@ unset PYTHONPATH
 conda activate ${CUPID_INFRASTRUCTURE_ENV}
 
 # 1. Generate CUPiD config file
+# CUPID_STARTDATE and CUPID_ENDDATE are YYYY-MM-DD, but script wants just the year
+START_YEAR=`printf '%d' ${CUPID_STARTDATE::4}`
+END_YEAR=`printf '%d' ${CUPID_ENDDATE::4}`
+BASE_START_YEAR=`printf '%d' ${CUPID_BASE_STARTDATE::4}`
+BASE_END_YEAR=`printf '%d' ${CUPID_BASE_ENDDATE::4}`
 {{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
    --cesm-root {{ SRCROOT }} \
    --case-root {{ CASEROOT }} \
@@ -93,10 +98,10 @@ conda activate ${CUPID_INFRASTRUCTURE_ENV}
    --cupid-example ${CUPID_EXAMPLE} \
    --cupid-baseline-case ${CUPID_BASELINE_CASE} \
    --cupid-baseline-root ${CUPID_BASELINE_ROOT} \
-   --cupid-start-year ${CUPID_START_YEAR} \
-   --cupid-end-year ${CUPID_END_YEAR} \
-   --cupid-base-start-year ${CUPID_BASE_START_YEAR} \
-   --cupid-base-end-year ${CUPID_BASE_END_YEAR} \
+   --cupid-start-year ${START_YEAR} \
+   --cupid-end-year ${END_YEAR} \
+   --cupid-base-start-year ${BASE_START_YEAR} \
+   --cupid-base-end-year ${BASE_END_YEAR} \
 
 # 2. Generate ADF config file
 if [ "${CUPID_RUN_ADF}" == "TRUE" ]; then
