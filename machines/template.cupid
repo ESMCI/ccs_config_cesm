@@ -86,11 +86,6 @@ unset PYTHONPATH
 conda activate ${CUPID_INFRASTRUCTURE_ENV}
 
 # 1. Generate CUPiD config file
-# CUPID_STARTDATE and CUPID_ENDDATE are YYYY-MM-DD, but script wants just the year
-START_YEAR=`printf '%d' ${CUPID_STARTDATE::4}`
-END_YEAR=`printf '%d' ${CUPID_ENDDATE::4}`
-BASE_START_YEAR=`printf '%d' ${CUPID_BASE_STARTDATE::4}`
-BASE_END_YEAR=`printf '%d' ${CUPID_BASE_ENDDATE::4}`
 {{ SRCROOT }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
    --cesm-root {{ SRCROOT }} \
    --case-root {{ CASEROOT }} \
@@ -98,10 +93,10 @@ BASE_END_YEAR=`printf '%d' ${CUPID_BASE_ENDDATE::4}`
    --cupid-example ${CUPID_EXAMPLE} \
    --cupid-baseline-case ${CUPID_BASELINE_CASE} \
    --cupid-baseline-root ${CUPID_BASELINE_ROOT} \
-   --cupid-start-year ${START_YEAR} \
-   --cupid-end-year ${END_YEAR} \
-   --cupid-base-start-year ${BASE_START_YEAR} \
-   --cupid-base-end-year ${BASE_END_YEAR} \
+   --cupid-start-year ${CUPID_STARTDATE} \
+   --cupid-end-year ${CUPID_ENDDATE} \
+   --cupid-base-start-year ${CUPID_BASE_STARTDATE} \
+   --cupid-base-end-year ${CUPID_BASE_ENDDATE} \
 
 # 2. Generate ADF config file
 if [ "${CUPID_RUN_ADF}" == "TRUE" ]; then
