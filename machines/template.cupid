@@ -93,10 +93,10 @@ conda activate ${CUPID_INFRASTRUCTURE_ENV}
    --cupid-example ${CUPID_EXAMPLE} \
    --cupid-baseline-case ${CUPID_BASELINE_CASE} \
    --cupid-baseline-root ${CUPID_BASELINE_ROOT} \
-   --cupid-start-year ${CUPID_STARTDATE} \
-   --cupid-end-year ${CUPID_ENDDATE} \
-   --cupid-base-start-year ${CUPID_BASE_STARTDATE} \
-   --cupid-base-end-year ${CUPID_BASE_ENDDATE} \
+   --cupid-startdate ${CUPID_STARTDATE} \
+   --cupid-enddate ${CUPID_ENDDATE} \
+   --cupid-base-startdate ${CUPID_BASE_STARTDATE} \
+   --cupid-base-enddate ${CUPID_BASE_ENDDATE} \
 
 # 2. Generate ADF config file
 if [ "${CUPID_RUN_ADF}" == "TRUE" ]; then
