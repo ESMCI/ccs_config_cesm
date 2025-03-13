@@ -45,7 +45,7 @@
 	<command name="load">craype</command>
       </modules>
       <modules compiler="intel">
-        <command name="load">intel/2024.2.1</command>
+        <command name="load">intel/2025.0.3</command>
 	<command name="load">mkl</command>
       </modules>
       <modules compiler="cray">
