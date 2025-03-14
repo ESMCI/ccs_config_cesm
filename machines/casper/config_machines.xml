@@ -17,18 +17,10 @@
     <MAX_MPITASKS_PER_NODE>36</MAX_MPITASKS_PER_NODE>
     <MAX_CPUTASKS_PER_GPU_NODE>36</MAX_CPUTASKS_PER_GPU_NODE>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
-    <!-- <mpirun mpilib="openmpi">
+    <mpirun mpilib="openmpi">
       <executable>mpirun</executable>
       <arguments>
         <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
-      </arguments>
-    </mpirun> -->
-    <mpirun mpilib="default">
-      <executable>mpibind</executable>
-      <arguments>
-        <arg name="label"> --label</arg>
-        <arg name="buffer"> --line-buffer</arg>
-        <arg name="separator"> -- </arg>
       </arguments>
     </mpirun>
     <module_system type="module" allow_error="true">
