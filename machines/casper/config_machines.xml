@@ -38,7 +38,7 @@
         <command name="load">cmake/3.31.0</command>
       </modules>
       <modules compiler="intel">
-        <command name="load">intel/2025.0.3</command>
+        <command name="load">intel/2024.2.1</command>
         <command name="load">mkl</command>
       </modules>
       <modules compiler="nvhpc">
@@ -53,7 +53,7 @@
         <command name="load">parallel-netcdf/1.14.0</command>
       </modules>
       <modules>
-        <command name="load">parallelio/2.6.5</command>
+        <command name="load">parallelio/2.6.4</command>
         <command name="load">esmf/8.8.0</command>
         <command name="load">ncarcompilers/1.0.0</command>
       </modules>
@@ -66,7 +66,7 @@
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
-    <environment_variables compiler="nvhpc" gpu_type="!none">
+    <environment_variables compiler="nvhpc" gpu_offload="!none">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
     </environment_variables>
     <resource_limits>
