@@ -66,7 +66,7 @@
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
-    <environment_variables compiler="nvhpc" gpu_offload="!none">
+    <environment_variables compiler="nvhpc" gpu_type="!none">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
     </environment_variables>
     <resource_limits>
