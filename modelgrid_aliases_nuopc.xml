@@ -1338,6 +1338,13 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="mpasa480_mpasa480_mt232" not_compset="_MOM">
+    <grid name="atm">mpasa480</grid>
+    <grid name="lnd">mpasa480</grid>
+    <grid name="ocnice">mpasa480</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
+
   <model_grid alias="mpasa240_mpasa240" not_compset="_MOM">
     <grid name="atm">mpasa240</grid>
     <grid name="lnd">mpasa240</grid>
