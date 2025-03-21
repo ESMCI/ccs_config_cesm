@@ -1,7 +1,7 @@
 <machine MACH="derecho">
     <DESC>NCAR AMD EPYC system</DESC>
     <OS>CNL</OS>
-    <COMPILERS>intel,gnu,nvhpc,cce</COMPILERS>
+    <COMPILERS>intel,gnu,nvhpc,cray</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
     <CIME_OUTPUT_ROOT>$ENV{SCRATCH}</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{CESMDATAROOT}/inputdata</DIN_LOC_ROOT>
@@ -97,12 +97,7 @@
         <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
 
-      <modules DEBUG="FALSE" compiler="!gnu">
-	<command name="load">parallelio/2.6.4</command>
-	<command name="load">esmf/8.8.0</command>
-      </modules>
-
-      <modules DEBUG="TRUE" mpilib="mpi-serial" compiler="!gnu">
+      <modules compiler="!gnu">
 	<command name="load">parallelio/2.6.4</command>
 	<command name="load">esmf/8.8.0</command>
       </modules>
