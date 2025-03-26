@@ -34,5 +34,5 @@ if (USE_KOKKOS)
     set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above
   endif()
   string(APPEND LDFLAGS " -lstdc++ ")
-  string(APPEND SLIBS " -llapack -lblas")
+  string(APPEND SLIBS " -lsci_gnu ")
 endif()
