@@ -11,6 +11,7 @@ set(SCXX "g++")
 set(SFC "gfortran")
 
 if (USE_KOKKOS)
+  string(APPEND CPPDEFS " -DUSE_KOKKOS")
   set(EKAT_MACH_FILES_PATH ${SRC_ROOT}/libraries/ekat/cmake/machine-files)
   if (KOKKOS_GPU_OFFLOAD)
     set(USE_CUDA "TRUE")

@@ -15,6 +15,7 @@ set(SCXX icpx)
 set(SFC ifort)
 
 if (USE_KOKKOS)
+  string(APPEND CPPDEFS " -DUSE_KOKKOS")
   set(EKAT_MACH_FILES_PATH ${SRC_ROOT}/libraries/ekat/cmake/machine-files)
   include (${EKAT_MACH_FILES_PATH}/kokkos/amd-zen3.cmake)
   include (${EKAT_MACH_FILES_PATH}/kokkos/openmp.cmake)

@@ -14,6 +14,7 @@ message("OPENACC_GPU_OFFLOAD is ${OPENACC_GPU_OFFLOAD}")
 message("OPENMP_GPU_OFFLOAD is ${OPENMP_GPU_OFFLOAD}")
 
 if (USE_KOKKOS)
+  string(APPEND CPPDEFS " -DUSE_KOKKOS")
   set(EKAT_MACH_FILES_PATH ${SRC_ROOT}/libraries/ekat/cmake/machine-files)
   if (KOKKOS_GPU_OFFLOAD)
     set(USE_CUDA "TRUE")
