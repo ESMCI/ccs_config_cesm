@@ -57,6 +57,7 @@
       <modules compiler="intel">
         <command name="load">intel/2024.2.1</command>
         <command name="load">mkl</command>
+	<command name="load">kokkos/4.2.01</command>
       </modules>
       <modules compiler="cray">
         <command name="load">cce/17.0.1</command>
