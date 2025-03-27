@@ -68,6 +68,7 @@
       </modules>
       <modules compiler="nvhpc">
         <command name="load">nvhpc/24.11</command>
+        <command name="load">cray-libsci/24.03.0</command>
       </modules>
       <modules>
         <command name="load">ncarcompilers/1.0.0</command>
