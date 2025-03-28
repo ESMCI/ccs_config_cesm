@@ -13,23 +13,32 @@ set(SFC "gfortran")
 
 if (USE_KOKKOS)
   string(APPEND CPPDEFS " -DUSE_KOKKOS")
-  set(EKAT_MACH_FILES_PATH ${SRC_ROOT}/libraries/ekat/cmake/machine-files)
+  # Generic setting that are used regardless of Architecture or Kokkos backend
+  set(Kokkos_ENABLE_DEPRECATED_CODE FALSE CACHE BOOL "")
+  set(Kokkos_ENABLE_EXPLICIT_INSTANTIATION FALSE CACHE BOOL "")
   if (KOKKOS_GPU_OFFLOAD)
     set(USE_CUDA "TRUE")
     string(APPEND CPPDEFS " -DGPU")
     string(APPEND CPPDEFS " -DTHRUST_IGNORE_CUB_VERSION_CHECK")
     string(APPEND CMAKE_CUDA_FLAGS " -ccbin CC -O2 -arch=sm_80 --use_fast_math")
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_AMPERE80=On -DKokkos_ENABLE_CUDA=On -DKokkos_ENABLE_CUDA_LAMBDA=On -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=Off -DKokkos_ENABLE_IMPL_CUDA_MALLOC_ASYNC=Off")
-    set(CMAKE_CUDA_ARCHITECTURES "80")
-    include (${EKAT_MACH_FILES_PATH}/kokkos/nvidia-a100.cmake)
-    include (${EKAT_MACH_FILES_PATH}/kokkos/cuda.cmake)
-    set(EKAT_MPI_EXTRA_ARGS "${EKAT_MPI_EXTRA_ARGS} --gpus-per-task=1" CACHE STRING "" FORCE)
+    # Enable A100 arch in kokkos
+    option(Kokkos_ARCH_AMPERE80 "" ON)
+    # This var is needed by relatively recent CMake when CUDA language is enabled
+    # If not defined, CMake issues a warning
+    set(CMAKE_CUDA_ARCHITECTURES 80 CACHE STRING "")
+    # Settings used when Cuda is the Kokkos backend
+    set(Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION FALSE CACHE BOOL "")
+    set(Kokkos_ENABLE_CUDA TRUE CACHE BOOL "")
+    set(Kokkos_ENABLE_CUDA_LAMBDA TRUE CACHE BOOL "")
     set(CMAKE_CXX_FLAGS "-DTHRUST_IGNORE_CUB_VERSION_CHECK" CACHE STRING "" FORCE)
   else()
-    include (${EKAT_MACH_FILES_PATH}/kokkos/amd-zen3.cmake)
-    include (${EKAT_MACH_FILES_PATH}/kokkos/openmp.cmake)
+    # Enable EPYC arch in kokkos
+    option(Kokkos_ARCH_ZEN3 "" ON)
+    # Settings used when OpenMP is the Kokkos backend
+    set(Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION TRUE CACHE BOOL "")
+    set(Kokkos_ENABLE_OPENMP TRUE CACHE BOOL "")
   endif()
-  include (${EKAT_MACH_FILES_PATH}/mpi/other.cmake)
   if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
     set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above
   endif()

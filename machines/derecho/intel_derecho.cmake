@@ -16,9 +16,13 @@ set(SFC ifort)
 
 if (USE_KOKKOS)
   string(APPEND CPPDEFS " -DUSE_KOKKOS")
-  set(EKAT_MACH_FILES_PATH ${SRC_ROOT}/libraries/ekat/cmake/machine-files)
-  include (${EKAT_MACH_FILES_PATH}/kokkos/amd-zen3.cmake)
-  include (${EKAT_MACH_FILES_PATH}/kokkos/openmp.cmake)
-  include (${EKAT_MACH_FILES_PATH}/mpi/other.cmake)
+  # Generic setting that are used regardless of Architecture or Kokkos backend
+  set(Kokkos_ENABLE_DEPRECATED_CODE FALSE CACHE BOOL "")
+  set(Kokkos_ENABLE_EXPLICIT_INSTANTIATION FALSE CACHE BOOL "")
+  # Enable EPYC arch in kokkos
+  option(Kokkos_ARCH_ZEN3 "" ON)
+  # Settings used when OpenMP is the Kokkos backend
+  set(Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION TRUE CACHE BOOL "")
+  set(Kokkos_ENABLE_OPENMP TRUE CACHE BOOL "")
   set(CMAKE_CXX_FLAGS "-DTHRUST_IGNORE_CUB_VERSION_CHECK" CACHE STRING "" FORCE)
 endif()
