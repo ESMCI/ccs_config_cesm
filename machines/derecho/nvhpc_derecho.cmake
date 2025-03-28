@@ -36,8 +36,6 @@ if (USE_KOKKOS)
   else()
     # Enable EPYC arch in kokkos
     option(Kokkos_ARCH_ZEN3 "" ON)
-    # Settings used when OpenMP is the Kokkos backend
-    set(Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION TRUE CACHE BOOL "")
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_OPENMP=Off") # work-around for nvidia as kokkos is not passing "-mp" for threaded build
   endif()
   if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
