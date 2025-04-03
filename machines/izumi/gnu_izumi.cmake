@@ -1,14 +1,24 @@
-string(APPEND SLIBS " -L${NETCDF_PATH}/lib -lnetcdff -lnetcdf -Wl,-Wl,,-rpath,$(NETCDF_PATH)/lib")
+if (COMP_NAME STREQUAL gptl)
+  string(APPEND CPPDEFS " -DHAVE_SLASHPROC")
+endif()
+if (COMP_NAME STREQUAL mpi-serial)
+  string(APPEND CFLAGS " -std=c89 ")
+endif()	
+
 if (USE_KOKKOS)
-  string(APPEND CXX_LDFLAGS " -lmpichcxx")
-  set(SUPPORTS_CXX "TRUE")
-  set(CMAKE_CXX_COMPILER mpicxx)
+#  set(EKAT_MACH_FILES_PATH ${SRC_ROOT}/libraries/ekat/cmake/machine-files)
+#  include (${EKAT_MACH_FILES_PATH}/kokkos/amd-zen3.cmake)
+#  include (${EKAT_MACH_FILES_PATH}/kokkos/openmp.cmake)
+#  include (${EKAT_MACH_FILES_PATH}/mpi/other.cmake)
+#  set(EKAT_MPI_EXTRA_ARGS "${EKAT_MPI_EXTRA_ARGS} --gpus-per-task=1" CACHE STRING "" FORCE)
+#  set(CMAKE_CXX_FLAGS "-DTHRUST_IGNORE_CUB_VERSION_CHECK" CACHE STRING "" FORCE)
+
+
   string(APPEND CPPDEFS " -DUSE_KOKKOS")
   # Generic setting that are used regardless of Architecture or Kokkos backend
   set(Kokkos_ENABLE_DEPRECATED_CODE FALSE CACHE BOOL "")
   set(Kokkos_ENABLE_EXPLICIT_INSTANTIATION FALSE CACHE BOOL "")
   if (KOKKOS_GPU_OFFLOAD)
-    # Set the mpic++ compiler for use with nag
     set(USE_CUDA "TRUE")
     string(APPEND CPPDEFS " -DGPU")
     string(APPEND CPPDEFS " -DTHRUST_IGNORE_CUB_VERSION_CHECK")
@@ -35,11 +45,4 @@ if (USE_KOKKOS)
     set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above
   endif()
   string(APPEND LDFLAGS " -lstdc++ ")
-  if (MPILIB STREQUAL mpich)
-     string(APPEND LDFLAGS " -lmpichcxx")
-  endif()
-  if (MPILIB STREQUAL mpich2)
-     string(APPEND LDFLAGS " -lmpich2cxx")
-  endif()
-
 endif()
