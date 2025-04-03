@@ -859,6 +859,13 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="ne16_ne16_mg37" not_compset="_MOM">
+    <grid name="atm">ne16np4</grid>
+    <grid name="lnd">ne16np4</grid>
+    <grid name="ocnice">ne16np4</grid>
+    <mask>gx3v7</mask>
+  </model_grid>
+
   <model_grid alias="ne30_g16" not_compset="_MOM">
     <grid name="atm">ne30np4</grid>
     <grid name="lnd">ne30np4</grid>
