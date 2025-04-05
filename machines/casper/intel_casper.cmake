@@ -14,14 +14,13 @@ set(SCXX icpx)
 set(SFC ifort)
 
 if (USE_KOKKOS)
-  string(APPEND CPPDEFS " -DUSE_KOKKOS")
   # Generic setting that are used regardless of Architecture or Kokkos backend
   set(Kokkos_ENABLE_DEPRECATED_CODE FALSE CACHE BOOL "")
   set(Kokkos_ENABLE_EXPLICIT_INSTANTIATION FALSE CACHE BOOL "")
-  include (${EKAT_MACH_FILES_PATH}/kokkos/generic.cmake)
   option(Kokkos_ARCH_ZEN4 "" ON)
   # Settings used when OpenMP is the Kokkos backend
   set(Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION TRUE CACHE BOOL "")
   set(Kokkos_ENABLE_OPENMP TRUE CACHE BOOL "")
   set(CMAKE_CXX_FLAGS "-DTHRUST_IGNORE_CUB_VERSION_CHECK" CACHE STRING "" FORCE)
+  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()
