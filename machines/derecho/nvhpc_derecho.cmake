@@ -34,7 +34,7 @@ if (USE_KOKKOS)
   else()
     # Enable EPYC arch in kokkos
     option(Kokkos_ARCH_ZEN3 "" ON)
-    string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_OPENMP=Off") # work-around for nvidia as kokkos is not passing "-mp" for threaded build
+    string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=Off") # work-around for nvidia as kokkos is not passing "-mp" for threaded build
   endif()
   if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
     set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above

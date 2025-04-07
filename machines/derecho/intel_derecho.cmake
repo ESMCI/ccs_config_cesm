@@ -20,9 +20,14 @@ if (USE_KOKKOS)
   set(Kokkos_ENABLE_EXPLICIT_INSTANTIATION FALSE CACHE BOOL "")
   # Enable EPYC arch in kokkos
   option(Kokkos_ARCH_ZEN3 "" ON)
-  # Settings used when OpenMP is the Kokkos backend
-  set(Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION TRUE CACHE BOOL "")
-  set(Kokkos_ENABLE_OPENMP TRUE CACHE BOOL "")
+  if (compile_threaded)
+    # Settings used when OpenMP is the Kokkos backend
+    set(Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION TRUE CACHE BOOL "")
+    set(Kokkos_ENABLE_OPENMP TRUE CACHE BOOL "")
+    string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_SERIAL=OFF -DKokkos_ENABLE_OPENMP=ON")
+  else()
+    string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=Off")
+  endif()
   set(CMAKE_CXX_FLAGS "-DTHRUST_IGNORE_CUB_VERSION_CHECK" CACHE STRING "" FORCE)
   string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()
