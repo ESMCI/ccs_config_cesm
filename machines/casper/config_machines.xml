@@ -12,9 +12,11 @@
     <GMAKE_J>8</GMAKE_J>
     <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
     <SUPPORTED_BY>ASAP/CISL</SUPPORTED_BY>
-    <MAX_TASKS_PER_NODE>64</MAX_TASKS_PER_NODE>
-    <MAX_GPUS_PER_NODE>4</MAX_GPUS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>64</MAX_MPITASKS_PER_NODE> <!-- different for various GPU nodes; check NHUG documentation for details -->
+    <MAX_TASKS_PER_NODE>62</MAX_TASKS_PER_NODE> <!-- different for various CPU nodes; check NHUG documentation for details -->
+    <MEM_PER_TASK>10</MEM_PER_TASK>
+    <MAX_MEM_PER_NODE>690</MAX_MEM_PER_NODE> <!-- different for various CPU/GPU nodes; check NHUG documentation for details -->
+    <MAX_GPUS_PER_NODE>4</MAX_GPUS_PER_NODE> <!-- different for various GPU nodes; check NHUG documentation for details -->
+    <MAX_MPITASKS_PER_NODE>62</MAX_MPITASKS_PER_NODE> <!-- different for various CPU nodes; check NHUG documentation for details -->
     <MAX_CPUTASKS_PER_GPU_NODE>128</MAX_CPUTASKS_PER_GPU_NODE> <!-- different for various GPU nodes; check NHUG documentation for details -->
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="openmpi">
