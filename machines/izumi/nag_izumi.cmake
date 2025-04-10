@@ -1,8 +1,6 @@
-string(APPEND SLIBS " -L${NETCDF_PATH}/lib -lnetcdff -lnetcdf -Wl,-Wl,,-rpath,$(NETCDF_PATH)/lib")
 if (USE_KOKKOS)
-  string(APPEND CXX_LDFLAGS " -lmpichcxx")
-  set(SUPPORTS_CXX "TRUE")
-  set(CMAKE_CXX_COMPILER mpicxx)
+   # dynamic netcdff library doesn't have netcdf_MP_xxx symbols defined, link with static version
+   string(APPEND SLIBS " -L${NETCDF_PATH}/lib ${NETCDF_PATH}/lib/libnetcdff.a -lnetcdf -Wl,-Wl,,-rpath,$(NETCDF_PATH)/lib")
   string(APPEND CPPDEFS " -DUSE_KOKKOS")
   # Generic setting that are used regardless of Architecture or Kokkos backend
   set(Kokkos_ENABLE_DEPRECATED_CODE FALSE CACHE BOOL "")
@@ -34,12 +32,7 @@ if (USE_KOKKOS)
   if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
     set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above
   endif()
-  string(APPEND LDFLAGS " -lstdc++ ")
-  if (MPILIB STREQUAL mpich)
-     string(APPEND LDFLAGS " -lmpichcxx")
-  endif()
-  if (MPILIB STREQUAL mpich2)
-     string(APPEND LDFLAGS " -lmpich2cxx")
-  endif()
-
+  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
+else()
+  string(APPEND SLIBS " -L${NETCDF_PATH}/lib -lnetcdff -lnetcdf -Wl,-Wl,,-rpath,$(NETCDF_PATH)/lib")
 endif()
