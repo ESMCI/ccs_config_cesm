@@ -39,7 +39,6 @@ if (USE_KOKKOS)
   endif()
   if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
     set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above
-    string(APPEND FFLAGS " -fallow-argument-mismatch")
   endif()
   string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()
