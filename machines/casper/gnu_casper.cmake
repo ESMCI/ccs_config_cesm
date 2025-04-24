@@ -14,19 +14,20 @@ if (USE_KOKKOS)
   # Generic setting that are used regardless of Architecture or Kokkos backend
   string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
   if (KOKKOS_GPU_OFFLOAD)
-    string(APPEND CPPDEFS " -DGPU -DTHRUST_IGNORE_CUB_VERSION_CHECK")
-    string(APPEND CMAKE_CUDA_FLAGS " -ccbin CC -O2 -arch=sm_80 --use_fast_math")
-    string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_AMPERE80=On -DKokkos_ENABLE_CUDA=On -DKokkos_ENABLE_CUDA_LAMBDA=On -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=Off -DKokkos_ENABLE_IMPL_CUDA_MALLOC_ASYNC=Off")
-    # Enable A100 arch in kokkos
-    option(Kokkos_ARCH_AMPERE80 "" ON)
-    # This var is needed by relatively recent CMake when CUDA language is enabled
-    # If not defined, CMake issues a warning
-    set(CMAKE_CUDA_ARCHITECTURES 80 CACHE STRING "")
-    # Settings used when Cuda is the Kokkos backend
-    set(Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION FALSE CACHE BOOL "")
-    set(Kokkos_ENABLE_CUDA TRUE CACHE BOOL "")
-    set(Kokkos_ENABLE_CUDA_LAMBDA TRUE CACHE BOOL "")    
-    set(CMAKE_CXX_FLAGS "-DTHRUST_IGNORE_CUB_VERSION_CHECK" CACHE STRING "" FORCE)
+    string(APPEND CPPDEFS " -DGPU -DTHRUST_IGNORE_CUB_VERSION_CHECK -DHOMMEXX_ENABLE_GPU")
+    string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF -DKokkos_ENABLE_AGGRESSIVE_VECTORIZATION=OFF")
+    if (GPU_TYPE STREQUAL v100)
+      string(APPEND KOKKOS_OPTIONS " -DKOKKOS_ARCH_VOLTA70=ON -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_LAMBDA=ON -DKokkos_ENABLE_IMPL_CUDA_MALLOC_ASYNC=OFF")
+      string(APPEND CXXFLAGS " -extended-lambda -Wext-lambda-captures-this -std=c++17 -arch=sm_70")
+    elseif(GPU_TYPE STREQUAL a100)
+      string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_AMPERE80=ON -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_LAMBDA=ON -DKokkos_ENABLE_IMPL_CUDA_MALLOC_ASYNC=OFF")
+      string(APPEND CXXFLAGS " -extended-lambda -Wext-lambda-captures-this -std=c++17 -arch=sm_80")
+    elseif(GPU_TYPE STREQUAL h100)
+      string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_HOPPER90=ON -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_LAMBDA=ON -DKokkos_ENABLE_IMPL_CUDA_MALLOC_ASYNC=OFF")
+      string(APPEND CXXFLAGS " -extended-lambda -Wext-lambda-captures-this -std=c++17 -arch=sm_90")
+    else()
+      message(FATAL_ERROR "GPU_TYPE ${GPU_TYPE} not supported")
+    endif()  
   else()
     # Enable EPYC arch in kokkos
     if (compile_threaded)
