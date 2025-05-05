@@ -84,7 +84,7 @@
       </modules>
 
       <modules mpilib="mpi-serial">
-        <command name="load">mpi-serial/2.5.0</command>
+        <command name="load">mpi-serial/2.3.0</command>
         <command name="load">netcdf/4.9.2</command>
       </modules>
 
