@@ -19,7 +19,7 @@
     <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
     <MAX_CPUTASKS_PER_GPU_NODE>64</MAX_CPUTASKS_PER_GPU_NODE>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
-<!--    <TORCH_DIR compiler="intel">/glade/work/jedwards/conda-envs/ml5.6</TORCH_DIR> -->
+    <TORCH_DIR compiler="intel">/glade/work/jedwards/conda-envs/ml5.6</TORCH_DIR> 
     <mpirun mpilib="default">
       <executable>mpibind</executable>
       <arguments>
