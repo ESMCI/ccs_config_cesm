@@ -19,6 +19,7 @@
     <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
     <MAX_CPUTASKS_PER_GPU_NODE>64</MAX_CPUTASKS_PER_GPU_NODE>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
+<!--    <TORCH_DIR compiler="intel">/glade/work/jedwards/conda-envs/ml5.6</TORCH_DIR> -->
     <mpirun mpilib="default">
       <executable>mpibind</executable>
       <arguments>
@@ -124,8 +125,5 @@
     </environment_variables>
     <environment_variables compiler="nvhpc" gpu_type="!none">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
-    </environment_variables>
-   <environment_variables compiler="intel">
-      <env name="TORCH_DIR">/glade/work/jedwards/sandboxes/torch/libtorch</env>
     </environment_variables>
   </machine>
