@@ -859,6 +859,13 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="ne16_ne16_mg37" not_compset="_MOM">
+    <grid name="atm">ne16np4</grid>
+    <grid name="lnd">ne16np4</grid>
+    <grid name="ocnice">ne16np4</grid>
+    <mask>gx3v7</mask>
+  </model_grid>
+
   <model_grid alias="ne30_g16" not_compset="_MOM">
     <grid name="atm">ne30np4</grid>
     <grid name="lnd">ne30np4</grid>
@@ -1467,14 +1474,14 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="C24_C24_mg17" not_compset="_MOM">
+  <model_grid alias="C48_C48_mg17" not_compset="_MOM">
     <grid name="atm">C48</grid>
     <grid name="lnd">C48</grid>
     <grid name="ocnice">C48</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="C24_C24_mg17" not_compset="_MOM">
+  <model_grid alias="C96_C96_mg17" not_compset="_MOM">
     <grid name="atm">C96</grid>
     <grid name="lnd">C96</grid>
     <grid name="ocnice">C96</grid>
@@ -1503,7 +1510,7 @@
     <mask>tx0.25v1</mask>
   </model_grid>
 
-  <model_grid alias="C24_C24_mg17" not_compset="_MOM">
+  <model_grid alias="C192_C192_mg17" not_compset="_MOM">
     <grid name="atm">C192</grid>
     <grid name="lnd">C192</grid>
     <grid name="ocnice">C192</grid>
