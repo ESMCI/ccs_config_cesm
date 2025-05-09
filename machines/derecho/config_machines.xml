@@ -64,7 +64,7 @@
       </modules>
       <modules compiler="gnu">
         <command name="load">gcc/12.2.0</command>
-        <command name="load">cray-libsci/23.02.0</command>
+        <command name="load">cray-libsci/23.02.1.1</command>
       </modules>
       <modules compiler="nvhpc">
         <command name="load">nvhpc/24.11</command>
