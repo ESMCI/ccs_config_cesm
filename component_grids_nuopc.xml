@@ -528,7 +528,7 @@
   </domain>
   <domain name="wgx3v7">
     <nx>100</nx>  <ny>116</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/wgx3v7_2301208_ESMFmesh.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wgx3v7_240327_ESMFmesh.nc</mesh>
     <desc>gx3v7 global grid</desc>
     <support>For testing of the WAV model</support>
   </domain>
