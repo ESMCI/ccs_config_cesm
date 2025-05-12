@@ -184,6 +184,8 @@
     <directives>
       <directive>-l nodes={{ num_nodes }}</directive>
       <directive>-q iccp</directive>
+      <directive> -V </directive> 
+
     </directives>
     <queues>
       <queue walltimemax="24:00:00" default="true" >iccp</queue>
@@ -209,19 +211,6 @@
     </queues>
   </batch_system>
 
-  <!-- bluewaters is PBS -->
-  <batch_system MACH="bluewaters" type="pbs" >
-    <jobid_pattern>(\d+.bw)$</jobid_pattern>
-    <directives>
-      <directive>-l nodes={{ num_nodes }}:ppn={{ tasks_per_node }}:xe</directive>
-      <directive default="/bin/bash" > -S {{ shell }} </directive>
-    </directives>
-    <queues>
-      <queue walltimemax="24:00:00">normal</queue>
-      <queue walltimemax="00:30:00" nodemin="1" nodemax="16" default="true">debug</queue>
-    </queues>
-  </batch_system>
-
   <!-- casper pbs -->
   <batch_system MACH="casper" type="pbs">
     <batch_submit>qsub</batch_submit>
@@ -234,46 +223,12 @@
     </directives>
     <directives queue="casper" gpu_enabled="false">
       <directive default="/bin/bash" > -S {{ shell }} </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=700GB:ngpus={{ ngpus_per_node }} </directive>
+      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=300GB:ngpus={{ ngpus_per_node }} </directive>
     </directives>
-
     <!-- Unknown queues use the batch directives for the regular queue -->
     <unknown_queue_directives>casper</unknown_queue_directives>
-
     <queues>
       <queue walltimemax="12:00:00" nodemin="1" nodemax="10">casper</queue>
-    </queues>
-  </batch_system>
-
-  <batch_system MACH="cheyenne" type="pbs">
-    <directives queue="regular">
-      <directive default="/bin/bash" > -S {{ shell }}  </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}</directive>
-    </directives>
-
-    <directives queue="premium">
-      <directive default="/bin/bash" > -S {{ shell }}  </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}</directive>
-    </directives>
-
-    <directives queue="economy">
-      <directive default="/bin/bash" > -S {{ shell }}  </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}</directive>
-    </directives>
-
-    <directives queue="share">
-      <directive default="/bin/bash" > -S {{ shell }}  </directive>
-      <directive> -l select=1:mpiprocs={{ total_tasks }}:ompthreads={{ thread_count }}</directive>
-    </directives>
-
-    <!-- Unknown queues use the batch directives for the regular queue -->
-    <unknown_queue_directives>regular</unknown_queue_directives>
-
-    <queues>
-      <queue walltimemax="12:00:00" nodemin="1" nodemax="4032">regular</queue>
-      <queue walltimemax="12:00:00" nodemin="1" nodemax="4032">premium</queue>
-      <queue default="true" walltimemax="06:00:00" jobmin="1" jobmax="18">share</queue>
-      <queue walltimemax="12:00:00" nodemin="1" nodemax="4032">economy</queue>
     </queues>
   </batch_system>
 
@@ -310,39 +265,6 @@
     </submit_args>
   </batch_system>
 
-  <batch_system MACH="cori-haswell" type="slurm" >
-    <batch_submit>sbatch</batch_submit>
-    <submit_args>
-      <argument> --time $JOB_WALLCLOCK_TIME </argument>
-      <argument> -q $JOB_QUEUE </argument>
-      <argument> --account $PROJECT </argument>
-    </submit_args>
-    <directives>
-      <directive>-C haswell </directive>
-    </directives>
-    <queues>
-      <queue walltimemax="06:00:00" nodemin="1" nodemax="710">regular</queue>
-    <!--  <queue walltimemax="00:30:00" nodemin="1" nodemax="3072" default="true">debug</queue> -->
-    </queues>
-  </batch_system>
-
-  <batch_system MACH="cori-knl" type="slurm" >
-    <batch_submit>sbatch</batch_submit>
-    <submit_args>
-      <argument> --time $JOB_WALLCLOCK_TIME </argument>
-      <argument> -q $JOB_QUEUE </argument>
-      <argument> --account $PROJECT </argument>
-    </submit_args>
-    <directives>
-      <directive>-C knl,quad,cache </directive>
-      <directive>-S 2 </directive>
-    </directives>
-    <queues>
-      <queue walltimemax="02:00:00" nodemin="1" nodemax="177">regular</queue>
-    <!--  <queue walltimemax="00:30:00" nodemin="1" nodemax="3072" default="true">debug</queue> -->
-    </queues>
-  </batch_system>
-
   <batch_system MACH="daint" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
@@ -357,6 +279,9 @@
 
   <batch_system MACH="derecho" type="pbs" >
     <batch_submit>qsub</batch_submit>
+    <submit_args>
+      <argument> -l job_priority=$JOB_PRIORITY </argument>
+    </submit_args>
     <directives gpu_enabled="false">
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
       <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=230GB</directive>
@@ -366,7 +291,8 @@
       <directive> -l select={{ num_nodes }}:ncpus={{ max_cputasks_per_gpu_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem=480GB:ngpus={{ ngpus_per_node }}:mps=1 </directive>
     </directives>
     <queues>
-      <queue walltimemax="4:00:00" nodemin="1" nodemax="2488" >main</queue>
+      <queue walltimemax="1:00:00" jobmin="1" jobmax="64" >develop</queue>
+      <queue walltimemax="12:00:00" nodemin="1" nodemax="2488" >main</queue>
     </queues>
   </batch_system>
 
@@ -430,7 +356,7 @@
 
     <queues>
       <queue walltimemax="02:00:00" nodemin="1" nodemax="40">development</queue>
-      <queue walltimemax="24:00:00" nodemin="1" nodemax="512" default="true">normal</queue>
+      <queue walltimemax="24:00:00" nodemin="3" nodemax="512" default="true">normal</queue>
       <queue walltimemax="24:00:00" nodemin="513" nodemax="2048" >large</queue>
     </queues>
   </batch_system>
@@ -445,6 +371,7 @@
       <directive>-d $RUNDIR</directive>
       <directive>-o $RUNDIR/$CASE.out </directive>
       <directive>-S /bin/bash  </directive>
+      <directive>-V</directive>
     </directives>
     <queues>
       <queue walltimemax="01:00:00" nodemin="1" nodemax="35">debug</queue>
@@ -503,28 +430,13 @@
     </queues>
   </batch_system>
 
-  <!-- hobart is PBS -->
-  <batch_system type="pbs" MACH="hobart" >
-    <directives>
-      <directive>-l nodes={{ num_nodes }}:ppn={{ tasks_per_node }}</directive>
-      <directive default="/bin/bash" > -S {{ shell }}  </directive>
-    </directives>
-    <queues>
-      <queue walltimemax="02:00:00"   strict="true" nodemin="1"  nodemax="8">short</queue>
-      <queue walltimemax="08:00:00"   strict="true" nodemin="1"  nodemax="6" default="true">medium</queue>
-      <queue walltimemax="40:00:00"   strict="true" nodemin="1"  nodemax="8">long</queue>
-      <queue walltimemax="80:00:00"   strict="true" nodemin="1"  nodemax="8">verylong</queue>
-      <queue walltimemax="32:00:00"   strict="true" nodemax="16" nodemin="1">overnight</queue>
-      <queue walltimemax="3000:00:00" strict="true" nodemax="32" nodemin="1">monster</queue>
-    </queues>
-  </batch_system>
-
-  <batch_system type="pbs" MACH="izumi" >
+   <batch_system type="pbs" MACH="izumi" >
     <batch_submit>qsub</batch_submit>
     <jobid_pattern>(\d+.izumi.cgd.ucar.edu)$</jobid_pattern>
     <directives>
       <directive>-l nodes={{ num_nodes }}:ppn={{ tasks_per_node }}</directive>
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -V </directive>
     </directives>
     <queues>
       <queue walltimemax="02:00:00"   strict="true" nodemin="1"  nodemax="8">short</queue>
@@ -533,16 +445,6 @@
       <queue walltimemax="120:00:00"   strict="true" nodemin="1"  nodemax="8">verylong</queue>
       <queue walltimemax="32:00:00"   strict="true" nodemax="14" nodemin="1">overnight</queue>
       <queue walltimemax="3000:00:00" strict="true" nodemax="14" nodemin="1">monster</queue>
-    </queues>
-  </batch_system>
-
-  <batch_system MACH="laramie" type="pbs">
-    <directives>
-      <directive default="/bin/bash" > -S {{ shell }}  </directive>
-      <directive> -l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}</directive>
-    </directives>
-    <queues>
-      <queue default="true" walltimemax="12:00" nodemin="1" nodemax="72">regular</queue>
     </queues>
   </batch_system>
 
@@ -573,17 +475,12 @@
     </queues>
   </batch_system>
 
-  <batch_system MACH="mira" type="cobalt">
-    <queues>
-      <queue walltimemax="06:00:00" nodemin="1" nodemax="12288" default="true">default</queue>
-    </queues>
-  </batch_system>
-
   <!-- modex is PBS -->
   <batch_system MACH="modex" type="pbs">
     <directives>
       <directive>-l nodes={{ num_nodes }}:ppn={{ tasks_per_node }}</directive>
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -V </directive>
     </directives>
     <queues>
       <queue walltimemax="36:00:00" default="true">batch</queue>
@@ -627,6 +524,7 @@
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=bro</directive>
       <directive>-l place=scatter:excl</directive>
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -V </directive>
     </directives>
     <queues>
       <queue walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
@@ -642,6 +540,7 @@
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=has</directive>
       <directive>-l place=scatter:excl</directive>
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -V </directive>
     </directives>
     <queues>
       <queue walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
@@ -657,6 +556,7 @@
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=ivy</directive>
       <directive>-l place=scatter:excl</directive>
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -V </directive>
     </directives>
     <queues>
       <queue walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
@@ -672,6 +572,7 @@
       <directive>-l select={{ num_nodes }}:ncpus={{ max_tasks_per_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:model=san</directive>
       <directive>-l place=scatter:excl</directive>
       <directive default="/bin/bash" > -S {{ shell }}  </directive>
+      <directive> -V </directive>
     </directives>
     <queues>
       <queue walltimemax="08:00:00" nodemin="1" nodemax="5256" default="true">normal</queue>
@@ -708,6 +609,7 @@
   <batch_system MACH="swan" type="pbs" >
     <directives>
       <directive>-l nodes={{ num_nodes }}</directive>
+      <directive> -V </directive>
     </directives>
     <queues>
       <queue walltimemax="24:00:00" default="true" >default</queue>

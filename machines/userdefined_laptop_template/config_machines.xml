@@ -5,7 +5,8 @@
            desired layout (change '${HOME}/projects' to your
            prefered location). -->
       <DESC>__USEFUL_DESCRIPTION__</DESC>
-      <NODENAME_REGEX> something.matching.your.machine.hostname </NODENAME_REGEX>
+      <!-- NODENAME_REGEX is now in the top level config_machines.xml file
+<NODENAME_REGEX> something.matching.your.machine.hostname </NODENAME_REGEX>  -->
       <OS>Darwin</OS>
       <COMPILERS>gnu</COMPILERS>
       <MPILIBS>mpich</MPILIBS>
