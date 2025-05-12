@@ -1,0 +1,14 @@
+  <batch_system type="slurm" MACH="greenplanet-sky24">
+    <batch_submit>sbatch</batch_submit>
+    <submit_args>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -p $JOB_QUEUE </argument>
+    </submit_args>
+    <queues>
+      <!-- Want case.st_archiver to run on first available queue, but case.run to use sky2.4
+           We achieve this setting both queues as the default queue but limiting it
+           to jobs that use 8 tasks or fewer; other jobs will land in sky2.4        -->
+      <queue nodemin="1" nodemax="13">sky2.4</queue>
+      <queue default="true" jobmin="1" jobmax="8">sib2.9,sky2.4</queue>
+    </queues>
+  </batch_system>

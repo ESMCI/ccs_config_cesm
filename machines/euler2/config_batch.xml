@@ -1,0 +1,10 @@
+  <!-- euler2 is LSF -->
+  <batch_system MACH="euler2" type="lsf" >
+    <directives>
+      <directive> -R "select[model==XeonE5_2680v3]" </directive>
+    </directives>
+    <queues>
+      <queue walltimemax="23:59:00" default="true">normal.24h</queue>
+      <queue walltimemax="03:59:00" >normal.4h</queue>
+    </queues>
+  </batch_system>
