@@ -13,6 +13,20 @@ REDUCED_OPT_OBJS=\
 SatellitePhenologyMod.o \
 esm.o
 
+REDUCED_ERRORCHKS_IN_DEBUG=\
+fvm_consistent_se_cslam.o \
+clm_instMod.o \
+mpp.o \
+horiz_interp_conserve.o \
+data_override.o \
+MOM_io_infra.o \
+dynColumnStateUpdaterMod.o \
+prim_advection_mod.o \
+MARBL_forcing_mod.o \
+MOM_internal_tide_input.o \
+MOM_ice_shelf.o \
+mom_surface_forcing_nuopc.o
+
 REDUCED_PRECISION_OBJS=\
 shr_wv_sat_mod.o
 
@@ -154,9 +168,12 @@ ifeq ($(DEBUG),FALSE)
 #  $(SHR_RANDNUM_C_OBJS): %.o: %.c
 #	  $(CC) -c $(INCLDIR) $(INCS) $(CFLAGS) -O3 -fast $<
   $(PUMAS_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $(GPUFLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $(OPENACC_GPU_FLAGS) $<
   $(RRTMGP_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(OPENACC_GPU_FLAGS) $<
   $(CLUBB_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(GPUFLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(OPENACC_GPU_FLAGS) $<
+else
+  $(REDUCED_ERRORCHKS_IN_DEBUG): %.o: %.F90
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -Mnobounds -Ktrap=none -Knoieee $<
 endif

@@ -13,12 +13,11 @@
     <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
     <SUPPORTED_BY>cseg</SUPPORTED_BY>
     <MAX_TASKS_PER_NODE>128</MAX_TASKS_PER_NODE>
+    <MEM_PER_TASK>10</MEM_PER_TASK>
+    <MAX_MEM_PER_NODE>235</MAX_MEM_PER_NODE>
     <MAX_GPUS_PER_NODE>4</MAX_GPUS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
     <MAX_CPUTASKS_PER_GPU_NODE>64</MAX_CPUTASKS_PER_GPU_NODE>
-    <GPU_TYPE>none,a100</GPU_TYPE>
-    <GPU_OFFLOAD>none,openacc,openmp,combined</GPU_OFFLOAD>
-    <MPI_GPU_WRAPPER_SCRIPT>set_gpu_rank</MPI_GPU_WRAPPER_SCRIPT>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
     <mpirun mpilib="default">
       <executable>mpibind</executable>
@@ -41,6 +40,8 @@
 	<command name="load">cesmdev/1.0</command>
 	<command name="load">ncarenv/23.09</command>
         <command name="purge"/>
+        <command name="load">conda/latest</command>
+        <command name="load">nco</command>
 	<command name="load">craype</command>
       </modules>
       <modules compiler="intel">
@@ -75,7 +76,7 @@
 	<command name="load">cray-mpich/8.1.27</command>
       </modules>
 
-      <modules mpilib="mpich" compiler="nvhpc" gpu_offload="!none">
+      <modules mpilib="mpich" compiler="nvhpc" gpu_type="!none">
         <command name="load">cuda/12.2.1</command>
       </modules>
 
@@ -121,7 +122,7 @@
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
-    <environment_variables compiler="nvhpc" gpu_offload="!none">
+    <environment_variables compiler="nvhpc" gpu_type="!none">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
     </environment_variables>
   </machine>

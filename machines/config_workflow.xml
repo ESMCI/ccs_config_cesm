@@ -68,6 +68,20 @@
     </job>
   </workflow_jobs>
 
+  <workflow_jobs id="case.cupid" prepend="default">
+    <job name="case.cupid">
+      <template>template.cupid</template>
+      <hidden>false</hidden>
+      <dependency>case.st_archive</dependency>
+      <prereq>1</prereq>
+      <runtime_parameters MACH="derecho">
+	<task_count>1</task_count>
+	<tasks_per_node>1</tasks_per_node>
+	<walltime>0:20:00</walltime>
+      </runtime_parameters>
+    </job>
+  </workflow_jobs>
+
   <!-- THIS CREATES THE JOB FOR THE LAUNCHING OF THE SMARTSIM ORCHESTRATOR -->
   <workflow_jobs id="smartsim_db" prepend="default">
     <job name="smartsim_db"> <!-- name here corresponds with scripts -->
