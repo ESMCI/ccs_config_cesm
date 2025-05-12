@@ -1,0 +1,7 @@
+if (COMP_NAME STREQUAL mpi-serial)
+   string(APPEND CFLAGS " -std=c89 ")
+endif()
+if (NOT DEBUG)
+  string(APPEND FFLAGS " -target=zen3")
+endif()
+message("GPU_TYPE is ${GPU_TYPE} GPU_OFFLOAD is ${GPU_OFFLOAD}")

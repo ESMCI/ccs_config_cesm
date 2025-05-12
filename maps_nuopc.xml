@@ -82,9 +82,17 @@
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/r05/map_r05_to_tx0.66v1_e1000r300_190314.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/r05/map_r05_to_tx0.66v1_e1000r300_190314.nc</map>
     </gridmap>
+    <gridmap rof_grid="r05" ocn_grid="tx2_3v2" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/r05/map_r05_to_tx2_3_nnsm_e1000r1000_230415.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/r05/map_r05_to_tx2_3_nnsm_e1000r1000_230415.nc</map>
+    </gridmap>
     <gridmap rof_grid="JRA025" ocn_grid="tx0.66v1" >
       <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/rJRA025/map_JRA025m_to_tx0.66v1_nnsm_e333r100_190910.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/rJRA025/map_JRA025m_to_tx0.66v1_nnsm_e333r100_190910.nc</map>
+    </gridmap>
+    <gridmap rof_grid="JRA025" ocn_grid="tx2_3v2" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">cpl/gridmaps/rJRA025/map_jra_to_tx2_3_nnsm_e333r100_230415.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">cpl/gridmaps/rJRA025/map_jra_to_tx2_3_nnsm_e333r100_230415.nc</map>
     </gridmap>
 
     <!-- ======================================================== -->
@@ -132,6 +140,10 @@
       <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx0.66v1_nnsm_e1000r300_190314.nc</map>
       <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx0.66v1_nnsm_e1000r300_190314.nc</map>
     </gridmap>
+    <gridmap ocn_grid="tx2_3v2" glc_grid="gris4" >
+      <map name="GLC2OCN_LIQ_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx2_3_nnsm_e1000r300_230415.nc</map>
+      <map name="GLC2OCN_ICE_RMAPNAME">cpl/gridmaps/gland4km/map_gland4km_to_tx2_3_nnsm_e1000r300_230415.nc</map>
+    </gridmap>
 
     <!-- ======================================================== -->
     <!-- wav->ocn, ocn->wav, ice->wav -->
@@ -169,6 +181,12 @@
       <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_f19_TO_HDMAmz_aave.200901.nc</map>
       <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAmz_TO_f19_aave.200901.nc</map>
     </gridmap>
+    <gridmap lnd_grid="1.9x2.5" rof_grid="HDMA_lake_mz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_f19_TO_HDMAlakemz_aave_cdf5.221117.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAlakemz_TO_f19_aave_cdf5.221117.nc</map>
+    </gridmap>
     <gridmap lnd_grid="1.9x2.5" rof_grid="MERITmz">
       <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
       <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
@@ -183,6 +201,12 @@
       <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_f09_TO_HDMAmz_aave.210321.nc</map>
       <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAmz_TO_f09_aave.210321.nc</map>
     </gridmap>
+    <gridmap lnd_grid="0.9x1.25" rof_grid="HDMA_lake_mz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_f09_TO_HDMAlakemz_aave_cdf5.221117.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAlakemz_TO_f09_aave_cdf5.221117.nc</map>
+    </gridmap>
     <gridmap lnd_grid="0.9x1.25" rof_grid="MERITmz">
       <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
       <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
@@ -196,6 +220,12 @@
       <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
       <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_hcru_TO_HDMAmz_aave.210924.nc</map>
       <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAmz_TO_hcru_aave.210924.nc</map>
+    </gridmap>
+    <gridmap lnd_grid="360x720cru" rof_grid="HDMA_lake_mz">
+      <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->
+      <!-- They were then converted to SCRIP mapping file format so they could be read by cime -->
+      <map name="LND2ROF_FMAPNAME">rof/mizuRoute/gridmaps/map_hcru_TO_HDMAlakemz_aave_cdf5.221117.nc</map>
+      <map name="ROF2LND_FMAPNAME">rof/mizuRoute/gridmaps/map_HDMAlakemz_TO_hcru_aave_cdf5.221117.nc</map>
     </gridmap>
     <gridmap lnd_grid="360x720cru" rof_grid="MERITmz">
       <!-- These mapping files were NOT created using ESMF as ESMF regridding failed, but with an offline python script -->

@@ -8,7 +8,7 @@ prim_advance_mod.o
 
 # CLM's SatellitePhenologyMod is compiled incorrectly with intel 15.0.0 at -O2
 REDUCED_OPT_OBJS=\
-SatellitePhenologyMod.o
+SatellitePhenologyMod.o 
 
 # shr_wv_sat_mod does not need to have better than ~0.1% precision, and benefits
 # enormously from a lower precision in the vector functions.

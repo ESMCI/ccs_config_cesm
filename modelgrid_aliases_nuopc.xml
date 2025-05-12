@@ -123,7 +123,7 @@
     <mask>0.125nldas2</mask>
   </model_grid>
 
-  <model_grid alias="nldas2_rUSGS_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
+  <model_grid alias="nldas2_nldas2_rUSGS_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
     <grid name="atm">0.125nldas2</grid>
     <grid name="lnd">0.125nldas2</grid>
     <grid name="ocnice">0.125nldas2</grid>
@@ -131,7 +131,7 @@
     <mask>0.125nldas2</mask>
   </model_grid>
 
-  <model_grid alias="nldas2_rHDMA_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
+  <model_grid alias="nldas2_nldas2_rHDMA_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
     <grid name="atm">0.125nldas2</grid>
     <grid name="lnd">0.125nldas2</grid>
     <grid name="ocnice">0.125nldas2</grid>
@@ -139,7 +139,7 @@
     <mask>0.125nldas2</mask>
   </model_grid>
 
-  <model_grid alias="nldas2_rMERIT_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
+  <model_grid alias="nldas2_nldas2_rMERIT_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
     <grid name="atm">0.125nldas2</grid>
     <grid name="lnd">0.125nldas2</grid>
     <grid name="ocnice">0.125nldas2</grid>
@@ -154,7 +154,7 @@
     <mask>tx0.1v3</mask>
   </model_grid>
 
-  <model_grid alias="hcru_hcru_mt13_rMERIT" not_compset="_POP" compset="DATM.+CLM.+MIZUROUTE">
+  <model_grid alias="hcru_hcru_rMERIT_mt13" not_compset="_POP" compset="DATM.+CLM.+MIZUROUTE">
     <grid name="atm">360x720cru</grid>
     <grid name="lnd">360x720cru</grid>
     <grid name="ocnice">tx0.1v3</grid>
@@ -162,11 +162,19 @@
     <mask>tx0.1v3</mask>
   </model_grid>
 
-  <model_grid alias="hcru_hcru_mt13_rHDMA" not_compset="_POP" compset="DATM.+CLM.+MIZUROUTE">
+  <model_grid alias="hcru_hcru_rHDMA_mt13" not_compset="_POP" compset="DATM.+CLM.+MIZUROUTE">
     <grid name="atm">360x720cru</grid>
     <grid name="lnd">360x720cru</grid>
     <grid name="ocnice">tx0.1v3</grid>
     <grid name="rof">HDMAmz</grid>
+    <mask>tx0.1v3</mask>
+  </model_grid>
+
+  <model_grid alias="hcru_hcru_rHDMAlk_mt13" not_compset="_POP" compset="DATM.+CLM.+MIZUROUTE">
+    <grid name="atm">360x720cru</grid>
+    <grid name="lnd">360x720cru</grid>
+    <grid name="ocnice">tx0.1v3</grid>
+    <grid name="rof">HDMA_lake_mz</grid>
     <mask>tx0.1v3</mask>
   </model_grid>
 
@@ -341,6 +349,13 @@
     <grid name="rof">JRA025</grid>
   </model_grid>
 
+  <model_grid alias="TL319_t232" compset="DATM%JRA">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="rof">JRA025</grid>
+  </model_grid>
+
   <model_grid alias="TL319_t061_wt061" not_compset="_CAM">
     <grid name="atm">TL319</grid>
     <grid name="lnd">TL319</grid>
@@ -407,6 +422,12 @@
     <grid name="atm">0.9x1.25</grid>
     <grid name="lnd">0.9x1.25</grid>
     <grid name="ocnice">tx0.66v1</grid>
+  </model_grid>
+
+  <model_grid alias="f09_t232">
+    <grid name="atm">0.9x1.25</grid>
+    <grid name="lnd">0.9x1.25</grid>
+    <grid name="ocnice">tx2_3v2</grid>
   </model_grid>
 
   <model_grid alias="T62_g16" not_compset="_CAM">
@@ -648,7 +669,7 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="f09_f09_mg17_rHDMA" not_compset="_POP" compset="MIZUROUTE">
+  <model_grid alias="f09_f09_rHDMA_mg17" not_compset="_POP" compset="MIZUROUTE">
     <grid name="atm">0.9x1.25</grid>
     <grid name="lnd">0.9x1.25</grid>
     <grid name="ocnice">0.9x1.25</grid>
@@ -656,7 +677,15 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="f09_f09_mg17_rMERIT" not_compset="_POP" compset="MIZUROUTE">
+  <model_grid alias="f09_f09_rHDMAlk_mg17" not_compset="_POP" compset="MIZUROUTE">
+    <grid name="atm">0.9x1.25</grid>
+    <grid name="lnd">0.9x1.25</grid>
+    <grid name="ocnice">0.9x1.25</grid>
+    <grid name="rof">HDMA_lake_mz</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="f09_f09_rMERIT_mg17" not_compset="_POP" compset="MIZUROUTE">
     <grid name="atm">0.9x1.25</grid>
     <grid name="lnd">0.9x1.25</grid>
     <grid name="ocnice">0.9x1.25</grid>
@@ -754,7 +783,7 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="f19_f19_mg17_rHDMA" not_compset="_POP" compset="MIZUROUTE">
+  <model_grid alias="f19_f19_rHDMA_mg17" not_compset="_POP" compset="MIZUROUTE">
     <grid name="atm">1.9x2.5</grid>
     <grid name="lnd">1.9x2.5</grid>
     <grid name="ocnice">1.9x2.5</grid>
@@ -762,7 +791,15 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="f19_f19_mg17_rMERIT" not_compset="_POP" compset="MIZUROUTE">
+  <model_grid alias="f19_f19_rHDMAlk_mg17" not_compset="_POP" compset="MIZUROUTE">
+    <grid name="atm">1.9x2.5</grid>
+    <grid name="lnd">1.9x2.5</grid>
+    <grid name="ocnice">1.9x2.5</grid>
+    <grid name="rof">HDMA_lake_mz</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="f19_f19_rMERIT_mg17" not_compset="_POP" compset="MIZUROUTE">
     <grid name="atm">1.9x2.5</grid>
     <grid name="lnd">1.9x2.5</grid>
     <grid name="ocnice">1.9x2.5</grid>
@@ -850,6 +887,12 @@
   </model_grid>
 
   <!--  spectral element grids -->
+  <model_grid alias="ne3pg3_ne3pg3_mg37" not_compset="_POP">
+    <grid name="atm">ne3np4.pg3</grid>
+    <grid name="lnd">ne3np4.pg3</grid>
+    <grid name="ocnice">ne3np4.pg3</grid>
+    <mask>gx3v7</mask>
+  </model_grid>
 
   <model_grid alias="ne5_ne5_mg37" not_compset="_POP">
     <grid name="atm">ne5np4</grid>
@@ -891,6 +934,20 @@
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">gx1v7</grid>
     <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="ne30pg3_t061">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">tx0.66v1</grid>
+    <mask>tx0.66v1</mask>
+  </model_grid>
+
+  <model_grid alias="ne30pg3_t232">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <mask>tx2_3v2</mask>
   </model_grid>
 
   <model_grid alias="ne30_f19_g16">
@@ -1085,7 +1142,7 @@
     <mask>gx3v7</mask>
   </model_grid>
 
-  <model_grid alias="ne16pg3_ne16pg3_mg17" not_compset="_POP|_CLM">
+  <model_grid alias="ne16pg3_ne16pg3_mg17" not_compset="_POP">
     <grid name="atm">ne16np4.pg3</grid>
     <grid name="lnd">ne16np4.pg3</grid>
     <grid name="ocnice">ne16np4.pg3</grid>
@@ -1208,6 +1265,27 @@
     <mask>tx0.1v2</mask>
   </model_grid>
 
+  <model_grid alias="ne0ARCTICne30x4_t12_mt12" not_compset="_POP">
+    <grid name="atm">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="lnd">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="ocnice">tx0.1v2</grid>
+    <mask>tx0.1v2</mask>
+  </model_grid>
+
+  <model_grid alias="ne0ARCTICne30x4_ne0ARCTICne30x4_mg17" not_compset="_POP">
+    <grid name="atm">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="lnd">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="ocnice">ne0np4.ARCTIC.ne30x4</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="ne0ARCTICne30x4_g17_mg17" not_compset="_POP">
+    <grid name="atm">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="lnd">ne0np4.ARCTIC.ne30x4</grid>
+    <grid name="ocnice">gx1v7</grid>
+    <mask>gx1v7</mask>
+  </model_grid>
+
   <model_grid alias="ne0ARCTICGRISne30x8_ne0ARCTICGRISne30x8_mt12" not_compset="_POP">
     <grid name="atm">ne0np4.ARCTICGRIS.ne30x8</grid>
     <grid name="lnd">ne0np4.ARCTICGRIS.ne30x8</grid>
@@ -1292,6 +1370,13 @@
     <grid name="lnd">mpasa3p75</grid>
     <grid name="ocnice">mpasa3p75</grid>
     <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa3p75_mpasa3p75_mt13" not_compset="_POP">
+    <grid name="atm">mpasa3p75</grid>
+    <grid name="lnd">mpasa3p75</grid>
+    <grid name="ocnice">mpasa3p75</grid>
+    <mask>tx0.1v3</mask>
   </model_grid>
 
   <model_grid alias="mpasa480_oQU480" not_compset="_POP">

@@ -10,7 +10,6 @@
     <grid name="rof"       compset="DWAV"        >rx1</grid>
     <grid name="rof"       compset="RTM"         >r05</grid>
     <grid name="rof"       compset="MOSART"      >r05</grid>
-    <grid name="rof"       compset="MIZUROUTE"   >r05mz</grid>
     <grid name="rof"       compset="DROF"        >rx1</grid>
     <grid name="rof"       compset="DROF%CPLHIST">r05</grid>
     <grid name="rof"       compset="XROF"        >r05</grid>
@@ -99,20 +98,6 @@
     <mask>5x5_amazon</mask>
   </model_grid>
 
-  <model_grid alias="5x5_amazon_r05" compset="DATM.+CLM.+MIZUROUTE">
-    <grid name="atm">5x5_amazon</grid>
-    <grid name="lnd">5x5_amazon</grid>
-    <grid name="rof">r05mz_amazon</grid>
-    <mask>5x5_amazon</mask>
-  </model_grid>
-
-  <model_grid alias="5x5_amazon_rHDMA" compset="DATM.+CLM.+MIZUROUTE">
-    <grid name="atm">5x5_amazon</grid>
-    <grid name="lnd">5x5_amazon</grid>
-    <grid name="rof">HDMAmz_amazon</grid>
-    <mask>5x5_amazon</mask>
-  </model_grid>
-
   <!-- Regional NLDAS-2 grid over the U.S. (0.125 degree resolution;
        25-53N, 235-293E), with mask from NLDAS-2 atmospheric drivers -->
   <model_grid alias="nldas2_rnldas2_mnldas2" compset="DATM.+CLM">
@@ -123,50 +108,10 @@
     <mask>0.125nldas2</mask>
   </model_grid>
 
-  <model_grid alias="nldas2_rUSGS_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
-    <grid name="atm">0.125nldas2</grid>
-    <grid name="lnd">0.125nldas2</grid>
-    <grid name="ocnice">0.125nldas2</grid>
-    <grid name="rof">USGS_GFmz</grid>
-    <mask>0.125nldas2</mask>
-  </model_grid>
-
-  <model_grid alias="nldas2_rHDMA_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
-    <grid name="atm">0.125nldas2</grid>
-    <grid name="lnd">0.125nldas2</grid>
-    <grid name="ocnice">0.125nldas2</grid>
-    <grid name="rof">HDMA_CONUSmz</grid>
-    <mask>0.125nldas2</mask>
-  </model_grid>
-
-  <model_grid alias="nldas2_rMERIT_mnldas2" compset="DATM.+CLM.+MIZUROUTE">
-    <grid name="atm">0.125nldas2</grid>
-    <grid name="lnd">0.125nldas2</grid>
-    <grid name="ocnice">0.125nldas2</grid>
-    <grid name="rof">MERIT_CONUSmz</grid>
-    <mask>0.125nldas2</mask>
-  </model_grid>
-
   <model_grid alias="hcru_hcru_mt13" not_compset="_POP" compset="DATM.+CLM">
     <grid name="atm">360x720cru</grid>
     <grid name="lnd">360x720cru</grid>
     <grid name="ocnice">tx0.1v3</grid>
-    <mask>tx0.1v3</mask>
-  </model_grid>
-
-  <model_grid alias="hcru_hcru_mt13_rMERIT" not_compset="_POP" compset="DATM.+CLM.+MIZUROUTE">
-    <grid name="atm">360x720cru</grid>
-    <grid name="lnd">360x720cru</grid>
-    <grid name="ocnice">tx0.1v3</grid>
-    <grid name="rof">MERITmz</grid>
-    <mask>tx0.1v3</mask>
-  </model_grid>
-
-  <model_grid alias="hcru_hcru_mt13_rHDMA" not_compset="_POP" compset="DATM.+CLM.+MIZUROUTE">
-    <grid name="atm">360x720cru</grid>
-    <grid name="lnd">360x720cru</grid>
-    <grid name="ocnice">tx0.1v3</grid>
-    <grid name="rof">HDMAmz</grid>
     <mask>tx0.1v3</mask>
   </model_grid>
 
@@ -600,23 +545,6 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="f09_f09_mg17_rHDMA" not_compset="_POP" compset="MIZUROUTE">
-    <grid name="atm">0.9x1.25</grid>
-    <grid name="lnd">0.9x1.25</grid>
-    <grid name="ocnice">0.9x1.25</grid>
-    <grid name="rof">HDMAmz</grid>
-    <mask>gx1v7</mask>
-  </model_grid>
-
-  <model_grid alias="f09_f09_mg17_rMERIT" not_compset="_POP" compset="MIZUROUTE">
-    <grid name="atm">0.9x1.25</grid>
-    <grid name="lnd">0.9x1.25</grid>
-    <grid name="ocnice">0.9x1.25</grid>
-    <grid name="rof">MERITmz</grid>
-    <mask>gx1v7</mask>
-  </model_grid>
-
-
   <model_grid alias="f05_f05_mg17" not_compset="_POP" >
     <grid name="atm">0.47x0.63</grid>
     <grid name="lnd">0.47x0.63</grid>
@@ -703,22 +631,6 @@
     <grid name="atm">1.9x2.5</grid>
     <grid name="lnd">1.9x2.5</grid>
     <grid name="ocnice">1.9x2.5</grid>
-    <mask>gx1v7</mask>
-  </model_grid>
-
-  <model_grid alias="f19_f19_mg17_rHDMA" not_compset="_POP" compset="MIZUROUTE">
-    <grid name="atm">1.9x2.5</grid>
-    <grid name="lnd">1.9x2.5</grid>
-    <grid name="ocnice">1.9x2.5</grid>
-    <grid name="rof">HDMAmz</grid>
-    <mask>gx1v7</mask>
-  </model_grid>
-
-  <model_grid alias="f19_f19_mg17_rMERIT" not_compset="_POP" compset="MIZUROUTE">
-    <grid name="atm">1.9x2.5</grid>
-    <grid name="lnd">1.9x2.5</grid>
-    <grid name="ocnice">1.9x2.5</grid>
-    <grid name="rof">MERITmz</grid>
     <mask>gx1v7</mask>
   </model_grid>
 
