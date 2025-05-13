@@ -69,7 +69,7 @@
         <command name="load">cray-libsci/23.09.1.1</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/24.11</command>
+        <command name="load">nvhpc/25.1</command>
         <command name="load">cray-libsci/24.03.0</command>
       </modules>
       <modules>
@@ -116,14 +116,14 @@
         <command name="load">esmf/8.6.0</command>
       </modules>
 
-      <modules DEBUG="TRUE" mpilib="mpi-serial">
-        <command name="load">parallelio/2.6.2</command>
-        <command name="load">esmf/8.6.0</command>
+      <modules DEBUG="TRUE" mpilib="mpi-serial" compiler="!gnu">
+        <command name="load">parallelio/2.6.6-debug</command>
+        <command name="load">esmf/8.8.1-debug</command>
       </modules>
 
-      <modules DEBUG="TRUE" mpilib="!mpi-serial">
-        <command name="load">parallelio/2.6.2-debug</command>
-        <command name="load">esmf/8.6.0-debug</command>
+      <modules DEBUG="TRUE" mpilib="!mpi-serial" compiler="!gnu">
+        <command name="load">parallelio/2.6.6-debug</command>
+        <command name="load">esmf/8.8.1-debug</command>
       </modules>
     </module_system>
 
