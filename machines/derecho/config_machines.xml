@@ -19,6 +19,7 @@
     <MAX_MPITASKS_PER_NODE>128</MAX_MPITASKS_PER_NODE>
     <MAX_CPUTASKS_PER_GPU_NODE>64</MAX_CPUTASKS_PER_GPU_NODE>
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
+    <TORCH_DIR>/glade/u/apps/cseg/derecho/conda/cesm_pyenv/1.0</TORCH_DIR>
     <mpirun mpilib="default">
       <executable>mpibind</executable>
       <arguments>
@@ -57,7 +58,7 @@
       <modules compiler="intel">
         <command name="load">intel/2024.2.1</command>
         <command name="load">mkl</command>
-	<command name="load">kokkos/4.2.01</command>
+        <command name="load">kokkos/4.2.01</command>
       </modules>
       <modules compiler="cray">
         <command name="load">cce/17.0.1</command>
@@ -68,7 +69,7 @@
         <command name="load">cray-libsci/23.02.1.1</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/24.11</command>
+        <command name="load">nvhpc/25.1</command>
         <command name="load">cray-libsci/24.03.0</command>
       </modules>
       <modules>
@@ -89,7 +90,7 @@
       </modules>
 
       <modules mpilib="mpi-serial">
-        <command name="load">netcdf/4.9.2</command>
+        <command name="load">netcdf/4.9.3</command>
       </modules>
 
       <modules mpilib="mpi-serial" compiler="!gnu">
@@ -102,7 +103,7 @@
       </modules>
 
       <modules mpilib="!mpi-serial" compiler="!gnu">
-        <command name="load">netcdf-mpi/4.9.2</command>
+        <command name="load">netcdf-mpi/4.9.3</command>
         <command name="load">parallel-netcdf/1.14.0</command>
       </modules>
       <modules mpilib="!mpi-serial" compiler="gnu">
@@ -111,8 +112,8 @@
       </modules>
 
       <modules compiler="!gnu">
-        <command name="load">parallelio/2.6.4</command>
-        <command name="load">esmf/8.8.0</command>
+        <command name="load">parallelio/2.6.6</command>
+        <command name="load">esmf/8.8.1</command>
       </modules>
 
       <!-- DEBUG for mpi-serial with GNU compiler requires the omission of -debug from pio and esmf -->
@@ -130,6 +131,15 @@
         <command name="load">esmf/8.6.0</command>
       </modules>
 
+      <modules DEBUG="TRUE" mpilib="mpi-serial" compiler="!gnu">
+        <command name="load">parallelio/2.6.6-debug</command>
+        <command name="load">esmf/8.8.1-debug</command>
+      </modules>
+
+      <modules DEBUG="TRUE" mpilib="!mpi-serial" compiler="!gnu">
+        <command name="load">parallelio/2.6.6-debug</command>
+        <command name="load">esmf/8.8.1-debug</command>
+      </modules>
     </module_system>
 
     <environment_variables>
@@ -144,7 +154,7 @@
          </environment_variables>
       -->
     <environment_variables comp_interface="nuopc">
-      <!-- required on all systems for timing file output --> 
+      <!-- required on all systems for timing file output -->
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
