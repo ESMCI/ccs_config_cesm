@@ -46,7 +46,7 @@
         <command name="load">craype</command>
         <command name="load">cmake</command>
       </modules>
-      <!-- gnu is for a slgihtly older NCAR environment and compiler -->
+      <!-- gnu is for a slightly older NCAR environment and compiler -->
       <modules compiler="gnu">
         <command name="load">cesmdev/1.0</command>
         <command name="load">ncarenv/23.09</command>
@@ -114,7 +114,7 @@
 
       <!-- PIO and ESMF libraries -->
 
-      <!-- DEBUG for mpi-serial with GNU compiler requires the omission of -debug from pio and esmf -->
+      <!-- DEBUG for mpi-serial with GNU compiler requires the omission of -debug from PIO and ESMF -->
       <!-- this is likely a problem with the build for these libraries as they seem to have been built with a full mpi library -->
       <modules DEBUG="TRUE" mpilib="mpi-serial" compiler="gnu">
         <command name="load">parallelio/2.6.2</command>
