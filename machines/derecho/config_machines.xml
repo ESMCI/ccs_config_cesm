@@ -2,7 +2,7 @@
     <DESC>NCAR AMD EPYC system</DESC>
     <OS>CNL</OS>
     <COMPILERS>intel,gnu,nvhpc,cray</COMPILERS>
-    <MPILIBS>mpich</MPILIBS>
+    <MPILIBS>mpich,openmpi</MPILIBS>
     <CIME_OUTPUT_ROOT>$ENV{SCRATCH}</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{CESMDATAROOT}/inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>$ENV{CESMDATAROOT}/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
@@ -75,6 +75,9 @@
       </modules>
       <modules>
         <command name="load">ncarcompilers/1.0.0</command>
+      </modules>
+      <modules mpilib="openmpi" compiler="!gnu">
+        <command name="load">openmpi/5.0.7</command>
       </modules>
       <modules mpilib="mpich" compiler="!gnu">
         <command name="load">cray-mpich/8.1.29</command>
