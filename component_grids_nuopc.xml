@@ -428,8 +428,8 @@
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU030">
-      <nx>462075</nx>  <ny>1</ny>
-      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU030/oQU030_ESMFmesh.230907.nc</mesh>
+      <nx>462000</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU030/oQU030_ESMFmesh.241221.nc</mesh>
       <desc>oQU030 is a MPAS ocean grid that is roughly 1/4 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>

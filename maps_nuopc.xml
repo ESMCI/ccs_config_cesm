@@ -114,6 +114,14 @@
       <map name="ROF2OCN_LIQ_RMAPNAME">rof/remap/wght_file_jra_qu060.230613.nc</map>
       <map name="ROF2OCN_ICE_RMAPNAME">rof/remap/wght_file_jra_qu060.230613.nc</map>
     </gridmap>
+    <gridmap rof_grid="r05" ocn_grid="oQU030" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">rof/remap/wght_file_mosart_qu030.241221.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">rof/remap/wght_file_mosart_qu030.241221.nc</map>
+    </gridmap>
+    <gridmap rof_grid="JRA025v2" ocn_grid="oQU030" >
+      <map name="ROF2OCN_LIQ_RMAPNAME">rof/remap/wght_file_jra_qu030.241221.nc</map>
+      <map name="ROF2OCN_ICE_RMAPNAME">rof/remap/wght_file_jra_qu030.241221.nc</map>
+    </gridmap>
 
     <!-- ======================================================== -->
     <!-- MizuRoute mapping files -->
