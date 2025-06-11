@@ -1,7 +1,7 @@
-  <machine MACH="derecho">
+<machine MACH="derecho">
     <DESC>NCAR AMD EPYC system</DESC>
     <OS>CNL</OS>
-    <COMPILERS>intel,gnu,nvhpc,intel-oneapi,intel-classic</COMPILERS>
+    <COMPILERS>intel,gnu,nvhpc,cray</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
     <CIME_OUTPUT_ROOT>$ENV{SCRATCH}</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{CESMDATAROOT}/inputdata</DIN_LOC_ROOT>
@@ -23,8 +23,8 @@
       <executable>mpibind</executable>
       <arguments>
         <arg name="label"> --label</arg>
-	<arg name="buffer"> --line-buffer</arg>
-	<arg name="separator"> -- </arg>
+        <arg name="buffer"> --line-buffer</arg>
+        <arg name="separator"> -- </arg>
       </arguments>
    </mpirun>
     <module_system type="module" allow_error="true">
@@ -36,74 +36,85 @@
       <cmd_path lang="python">$ENV{LMOD_ROOT}/lmod/libexec/lmod python</cmd_path>
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
-      <modules>
-	<command name="load">cesmdev/1.0</command>
-	<command name="load">ncarenv/23.09</command>
+      <modules compiler="!gnu">
+        <command name="load">cesmdev/1.0</command>
+        <command name="load">ncarenv/24.12</command>
         <command name="purge"/>
         <command name="load">conda/latest</command>
         <command name="load">nco</command>
-	<command name="load">craype</command>
+        <command name="load">craype</command>
+        <command name="load">cmake</command>
+      </modules>
+      <modules compiler="gnu">
+        <command name="load">cesmdev/1.0</command>
+        <command name="load">ncarenv/23.09</command>
+        <command name="purge"/>
+        <command name="load">conda/latest</command>
+        <command name="load">nco</command>
+        <command name="load">craype</command>
+        <command name="load">cmake</command>
       </modules>
       <modules compiler="intel">
-        <command name="load">intel/2023.2.1</command>
-	<command name="load">mkl</command>
-      </modules>
-      <modules compiler="intel-oneapi">
-        <command name="load">intel-oneapi/2023.2.1</command>
-	<command name="load">mkl</command>
-      </modules>
-      <modules compiler="intel-classic">
-        <command name="load">intel-classic/2023.2.1</command>
-	<command name="load">mkl</command>
+        <command name="load">intel/2024.2.1</command>
+        <command name="load">mkl</command>
+	<command name="load">kokkos/4.2.01</command>
       </modules>
       <modules compiler="cray">
-        <command name="load">cce/15.0.1</command>
-        <command name="load">cray-libsci/23.02.1.1</command>
+        <command name="load">cce/17.0.1</command>
+        <command name="load">cray-libsci/24.03.0</command>
       </modules>
       <modules compiler="gnu">
         <command name="load">gcc/12.2.0</command>
-        <command name="load">cray-libsci/23.02.1.1</command>
+        <command name="load">cray-libsci/23.09.1.1</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/24.3</command>
+        <command name="load">nvhpc/24.11</command>
+        <command name="load">cray-libsci/24.03.0</command>
       </modules>
-
       <modules>
-	<command name="load">ncarcompilers/1.0.0</command>
-        <command name="load">cmake</command>
+        <command name="load">ncarcompilers/1.0.0</command>
       </modules>
-      <modules mpilib="mpich">
-	<command name="load">cray-mpich/8.1.27</command>
+      <modules mpilib="mpich" compiler="!gnu">
+        <command name="load">cray-mpich/8.1.29</command>
+      </modules>
+      <modules mpilib="mpich" compiler="gnu">
+        <command name="load">cray-mpich/8.1.27</command>
       </modules>
 
       <modules mpilib="mpich" compiler="nvhpc" gpu_type="!none">
+        <command name="load">cuda/12.3.2</command>
+      </modules>
+      <modules mpilib="mpich" compiler="gnu" gpu_type="!none">
         <command name="load">cuda/12.2.1</command>
       </modules>
 
       <modules mpilib="mpi-serial">
-        <command name="load">mpi-serial/2.3.0</command>
+        <command name="load">mpi-serial/2.5.0</command>
         <command name="load">netcdf/4.9.2</command>
       </modules>
 
-      <modules mpilib="!mpi-serial">
+      <modules mpilib="!mpi-serial" compiler="!gnu">
+        <command name="load">netcdf-mpi/4.9.2</command>
+        <command name="load">parallel-netcdf/1.14.0</command>
+      </modules>
+      <modules mpilib="!mpi-serial" compiler="gnu">
         <command name="load">netcdf-mpi/4.9.2</command>
         <command name="load">parallel-netcdf/1.12.3</command>
       </modules>
 
-      <modules DEBUG="FALSE">
-	<command name="load">parallelio/2.6.2</command>
-	<command name="load">esmf/8.6.0</command>
+      <modules compiler="!gnu">
+        <command name="load">parallelio/2.6.4</command>
+        <command name="load">esmf/8.8.0</command>
+      </modules>
+      <modules DEBUG="TRUE"  compiler="gnu">
+        <command name="load">parallelio/2.6.2-debug</command>
+        <command name="load">esmf/8.6.0-debug</command>
+      </modules>
+      <modules DEBUG="FALSE" compiler="gnu">
+        <command name="load">parallelio/2.6.2</command>
+        <command name="load">esmf/8.6.0</command>
       </modules>
 
-      <modules DEBUG="TRUE" mpilib="mpi-serial">
-	<command name="load">parallelio/2.6.2</command>
-	<command name="load">esmf/8.6.0</command>
-      </modules>
-
-      <modules DEBUG="TRUE" mpilib="!mpi-serial">
-	<command name="load">parallelio/2.6.2-debug</command>
-	<command name="load">esmf/8.6.0-debug</command>
-      </modules>
     </module_system>
 
     <environment_variables>
@@ -122,7 +133,7 @@
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
-    <environment_variables compiler="nvhpc" gpu_type="!none">
+    <environment_variables gpu_type="!none">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
     </environment_variables>
   </machine>

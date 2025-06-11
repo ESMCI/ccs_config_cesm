@@ -75,6 +75,7 @@ mo_rte_solver_kernels.o \
 mo_optical_props_kernels.o
 
 CLUBB_OBJS=\
+clubb_intr.o\
 adg1_adg2_3d_luhar_pdf.o\
 advance_clubb_core_module.o\
 advance_helper_module.o\

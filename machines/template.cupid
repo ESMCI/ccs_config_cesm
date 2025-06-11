@@ -6,42 +6,5 @@
 # Set environment for CESM
 source .env_mach_specific.sh
 
-# Use cupid-infrastructure environment for running these scripts
-# Note: on derecho, the cesmdev module creates a python conflict
-#       by setting $PYTHONPATH; since this is conda-based we
-#       want an empty PYTHONPATH environment variable
-MACH=`./xmlquery --value MACH`
-unset PYTHONPATH
-conda activate cupid-infrastructure
-
-# Set variables that should eventually come from environment file
-CUPID_EXAMPLE=key_metrics
-RUN_CUPID_ANALYSIS=TRUE
-RUN_CUPID_TIMESERIES=TRUE
-
-if [ "${RUN_CUPID_ANALYSIS}" == "TRUE" ]; then
-  # 1. Generate CUPiD config file
-  {{ srcroot }}/tools/CUPiD/helper_scripts/generate_cupid_config_for_cesm_case.py \
-      --cesm-root {{ SRCROOT }}
-
-  # 2. Generate ADF config file
-  {{ srcroot }}/tools/CUPiD/helper_scripts/generate_adf_config_file.py \
-      --cesm-root {{ SRCROOT }} \
-      --cupid-config-loc ${PWD} \
-      --adf-template {{ SRCROOT }}/tools/CUPiD/externals/ADF/config_amwg_default_plots.yaml \
-      --out-file adf_config.yml
-
-  # 3. Generate timeseries files and run ADF
-  if [ "${RUN_CUPID_TIMESERIES}" == "TRUE" ]; then
-    {{ srcroot }}/tools/CUPiD/cupid/run_timeseries.py
-  fi
-  conda deactivate
-  conda activate cupid-analysis
-  {{ SRCROOT }}/tools/CUPiD/externals/ADF/run_adf_diag adf_config.yml
-
-  # 4. Run CUPiD and build webpage
-  conda deactivate
-  conda activate cupid-infrastructure
-  {{ srcroot }}/tools/CUPiD/cupid/run_diagnostics.py
-  {{ srcroot }}/tools/CUPiD/cupid/cupid_webpage.py
-fi
+# Run shell script in CUPiD external
+(. {{ SRCROOT }}/tools/CUPiD/helper_scripts/cesm_postprocessing.sh)
