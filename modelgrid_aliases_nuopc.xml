@@ -430,6 +430,98 @@
     <mask>oQU120</mask>
   </model_grid>
 
+  <!-- EarthWorks Specific, MPAS-O+ROF -->
+  <model_grid alias="TL319_oQU120" not_compset="_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">oQU120</grid>
+    <grid name="rof">JRA025v2</grid>
+    <mask>oQU120</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oEC60to30v3" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oEC60to30v3</grid>
+    <mask>oEC60to30v3</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oQU060" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oQU060</grid>
+    <mask>oQU060</mask>
+  </model_grid>
+
+  <model_grid alias="TL319_oQU060" not_compset="_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">oQU060</grid>
+   <grid name="rof">JRA025v2</grid>
+    <mask>oQU060</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oQU030" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oQU030</grid>
+    <mask>oQU030</mask>
+  </model_grid>
+
+  <model_grid alias="TL319_oQU030" not_compset="_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">oQU030</grid>
+    <grid name="rof">JRA025v2</grid>
+    <mask>oQU030</mask>
+  </model_grid>
+
+  <model_grid alias="TL319_oQU015" not_compset="_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">oQU015</grid>
+    <grid name="rof">JRA025v2</grid>
+    <mask>oQU015</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oQU015" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oQU015</grid>
+    <mask>oQU015</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oQU0075" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oQU0075</grid>
+    <mask>oQU0075</mask>
+  </model_grid>
+
+  <model_grid alias="TL319_oQU0075" not_compset="_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">oQU0075</grid>
+    <grid name="rof">JRA025v2</grid>
+    <mask>oQU0075</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oQU00375" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oQU00375</grid>
+    <mask>oQU00375</mask>
+  </model_grid>
+
+  <model_grid alias="TL319_oQU00375" not_compset="_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">oQU00375</grid>
+    <grid name="rof">JRA025v2</grid>
+    <mask>oQU00375</mask>
+  </model_grid>
+  <!-- END EarthWorks Specific, MPAS-O+ROF -->
+
   <!-- finite volume grids -->
 
   <model_grid alias="f02_g16" not_compset="_MOM">
@@ -1428,6 +1520,107 @@
     <grid name="ocnice">mpasa3p75</grid>
     <mask>tx0.1v3</mask>
   </model_grid>
+
+  <!-- EarthWorks Specific, MPAS-A+MPAS-O grids -->
+  <model_grid alias="mpasa480_oQU480" not_compset="_MOM">
+    <grid name="atm">mpasa480</grid>
+    <grid name="lnd">mpasa480</grid>
+    <grid name="ocnice">oQU480</grid>
+    <mask>oQU480</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa240_oQU240" not_compset="_MOM">
+    <grid name="atm">mpasa240</grid>
+    <grid name="lnd">mpasa240</grid>
+    <grid name="ocnice">oQU240</grid>
+    <mask>oQU240</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa120_oQU120" not_compset="_MOM">
+    <grid name="atm">mpasa120</grid>
+    <grid name="lnd">mpasa120</grid>
+    <grid name="ocnice">oQU120</grid>
+    <mask>oQU120</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa120_oEC60to30v3" not_compset="_MOM">
+    <grid name="atm">mpasa120</grid>
+    <grid name="lnd">mpasa120</grid>
+    <grid name="ocnice">oEC60to30v3</grid>
+    <mask>oEC60to30v3</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa60_oEC60to30v3" not_compset="_MOM">
+    <grid name="atm">mpasa60</grid>
+    <grid name="lnd">mpasa60</grid>
+    <grid name="ocnice">oEC60to30v3</grid>
+    <mask>oEC60to30v3</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa30_oEC60to30v3" not_compset="_MOM">
+    <grid name="atm">mpasa30</grid>
+    <grid name="lnd">mpasa30</grid>
+    <grid name="ocnice">oEC60to30v3</grid>
+    <mask>oEC60to30v3</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa60_oQU060" not_compset="_MOM">
+    <grid name="atm">mpasa60</grid>
+    <grid name="lnd">mpasa60</grid>
+    <grid name="ocnice">oQU060</grid>
+    <mask>oQU060</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa30_oQU030" not_compset="_MOM">
+    <grid name="atm">mpasa30</grid>
+    <grid name="lnd">mpasa30</grid>
+    <grid name="ocnice">oQU030</grid>
+    <mask>oQU030</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa15_oQU015" not_compset="_MOM">
+    <grid name="atm">mpasa15</grid>
+    <grid name="lnd">mpasa15</grid>
+    <grid name="ocnice">oQU015</grid>
+    <mask>oQU015</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa7p5_oQU0075" not_compset="_MOM">
+    <grid name="atm">mpasa7p5</grid>
+    <grid name="lnd">mpasa7p5</grid>
+    <grid name="ocnice">oQU0075</grid>
+    <mask>oQU0075</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa3p75_oQU00375" not_compset="_MOM">
+    <grid name="atm">mpasa3p75</grid>
+    <grid name="lnd">mpasa3p75</grid>
+    <grid name="ocnice">oQU00375</grid>
+    <mask>oQU00375</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa60-3wus_oRR60-3WUS" not_compset="_MOM">
+    <grid name="atm">mpasa60-3wus</grid>
+    <grid name="lnd">mpasa60-3wus</grid>
+    <grid name="ocnice">oRR60-3WUS</grid>
+    <mask>oRR60-3WUS</mask>
+  </model_grid>
+
+  <model_grid alias="mpasa60-3wus_mpasa60-3wus" not_compset="_MOM">
+    <grid name="atm">mpasa60-3wus</grid>
+    <grid name="lnd">mpasa60-3wus</grid>
+    <grid name="ocnice">mpasa60-3wus</grid>
+    <mask>mpasa60-3wus</mask>
+  </model_grid>
+
+  <model_grid alias="T62_oRR60-3WUS" not_compset="_MOM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oRR60-3WUS</grid>
+    <mask>oRR60-3WUS</mask>
+  </model_grid>
+
+  <!-- END EarthWorks Specific, MPAS-A+MPAS-O grids -->
 
 
   <!-- new runoff grids for data runoff model DROF -->
