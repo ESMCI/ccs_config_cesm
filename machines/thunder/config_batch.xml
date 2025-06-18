@@ -1,0 +1,15 @@
+
+  <batch_system MACH="thunder" type="slurm">
+    <batch_submit>sbatch</batch_submit>
+    <submit_args>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -q $JOB_QUEUE </argument>
+    </submit_args>
+    <directives>
+      <directive>--ntasks-per-node=64</directive>
+      <directive>--hint=nomultithread</directive>
+    </directives>
+    <queues>
+      <queue walltimemax="02:00:00" nodemin="1" nodemax="4" default="true">regular</queue>
+    </queues>
+  </batch_system>

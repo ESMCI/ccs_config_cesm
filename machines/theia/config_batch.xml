@@ -1,0 +1,16 @@
+
+  <batch_system MACH="theia" type="slurm" >
+    <batch_submit>sbatch</batch_submit>
+    <submit_args>
+      <argument> --time $JOB_WALLCLOCK_TIME </argument>
+      <argument> -q $JOB_QUEUE </argument>
+      <argument> --account $PROJECT </argument>
+    </submit_args>
+    <directives>
+      <directive>--partition=theia</directive>
+    </directives>
+    <queues>
+      <queue walltimemax="01:00:00" nodemin="1" nodemax="171">batch</queue>
+    </queues>
+  </batch_system>
+

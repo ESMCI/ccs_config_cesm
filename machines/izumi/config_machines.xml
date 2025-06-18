@@ -40,7 +40,7 @@
       <cmd_path lang="sh">module</cmd_path>
       <modules>
         <command name="purge"></command>
-        <command name="load">lang/python/3.7.0</command>
+        <command name="load">lang/python/3.11.5</command>
         <command name="use">/fs/cgd/data0/modules/modulefiles</command>
       </modules>
       <modules compiler="gnu">
@@ -61,64 +61,64 @@
         <command name="load">mpi/2.3.3/intel/20.0.1</command>
       </modules>
       <modules compiler="nag">
-        <command name="load">compiler/nag/6.2-8.1.0</command>
-        <command name="load">tool/netcdf/c4.6.1-f4.4.4/nag-gnu/6.2-8.1.0</command>
+        <command name="load">compiler/nag/7.0</command>
+        <command name="load">tool/netcdf/c4.7.4-f4.5.2/nag-gnu/7.0-9.3.0</command>
       </modules>
       <modules compiler="nag" mpilib="mvapich2">
-        <command name="load">mpi/2.3.3/nag/6.2</command>
+        <command name="load">mpi/2.3.3/nag/7.0</command>
       </modules>
       <modules compiler="nag" mpilib="mpi-serial">
         <command name="rm">mpi</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mvapich2-O</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.6.1-ncdfio-mvapich2-O</command>
         <command name="load">mvapich2/2.3.3/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mvapich2-g</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.6.1-ncdfio-mvapich2-g</command>
         <command name="load">mvapich2/2.3.3/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.6.1-ncdfio-mpiuni-O</command>
         <command name="load">mpi-serial/2.3.0/gnu/9.3.0/pio/2_5_10</command>
       </modules>
       <modules compiler="gnu" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.5.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/gfortran/9.3.0/esmf-8.6.1-ncdfio-mpiuni-g</command>
         <command name="load">mpi-serial/2.3.0/gnu/9.3.0/pio/2_5_10</command>
       </modules>
 
       <modules compiler="nag" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mvapich2-O</command>
-        <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command>
+        <command name="load">esmfpkgs/nag/7.0/esmf-8.8.0-ncdfio-mvapich2-O</command>
+<!--        <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command> -->
       </modules>
       <modules compiler="nag" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mvapich2-g</command>
-        <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command>
+        <command name="load">esmfpkgs/nag/7.0/esmf-8.8.0-ncdfio-mvapich2-g</command>
+<!--        <command name="load">mvapich2/2.3.3/nag/6.2/pio/2_5_10</command> -->
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mpiuni-g</command>
-        <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command>
+        <command name="load">esmfpkgs/nag/7.0/esmf-8.8.0-ncdfio-mpiuni-g</command>
+<!--        <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command> -->
       </modules>
       <modules compiler="nag" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/nag/6.2/esmf-8.5.0-ncdfio-mpiuni-O</command>
-        <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command>
+        <command name="load">esmfpkgs/nag/7.0/esmf-8.8.0-ncdfio-mpiuni-O</command>
+<!--        <command name="load">mpi-serial/2.3.0/nag/6.2/pio/2_5_10</command> -->
       </modules>
 
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mpiuni-g</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.6.1-ncdfio-mpiuni-g</command>
         <command name="load">mpi-serial/2.3.0/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mpi-serial" DEBUG="FALSE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mpiuni-O</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.6.1-ncdfio-mpiuni-O</command>
         <command name="load">mpi-serial/2.3.0/intel/20.0.1/pio/2_5_10</command>
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="TRUE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mvapich2-g</command>
-        <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.8.0-ncdfio-mvapich2-g</command>
+<!--        <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command> -->
       </modules>
       <modules compiler="intel" mpilib="mvapich2" DEBUG="FALSE">
-        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.5.0-ncdfio-mvapich2-O</command>
-        <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command>
+        <command name="load">esmfpkgs/intel/20.0.1/esmf-8.8.0-ncdfio-mvapich2-O</command>
+<!--        <command name="load">mvapich2/2.3.3/intel/20.0.1/pio/2_5_10</command> -->
       </modules>
     </module_system>
     <environment_variables>

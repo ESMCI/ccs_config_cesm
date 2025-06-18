@@ -1,9 +1,9 @@
 <machine MACH="casper">
     <DESC>NCAR GPU platform, os is Linux, 36 pes/node, batch system is pbs</DESC>
     <OS>LINUX</OS>
-    <COMPILERS>nvhpc,intel</COMPILERS>
+    <COMPILERS>intel,nvhpc,gnu</COMPILERS>
     <MPILIBS>openmpi</MPILIBS>
-    <CIME_OUTPUT_ROOT>/glade/scratch/$USER</CIME_OUTPUT_ROOT>
+    <CIME_OUTPUT_ROOT>/glade/derecho/scratch/$USER</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{CESMDATAROOT}/inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>/glade/p/cgd/tss/CTSM_datm_forcing_data</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
@@ -12,112 +12,67 @@
     <GMAKE_J>8</GMAKE_J>
     <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
     <SUPPORTED_BY>ASAP/CISL</SUPPORTED_BY>
-    <MAX_TASKS_PER_NODE>36</MAX_TASKS_PER_NODE>
-    <MAX_GPUS_PER_NODE compiler="nvhpc">8</MAX_GPUS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>36</MAX_MPITASKS_PER_NODE>
-    <MAX_CPUTASKS_PER_GPU_NODE>36</MAX_CPUTASKS_PER_GPU_NODE>
-    <GPU_TYPE>none,v100</GPU_TYPE>
-    <GPU_OFFLOAD>none,openacc,openmp,combined</GPU_OFFLOAD>
+    <MAX_TASKS_PER_NODE>62</MAX_TASKS_PER_NODE> <!-- different for various CPU nodes; check NHUG documentation for details -->
+    <MEM_PER_TASK>10</MEM_PER_TASK>
+    <MAX_MEM_PER_NODE>690</MAX_MEM_PER_NODE> <!-- different for various CPU/GPU nodes; check NHUG documentation for details -->
+    <MAX_GPUS_PER_NODE>4</MAX_GPUS_PER_NODE> <!-- different for various GPU nodes; check NHUG documentation for details -->
+    <MAX_MPITASKS_PER_NODE>62</MAX_MPITASKS_PER_NODE> <!-- different for various CPU nodes; check NHUG documentation for details -->
+    <MAX_CPUTASKS_PER_GPU_NODE>128</MAX_CPUTASKS_PER_GPU_NODE> <!-- different for various GPU nodes; check NHUG documentation for details -->
     <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
-    <mpirun mpilib="default">
-      <executable>mpirun</executable>
-      <arguments>
-        <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
-      </arguments>
-    </mpirun>
     <mpirun mpilib="openmpi">
       <executable>mpirun</executable>
       <arguments>
         <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
       </arguments>
     </mpirun>
-<module_system type="module" allow_error="true">
-      <init_path lang="perl">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/init/perl</init_path>
-      <init_path lang="python">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/init/env_modules_python.py</init_path>
-      <init_path lang="sh">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/init/sh</init_path>
-      <init_path lang="csh">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/init/csh</init_path>
-      <cmd_path lang="perl">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/libexec/lmod perl</cmd_path>
-      <cmd_path lang="python">/glade/u/apps/casper/23.10/spack/opt/spack/lmod/8.7.24/gcc/7.5.0/m4jx/lmod/lmod/libexec/lmod python</cmd_path>
+    <module_system type="module" allow_error="true">
+      <init_path lang="perl">$ENV{LMOD_ROOT}/lmod/init/perl</init_path>
+      <init_path lang="python">$ENV{LMOD_ROOT}/lmod/init/env_modules_python.py</init_path>
+      <init_path lang="sh">$ENV{LMOD_ROOT}/lmod/init/sh</init_path>
+      <init_path lang="csh">$ENV{LMOD_ROOT}/lmod/init/csh</init_path>
+      <cmd_path lang="perl">$ENV{LMOD_ROOT}/lmod/libexec/lmod perl</cmd_path>
+      <cmd_path lang="python">$ENV{LMOD_ROOT}/lmod/libexec/lmod python</cmd_path>
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
       <modules>
+        <command name="load">ncarenv/24.12</command>
         <command name="purge"/>
-        <command name="load">ncarenv/23.10</command>
-        <command name="load">cmake/3.26.3</command>
-      </modules>
-      <modules compiler="nvhpc">
-        <command name="load">nvhpc/23.7</command>
+        <command name="load">cmake/3.31.0</command>
       </modules>
       <modules compiler="intel">
-        <command name="load">intel/2023.2.1</command>
-        <command name="load">mkl/2023.2.0</command>
+        <command name="load">intel/2024.2.1</command>
+        <command name="load">mkl</command>
       </modules>
-      <modules mpilib="openmpi" compiler="nvhpc" gpu_offload="!none">
-        <command name="load">cuda/12.2.1</command>
+      <modules compiler="nvhpc">
+        <command name="load">nvhpc/24.11</command>
       </modules>
-      <modules mpilib="openmpi" compiler="nvhpc">
-        <command name="load">openmpi/4.1.6</command>
+      <modules compiler="gnu">
+        <command name="load">gcc/12.4.0</command>
+      </modules>
+      <modules mpilib="openmpi" gpu_type="!none">
+        <command name="load">cuda/12.3.2</command>
+      </modules>
+      <modules mpilib="openmpi">
+        <command name="load">openmpi/5.0.6</command>
         <command name="load">netcdf-mpi/4.9.2</command>
-        <command name="load">parallel-netcdf/1.12.3</command>
-      </modules>
-      <modules mpilib="mpi-serial" compiler="nvhpc">
-        <command name="load">netcdf/4.9.2</command>
-      </modules>
-      <modules mpilib="openmpi" compiler="intel">
-        <command name="load">openmpi/4.1.6</command>
-        <command name="load">netcdf-mpi/4.9.2</command>
-        <command name="load">parallel-netcdf/1.12.3</command>
-      </modules>
-      <modules mpilib="mpi-serial" compiler="intel">
-        <command name="load">netcdf/4.9.2</command>
-      </modules>
-      <!-- prebuild ESMF lib for NUOPC driver -->
-      <modules compiler="intel" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-g</command>
-      </modules>
-      <modules compiler="intel" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/intel/19.1.1/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-O</command>
-      </modules>
-      <modules compiler="nvhpc" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.1b01-ncdfio-openmpi-g</command>
-      </modules>
-      <modules compiler="nvhpc" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/nvhpc/22.2/</command>
-        <command name="load">esmf-8.4.1b01-ncdfio-openmpi-O</command>
-      </modules>
-      <modules compiler="pgi" mpilib="openmpi" DEBUG="TRUE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
-        <command name="load">esmf-8.4.0b08_casper-ncdfio-openmpi-g</command>
-      </modules>
-      <modules compiler="pgi" mpilib="openmpi" DEBUG="FALSE">
-        <command name="use">/glade/p/cesmdata/cseg/PROGS/modulefiles/esmfpkgs/pgi/20.4/</command>
-        <command name="load">esmf-8.2.0b11_casper-ncdfio-openmpi-O</command>
+        <command name="load">parallel-netcdf/1.14.0</command>
       </modules>
       <modules>
-        <command name="load">ncarcompilers/0.5.0</command>
-      </modules>
-      <modules>
-        <command name="load">parallelio/2.6.2</command>
-        <command name="load">esmf/8.5.0</command>
+        <command name="load">parallelio/2.6.4</command>
+        <command name="load">esmf/8.8.0</command>
         <command name="load">ncarcompilers/1.0.0</command>
       </modules>
     </module_system>
     <environment_variables>
-      <env name="MODULEPATH">/glade/u/apps/dav/modulefiles/default/compilers:/glade/u/apps/dav/modulefiles/default/idep</env>
       <env name="OMP_STACKSIZE">256M</env>
-      <env name="TMPDIR">/glade/scratch/$USER</env>
-      <env name="CESMDATAROOT">/glade/p/cesmdata/cseg</env>
-      <env name="NETCDF_PATH">$ENV{NETCDF}</env>
+      <env name="TMPDIR">/glade/derecho/scratch/$USER</env>
     </environment_variables>
     <environment_variables comp_interface="nuopc">
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
-    <environment_variables compiler="nvhpc" gpu_offload="!none">
-      <env name="RTE_KERNELS">openacc</env>
+    <environment_variables gpu_type="!none">
+      <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
