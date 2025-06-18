@@ -14,3 +14,12 @@ mo_fluxes_broadband_kernels.o
 
 $(RRTMGP_OBJS): %.o: %.F90
 	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -fno-openmp $<
+
+ifeq ($(COMP_NAME),mpassi)
+# mpas seaice files that can't compile with optimization using gnu
+MPASSI_NOOPT_OBJS=\
+ice_shortwave.o
+
+$(MPASSI_NOOPT_OBJS): %.o : %.F90
+	$(FC) -c $(FPPFLAGS) $(INCLDIR) $(INCS) $(FREEFLAGS) $(FFLAGS) $(FFLAGS_NOOPT) $<
+endif
