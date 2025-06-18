@@ -1428,6 +1428,13 @@
     <mask>tx0.1v2</mask>
   </model_grid>
 
+  <model_grid alias="ne0NATLne30x8_ne0NATLne30x8_mt12" not_compset="_MOM">
+    <grid name="atm">ne0np4.NATL.ne30x8</grid>
+    <grid name="lnd">ne0np4.NATL.ne30x8</grid>
+    <grid name="ocnice">ne0np4.NATL.ne30x8</grid>
+    <mask>tx0.1v2</mask>
+  </model_grid>
+
   <!-- MPAS-A grids -->
 
   <model_grid alias="mpasa480_mpasa480" not_compset="_MOM">
