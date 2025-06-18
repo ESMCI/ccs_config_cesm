@@ -259,7 +259,7 @@
 
   <domain name="ne0np4.NATL.ne30x8">
     <nx>317567</nx> <ny>1</ny>
-    <mesh>/glade/work/rwills/grids/var-res/ne0np4.NATL.ne30x8/grids/NATL_ne30x8_np4_MESH.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/share/meshes/NATL_ne30x8_np4_MESH_cdf5_c20250618.nc</mesh>
     <desc>ne0np4.NATL.ne30x8 is a Spectral Elem 1-deg grid with a 1/8 deg refined region over the North Atlantic:</desc>
     <support>Test support only</support>
   </domain>
