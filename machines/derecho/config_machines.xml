@@ -70,7 +70,7 @@
         <command name="load">cray-libsci/23.02.1.1</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/25.1</command>
+        <command name="load">nvhpc/24.11</command>
         <command name="load">cray-libsci/24.03.0</command>
       </modules>
       <modules>
@@ -141,7 +141,11 @@
         <command name="load">parallelio/2.6.6-debug</command>
         <command name="load">esmf/8.8.1-debug</command>
       </modules>
-
+      <modules compiler="nvhpc">
+        <command name="load">netcdf-mpi/4.9.2</command>
+        <command name="load">parallelio/2.6.4</command>
+        <command name="load">esmf/8.8.0</command>
+      </modules>
     </module_system>
 
     <environment_variables>
