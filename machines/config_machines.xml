@@ -64,7 +64,7 @@ This allows using a different mpirun command to launch unit tests
     <value MACH="lobato">lobata</value>
     <value MACH="lonestar5">.*ls5\.tacc\.utexas\.edu</value>
     <value MACH="melvin">(melvin|watson)</value>
-    <value MACH="perlmutter">$ENV{NERSC_HOST}:perlmutter</value>
+    <value MACH="perlmutter">.*.perlmutter.*</value>
     <value MACH="sandia-srn-sems">(s999964|climate|penn)</value>
     <value MACH="sandiatoss3">(skybridge|chama)-login</value>
     <value MACH="stampede2-skx">.*stampede2</value>
