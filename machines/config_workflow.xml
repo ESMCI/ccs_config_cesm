@@ -56,7 +56,7 @@
       <runtime_parameters MACH="derecho">
         <task_count>1</task_count>
         <tasks_per_node>1</tasks_per_node>
-        <walltime>0:20:00</walltime>
+        <walltime>0:40:00</walltime>
       </runtime_parameters>
     </job>
   </workflow_jobs>
