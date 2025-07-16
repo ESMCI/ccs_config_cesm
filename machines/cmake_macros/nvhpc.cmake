@@ -1,5 +1,8 @@
 string(APPEND CFLAGS " -gopt  -time")
-string(APPEND CXXFLAGS " -gopt -time")
+if (compile_threaded)
+  string(APPEND CFLAGS " -mp")
+endif()
+
 if (NOT DEBUG)
   string(APPEND CFLAGS " -O -Mnofma")
   string(APPEND CXXFLAGS " -O -Mnofma")
@@ -9,7 +12,12 @@ else()
   string(APPEND CXXFLAGS " -O0 -Mnofma -g -Wall -Kieee -traceback")
   string(APPEND FFLAGS " -O0 -g -Ktrap=fp -Mbounds -Kieee")
 endif()
-string(APPEND CPPDEFS " -DFORTRANUNDERSCORE -DNO_SHR_VMATH -DNO_R16 -DCPRNVIDIA -DNO_QUAD_PRECISION")
+
+string(APPEND CFLAGS " -Mnofma")
+string(APPEND FFLAGS " -Mnofma")
+
+string(APPEND CPPDEFS " -DFORTRANUNDERSCORE -DNO_SHR_VMATH -DNO_R16 -DCPRNVIDIA -DNO_QUAD_PRECISION -DCPRPGI")
+
 set(CXX_LINKER "CXX")
 set(FC_AUTO_R8 "-r8")
 string(APPEND FFLAGS " -i4 -gopt -time -Mextend -byteswapio -Mflushz -Kieee")
