@@ -405,8 +405,8 @@
     <support>Experimental tripole ocean grid</support>
   </domain>
     <domain name="oQU480">
-      <nx>7234</nx>  <ny>1</ny>
-      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU480/oQU480_ESMFmesh.nc</mesh>
+      <nx>1813</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU480/oQU480_ESMFmesh.250721.nc</mesh>
       <desc>oQU480 is a MPAS ocean grid that is roughly 4 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
@@ -429,8 +429,8 @@
       <support>Experimental, under development</support>
     </domain>
     <domain name="oQU060">
-      <nx>115494</nx>  <ny>1</ny>
-      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU060/oQU060_ESMFmesh.230907.nc</mesh>
+      <nx>115493</nx>  <ny>1</ny>
+      <mesh driver="nuopc">$DIN_LOC_ROOT/ocn/mpas-o/oQU060/oQU060_ESMFmesh.241221.nc</mesh>
       <desc>oQU060 is a MPAS ocean grid that is roughly 1/2 degree resolution:</desc>
       <support>Experimental, under development</support>
     </domain>
