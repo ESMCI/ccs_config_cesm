@@ -423,6 +423,14 @@
     <grid name="glc">ais8:gris4</grid>
   </model_grid>
 
+  <!-- EarthWorks Specific, MPAS-O+ROF -->
+  <model_grid alias="T62_oQU480" not_compset="_CAM">
+    <grid name="atm">T62</grid>
+    <grid name="lnd">T62</grid>
+    <grid name="ocnice">oQU480</grid>
+    <mask>oQU480</mask>
+  </model_grid>
+
   <model_grid alias="T62_oQU120" not_compset="_CAM">
     <grid name="atm">T62</grid>
     <grid name="lnd">T62</grid>
@@ -430,7 +438,6 @@
     <mask>oQU120</mask>
   </model_grid>
 
-  <!-- EarthWorks Specific, MPAS-O+ROF -->
   <model_grid alias="TL319_oQU120" not_compset="_CAM">
     <grid name="atm">TL319</grid>
     <grid name="lnd">TL319</grid>
