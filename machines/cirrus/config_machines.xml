@@ -1,0 +1,34 @@
+<machine MACH="cirrus">
+    <DESC>NCAR AMD EPYC 9354P (CPU nodes) and NVIDIA A10/A2 (GPU nodes) cloud service </DESC>
+    <OS>LINUX</OS>
+    <COMPILERS>gnu,intel,nvhpc</COMPILERS>
+    <MPILIBS>openmpi</MPILIBS>
+    <CIME_OUTPUT_ROOT>/tmp</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>/glade/inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/glade/inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>$CIME_OUTPUT_ROOT/cesm_baselines</BASELINE_ROOT>
+    <CCSM_CPRNC>/glade/cprnc/cprnc</CCSM_CPRNC>
+    <GMAKE_J>16</GMAKE_J>
+    <BATCH_SYSTEM>none</BATCH_SYSTEM>
+    <SUPPORTED_BY>cisl</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>32</MAX_TASKS_PER_NODE> <!-- this may vary depending on your CIRRUS runner configuration -->
+    <MEM_PER_TASK>10</MEM_PER_TASK>
+    <MAX_MEM_PER_NODE>128</MAX_MEM_PER_NODE> <!-- this may vary depending on your CIRRUS runner configuration --> 
+    <MAX_GPUS_PER_NODE>1</MAX_GPUS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>32</MAX_MPITASKS_PER_NODE> <!-- this may vary depending on your CIRRUS runner configuration -->
+    <MAX_CPUTASKS_PER_GPU_NODE>32</MAX_CPUTASKS_PER_GPU_NODE> <!-- this may vary depending on your CIRRUS runner configuration -->
+    <PROJECT_REQUIRED>FALSE</PROJECT_REQUIRED>
+    <mpirun mpilib="openmpi">
+      <executable>mpiexec</executable>
+      <arguments>
+        <arg name="anum_tasks"> -n {{ total_tasks }}</arg>
+        <arg name="allow_run_as_root"> --allow-run-as-root</arg>
+      </arguments>
+    </mpirun>
+    <module_system type="none">
+    </module_system>
+    <resource_limits>
+      <resource name="RLIMIT_STACK">-1</resource>
+    </resource_limits>
+</machine>
