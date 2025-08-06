@@ -1,0 +1,31 @@
+set(MPICC "mpicc")
+set(MPICXX "mpicxx")
+set(MPIFC "mpif90")
+set(SCC "nvc")
+set(SCXX "nvc++")
+set(SFC "nvfortran")
+
+string(APPEND CPPDEFS " -DHAVE_IEEE_ARITHMETIC")
+string(APPEND FFLAGS " -tp=zen4 -Mstack_arrays -Mallocatable=03")
+string(APPEND CXXFLAGS " -tp=zen4")
+string(APPEND LDFLAGS " -tp=zen4 -Mnofma")
+
+if (USE_KOKKOS)
+  # Generic setting that are used regardless of Architecture or Kokkos backend
+  string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
+  if (KOKKOS_GPU_OFFLOAD)
+    string(APPEND CPPDEFS " -DGPU -DTHRUST_IGNORE_CUB_VERSION_CHECK -DHOMMEXX_ENABLE_GPU")
+    string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_AMPERE86=ON -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_LAMBDA=ON -DKokkos_ENABLE_IMPL_CUDA_MALLOC_ASYNC=OFF")
+    string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF -DKokkos_ENABLE_AGGRESSIVE_VECTORIZATION=OFF")
+    string(APPEND CXXFLAGS " -extended-lambda -Wext-lambda-captures-this -std=c++17 -arch=sm_86")
+    if (CUBLAS_PATH)
+      string(APPEND SLIBS " -L${CUDA_PATH}/lib64 -lcudart -L${CUBLAS_PATH}/lib64 -lcublas -L${CUDA_PATH}/lib64/stubs -lcuda")
+    else()
+      string(APPEND SLIBS " -L${CUDA_PATH}/lib64 -lcudart -lcublas -L${CUDA_PATH}/lib64/stubs -lcuda")
+    endif()
+  else()
+    # Enable EPYC arch in kokkos
+    string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_ZEN4=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF") # work-around for nvidia as kokkos is not passing "-mp" for threaded build
+  endif()
+  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
+endif()
