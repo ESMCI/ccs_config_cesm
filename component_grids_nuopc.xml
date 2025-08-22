@@ -603,5 +603,9 @@
     <lon>0.0</lon>
     <desc>1x1 Urban C Alpha Test Case -- only valid for DATM/CLM compset</desc>
   </domain>
-
+ <domain name="GLOFAS">
+    <nx>3600</nx> <ny>1500</ny>
+    <mesh>/glade/u/home/manishrv/documents/croc/dev/gustavo_glorys/stuff_for_final_run/runoff_mapping/GLOFAS_esmf_mesh_v3.nc</mesh>
+    <desc>Global GLOFAS 0.1 deg runoff</desc>
+  </domain>
 </domains>
