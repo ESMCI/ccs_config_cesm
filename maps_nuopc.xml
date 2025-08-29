@@ -133,6 +133,7 @@
     <gridmap rof_grid="GLOFAS" ocn_grid="nwa12" >
       <map name="ROF2OCN_LIQ_RMAPNAME">/glade/work/gmarques/Projects/CROCODILE/NWA12_CESM/runoff_mapping/map_glofas_to_nwa12_cesm_nnsm_e333r100_240808.nc</map>
      </gridmap>
+
     <!-- ======================================================== -->
     <!-- MizuRoute mapping files -->
     <!-- ======================================================== -->
