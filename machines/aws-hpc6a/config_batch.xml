@@ -1,0 +1,12 @@
+<batch_system MACH="aws-hpc6a" type="slurm">
+  <batch_submit>sbatch</batch_submit>
+  <submit_args>
+    <argument> --time $JOB_WALLCLOCK_TIME </argument>
+    <argument> -p $JOB_QUEUE </argument>
+  </submit_args>
+  <queues>
+    <queue walltimemax="144:00:00" nodemin="1" nodemax="96">regular</queue>
+    <queue walltimemax="1:00:00"   nodemin="1" nodemax="1">build</queue>
+    <queue default="true" walltimemax="4:00:00"   jobmin="1" jobmax="1">serial</queue>
+  </queues>
+</batch_system>

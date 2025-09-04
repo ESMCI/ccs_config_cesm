@@ -1,0 +1,12 @@
+<batch_system MACH="vista" type="slurm" >
+  <batch_submit>sbatch</batch_submit>
+  <submit_args>
+    <argument> -A $PROJECT </argument>
+    <argument> --time $JOB_WALLCLOCK_TIME </argument>
+    <argument> -p $JOB_QUEUE </argument>
+  </submit_args>
+  <queues>
+    <queue walltimemax="48:00:00" nodemin="1" nodemax="256" default="true">gg</queue>
+    <queue walltimemax="02:00:00" nodemin="1" nodemax="4" >gg-4k</queue>
+  </queues>
+</batch_system>

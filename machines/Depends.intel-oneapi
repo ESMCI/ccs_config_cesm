@@ -6,9 +6,15 @@ derivative_mod.o \
 bndry_mod.o \
 prim_advance_mod.o
 
-# CLM's SatellitePhenologyMod is compiled incorrectly with intel 15.0.0 at -O2
+# FMS netcdf_io gives ICE in intel-oneapi/2024.0.2
+
 REDUCED_OPT_OBJS=\
-SatellitePhenologyMod.o 
+netcdf_io.o \
+fms_netcdf_domain_io.o \
+fms_netcdf_unstructured_domain_io.o
+
+REDUCED_DEBUG_OBJS=\
+unicon.o
 
 # shr_wv_sat_mod does not need to have better than ~0.1% precision, and benefits
 # enormously from a lower precision in the vector functions.
@@ -38,7 +44,7 @@ ifeq ($(DEBUG),FALSE)
   $(PERFOBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS)  -O3  -no-prec-div $<
   $(REDUCED_OPT_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS)  -O1 $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS)  -O0 $<
   $(REDUCED_PRECISION_OBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -fimf-precision=low -fp-model fast $<
   $(SHR_RANDNUM_FORT_OBJS): %.o: %.F90
@@ -47,5 +53,8 @@ ifeq ($(DEBUG),FALSE)
 	  $(CC) -c $(INCLDIR) $(INCS) $(CFLAGS) -O3 -fp-model fast $<
   $(PUMAS_MG_OBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -no-fma -ftz -no-prec-sqrt -qoverride-limits -no-inline-max-total-size -inline-factor=200 -qopt-report=5 $<
+else
+  $(REDUCED_DEBUG_OBJS): %.o: %.F90
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O0 -check nobounds -check nopointers $<
 
 endif

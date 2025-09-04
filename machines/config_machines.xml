@@ -64,15 +64,17 @@ This allows using a different mpirun command to launch unit tests
     <value MACH="lobato">lobata</value>
     <value MACH="lonestar5">.*ls5\.tacc\.utexas\.edu</value>
     <value MACH="melvin">(melvin|watson)</value>
-    <value MACH="perlmutter">$ENV{NERSC_HOST}:perlmutter</value>
+    <value MACH="perlmutter">.*.perlmutter.*</value>
     <value MACH="sandia-srn-sems">(s999964|climate|penn)</value>
     <value MACH="sandiatoss3">(skybridge|chama)-login</value>
     <value MACH="stampede2-skx">.*stampede2</value>
+    <value MACH="stampede3-spr">.*.stampede3.tacc.utexas.edu</value>
     <value MACH="swan">swan.*</value>
     <value MACH="theia">tfe</value>
     <value MACH="theta">theta.*</value>
     <value MACH="thunder">.*.thunder.ucar.edu</value>
     <value MACH="ubuntu-latest">$ENV{CIME_TEST_PLATFORM}:ubuntu-latest</value>
+    <value MACH="vista">.*\.vista.tacc.utexas.edu</value>
     <value MACH="zeus">(login[1,2]-ib|n[0-9][0-9][0-9]-ib)</value>
   </NODENAME_REGEX>    
 

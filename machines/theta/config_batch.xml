@@ -1,0 +1,5 @@
+  <batch_system MACH="theta" type="cobalt_theta">
+    <queues>
+      <queue walltimemax="00:60:00" nodemin="1" nodemax="50" default="true">default</queue>
+    </queues>
+  </batch_system>

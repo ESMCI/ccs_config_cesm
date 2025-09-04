@@ -1,0 +1,17 @@
+
+  <batch_system MACH="zeus" type="lsf">
+    <batch_env>-env</batch_env>
+    <submit_args>
+      <argument> -q $JOB_QUEUE </argument>
+      <argument> -W $JOB_WALLCLOCK_TIME </argument>
+      <argument> -P $PROJECT </argument>
+    </submit_args>
+    <directives>
+      <directive                       > -R "span[ptile={{ tasks_per_node }}]"</directive>
+    </directives>
+    <queues>
+      <queue walltimemin="00:00" walltimemax="02:00" default="true">p_short</queue>
+      <queue walltimemin="02:00" walltimemax="04:00">p_medium</queue>
+      <queue walltimemin="04:00" walltimemax="08:00">p_long</queue>
+    </queues>
+  </batch_system>

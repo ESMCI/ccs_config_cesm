@@ -1,0 +1,10 @@
+if (COMP_NAME STREQUAL gptl)
+  string(APPEND CPPDEFS " -DHAVE_NANOTIME -DBIT64 -DHAVE_VPRINTF -DHAVE_BACKTRACE -DHAVE_SLASHPROC -DHAVE_COMM_F2C -DHAVE_TIMES -DHAVE_GETTIMEOFDAY")
+endif()
+set(LAPACK_LIBDIR "/usr/lib64")
+if (MPILIB STREQUAL mvapich2)
+  set(MPI_LIB_NAME "mpich")
+endif()
+set(NETCDF_PATH "$ENV{NETCDF_PATH}")
+# nf90 symbols seem to be missing from the shared library, explicitly adding the static fortran library solves the issue.
+string(APPEND SLIBS " -L${NETCDF_PATH}/lib -lnetcdff -lnetcdf $(NETCDF_PATH)/lib/libnetcdff.a")
