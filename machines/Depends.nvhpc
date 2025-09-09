@@ -73,7 +73,8 @@ mo_rte_util_array_validation.o \
 mo_rte_util_array.o \
 mo_fluxes_broadband_kernels.o \
 mo_rte_solver_kernels.o \
-mo_optical_props_kernels.o
+mo_optical_props_kernels.o \
+mo_cloud_optics_rrtmgp_kernels.o
 
 CLUBB_OBJS=\
 clubb_intr.o\
