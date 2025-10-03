@@ -62,6 +62,29 @@
     </job>
   </workflow_jobs>
 
+  <workflow_jobs id="default-no-cupid">
+    <!-- order matters, with no-batch jobs will be run in the order listed here -->
+    <job name="case.run">
+      <template>template.case.run</template>
+      <prereq>$BUILD_COMPLETE and not $TEST</prereq>
+    </job>
+    <job name="case.test">
+      <template>template.case.test</template>
+      <prereq>$BUILD_COMPLETE and $TEST</prereq>
+    </job>
+    <job name="case.st_archive">
+      <template>template.st_archive</template>
+      <!-- If DOUT_S is true and case.run (or case.test) exits successfully then run st_archive-->
+      <dependency>case.run or case.test</dependency>
+      <prereq>$DOUT_S</prereq>
+      <runtime_parameters>
+        <task_count>1</task_count>
+        <tasks_per_node>1</tasks_per_node>
+        <walltime>0:20:00</walltime>
+      </runtime_parameters>
+    </job>
+  </workflow_jobs>
+
   <workflow_jobs id="timeseries" prepend="default">
     <job name="timeseries">
       <template>$ENV{POSTPROCESS_PATH}/timeseries/template.timeseries</template>
