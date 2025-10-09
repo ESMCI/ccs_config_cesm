@@ -98,6 +98,11 @@
     <mesh>$DIN_LOC_ROOT/share/meshes/ne3np4_ESMFmesh_c230714_cdf5.nc</mesh>
     <desc>ne3np4 is Spectral Elem 10-deg grid:</desc>
   </domain>
+  <domain name="ne3np4.pg2">
+    <nx>216</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne3pg2_ESMFmesh_cdf5_c250912.nc</mesh>
+    <desc>ne3np4 is Spectral Elem 10-deg grid with a 2x2 FVM physics grid</desc>
+  </domain>
   <domain name="ne3np4.pg3">
     <nx>486</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/ne3pg3_ESMFmesh_c221214_cdf5.nc</mesh>
