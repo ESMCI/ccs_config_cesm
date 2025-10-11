@@ -564,9 +564,9 @@
     <desc>JRA is 0.25 degree runoff grid for use with JRA-55 runoff data</desc>
   </domain>
   <domain name="GLOFAS">
-    <nx>3600</nx> <ny>1500</ny>
-    <mesh>/glade/u/home/manishrv/documents/croc/dev/gustavo_glorys/stuff_for_final_run/runoff_mapping/GLOFAS_esmf_mesh_v3.nc</mesh>
-    <desc>Global GLOFAS 0.1 deg runoff</desc>
+    <nx>7200</nx> <ny>3000</ny>
+    <mesh>$DIN_LOC_ROOT/ocn/mom/croc/rof/glofas/dis24/GLOFAS_esmf_mesh_v4.nc</mesh>
+    <desc>GLOFAS 0.05 deg runoff (global, except only north of 60 S)</desc>
   </domain>
 
   <!-- ======================================================== -->
