@@ -1,5 +1,5 @@
 <machine MACH="casper">
-    <DESC>NCAR GPU platform, os is Linux, 36 pes/node, batch system is pbs</DESC>
+    <DESC>NCAR GPU platform, os is Linux, heterogeneous platform (AMD or Intel CPUs + NVIDIA or AMD GPUs), batch system is pbs</DESC>
     <OS>LINUX</OS>
     <COMPILERS>intel,nvhpc,gnu</COMPILERS>
     <MPILIBS>openmpi</MPILIBS>
@@ -13,7 +13,7 @@
     <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
     <SUPPORTED_BY>ASAP/CISL</SUPPORTED_BY>
     <MAX_TASKS_PER_NODE>62</MAX_TASKS_PER_NODE> <!-- different for various CPU nodes; check NHUG documentation for details -->
-    <MEM_PER_TASK>10</MEM_PER_TASK>
+    <MEM_PER_TASK>100</MEM_PER_TASK>
     <MAX_MEM_PER_NODE>690</MAX_MEM_PER_NODE> <!-- different for various CPU/GPU nodes; check NHUG documentation for details -->
     <MAX_GPUS_PER_NODE>4</MAX_GPUS_PER_NODE> <!-- different for various GPU nodes; check NHUG documentation for details -->
     <MAX_MPITASKS_PER_NODE>62</MAX_MPITASKS_PER_NODE> <!-- different for various CPU nodes; check NHUG documentation for details -->
@@ -54,13 +54,27 @@
       </modules>
       <modules mpilib="openmpi">
         <command name="load">openmpi/5.0.6</command>
-        <command name="load">netcdf-mpi/4.9.2</command>
+        <command name="load">netcdf-mpi/4.9.3</command>
         <command name="load">parallel-netcdf/1.14.0</command>
-      </modules>
-      <modules>
-        <command name="load">parallelio/2.6.4</command>
-        <command name="load">esmf/8.8.0</command>
+        <command name="load">parallelio/2.6.6</command>
+        <command name="load">esmf/8.8.1</command>
         <command name="load">ncarcompilers/1.0.0</command>
+      </modules>
+      <!-- specific settings for MI300A module environment -->
+      <modules mpilib="openmpi" gpu_type="mi300a">
+        <command name="load">ncarenv/25.08-rocm</command>
+        <command name="reset"/>
+        <command name="load">cmake</command>
+        <command name="load">rocthrust/6.3.3</command>
+        <command name="load">comgr/6.3.3</command>
+        <command name="unload">hdf5</command>
+        <command name="unload">netcdf</command>
+        <command name="load">openblas/0.3.30</command>
+        <command name="load">netcdf-mpi/4.9.3</command>
+        <command name="load">parallel-netcdf/1.14.1</command>
+        <command name="load">parallelio/2.6.6</command>
+        <command name="load">esmf-mpi/8.9.0</command>
+        <command name="load">ncarcompilers/1.1.0</command>
       </modules>
     </module_system>
     <environment_variables>
@@ -71,8 +85,20 @@
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
-    <environment_variables gpu_type="!none">
+    <environment_variables gpu_type="v100">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
+    </environment_variables>
+    <environment_variables gpu_type="a100">
+      <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
+    </environment_variables>
+    <environment_variables gpu_type="h100">
+      <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
+    </environment_variables>
+    <environment_variables compiler="nvhpc">
+      <env name="NVCC_WRAPPER_DEFAULT_COMPILER">nvc++</env>
+    </environment_variables>
+    <environment_variables compiler="aocc">
+      <env name="NVCC_WRAPPER_DEFAULT_COMPILER">hipcc</env>
     </environment_variables>
     <resource_limits>
       <resource name="RLIMIT_STACK">-1</resource>
