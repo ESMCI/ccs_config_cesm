@@ -74,6 +74,18 @@
         <walltime>0:40:00</walltime>
       </runtime_parameters>
     </job>
+    <job name="lmon">
+      <template>template.Lmon</template>
+      <dependency>case.st_archive</dependency>
+      <prereq>True</prereq>
+      <runtime_parameters MACH="derecho">
+        <task_count>4</task_count>
+        <tasks_per_node>128</tasks_per_node>
+        <mem_per_task>10</mem_per_task>
+        <walltime>0:40:00</walltime>
+      </runtime_parameters>
+    </job>
+    
   </workflow_jobs>
       
 

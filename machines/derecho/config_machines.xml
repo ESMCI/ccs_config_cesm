@@ -135,7 +135,7 @@
       <!-- DEBUG FALSE and then true: with any MPI and NOT gnu compiler -->
       <modules DEBUG="FALSE" compiler="!gnu">
         <command name="load">parallelio/2.6.6</command>
-        <command name="load">esmf/8.8.1</command>
+        <command name="load">esmf/8.9.0</command>
       </modules>
       <modules DEBUG="TRUE" compiler="!gnu">
         <command name="load">parallelio/2.6.6-debug</command>
