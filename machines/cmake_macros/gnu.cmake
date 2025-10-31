@@ -29,7 +29,7 @@ set(SUPPORTS_CXX "TRUE")
 
 message("C compiler version is ${CMAKE_C_COMPILER_VERSION}")
 message("Fortran compiler version is ${CMAKE_Fortran_COMPILER_VERSION}")
-if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
+if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10 OR NOT DEFINED CMAKE_Fortran_COMPILER_VERSION)
   string(APPEND FFLAGS " -fallow-argument-mismatch  -fallow-invalid-boz ")
   if (DEBUG)
     string(APPEND CFLAGS " -g -Wall -O0 -g -fbacktrace -ffpe-trap=invalid,zero,overflow -fcheck=bounds")
