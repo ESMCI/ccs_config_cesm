@@ -13,7 +13,7 @@ if (MPILIB STREQUAL mpi-serial AND NOT compile_threaded)
 endif()
 set(SCC icx)
 set(SCXX icpx)
-set(SFC ifort)
+set(SFC ifx)
 
 if (USE_KOKKOS)
   # Generic setting that are used regardless of Architecture or Kokkos backend

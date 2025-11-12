@@ -37,19 +37,9 @@
       <cmd_path lang="python">$ENV{LMOD_ROOT}/lmod/libexec/lmod python</cmd_path>
       <cmd_path lang="sh">module</cmd_path>
       <cmd_path lang="csh">module</cmd_path>
-      <modules compiler="!gnu">
+      <modules>
         <command name="load">cesmdev/1.0</command>
-        <command name="load">ncarenv/24.12</command>
-        <command name="purge"/>
-        <command name="load">conda/latest</command>
-        <command name="load">nco</command>
-        <command name="load">craype</command>
-        <command name="load">cmake</command>
-      </modules>
-      <!-- gnu is for a slightly older NCAR environment and compiler -->
-      <modules compiler="gnu">
-        <command name="load">cesmdev/1.0</command>
-        <command name="load">ncarenv/23.09</command>
+        <command name="load">ncarenv/25.10</command>
         <command name="purge"/>
         <command name="load">conda/latest</command>
         <command name="load">nco</command>
@@ -57,94 +47,58 @@
         <command name="load">cmake</command>
       </modules>
       <modules compiler="intel">
-        <command name="load">intel/2024.2.1</command>
+        <command name="load">intel/2025.2.1</command>
         <command name="load">mkl</command>
-        <command name="load">kokkos/4.2.01</command>
+<!--        <command name="load">kokkos/4.2.01</command> -->
       </modules>
       <modules compiler="cray">
-        <command name="load">cce/17.0.1</command>
-        <command name="load">cray-libsci/24.03.0</command>
+        <command name="load">cce/19.0.0</command>
+        <command name="load">cray-libsci/25.03.0</command>
       </modules>
       <modules compiler="gnu">
-        <command name="load">gcc/12.2.0</command>
-        <command name="load">cray-libsci/23.02.1.1</command>
+        <command name="load">gcc/14.3.0</command>
+        <command name="load">cray-libsci/25.03.0</command>
       </modules>
       <modules compiler="nvhpc">
-        <command name="load">nvhpc/24.11</command>
-        <command name="load">cray-libsci/24.03.0</command>
+        <command name="load">nvhpc/25.9</command>
+        <command name="load">cray-libsci/25.03.0</command>
       </modules>
       <modules>
-        <command name="load">ncarcompilers/1.0.0</command>
+        <command name="load">ncarcompilers/1.1.0</command>
       </modules>
-      <modules mpilib="openmpi" compiler="!gnu">
+<!--      <modules mpilib="openmpi" compiler="!gnu">
         <command name="load">openmpi/5.0.7</command>
+      </modules> -->
+      <modules mpilib="mpich">
+        <command name="load">cray-mpich/8.1.32</command>
       </modules>
-      <modules mpilib="mpich" compiler="!gnu">
-        <command name="load">cray-mpich/8.1.29</command>
-      </modules>
-      <modules mpilib="mpich" compiler="gnu">
-        <command name="load">cray-mpich/8.1.27</command>
-      </modules>
-
       <modules mpilib="mpich" compiler="nvhpc" gpu_type="!none">
-        <command name="load">cuda/12.3.2</command>
+        <command name="load">cuda/12.9</command>
       </modules>
       <modules mpilib="mpich" compiler="gnu" gpu_type="!none">
-        <command name="load">cuda/12.2.1</command>
+        <command name="load">cuda/12.9</command>
       </modules>
 
       <!-- NetCDF, mpi-serial if NOT full MPI and pnetcdf libraries -->
 
-      <!-- libraries with mpi-serial MPI library and NON gnu and then gnu compiler -->
-      <modules mpilib="mpi-serial" compiler="!gnu">
+      <!-- libraries with mpi-serial MPI library -->
+      <modules mpilib="mpi-serial">
         <command name="load">netcdf/4.9.3</command>
         <command name="load">mpi-serial/2.5.0</command>
-      </modules>
-      <modules mpilib="mpi-serial" compiler="gnu">
-        <command name="load">netcdf/4.9.2</command>
-        <command name="load">mpi-serial/2.3.0</command>
+        <command name="load">parallelio-serial/2.6.6</command>
       </modules>
 
-      <!-- libraries with full MPI library and NON gnu and then gnu compiler -->
-      <modules mpilib="!mpi-serial" compiler="!gnu">
+      <!-- libraries with full MPI library -->
+      <modules mpilib="!mpi-serial">
         <command name="load">netcdf-mpi/4.9.3</command>
-        <command name="load">parallel-netcdf/1.14.0</command>
-      </modules>
-      <modules mpilib="!mpi-serial" compiler="gnu">
-        <command name="load">netcdf-mpi/4.9.2</command>
-        <command name="load">parallel-netcdf/1.12.3</command>
-      </modules>
-
-      <!-- PIO and ESMF libraries -->
-
-      <!-- DEBUG for mpi-serial with GNU compiler requires the omission of -debug from PIO and ESMF -->
-      <!-- this is likely a problem with the build for these libraries as they seem to have been built with a full mpi library -->
-      <modules DEBUG="TRUE" mpilib="mpi-serial" compiler="gnu">
-        <command name="load">parallelio/2.6.2</command>
-        <command name="load">esmf/8.6.0</command>
-      </modules>
-      <modules DEBUG="TRUE" mpilib="!mpi-serial" compiler="gnu">
-         <command name="load">esmf/8.6.0-debug</command>
-         <command name="load">parallelio/2.6.2-debug</command>
-      </modules>
-      <modules DEBUG="FALSE" compiler="gnu">
-        <command name="load">parallelio/2.6.2</command>
-        <command name="load">esmf/8.6.0</command>
-      </modules>
-
-      <!-- DEBUG FALSE and then true: with any MPI and NOT gnu compiler -->
-      <modules DEBUG="FALSE" compiler="!gnu">
+        <command name="load">parallel-netcdf/1.14.1</command>
         <command name="load">parallelio/2.6.6</command>
-        <command name="load">esmf/8.8.1</command>
       </modules>
-      <modules DEBUG="TRUE" compiler="!gnu">
-        <command name="load">parallelio/2.6.6-debug</command>
-        <command name="load">esmf/8.8.1-debug</command>
-      </modules>
-      <modules compiler="nvhpc">
-        <command name="load">netcdf-mpi/4.9.2</command>
-        <command name="load">parallelio/2.6.4</command>
-        <command name="load">esmf/8.8.0</command>
+
+      <!-- ESMF libraries -->
+
+      <modules>
+        <command name="load">esmf/8.9.0</command>
       </modules>
     </module_system>
 
