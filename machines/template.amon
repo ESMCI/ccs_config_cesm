@@ -1,5 +1,29 @@
 #!/usr/bin/env bash
 {{ batchdirectives }}
+# CISL asked us to track power consumption in the cesm job, we compute that here.
+cd {{ caseroot }}
+s=$(./xmlquery JOB_IDS)
+t=$(./xmlquery TOTALPES)
+nc=$(( t / 128 ))
+#extract jobid from JOB_IDS
+tmp=${s#*case.run:}
+jobid=${tmp%%,*}
+
+wt=$(qhist -j $jobid --json | jq '.Jobs | to_entries[].value.resources_used.walltime')
+te=$(qhist -j $jobid --json | jq '.Jobs | to_entries[].value.resources_used.x_ncar_energy')
+ie=$(awk -v nc="$nc" -v wt="$wt" \
+    'BEGIN { printf "%.3f", 288 * nc * wt * 3600 }')
+
+# Dynamic energy = total energy - idle energy
+de=$(awk -v te="$te" -v ie="$ie" \
+    'BEGIN { printf "%.3f", te - ie }')
+
+{
+  printf "Node cnt: %s\n" "$nc"
+  printf "Total Energy: %s\n" "$te"
+  printf "Idle Energy (estimated): %s\n" "$ie"
+  printf "Dynamic Energy: %s\n" "$de"
+} > "timing/pwrusage.$jobid"
 
 module load conda
 conda activate /glade/work/cmip7/conda-envs/CMOR
