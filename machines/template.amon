@@ -2,12 +2,15 @@
 {{ batchdirectives }}
 # CISL asked us to track power consumption in the cesm job, we compute that here.
 cd {{ caseroot }}
-s=$(./xmlquery JOB_IDS)
+
+timing_file=$(ls -1 timing/cesm_timing.* | tail -n 1)  # get the latest timing_file
+fname=${timing_file##*/}
+
+# jobid is "<number>.<cluster>", the (NF-2) and (NF-1) fields
+jobid=$(awk -F. '{print $(NF-2)"."$(NF-1)}' <<< "$fname")
+
 t=$(./xmlquery TOTALPES)
 nc=$(( t / 128 ))
-#extract jobid from JOB_IDS
-tmp=${s#*case.run:}
-jobid=${tmp%%,*}
 
 wt=$(qhist -j $jobid --json | jq '.Jobs | to_entries[].value.resources_used.walltime')
 te=$(qhist -j $jobid --json | jq '.Jobs | to_entries[].value.resources_used.x_ncar_energy')
