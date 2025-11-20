@@ -3,5 +3,5 @@
 
 module load conda
 conda activate /glade/work/cmip7/conda-envs/CMOR
-
+NCPUS=$(cat $PBS_NODEFILE | wc -l)
 python /glade/work/cmip7/cmip7-prep/scripts/monthly_cmor.py --realm atm --workers $NCPUS --caseroot {{ caseroot }} --cimeroot {{ cimeroot }}
