@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-{{ batchdirectives }}
-
-module load conda
-conda activate /glade/work/cmip7/conda-envs/CMOR
-
-python /glade/work/cmip7/cmip7-prep/scripts/monthly_cmor.py --realm lnd --workers 32 --caseroot {{ caseroot }} --cimeroot {{ cimeroot }}
