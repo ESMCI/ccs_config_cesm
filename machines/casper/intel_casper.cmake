@@ -15,6 +15,9 @@ set(SCXX icpx)
 set(SFC ifort)
 
 if (USE_KOKKOS)
+  if (DEBUG)
+    string(APPEND CPPDEFS " -DHOMMEXX_VECTOR_SIZE=1 ")
+  endif()
   # Generic setting that are used regardless of Architecture or Kokkos backend
   string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
   option(Kokkos_ARCH_ZEN4 "" ON)
