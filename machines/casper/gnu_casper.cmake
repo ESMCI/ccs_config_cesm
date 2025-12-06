@@ -38,6 +38,9 @@ message("OPENACC_GPU_OFFLOAD is ${OPENACC_GPU_OFFLOAD}")
 message("OPENMP_GPU_OFFLOAD is ${OPENMP_GPU_OFFLOAD}")
 
 if (USE_KOKKOS)
+  if (DEBUG)
+    string(APPEND CPPDEFS " -DHOMMEXX_VECTOR_SIZE=1 ")
+  endif()
   # Generic setting that are used regardless of Architecture or Kokkos backend
   string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
   if (KOKKOS_GPU_OFFLOAD)
