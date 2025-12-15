@@ -50,6 +50,5 @@ if (USE_KOKKOS)
   else()
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_ZEN4=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF") # work-around for nvidia as kokkos is not passing "-mp" for threaded build
   endif()
-  string(APPEND LDFLAGS " -lstdc++ ")
-  string(APPEND SLIBS " -lkokkoscontainers -lkokkoscore -lkokkossimd ")
+  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()
