@@ -86,6 +86,7 @@
         <command name="load">netcdf/4.9.3</command>
         <command name="load">mpi-serial/2.5.0</command>
         <command name="load">parallelio-serial/2.6.6</command>
+        <command name="load">esmf/8.9.0</command>
       </modules>
 
       <!-- libraries with full MPI library -->
@@ -93,13 +94,9 @@
         <command name="load">netcdf-mpi/4.9.3</command>
         <command name="load">parallel-netcdf/1.14.1</command>
         <command name="load">parallelio/2.6.6</command>
+        <command name="load">esmf-mpi/8.9.0</command>
       </modules>
 
-      <!-- ESMF libraries -->
-
-      <modules>
-        <command name="load">esmf/8.9.0</command>
-      </modules>
     </module_system>
 
     <environment_variables>
