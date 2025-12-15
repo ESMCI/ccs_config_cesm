@@ -1,7 +1,7 @@
 string(APPEND CFLAGS " -qno-opt-dynamic-align -fp-model precise -std=gnu99")
 string(APPEND CXXFLAGS " -qno-opt-dynamic-align -fp-model precise -std=c++17")
 if (NOT DEBUG)
-  string(APPEND CFLAGS " -O2 -debug minimal -no-fma -restrict")
+  string(APPEND CFLAGS " -O2 -debug minimal -no-fma")
   string(APPEND CXXFLAGS " -O2 -debug minimal -no-fma -restrict")
   string(APPEND FFLAGS " -O2 -debug minimal -no-fma")
 else()
