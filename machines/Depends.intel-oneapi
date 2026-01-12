@@ -39,8 +39,6 @@ micro_pumas_data.o \
 micro_pumas_utils.o \
 wv_sat_methods.o
 
-HB_DIFF=\
-holtslag_boville_diff.o
 
 ifeq ($(DEBUG),FALSE)
   $(PERFOBJS): %.o: %.F90
@@ -60,9 +58,3 @@ else
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O0 -check nobounds -check nopointers $<
 
 endif
-
-# Manually overriding default vectorization threshold due to use of deferred length arrays
-# in Holtslag-Boville Boundary Layer scheme.
-$(HB_DIFF): %.o: %.F90
-  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(CONTIGUOUS_FLAG) -vec-threshold80 $<
-
