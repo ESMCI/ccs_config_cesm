@@ -33,6 +33,6 @@ if (USE_KOKKOS)
   if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
     set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above
   endif()
-  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
-  string(APPEND SLIBS " -lsci_gnu ")
+  string(APPEND LDFLAGS " -lstdc++ ")
+  string(APPEND SLIBS " -lsci_gnu -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()
