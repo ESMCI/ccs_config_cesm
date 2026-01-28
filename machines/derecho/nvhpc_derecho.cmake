@@ -27,6 +27,6 @@ if (USE_KOKKOS)
     # Enable EPYC arch in kokkos
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_ZEN3=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF") # work-around for nvidia as kokkos is not passing "-mp" for threaded build
   endif()
-  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
-  string(APPEND SLIBS " -lsci_nvidia ")
+  string(APPEND LDFLAGS " -lstdc++ ")
+  string(APPEND SLIBS " -lsci_nvidia -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()
