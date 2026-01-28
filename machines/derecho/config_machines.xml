@@ -166,5 +166,7 @@
     </environment_variables>
     <environment_variables gpu_type="!none">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
+      <env name="MPICH_GPU_IPC_ENABLED">0</env>
+      <env name="MPICH_GPU_MANAGED_MEMORY_SUPPORT_ENABLED">0</env>
     </environment_variables>
-  </machine>
+</machine>
