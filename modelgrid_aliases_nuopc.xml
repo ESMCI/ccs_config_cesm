@@ -1437,6 +1437,14 @@
 
   <!-- MPAS-A grids -->
 
+  <model_grid alias="mpasa120_t232_wg37">
+    <grid name="atm">mpasa120</grid>
+    <grid name="lnd">mpasa120</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="wav">wgx3v7</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
+
   <model_grid alias="mpasa480_mpasa480" not_compset="_MOM">
     <grid name="atm">mpasa480</grid>
     <grid name="lnd">mpasa480</grid>
