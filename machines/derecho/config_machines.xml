@@ -69,6 +69,7 @@
 <!--      <modules mpilib="openmpi" compiler="!gnu">
         <command name="load">openmpi/5.0.7</command>
       </modules> -->
+
       <modules mpilib="mpich">
         <command name="load">cray-mpich/8.1.32</command>
       </modules>
@@ -84,15 +85,16 @@
       <!-- libraries with mpi-serial MPI library -->
       <modules mpilib="mpi-serial" DEBUG="FALSE">
         <command name="load">netcdf/4.9.3</command>
-        <command name="load">mpi-serial/2.5.0</command>
+        <command name="load">mpi-serial/2.5.3</command>
         <command name="load">parallelio-serial/2.6.8</command>
         <command name="load">esmf/8.9.1</command>
       </modules>
+      
       <modules mpilib="mpi-serial" DEBUG="TRUE">
-        <command name="load">netcdf/4.9.3-debug</command>
-        <command name="load">mpi-serial/2.5.0-debug</command>
+        <command name="load">netcdf/4.9.3</command>
+        <command name="load">mpi-serial/2.5.3</command>
         <command name="load">parallelio-serial/2.6.8-debug</command>
-        <command name="load">esmf/8.9.1-debug</command>
+        <command name="load">esmf/8.9.1</command>
       </modules>
 
       <!-- libraries with full MPI library -->
