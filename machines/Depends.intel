@@ -8,7 +8,8 @@ prim_advance_mod.o
 
 # 
 REDUCED_OPT_OBJS=\
-mo_rxt_rates_conv.o
+mo_rxt_rates_conv.o\
+cube_mod.o
 
 # shr_wv_sat_mod does not need to have better than ~0.1% precision, and benefits
 # enormously from a lower precision in the vector functions.

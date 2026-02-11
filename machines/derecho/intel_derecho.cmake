@@ -13,7 +13,13 @@ if (MPILIB STREQUAL mpi-serial AND NOT compile_threaded)
 endif()
 set(SCC icx)
 set(SCXX icpx)
-set(SFC ifort)
+set(SFC ifx)
+
+if (DEBUG)
+  # -check uninit is giving an error in GLIBC as of intel/2025.2.1
+  string(APPEND FFLAGS " -check nouninit")
+endif()
+
 
 if (USE_KOKKOS)
   if (DEBUG)
