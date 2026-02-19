@@ -1750,5 +1750,8 @@
   <model_grid alias="ww3a" compset="_WW3|DWAV">
     <grid name="wav">ww3a</grid>
   </model_grid>
-
+  <!-- The following grid is only used for visualCaseGen -->
+  <model_grid alias="USER_RES">
+    <grid name="ocnice">USER_OCN_GRID</grid>
+  </model_grid>
 </grids>
