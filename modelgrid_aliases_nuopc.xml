@@ -671,14 +671,6 @@
     <grid name="glc">gris4</grid>
     <mask>gx1v7</mask>
   </model_grid>
-  <!-- Backwards compatibility with old use of _gl for Greenland grid -->
-  <model_grid alias="f09_g17_gl4" compset="_CISM|_DGLC" not_compset="_MOM">
-    <grid name="atm">0.9x1.25</grid>
-    <grid name="lnd">0.9x1.25</grid>
-    <grid name="ocnice">gx1v7</grid>
-    <grid name="glc">gris4</grid>
-    <mask>gx1v7</mask>
-  </model_grid>
 
   <model_grid alias="f09_g17_ais8" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">0.9x1.25</grid>
@@ -697,14 +689,6 @@
   </model_grid>
 
   <model_grid alias="f09_g17_gris20" compset="_CISM|_DGLC" not_compset="_MOM">
-    <grid name="atm">0.9x1.25</grid>
-    <grid name="lnd">0.9x1.25</grid>
-    <grid name="ocnice">gx1v7</grid>
-    <grid name="glc">gris20</grid>
-    <mask>gx1v7</mask>
-  </model_grid>
-  <!-- Backwards compatibility with old use of _gl for Greenland grid -->
-  <model_grid alias="f09_g17_gl20" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">0.9x1.25</grid>
     <grid name="lnd">0.9x1.25</grid>
     <grid name="ocnice">gx1v7</grid>
@@ -1074,14 +1058,6 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t232">
-    <grid name="atm">ne30np4.pg3</grid>
-    <grid name="lnd">ne30np4.pg3</grid>
-    <grid name="ocnice">tx2_3v2</grid>
-    <grid name="wav">wgx3v7</grid>
-    <mask>tx2_3v2</mask>
-  </model_grid>
-
   <model_grid alias="ne30pg3_t232_wg37">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
@@ -1098,11 +1074,28 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
+  <model_grid alias="ne30pg3_t232_gris4">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="glc">gris4</grid>
+    <grid name="wav">wgx3v7</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
+
   <model_grid alias="ne30pg3_t232_ais8gris4">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
     <grid name="glc">ais8:gris4</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
+
+  <model_grid alias="ne30pg3_t232_ais8">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="glc">ais8</grid>
     <mask>tx2_3v2</mask>
   </model_grid>
 
@@ -1573,6 +1566,14 @@
   </model_grid>
 
   <!-- MPAS-A grids -->
+
+  <model_grid alias="mpasa120_t232_wg37">
+    <grid name="atm">mpasa120</grid>
+    <grid name="lnd">mpasa120</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="wav">wgx3v7</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
 
   <model_grid alias="mpasa480_mpasa480" not_compset="_MOM">
     <grid name="atm">mpasa480</grid>

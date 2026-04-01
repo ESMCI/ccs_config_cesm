@@ -56,7 +56,10 @@ macrop_driver.o \
 shr_spfn_mod.o
 
 RRTMGP_OBJS=\
-radiation.o \
+rrtmgp_lw_rte.o \
+rrtmgp_sw_rte.o \
+rrtmgp_lw_gas_optics.o \
+rrtmgp_sw_gas_optics.o \
 rrtmgp_allsky.o \
 rrtmgp_rfmip_lw.o \
 rrtmgp_rfmip_sw.o \
