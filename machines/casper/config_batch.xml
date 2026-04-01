@@ -3,11 +3,11 @@
   <batch_submit>qsub</batch_submit>
   <directives queue="casper" gpu_enabled="true" gpu_type="!mi300a">
     <directive default="/bin/bash" > -S {{ shell }} </directive>
-    <directive> -l select={{ num_nodes }}:ncpus={{ max_cputasks_per_gpu_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem={{ mem_per_node }}GB:ngpus={{ ngpus_per_node }}:gpu_type={{ GPU_TYPE }}:mps=1 </directive>
+    <directive> -l select={{ num_nodes }}:ncpus={{ max_cputasks_per_gpu_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem={{ mem_per_node }}GB:ngpus={{ ngpus_per_node }}:gpu_type={{ gpu_type }}:mps=1 </directive>
   </directives>
   <directives queue="casper" gpu_enabled="true" gpu_type="mi300a">
     <directive default="/bin/bash" > -S {{ shell }} </directive>
-    <directive> -l select={{ num_nodes }}:ncpus={{ max_cputasks_per_gpu_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem={{ mem_per_node }}GB:ngpus={{ ngpus_per_node }}:gpu_type={{ GPU_TYPE }} </directive>
+    <directive> -l select={{ num_nodes }}:ncpus={{ max_cputasks_per_gpu_node }}:mpiprocs={{ tasks_per_node }}:ompthreads={{ thread_count }}:mem={{ mem_per_node }}GB:ngpus={{ ngpus_per_node }}:gpu_type={{ gpu_type }} </directive>
   </directives>
   <directives queue="casper" gpu_enabled="false">
     <directive default="/bin/bash" > -S {{ shell }} </directive>
