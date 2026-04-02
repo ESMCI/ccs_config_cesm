@@ -165,17 +165,17 @@ turbulent_adv_pdf.o
 
 ifeq ($(DEBUG),FALSE)
   $(PERFOBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -Mfprelaxed=div $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -Mfprelaxed=div -MllvmO0 $<
   $(REDUCED_OPT_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O1 $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O1 -MllvmO0 $<
   $(REDUCED_PRECISION_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -fast $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -fast -MllvmO0 $<
   $(SHR_RANDNUM_FORT_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fast -Mfprelaxed=div,sqrt $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fast -Mfprelaxed=div,sqrt -MllvmO0 $<
 #  $(SHR_RANDNUM_C_OBJS): %.o: %.c
 #	  $(CC) -c $(INCLDIR) $(INCS) $(CFLAGS) -O3 -fast $<
   $(PUMAS_OBJS): %.o: %.F90
-	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt $(OPENACC_GPU_FLAGS) $<
+	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -fastsse -Mnofma -Mflushz -Mfprelaxed=sqrt -MllvmO0 $(OPENACC_GPU_FLAGS) $<
   $(RRTMGP_OBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(OPENACC_GPU_FLAGS) $<
   $(CLUBB_OBJS): %.o: %.F90
