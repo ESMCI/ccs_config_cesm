@@ -387,7 +387,7 @@
   </domain>
   <domain name="tx2_3v3">
     <nx>540</nx> <ny>480</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/ESMF_mesh_tx2_3v3_260305_cdf5.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/share/meshes/tx2_3v3_260305_ESMF_mesh.nc</mesh>
     <desc>tx2_3v3 is tripole v3 2/3-deg MOM6 grid:</desc>
   </domain>
   <domain name="tx0.25v1">
