@@ -163,6 +163,9 @@ T_in_K_module.o\
 tridiag_lu_solver.o\
 turbulent_adv_pdf.o
 
+# 10/2025: Use -MllvmO0 as a temporary workaround for the CAM restart BFB issue
+# seen with nvhpc/25.9. Remove this once the NVHPC bug is fixed and the linked
+# issue documenting the workaround has been resolved.
 ifeq ($(DEBUG),FALSE)
   $(PERFOBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -O3 -Mfprelaxed=div -MllvmO0 $<
