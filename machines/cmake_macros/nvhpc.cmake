@@ -6,7 +6,9 @@ endif()
 if (NOT DEBUG)
   string(APPEND CFLAGS " -O -Mnofma")
   string(APPEND CXXFLAGS " -O2 -Mnofma")
-  string(APPEND FFLAGS " -O -Mnofma")
+  # Temporary workaround for nvhpc/25.9 LLVM backend causing non-bit-for-bit
+  # restarts; add issue/release-note link here if/when available.
+  string(APPEND FFLAGS " -O -Mnofma -MllvmO0")
 else()
   string(APPEND CFLAGS " -O0 -Mnofma -g -Wall -Kieee -traceback")
   string(APPEND CXXFLAGS " -O0 -Mnofma -g -Wall -Kieee -traceback")
