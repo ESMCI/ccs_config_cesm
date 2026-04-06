@@ -1751,7 +1751,16 @@
     <grid name="wav">ww3a</grid>
   </model_grid>
 
-  <!-- The following grid is only used for visualCaseGen. Specify grids through xml variables -->
+  <!-- The following grid can be used if the user specifies grids through xml changes in the case directory.
+  This was initially created for visualCaseGen version 1.0, please see visualCaseGen/custom_widget_types/case_creator.py::update_grids_via_xmlchange for how it was done initially.
+  See below for an example of xmlchanges for a custom regional ocean case with compset 1850_DATM%NYF_SLND_SICE_MOM6%REGIONAL_SROF_SGLC_SWAV:
+  ./xmlchange OCN_DOMAIN_MESH=/glade/u/home/manishrv/scratch/croc_input/vcg.xml.4/ocnice/ESMF_mesh_panama1_5b36e8.nc 
+  ./xmlchange ICE_DOMAIN_MESH=/glade/u/home/manishrv/scratch/croc_input/vcg.xml.4/ocnice/ESMF_mesh_panama1_5b36e8.nc 
+  ./xmlchange MASK_MESH=/glade/u/home/manishrv/scratch/croc_input/vcg.xml.4/ocnice/ESMF_mesh_panama1_5b36e8.nc 
+  ./xmlchange ATM_GRID=T62
+  ./xmlchange LND_GRID=T62
+  ./xmlchange ATM_DOMAIN_MESH=/glade/campaign/cesm/cesmdata/inputdata/share/meshes/T62_040121_ESMFmesh.nc
+  ./xmlchange LND_DOMAIN_MESH=/glade/campaign/cesm/cesmdata/inputdata/share/meshes/T62_040121_ESMFmesh.nc  -->
   <model_grid alias="USER_RES">
   </model_grid>
 </grids>
