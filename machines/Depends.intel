@@ -8,7 +8,8 @@ prim_advance_mod.o
 
 # 
 REDUCED_OPT_OBJS=\
-mo_rxt_rates_conv.o
+mo_rxt_rates_conv.o\
+cube_mod.o
 
 # shr_wv_sat_mod does not need to have better than ~0.1% precision, and benefits
 # enormously from a lower precision in the vector functions.
@@ -44,6 +45,9 @@ mo_rte_sw.o                              mo_rte_lw.o \
 mo_rte_util_array_validation.o           mo_rte_util_array.o \
 mo_fluxes_broadband_kernels.o
 
+HB_DIFF=\
+holtslag_boville_diff.o
+
 ifeq ($(DEBUG),FALSE)
   $(PERFOBJS): %.o: %.F90
 	  $(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS)  -O3  -no-prec-div $<
@@ -61,3 +65,8 @@ endif
 
 $(RRTMGP_OBJS): %.o: %.F90
 	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -qno-openmp $<
+
+# Manually overriding default vectorization threshold due to use of deferred length arrays
+# in Holtslag-Boville Boundary Layer scheme.
+$(HB_DIFF): %.o: %.F90
+	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) $(CONTIGUOUS_FLAG) -vec-threshold80 $<
