@@ -1184,6 +1184,15 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
+  <!-- low-res BHIST DART test -->
+  <model_grid alias="ne3pg3_ne3pg3_t232">
+    <grid name="atm">ne3np4.pg3</grid>
+    <grid name="lnd">ne3np4.pg3</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="rof">JRA025</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
+
   <model_grid alias="ne5pg2_ne5pg2_mg37" not_compset="_MOM">
     <grid name="atm">ne5np4.pg2</grid>
     <grid name="lnd">ne5np4.pg2</grid>
