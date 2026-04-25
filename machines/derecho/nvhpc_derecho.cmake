@@ -1,24 +1,35 @@
 string(APPEND CONFIG_ARGS " --host=cray")
 string(APPEND CPPDEFS " -DHAVE_IEEE_ARITHMETIC")
-if (COMP_NAME STREQUAL gptl)
+
+if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_NANOTIME -DBIT64 -DHAVE_SLASHPROC -DHAVE_GETTIMEOFDAY")
 endif()
-if (NOT DEBUG)
+
+if(NOT DEBUG)
   string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03")
   string(APPEND CXXFLAGS " -tp=zen3")
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
+else()
+  # Add information about vectorization to the compiler output
+  string(APPEND FFLAGS " Minfo=vect and -Mneginfo=vect")
+
+  # To output all information about optimization
+  # string(APPEND FFLAGS " Minfo=all and -Mneginfo=all")
 endif()
+
 message("GPU_TYPE is ${GPU_TYPE}")
 message("OPENACC_GPU_OFFLOAD is ${OPENACC_GPU_OFFLOAD}")
 message("OPENMP_GPU_OFFLOAD is ${OPENMP_GPU_OFFLOAD}")
 
-if (USE_KOKKOS)
-  if (DEBUG)
+if(USE_KOKKOS)
+  if(DEBUG)
     string(APPEND CPPDEFS " -DHOMMEXX_VECTOR_SIZE=1 ")
   endif()
+
   # Generic setting that are used regardless of Architecture or Kokkos backend
   string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
-  if (KOKKOS_GPU_OFFLOAD)
+
+  if(KOKKOS_GPU_OFFLOAD)
     string(APPEND CPPDEFS " -DGPU -DTHRUST_IGNORE_CUB_VERSION_CHECK -DHOMMEXX_ENABLE_GPU")
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_AMPERE80=ON -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_LAMBDA=ON -DKokkos_ENABLE_IMPL_CUDA_MALLOC_ASYNC=OFF")
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF -DKokkos_ENABLE_AGGRESSIVE_VECTORIZATION=OFF")
@@ -27,6 +38,7 @@ if (USE_KOKKOS)
     # Enable EPYC arch in kokkos
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_ZEN3=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF") # work-around for nvidia as kokkos is not passing "-mp" for threaded build
   endif()
+
   string(APPEND LDFLAGS " -lstdc++ ")
   string(APPEND SLIBS " -lsci_nvidia -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()
