@@ -14,10 +14,10 @@ if(NOT DEBUG)
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
 else()
   # Add information about vectorization to the compiler output
-  string(APPEND FFLAGS " Minfo=vect and -Mneginfo=vect")
+  string(APPEND FFLAGS " Minfo=vect -Mneginfo=vect")
 
   # To output all information about optimization
-  # string(APPEND FFLAGS " Minfo=all and -Mneginfo=all")
+  # string(APPEND FFLAGS " Minfo=all -Mneginfo=all")
 endif()
 
 message("GPU_TYPE is ${GPU_TYPE}")
