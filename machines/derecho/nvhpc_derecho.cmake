@@ -5,8 +5,9 @@ if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_NANOTIME -DBIT64 -DHAVE_SLASHPROC -DHAVE_GETTIMEOFDAY")
 endif()
 
-string(APPEND FFLAGS " -Minstrument -traceback")
-string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
+# These changes increased wallclock for a case from 170 to 4600 seconds
+#string(APPEND FFLAGS " -Minstrument -traceback")
+#string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
 
 if(NOT DEBUG)
   string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03")
@@ -14,7 +15,7 @@ if(NOT DEBUG)
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
 else()
   # Add information about vectorization to the compiler output
-  string(APPEND FFLAGS " Minfo=vect -Mneginfo=vect")
+  string(APPEND FFLAGS " -Minfo=vect -Mneginfo=vect")
 
   # To output all information about optimization
   # string(APPEND FFLAGS " Minfo=all -Mneginfo=all")
