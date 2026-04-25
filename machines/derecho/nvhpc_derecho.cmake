@@ -5,6 +5,9 @@ if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_NANOTIME -DBIT64 -DHAVE_SLASHPROC -DHAVE_GETTIMEOFDAY")
 endif()
 
+string(APPEND FFLAGS " -Minstrument -traceback")
+string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
+
 if(NOT DEBUG)
   string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03")
   string(APPEND CXXFLAGS " -tp=zen3")
