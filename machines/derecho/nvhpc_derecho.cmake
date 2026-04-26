@@ -7,7 +7,9 @@ endif()
 
 # These changes increased wallclock for a case from 170 to 4600 seconds
 #string(APPEND FFLAGS " -Minstrument -traceback")
-#string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
+
+# Add the nvhpc wrap nvtx library for instrumentation to the link step
+string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
 
 if(NOT DEBUG)
   string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03")
