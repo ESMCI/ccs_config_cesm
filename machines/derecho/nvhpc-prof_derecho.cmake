@@ -1,3 +1,8 @@
+#
+# A compiler for nvhpc with profiling
+# Currently this fails on the link step with undefined references for gptl library calls.
+# So right now this is just a duplicate of the "nvhpc" compiler.
+#
 string(APPEND CONFIG_ARGS " --host=cray")
 string(APPEND CPPDEFS " -DHAVE_IEEE_ARITHMETIC")
 

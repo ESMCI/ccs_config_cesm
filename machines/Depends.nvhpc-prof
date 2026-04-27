@@ -2,6 +2,10 @@
 # 04/05/2023 do not apply optimization flags to "SHR_RANDNUM_C_OBJS" for the nvhpc compiler, which will fail the ensemble consistency test
 #
 # Apply a different optimization level consistent with the Intel compiler
+#
+# A compiler for nvhpc with profiling
+# Currently this fails on the link step with undefined references for gptl library calls.
+#
 PERFOBJS=\
 prim_advection_mod.o \
 edge_mod.o \
