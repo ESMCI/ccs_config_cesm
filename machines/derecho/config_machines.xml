@@ -38,6 +38,7 @@
     </mpirun>
     <!-- Run through the profiler for nvhpc -->
     <mpirun mpilib="default" compiler="nvhpc">
+      <!-- nsys seems to be the GPU profiler and not for CPU's, so this needs to change to a different one -->
       <executable>nsys profile mpibind</executable>
       <arguments>
         <arg name="label"> --label</arg>
