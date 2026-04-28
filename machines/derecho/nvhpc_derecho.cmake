@@ -10,8 +10,8 @@ if(NOT DEBUG)
   string(APPEND CXXFLAGS " -tp=zen3")
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
 
-  # NVIDIA profiler options
-  string(APPEND FFLAGS " -Minstrument=functions")
+  # NVIDIA profiler options include traceback so that information on subroutine names gets to the profiler
+  string(APPEND FFLAGS " -Minstrument=functions --traceback")
 
   # Add the nvhpc wrap nvtx library for instrumentation to the link step
   string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
@@ -19,6 +19,7 @@ if(NOT DEBUG)
   # Add information about optimization to the compiler output (also to the production build)
   string(APPEND FFLAGS " -Minfo=all -Mneginfo=all")
 else()
+  # Add debug information and symbols
   string(APPEND FFLAGS " -traceback")
 
   # Add information about vectorization to the compiler output

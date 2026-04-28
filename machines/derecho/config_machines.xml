@@ -38,7 +38,7 @@
     </mpirun>
     <!-- Run through the NVIDIA profiler for nvhpc only for non-DEBUG builds-->
     <mpirun mpilib="default" compiler="nvhpc" DEBUG="FALSE">
-      <executable>nsys profile --cpuctxsw=process-tree mpibind</executable>
+      <executable>nsys profile --trace nvtx --cpuctxsw=process-tree mpibind</executable>
       <arguments>
         <arg name="label"> --label</arg>
         <arg name="buffer"> --line-buffer</arg>
