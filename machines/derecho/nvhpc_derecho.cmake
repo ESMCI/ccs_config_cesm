@@ -11,7 +11,7 @@ if(NOT DEBUG)
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
 
   # NVIDIA profiler options include traceback so that information on subroutine names gets to the profiler
-  string(APPEND FFLAGS " -Minstrument=functions --traceback")
+  string(APPEND FFLAGS " -Minstrument=functions -traceback")
 
   # Add the nvhpc wrap nvtx library for instrumentation to the link step
   string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
