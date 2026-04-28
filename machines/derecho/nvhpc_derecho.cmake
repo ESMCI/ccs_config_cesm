@@ -6,7 +6,8 @@ if(COMP_NAME STREQUAL gptl)
 endif()
 
 # These changes increased wallclock for a case from 170 to 4600 seconds
-#string(APPEND FFLAGS " -Minstrument -traceback")
+# string(APPEND FFLAGS " -Minstrument")
+string(APPEND FFLAGS " -Minstrument=functions")
 
 # Add the nvhpc wrap nvtx library for instrumentation to the link step
 string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
@@ -16,6 +17,8 @@ if(NOT DEBUG)
   string(APPEND CXXFLAGS " -tp=zen3")
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
 else()
+  string(APPEND FFLAGS " -traceback")
+
   # Add information about vectorization to the compiler output
   string(APPEND FFLAGS " -Minfo=vect -Mneginfo=vect")
 
