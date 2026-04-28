@@ -1,0 +1,119 @@
+# -gopt Generate debug information without disabling optimizations
+# -time Generate timing information for each compilation phase
+string(APPEND CFLAGS " -gopt  -time")
+
+if(compile_threaded)
+  string(APPEND CFLAGS " -mp")
+endif()
+
+# -Mnofma turns off Fused Multiply-Add (FMA) instructions
+if(NOT DEBUG)
+  string(APPEND CFLAGS " -O -Mnofma")
+  string(APPEND CXXFLAGS " -O2 -Mnofma")
+  string(APPEND FFLAGS " -O -Mnofma")
+else()
+  # -Kieee use IEEE division and enbale trps
+  # -Ktrap=fp Floating point trapping for invalid, division by zero, and overflow
+  # -Wall turns on most of the compiler warnings
+  string(APPEND CFLAGS " -O0 -Mnofma -g -Wall -Kieee -traceback")
+  string(APPEND CXXFLAGS " -O0 -Mnofma -g -Wall -Kieee -traceback")
+
+  # -MBounds check array bounds
+  string(APPEND FFLAGS " -O0 -g -Ktrap=fp -Mbounds -Kieee")
+endif()
+
+string(APPEND CFLAGS " -Mnofma")
+string(APPEND FFLAGS " -Mnofma")
+
+string(APPEND CPPDEFS " -DFORTRANUNDERSCORE -DNO_SHR_VMATH -DNO_R16 -DCPRNVIDIA -DNO_QUAD_PRECISION -DCPRPGI")
+
+set(CXX_LINKER "CXX")
+set(FC_AUTO_R8 "-r8")
+
+# -Mflushz does flush-to-zero for floating pointer operations
+string(APPEND FFLAGS " -i4 -gopt -time -Mextend -byteswapio -Mflushz -Kieee")
+string(APPEND CXXFLAGS " -Mflushz -Kieee")
+
+# -Mnovect turn off vectorization for the CDEPS models
+if(COMP_NAME IN_LIST "datm;dlnd;drof;dwav;dice;docn")
+  string(APPEND FFLAGS " -Mnovect")
+endif()
+
+set(FFLAGS_NOOPT "-O0")
+set(FIXEDFLAGS "-Mfixed")
+set(FREEFLAGS "-Mfree")
+set(HAS_F2008_CONTIGUOUS "FALSE")
+set(LDFLAGS "-time -Wl,--allow-multiple-definition")
+
+if(compile_threaded)
+  string(APPEND CFLAGS " -mp")
+  string(APPEND CXXFLAGS " -mp")
+  string(APPEND FFLAGS " -mp")
+  string(APPEND LDFLAGS " -mp")
+endif()
+
+set(MPICC "mpicc")
+set(MPICXX "mpicxx")
+set(MPIFC "mpif90")
+set(SCC "nvc")
+set(SCXX "nvc++")
+set(SFC "nvfortran")
+
+if(COMP_NAME STREQUAL mpi-serial)
+  string(APPEND CFLAGS " -std=gnu89")
+  string(APPEND CXXFLAGS " -std=c++17")
+else()
+  string(APPEND CFLAGS " -std=gnu99")
+  string(APPEND CXXFLAGS " -std=c++17")
+endif()
+
+set(OPENACC_GPU_FLAGS " -noacc ")
+set(OPENMP_GPU_FLAGS "")
+
+if(GPU_TYPE STREQUAL v100)
+  if(OPENACC_GPU_OFFLOAD)
+    set(OPENACC_GPU_FLAGS " -acc -gpu=cc70,lineinfo,nofma -Minfo=accel ")
+  endif()
+
+  if(OPENMP_GPU_OFFLOAD)
+    set(OPENMP_GPU_FLAGS " -mp=gpu -gpu=cc70,lineinfo,nofma -Minfo=accel ")
+  endif()
+endif()
+
+if(GPU_TYPE STREQUAL a100)
+  if(OPENACC_GPU_OFFLOAD)
+    set(OPENACC_GPU_FLAGS " -acc -gpu=cc80,lineinfo,nofma -Minfo=accel ")
+  endif()
+
+  if(OPENMP_GPU_OFFLOAD)
+    set(OPENMP_GPU_FLAGS " -mp=gpu -gpu=cc80,lineinfo,nofma -Minfo=accel ")
+  endif()
+endif()
+
+if(GPU_TYPE STREQUAL a10 OR GPU_TYPE STREQUAL a2)
+  if(OPENACC_GPU_OFFLOAD)
+    set(OPENACC_GPU_FLAGS " -acc -gpu=cc86,lineinfo,nofma -Minfo=accel ")
+  endif()
+
+  if(OPENMP_GPU_OFFLOAD)
+    set(OPENMP_GPU_FLAGS " -mp=gpu -gpu=cc86,lineinfo,nofma -Minfo=accel ")
+  endif()
+endif()
+
+if(GPU_TYPE STREQUAL h100)
+  if(OPENACC_GPU_OFFLOAD)
+    set(OPENACC_GPU_FLAGS " -acc -gpu=cc90,lineinfo,nofma -Minfo=accel ")
+  endif()
+
+  if(OPENMP_GPU_OFFLOAD)
+    set(OPENMP_GPU_FLAGS " -mp=gpu -gpu=cc90,lineinfo,nofma -Minfo=accel ")
+  endif()
+endif()
+
+if(OPENACC_GPU_FLAGS)
+  string(APPEND LDFLAGS " ${OPENACC_GPU_FLAGS}")
+endif()
+
+if(OPENMP_GPU_FLAGS)
+  string(APPEND LDFLAGS " ${OPENMP_GPU_FLAGS}")
+endif()
