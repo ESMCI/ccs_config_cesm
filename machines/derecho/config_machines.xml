@@ -29,7 +29,7 @@
       </arguments>
     </mpirun>
     <mpirun mpilib="default" compiler="nvhpc-prof">
-      <executable>nsys profile mpibind</executable>
+      <executable>nsys profile --cpuctxsw=process-tree mpibind</executable>
       <arguments>
         <arg name="label"> --label</arg>
         <arg name="buffer"> --line-buffer</arg>
@@ -38,8 +38,7 @@
     </mpirun>
     <!-- Run through the profiler for nvhpc -->
     <mpirun mpilib="default" compiler="nvhpc">
-      <!-- nsys seems to be the GPU profiler and not for CPU's, so this needs to change to a different one -->
-      <executable>nsys profile mpibind</executable>
+      <executable>nsys profile --cpuctxsw=process-tree mpibind</executable>
       <arguments>
         <arg name="label"> --label</arg>
         <arg name="buffer"> --line-buffer</arg>
