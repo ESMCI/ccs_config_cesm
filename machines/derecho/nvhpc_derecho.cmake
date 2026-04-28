@@ -6,12 +6,17 @@ if(COMP_NAME STREQUAL gptl)
 endif()
 
 if(NOT DEBUG)
+  # -tp is the target processor
+  # -Mstack_arrays put automatic arrays on the stack
+  # -Mallocatable=O3 use the 2003 standard for allocatable arrays, which allows them to be used in more contexts and with more features than the older Fortran 90/95 standard
   string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03")
   string(APPEND CXXFLAGS " -tp=zen3")
+
+  # -Mnofma turns off Fused Multiply-Add (FMA) instructions at the link step
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
 
   # NVIDIA profiler options include traceback so that information on subroutine names gets to the profiler
-  string(APPEND FFLAGS " -Minstrument=functions -traceback")
+  string(APPEND FFLAGS " -Minstrument -traceback")
 
   # Add the nvhpc wrap nvtx library for instrumentation to the link step
   string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
@@ -21,12 +26,6 @@ if(NOT DEBUG)
 else()
   # Add debug information and symbols
   string(APPEND FFLAGS " -traceback")
-
-  # Add information about vectorization to the compiler output
-  string(APPEND FFLAGS " -Minfo=vect -Mneginfo=vect")
-
-  # To output all information about optimization
-  # string(APPEND FFLAGS " -Minfo=all -Mneginfo=all")
 endif()
 
 message("GPU_TYPE is ${GPU_TYPE}")
