@@ -36,8 +36,8 @@
         <arg name="separator"> -- </arg>
       </arguments>
     </mpirun>
-    <!-- Run through the profiler for nvhpc -->
-    <mpirun mpilib="default" compiler="nvhpc">
+    <!-- Run through the NVIDIA profiler for nvhpc only for non-DEBUG builds-->
+    <mpirun mpilib="default" compiler="nvhpc" DEBUG="FALSE">
       <executable>nsys profile --cpuctxsw=process-tree mpibind</executable>
       <arguments>
         <arg name="label"> --label</arg>

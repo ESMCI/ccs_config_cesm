@@ -5,17 +5,19 @@ if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_NANOTIME -DBIT64 -DHAVE_SLASHPROC -DHAVE_GETTIMEOFDAY")
 endif()
 
-# These changes increased wallclock for a case from 170 to 4600 seconds
-# string(APPEND FFLAGS " -Minstrument")
-string(APPEND FFLAGS " -Minstrument=functions")
-
-# Add the nvhpc wrap nvtx library for instrumentation to the link step
-string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
-
 if(NOT DEBUG)
   string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03")
   string(APPEND CXXFLAGS " -tp=zen3")
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
+
+  # NVIDIA profiler options
+  string(APPEND FFLAGS " -Minstrument=functions")
+
+  # Add the nvhpc wrap nvtx library for instrumentation to the link step
+  string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
+
+  # Add information about optimization to the compiler output (also to the production build)
+  string(APPEND FFLAGS " -Minfo=all -Mneginfo=all")
 else()
   string(APPEND FFLAGS " -traceback")
 
@@ -23,7 +25,7 @@ else()
   string(APPEND FFLAGS " -Minfo=vect -Mneginfo=vect")
 
   # To output all information about optimization
-  # string(APPEND FFLAGS " Minfo=all -Mneginfo=all")
+  # string(APPEND FFLAGS " -Minfo=all -Mneginfo=all")
 endif()
 
 message("GPU_TYPE is ${GPU_TYPE}")
