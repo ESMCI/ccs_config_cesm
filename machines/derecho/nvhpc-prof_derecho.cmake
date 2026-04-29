@@ -1,7 +1,7 @@
 #
 # A compiler for nvhpc with profiling
-# Currently this fails on the link step with undefined references for gptl library calls.
-# So right now this is just a duplicate of the "nvhpc" compiler.
+#
+# Mostly duplicates nvhpc_derecho.cmake, but adds profiling compiler flags and link options
 #
 string(APPEND CONFIG_ARGS " --host=cray")
 string(APPEND CPPDEFS " -DHAVE_IEEE_ARITHMETIC")
@@ -10,22 +10,25 @@ if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_NANOTIME -DBIT64 -DHAVE_SLASHPROC -DHAVE_GETTIMEOFDAY")
 endif()
 
-# These changes increased wallclock for a case from 170 to 4600 seconds
-#string(APPEND FFLAGS " -Minstrument -traceback")
-
 # Add the nvhpc wrap nvtx library for instrumentation to the link step
 string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
 
 if(NOT DEBUG)
+  # -tp is the target processor
+  # -Mstack_arrays put automatic arrays on the stack
+  # -Mallocatable=O3 use the 2003 standard for allocatable arrays, which allows them to be used in more contexts and with more features than the older Fortran 90/95 standard
   string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03")
   string(APPEND CXXFLAGS " -tp=zen3")
-  string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
-else()
-  # Add information about vectorization to the compiler output
-  string(APPEND FFLAGS " -Minfo=vect -Mneginfo=vect")
 
-  # To output all information about optimization
-  # string(APPEND FFLAGS " Minfo=all -Mneginfo=all")
+  # -Mnofma turns off Fused Multiply-Add (FMA) instructions at the link step
+  string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
+
+  # Add information about optimization to the compiler output
+  # Will show up at the end of the bld log file
+  string(APPEND FFLAGS " -Minfo=all -Mneginfo=all")
+else()
+  # Add debug information and symbols
+  string(APPEND FFLAGS " -traceback")
 endif()
 
 message("GPU_TYPE is ${GPU_TYPE}")
