@@ -14,15 +14,6 @@ if(NOT DEBUG)
 
   # -Mnofma turns off Fused Multiply-Add (FMA) instructions at the link step
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
-
-  # NVIDIA profiler options include traceback so that information on subroutine names gets to the profiler
-  string(APPEND FFLAGS " -Minstrument -traceback")
-
-  # Add the nvhpc wrap nvtx library for instrumentation to the link step
-  string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
-
-  # Add information about optimization to the compiler output (also to the production build)
-  string(APPEND FFLAGS " -Minfo=all -Mneginfo=all")
 else()
   # Add debug information and symbols
   string(APPEND FFLAGS " -traceback")
