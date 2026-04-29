@@ -4,7 +4,6 @@
 # Apply a different optimization level consistent with the Intel compiler
 #
 # A compiler for nvhpc with profiling
-# Currently this fails on the link step with undefined references for gptl library calls.
 #
 PERFOBJS=\
 prim_advection_mod.o \
