@@ -28,16 +28,9 @@
         <arg name="separator"> -- </arg>
       </arguments>
     </mpirun>
+    <!-- the nvhpc-prof compiler is for running CESM through the nvhpc profiler nsys -->
+    <!-- Run through the NVIDIA profiler for nvhpc-prof only for non-DEBUG builds-->
     <mpirun mpilib="default" compiler="nvhpc-prof">
-      <executable>nsys profile --cpuctxsw=process-tree mpibind</executable>
-      <arguments>
-        <arg name="label"> --label</arg>
-        <arg name="buffer"> --line-buffer</arg>
-        <arg name="separator"> -- </arg>
-      </arguments>
-    </mpirun>
-    <!-- Run through the NVIDIA profiler for nvhpc only for non-DEBUG builds-->
-    <mpirun mpilib="default" compiler="nvhpc" DEBUG="FALSE">
       <executable>nsys profile --trace nvtx --cpuctxsw=process-tree mpibind</executable>
       <arguments>
         <arg name="label"> --label</arg>
