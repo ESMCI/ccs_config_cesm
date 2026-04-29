@@ -1,9 +1,17 @@
+#
+# A compiler for nvhpc with profiling
+#
+# Mostly duplicates nvhpc_derecho.cmake, but adds profiling compiler flags and link options
+#
 string(APPEND CONFIG_ARGS " --host=cray")
 string(APPEND CPPDEFS " -DHAVE_IEEE_ARITHMETIC")
 
 if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_NANOTIME -DBIT64 -DHAVE_SLASHPROC -DHAVE_GETTIMEOFDAY")
 endif()
+
+# Add the nvhpc wrap nvtx library for instrumentation to the link step
+string(APPEND LDFLAGS " -lnvhpcwrapnvtx")
 
 if(NOT DEBUG)
   # -tp is the target processor
@@ -14,6 +22,10 @@ if(NOT DEBUG)
 
   # -Mnofma turns off Fused Multiply-Add (FMA) instructions at the link step
   string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
+
+  # Add information about optimization to the compiler output
+  # Will show up at the end of the bld log file
+  string(APPEND FFLAGS " -Minfo=all -Mneginfo=all")
 else()
   # Add debug information and symbols
   string(APPEND FFLAGS " -traceback")
