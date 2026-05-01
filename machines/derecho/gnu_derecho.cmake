@@ -10,6 +10,9 @@ set(SCXX "g++")
 set(SFC "gfortran")
 
 if (USE_KOKKOS)
+  if (DEBUG)
+    string(APPEND CPPDEFS " -DHOMMEXX_VECTOR_SIZE=1 ")
+  endif()
   # Generic setting that are used regardless of Architecture or Kokkos backend
   string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
   if (KOKKOS_GPU_OFFLOAD)
@@ -30,6 +33,6 @@ if (USE_KOKKOS)
   if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
     set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above
   endif()
-  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
-  string(APPEND SLIBS " -lsci_gnu ")
+  string(APPEND LDFLAGS " -lstdc++ ")
+  string(APPEND SLIBS " -lsci_gnu -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()

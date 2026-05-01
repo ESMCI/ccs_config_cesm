@@ -1,7 +1,7 @@
 set(CONFIG_ARGS "--host=cray")
 string(APPEND CFLAGS " -qopt-report -march=core-avx2")
 string(APPEND CXXFLAGS " -qopt-report -march=core-avx2")
-string(APPEND FFLAGS " -qopt-report -march=core-avx2")
+string(APPEND FFLAGS " -qopt-report -march=core-avx2 -Qoption,fpp,-macro_expand=vc")
 if (COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_SLASHPROC")
 endif()
@@ -13,9 +13,18 @@ if (MPILIB STREQUAL mpi-serial AND NOT compile_threaded)
 endif()
 set(SCC icx)
 set(SCXX icpx)
-set(SFC ifort)
+set(SFC ifx)
+
+if (DEBUG)
+  # -check uninit is giving an error in GLIBC as of intel/2025.2.1
+  string(APPEND FFLAGS " -check nouninit")
+endif()
+
 
 if (USE_KOKKOS)
+  if (DEBUG)
+    string(APPEND CPPDEFS " -DHOMMEXX_VECTOR_SIZE=1 ")
+  endif()
   # Generic setting that are used regardless of Architecture or Kokkos backend
   string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
   # Enable EPYC arch in kokkos
@@ -26,5 +35,6 @@ if (USE_KOKKOS)
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_ZEN3=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF")
   endif()
   set(CMAKE_CXX_FLAGS "-DTHRUST_IGNORE_CUB_VERSION_CHECK" CACHE STRING "" FORCE)
-  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
+  string(APPEND LDFLAGS " -lstdc++ ")
+  string(APPEND SLIBS " -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()

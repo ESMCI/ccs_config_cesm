@@ -98,6 +98,11 @@
     <mesh>$DIN_LOC_ROOT/share/meshes/ne3np4_ESMFmesh_c230714_cdf5.nc</mesh>
     <desc>ne3np4 is Spectral Elem 10-deg grid:</desc>
   </domain>
+  <domain name="ne3np4.pg2">
+    <nx>216</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/ne3pg2_ESMFmesh_cdf5_c250912.nc</mesh>
+    <desc>ne3np4 is Spectral Elem 10-deg grid with a 2x2 FVM physics grid</desc>
+  </domain>
   <domain name="ne3np4.pg3">
     <nx>486</nx> <ny>1</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/ne3pg3_ESMFmesh_c221214_cdf5.nc</mesh>
@@ -380,6 +385,11 @@
     <desc>tx2_3v2 is tripole v2 2/3-deg MOM6 grid:</desc>
     <support>Experimental for MOM6 experiments</support>
   </domain>
+  <domain name="tx2_3v3">
+    <nx>540</nx> <ny>480</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/tx2_3v3_260305_ESMF_mesh.nc</mesh>
+    <desc>tx2_3v3 is tripole v3 2/3-deg MOM6 grid:</desc>
+  </domain>
   <domain name="tx0.25v1">
     <nx>1440</nx> <ny>1080</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/tx0.25v1_190204_ESMFmesh.nc</mesh>
@@ -579,8 +589,8 @@
     <desc>20-km Greenland grid</desc>
   </domain>
   <domain name="gris4">
-    <nx>416</nx> <ny>704</ny>
-    <mesh>$DIN_LOC_ROOT/share/meshes/greenland_4km_epsg3413_c170414_ESMFmesh_c20190729.nc</mesh>
+    <nx>421</nx> <ny>721</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/greenland_4km_epsg3413_c250909_ESMFmesh_c20250909.nc</mesh>
     <desc>4-km Greenland grid, for use with the glissade dycore</desc>
   </domain>
   <domain name="ais8">

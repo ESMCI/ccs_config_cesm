@@ -13,6 +13,9 @@ message("OPENACC_GPU_OFFLOAD is ${OPENACC_GPU_OFFLOAD}")
 message("OPENMP_GPU_OFFLOAD is ${OPENMP_GPU_OFFLOAD}")
 
 if (USE_KOKKOS)
+  if (DEBUG)
+    string(APPEND CPPDEFS " -DHOMMEXX_VECTOR_SIZE=1 ")
+  endif()
   # Generic setting that are used regardless of Architecture or Kokkos backend
   string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
   if (KOKKOS_GPU_OFFLOAD)
@@ -24,6 +27,6 @@ if (USE_KOKKOS)
     # Enable EPYC arch in kokkos
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_ZEN3=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF") # work-around for nvidia as kokkos is not passing "-mp" for threaded build
   endif()
-  string(APPEND LDFLAGS " -lstdc++ -lkokkoscontainers -lkokkoscore -lkokkossimd ")
-  string(APPEND SLIBS " -lsci_nvidia ")
+  string(APPEND LDFLAGS " -lstdc++ ")
+  string(APPEND SLIBS " -lsci_nvidia -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()

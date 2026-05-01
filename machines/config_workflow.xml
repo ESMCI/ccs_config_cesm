@@ -62,24 +62,34 @@
     </job>
   </workflow_jobs>
 
-  <workflow_jobs id="timeseries" prepend="default">
-    <job name="timeseries">
-      <template>$ENV{POSTPROCESS_PATH}/timeseries/template.timeseries</template>
+  <workflow_jobs id="cmip7" prepend="default">
+    <job name="amon">
+      <template>template.amon</template>
       <dependency>case.st_archive</dependency>
-      <prereq>1</prereq>
-      <runtime_parameters MACH="aleph">
-        <task_count>200</task_count>
-        <tasks_per_node>10</tasks_per_node>
-        <walltime>12:00:00</walltime>
-      </runtime_parameters>
-      <runtime_parameters MACH="cheyenne">
-        <task_count>72</task_count>
-        <tasks_per_node>9</tasks_per_node>
-        <walltime>0:20:00</walltime>
+      <prereq>True</prereq>
+      <runtime_parameters MACH="derecho">
+        <task_count>128</task_count>
+        <tasks_per_node>128</tasks_per_node>
+        <mem_per_task>10</mem_per_task>
+        <walltime>0:40:00</walltime>
       </runtime_parameters>
     </job>
+    <job name="lmon">
+      <template>template.Lmon</template>
+      <dependency>case.st_archive</dependency>
+      <prereq>True</prereq>
+      <runtime_parameters MACH="derecho">
+        <task_count>4</task_count>
+        <tasks_per_node>128</tasks_per_node>
+        <mem_per_task>10</mem_per_task>
+        <walltime>0:40:00</walltime>
+      </runtime_parameters>
+    </job>
+    
   </workflow_jobs>
+      
 
+  
   <!-- THIS CREATES THE JOB FOR THE LAUNCHING OF THE SMARTSIM ORCHESTRATOR -->
   <workflow_jobs id="smartsim_db" prepend="default">
     <job name="smartsim_db"> <!-- name here corresponds with scripts -->
@@ -94,72 +104,4 @@
     </job>
   </workflow_jobs>
 
-  <workflow_jobs id="timeseries_transfer" prepend="timeseries">
-    <job name="timeseries_transfer">
-      <template>$ENV{POSTPROCESS_PATH}/timeseries/template.timeseries_transfer</template>
-      <dependency>timeseries</dependency>
-      <prereq>1</prereq>
-      <runtime_parameters>
-	<task_count>1</task_count>
-	<tasks_per_node>1</tasks_per_node>
-	<walltime>1:00:00</walltime>
-      </runtime_parameters>
-    </job>
-  </workflow_jobs>
-  <workflow_jobs id="diagnostics" prepend="timeseries">
-    <job name="xconform">
-      <template>$CASEROOT/postprocess/xconform</template>
-      <dependency>timeseriesL</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get STANDARDIZE_TIMESERIES</prereq>
-    </job>
-
-    <job name="atm_averages">
-      <template>$CASEROOT/postprocess/atm_averages</template>
-      <dependency>timeseries or case.st_archive</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get GENERATE_AVGS_ATM</prereq>
-    </job>
-
-    <job name="lnd_averages">
-      <template>$CASEROOT/postprocess/lnd_averages</template>
-      <dependency>:lnd_avg(args)
-timeseries or case.st_archive</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get GENERATE_AVGS_ATM</prereq>
-    </job>
-
-    <job name="ice_averages">
-      <template>$CASEROOT/postprocess/ice_averages</template>
-      <dependency>timeseries or case.st_archive</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get GENERATE_AVGS_ATM</prereq>
-    </job>
-
-
-    <job name="ocn_averages">
-      <template>$CASEROOT/postprocess/ocn_averages</template>
-      <dependency>timeseries or case.st_archive</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get GENERATE_AVGS_ATM</prereq>
-    </job>
-
-    <job name="atm_diagnostics">
-      <template>$CASEROOT/postprocess/atm_diagnostics</template>
-      <dependency>atm_averages</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get GENERATE_AVGS_ATM</prereq>
-    </job>
-
-    <job name="lnd_diagnostics">
-      <template>$CASEROOT/postprocess/lnd_diagnostics</template>
-      <dependency>lnd_averages</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get GENERATE_AVGS_ATM</prereq>
-    </job>
-    <job name="ice_diagnostics">
-      <template>$CASEROOT/postprocess/ice_diagnostics</template>
-      <dependency>ice_averages</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get GENERATE_AVGS_ATM</prereq>
-    </job>
-    <job name="ocn_diagnostics">
-      <template>$CASEROOT/postprocess/ocn_diagnostics</template>
-      <dependency>ocn_averages</dependency>
-      <prereq>$CASEROOT/postprocess/pp_config -value --get GENERATE_AVGS_ATM</prereq>
-    </job>
-
-  </workflow_jobs>
 </config_workflow>
