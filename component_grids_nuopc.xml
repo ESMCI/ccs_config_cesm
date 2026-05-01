@@ -565,7 +565,7 @@
   </domain>
   <domain name="GLOFAS">
     <nx>7200</nx> <ny>3000</ny>
-    <mesh>$DIN_LOC_ROOT/ocn/mom/croc/rof/glofas/dis24/GLOFAS_esmf_mesh_v4.nc</mesh>
+    <mesh>$DIN_LOC_ROOT/lnd/dlnd7/GLOFAS/GLOFAS.v4.dis24.ESMFmesh_20260501.nc</mesh>
     <desc>GLOFAS 0.05 deg runoff (global, except only north of 60 S)</desc>
   </domain>
 
