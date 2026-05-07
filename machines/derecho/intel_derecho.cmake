@@ -6,8 +6,6 @@ string(APPEND CXXFLAGS " -qopt-report -march=core-avx2")
 # vec-threshold reports on vectorization
 string(APPEND FFLAGS " -qopt-reporti=3 -vec-threshhold0 -march=core-avx2 -Qoption,fpp,-macro_expand=vc")
 
--qopt-report=3 -vec-threshold0
-
 if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_SLASHPROC")
 endif()
