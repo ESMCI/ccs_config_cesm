@@ -1,6 +1,6 @@
 # -gopt Generate debug information without disabling optimizations
 # -time Generate timing information for each compilation phase
-string(APPEND CFLAGS " -gopt  -time")
+string(APPEND CFLAGS " -gopt")
 
 if(compile_threaded)
   string(APPEND CFLAGS " -mp")
