@@ -4,7 +4,7 @@ string(APPEND CXXFLAGS " -qopt-report -march=core-avx2")
 
 # qopt-report=3 is optimization report level
 # vec-threshold reports on vectorization
-string(APPEND FFLAGS " -qopt-reporti=3 -vec-threshhold0 -march=core-avx2 -Qoption,fpp,-macro_expand=vc")
+string(APPEND FFLAGS " -qopt-report=3 -vec-threshold0 -march=core-avx2 -Qoption,fpp,-macro_expand=vc")
 
 if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_SLASHPROC")
