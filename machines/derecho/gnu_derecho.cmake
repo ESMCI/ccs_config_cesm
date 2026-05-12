@@ -1,7 +1,9 @@
 string(APPEND CONFIG_ARGS " --host=cray")
-if (COMP_NAME STREQUAL gptl)
+
+if(COMP_NAME STREQUAL gptl)
   string(APPEND CPPDEFS " -DHAVE_NANOTIME -DBIT64 -DHAVE_SLASHPROC -DHAVE_GETTIMEOFDAY")
 endif()
+
 set(MPICC "cc")
 set(MPICXX "CC")
 set(MPIFC "ftn")
@@ -9,30 +11,39 @@ set(SCC "gcc")
 set(SCXX "g++")
 set(SFC "gfortran")
 
-if (USE_KOKKOS)
-  if (DEBUG)
+# fopt-info-vec give optimization Information around vectorization
+# fopt-info-vec-missed give optimization Information around vectorization loops that were not vectorized and the reason why
+string(APPEND FFLAGS "  -fopt-info-vec -fopt-info-vec-missed")
+
+if(USE_KOKKOS)
+  if(DEBUG)
     string(APPEND CPPDEFS " -DHOMMEXX_VECTOR_SIZE=1 ")
   endif()
+
   # Generic setting that are used regardless of Architecture or Kokkos backend
   string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_DEPRECATED_CODE=OFF -DKokkos_ENABLE_EXPLICIT_INSTANTIATION=OFF")
-  if (KOKKOS_GPU_OFFLOAD)
+
+  if(KOKKOS_GPU_OFFLOAD)
     string(APPEND CPPDEFS " -DGPU -DTHRUST_IGNORE_CUB_VERSION_CHECK -DHOMMEXX_ENABLE_GPU")
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_AMPERE80=ON -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_LAMBDA=ON -DKokkos_ENABLE_IMPL_CUDA_MALLOC_ASYNC=OFF")
     string(APPEND KOKKOS_OPTIONS " -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF -DKokkos_ENABLE_AGGRESSIVE_VECTORIZATION=OFF")
     string(APPEND CXXFLAGS " -extended-lambda -Wext-lambda-captures-this -std=c++17 -arch=sm_80")
   else()
     # Enable EPYC arch in kokkos
-    if (compile_threaded)
+    if(compile_threaded)
       # Settings used when OpenMP is the Kokkos backend
       string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_ZEN3=ON -DKokkos_ENABLE_AGGRESSIVE_VECTORIZATION=ON -DKokkos_ENABLE_SERIAL=OFF -DKokkos_ENABLE_OPENMP=ON")
     else()
       string(APPEND KOKKOS_OPTIONS " -DKokkos_ARCH_ZEN3=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=OFF")
     endif()
+
     string(APPEND CXXFLAGS " -march=znver3 -mtune=znver3")
   endif()
-  if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
-    set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch"  CACHE STRING "" FORCE) # only works with gnu v10 and above
+
+  if(CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
+    set(CMAKE_Fortran_FLAGS "-fallow-argument-mismatch" CACHE STRING "" FORCE) # only works with gnu v10 and above
   endif()
+
   string(APPEND LDFLAGS " -lstdc++ ")
   string(APPEND SLIBS " -lsci_gnu -lkokkoscontainers -lkokkoscore -lkokkossimd ")
 endif()
