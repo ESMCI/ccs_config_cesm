@@ -17,11 +17,12 @@ if(NOT DEBUG)
   # -tp is the target processor
   # -Mstack_arrays put automatic arrays on the stack
   # -Mallocatable=O3 use the 2003 standard for allocatable arrays, which allows them to be used in more contexts and with more features than the older Fortran 90/95 standard
-  string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03")
+  # -Minstrument instrument the code subroutines/functions for nvtx profiling
+  string(APPEND FFLAGS " -tp=zen3 -Mstack_arrays -Mallocatable=03 -Minstrument")
   string(APPEND CXXFLAGS " -tp=zen3")
 
   # -Mnofma turns off Fused Multiply-Add (FMA) instructions at the link step
-  string(APPEND LDFLAGS " -tp=zen3 -Mnofma")
+  string(APPEND LDFLAGS " -tp=zen3 -Mnofma -Minstrument")
 
   # Add information about optimization to the compiler output
   # Will show up at the end of the bld log file

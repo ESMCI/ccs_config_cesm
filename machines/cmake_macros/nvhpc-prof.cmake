@@ -31,7 +31,7 @@ set(CXX_LINKER "CXX")
 set(FC_AUTO_R8 "-r8")
 
 # -Mflushz does flush-to-zero for floating pointer operations
-string(APPEND FFLAGS " -i4 -gopt -time -Mextend -byteswapio -Mflushz -Kieee")
+string(APPEND FFLAGS " -i4 -gopt -Mextend -byteswapio -Mflushz -Kieee")
 string(APPEND CXXFLAGS " -Mflushz -Kieee")
 
 # -Mnovect turn off vectorization for the CDEPS models
@@ -43,7 +43,7 @@ set(FFLAGS_NOOPT "-O0")
 set(FIXEDFLAGS "-Mfixed")
 set(FREEFLAGS "-Mfree")
 set(HAS_F2008_CONTIGUOUS "FALSE")
-set(LDFLAGS "-time -Wl,--allow-multiple-definition")
+set(LDFLAGS "-Wl,--allow-multiple-definition")
 
 if(compile_threaded)
   string(APPEND CFLAGS " -mp")
