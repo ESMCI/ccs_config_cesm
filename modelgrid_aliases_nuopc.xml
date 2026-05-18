@@ -1286,6 +1286,7 @@
     <grid name="ocnice">tx2_3v2</grid>
     <grid name="rof">JRA025</grid>
     <mask>tx2_3v2</mask>
+  </model_grid>
 
   <model_grid alias="ne3pg2_ne3pg2_mt233" not_compset="_MOM">
     <grid name="atm">ne3np4.pg2</grid>
