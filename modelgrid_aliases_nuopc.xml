@@ -362,6 +362,21 @@
     <grid name="wav">wgx3v7</grid>
   </model_grid>
 
+  <model_grid alias="TL319_t201" compset="DATM%JRA">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">tx2_0v1</grid>
+    <grid name="rof">JRA025</grid>
+  </model_grid>
+
+  <model_grid alias="TL319_t201_wg37" compset="DATM%JRA">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">tx2_0v1</grid>
+    <grid name="rof">JRA025</grid>
+    <grid name="wav">wgx3v7</grid>
+  </model_grid>
+
   <model_grid alias="TL319_t12" not_compset="_CAM">
     <grid name="atm">TL319</grid>
     <grid name="lnd">TL319</grid>
@@ -1391,6 +1406,14 @@
     <grid name="lnd">ne16np4.pg3</grid>
     <grid name="ocnice">ne16np4.pg3</grid>
     <mask>tx2_3v3</mask>
+  </model_grid>
+
+  <model_grid alias="ne16pg3_t201">
+    <grid name="atm">ne16np4.pg3</grid>
+    <grid name="lnd">ne16np4.pg3</grid>
+    <grid name="ocnice">tx2_0v1</grid>
+    <grid name="wav">wgx3v7</grid>
+    <mask>tx2_0v1</mask>
   </model_grid>
 
   <model_grid alias="ne30pg3_ne30pg3_mg17" not_compset="_MOM">

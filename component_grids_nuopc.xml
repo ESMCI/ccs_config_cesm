@@ -390,6 +390,11 @@
     <mesh>$DIN_LOC_ROOT/share/meshes/tx2_3v3_260305_ESMF_mesh.nc</mesh>
     <desc>tx2_3v3 is tripole v3 2/3-deg MOM6 grid:</desc>
   </domain>
+  <domain name="tx2_0v1">
+    <nx>180</nx> <ny>128</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/tx2_0v1_260526_ESMF_mesh.nc</mesh>
+    <desc>tx2_0v1 is tripole v1 2.0-deg MOM6 grid:</desc>
+  </domain>
   <domain name="tx0.25v1">
     <nx>1440</nx> <ny>1080</ny>
     <mesh>$DIN_LOC_ROOT/share/meshes/tx0.25v1_190204_ESMFmesh.nc</mesh>
