@@ -15,4 +15,10 @@ if (COMP_NAME STREQUAL mom)
   string(APPEND FFLAGS " $(FC_AUTO_R8) ")
   string(APPEND CPPDEFS " -Duse_LARGEFILE")
 endif()
+# libwav.a is static, so it does not carry parmetis to the cesm.exe link.
+# WW3_PARMETIS_ROOT is set only for WW3_UNSTRUCT builds; COMP_NAME is driver only
+# for that link.
+if (COMP_NAME STREQUAL driver AND DEFINED ENV{WW3_PARMETIS_ROOT})
+  string(APPEND SLIBS " -L$ENV{WW3_PARMETIS_ROOT}/lib -lparmetis -Wl,-rpath,$ENV{WW3_PARMETIS_ROOT}/lib")
+endif()
 set(SUPPORTS_CXX "FALSE")

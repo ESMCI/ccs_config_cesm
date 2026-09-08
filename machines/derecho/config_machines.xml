@@ -134,4 +134,10 @@
       <env name="MPICH_GPU_IPC_ENABLED">0</env>
       <env name="MPICH_GPU_MANAGED_MEMORY_SUPPORT_ENABLED">0</env>
     </environment_variables>
+    <!-- ParMETIS, for WW3 unstructured (PDLIB) builds.
+         TODO: derecho has no parmetis module, so this hardcodes a spack prefix
+         and will break when the stack is rebuilt. Request a module from CISL. -->
+    <environment_variables compiler="intel" mpilib="!mpi-serial" WW3_UNSTRUCT="TRUE">
+      <env name="WW3_PARMETIS_ROOT">/glade/u/apps/derecho/default/spack/opt/spack/parmetis/4.0.3/cray-mpich/8.1.32/intel-oneapi-compilers/2025.3.2/kzdz</env>
+    </environment_variables>
 </machine>
