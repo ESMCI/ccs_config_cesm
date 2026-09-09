@@ -1359,6 +1359,23 @@
 
   <!--  spectral element grids with 3x3 FVM physics grid -->
 
+  <!--    atm grids useful with testmods mom-tx10deg for low-res B compset testing, e.g., for DART -->
+  <model_grid alias="ne3pg3_t232">
+    <grid name="atm">ne3np4.pg3</grid>
+    <grid name="lnd">ne3np4.pg3</grid>
+    <grid name="ocnice">tx2_3v2</grid>
+    <grid name="rof">JRA025</grid>
+    <mask>tx2_3v2</mask>
+  </model_grid>
+
+  <model_grid alias="ne3pg3_t233">
+    <grid name="atm">ne3np4.pg3</grid>
+    <grid name="lnd">ne3np4.pg3</grid>
+    <grid name="ocnice">tx2_3v3</grid>
+    <grid name="rof">JRA025</grid>
+    <mask>tx2_3v3</mask>
+  </model_grid>
+
   <model_grid alias="ne3pg3_ne3pg3_mg37" not_compset="_MOM">
     <grid name="atm">ne3np4.pg3</grid>
     <grid name="lnd">ne3np4.pg3</grid>
@@ -1378,15 +1395,6 @@
     <grid name="lnd">ne3np4.pg3</grid>
     <grid name="ocnice">ne3np4.pg3</grid>
     <mask>tx2_3v3</mask>
-  </model_grid>
-
-  <!-- atm grid useful with testmods mom-tx10deg for low-res B compset testing, e.g., for DART -->
-  <model_grid alias="ne3pg3_ne3pg3_t232">
-    <grid name="atm">ne3np4.pg3</grid>
-    <grid name="lnd">ne3np4.pg3</grid>
-    <grid name="ocnice">tx2_3v2</grid>
-    <grid name="rof">JRA025</grid>
-    <mask>tx2_3v2</mask>
   </model_grid>
 
   <model_grid alias="ne5pg3_ne5pg3_mg37" not_compset="_MOM">
