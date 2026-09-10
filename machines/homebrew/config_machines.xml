@@ -46,6 +46,6 @@
     </mpirun>
     <module_system type="none"/>
     <environment_variables>
-      <env name="NETCDF_PATH">/usr/local</env>
+      <env name="NETCDF_PATH">/opt/homebrew</env>
     </environment_variables>
   </machine>
