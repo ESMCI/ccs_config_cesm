@@ -1138,6 +1138,15 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
+  <model_grid alias="ne30pg3_t233_wg37_gris4">
+    <grid name="atm">ne30np4.pg3</grid>
+    <grid name="lnd">ne30np4.pg3</grid>
+    <grid name="ocnice">tx2_3v3</grid>
+    <grid name="glc">gris4</grid>
+    <grid name="wav">wgx3v7</grid>
+    <mask>tx2_3v3</mask>
+  </model_grid>
+
   <model_grid alias="ne30pg3_t233_ais8gris4">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
