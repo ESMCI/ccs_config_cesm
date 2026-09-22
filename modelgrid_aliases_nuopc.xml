@@ -1050,6 +1050,13 @@
     <mask>gx3v7</mask>
   </model_grid>
 
+  <model_grid alias="ne5_ne5_mg37" not_compset="_MOM">
+    <grid name="atm">ne5np4</grid>
+    <grid name="lnd">ne5np4</grid>
+    <grid name="ocnice">ne5np4</grid>
+    <mask>gx3v7</mask>
+  </model_grid>
+
   <model_grid alias="ne16_g17" not_compset="_MOM">
     <grid name="atm">ne16np4</grid>
     <grid name="lnd">ne16np4</grid>
@@ -1352,6 +1359,13 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
+  <model_grid alias="ne5pg2_ne5pg2_mg37" not_compset="_MOM">
+    <grid name="atm">ne5np4.pg2</grid>
+    <grid name="lnd">ne5np4.pg2</grid>
+    <grid name="ocnice">ne5np4.pg2</grid>
+    <mask>gx3v7</mask>
+  </model_grid>
+
   <model_grid alias="ne30pg2_ne30pg2_mg17" not_compset="_MOM">
     <grid name="atm">ne30np4.pg2</grid>
     <grid name="lnd">ne30np4.pg2</grid>
@@ -1422,6 +1436,13 @@
     <grid name="lnd">ne3np4.pg3</grid>
     <grid name="ocnice">ne3np4.pg3</grid>
     <mask>tx2_3v3</mask>
+  </model_grid>
+
+  <model_grid alias="ne5pg3_ne5pg3_mg37" not_compset="_MOM">
+    <grid name="atm">ne5np4.pg3</grid>
+    <grid name="lnd">ne5np4.pg3</grid>
+    <grid name="ocnice">ne5np4.pg3</grid>
+    <mask>gx3v7</mask>
   </model_grid>
 
   <model_grid alias="ne16pg3_ne16pg3_mg17" not_compset="_MOM">
@@ -1525,6 +1546,13 @@
 
   <!--  spectral element grids with 4x4 FVM physics grid -->
 
+  <model_grid alias="ne5pg4_ne5pg4_mg37" not_compset="_MOM|_CLM">
+    <grid name="atm">ne5np4.pg4</grid>
+    <grid name="lnd">ne5np4.pg4</grid>
+    <grid name="ocnice">ne5np4.pg4</grid>
+    <mask>gx3v7</mask>
+  </model_grid>
+
   <model_grid alias="ne30pg4_ne30pg4_mg17" not_compset="_MOM|_CLM">
     <grid name="atm">ne30np4.pg4</grid>
     <grid name="lnd">ne30np4.pg4</grid>
@@ -1560,6 +1588,13 @@
     <grid name="lnd">ne0np4CONUS.ne30x8</grid>
     <grid name="ocnice">ne0np4CONUS.ne30x8</grid>
     <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="ne0TESTONLYne5x4_ne0TESTONLYne5x4_mg37" not_compset="_MOM">
+    <grid name="atm">ne0np4TESTONLY.ne5x4</grid>
+    <grid name="lnd">ne0np4TESTONLY.ne5x4</grid>
+    <grid name="ocnice">ne0np4TESTONLY.ne5x4</grid>
+    <mask>gx3v7</mask>
   </model_grid>
 
   <model_grid alias="ne0CONUSne30x8_ne0CONUSne30x8_mt12" not_compset="_MOM">
