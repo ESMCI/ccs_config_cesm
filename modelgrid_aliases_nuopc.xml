@@ -969,11 +969,25 @@
     <mask>gx3v7</mask>
   </model_grid>
 
+  <model_grid alias="f10_mt201" not_compset="_MOM">
+    <grid name="atm">10x15</grid>
+    <grid name="lnd">10x15</grid>
+    <grid name="ocnice">tx2_0v1</grid>
+    <mask>tx2_0v1</mask>
+  </model_grid>
+
   <model_grid alias="f10_f10_mg37" not_compset="_MOM">
     <grid name="atm">10x15</grid>
     <grid name="lnd">10x15</grid>
     <grid name="ocnice">10x15</grid>
     <mask>gx3v7</mask>
+  </model_grid>
+
+  <model_grid alias="f10_f10_mt201" not_compset="_MOM">
+    <grid name="atm">10x15</grid>
+    <grid name="lnd">10x15</grid>
+    <grid name="ocnice">10x15</grid>
+    <mask>tx2_0v1</mask>
   </model_grid>
 
   <model_grid alias="f10_f10_mt233" not_compset="_MOM">
@@ -990,6 +1004,14 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
+  <model_grid alias="f10_f10_ais8_mt201" compset="_CISM|_DGLC" not_compset="_MOM">
+    <grid name="atm">10x15</grid>
+    <grid name="lnd">10x15</grid>
+    <grid name="ocnice">10x15</grid>
+    <grid name="glc">ais8</grid>
+    <mask>tx2_0v1</mask>
+  </model_grid>
+
   <model_grid alias="f10_f10_ais8_mt233" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">10x15</grid>
     <grid name="lnd">10x15</grid>
@@ -1004,6 +1026,14 @@
     <grid name="ocnice">10x15</grid>
     <grid name="glc">ais8</grid>
     <mask>gx3v7</mask>
+  </model_grid>
+
+  <model_grid alias="f10_f10_ais8gris4_mt201" compset="_CISM|_DGLC" not_compset="_MOM">
+    <grid name="atm">10x15</grid>
+    <grid name="lnd">10x15</grid>
+    <grid name="ocnice">10x15</grid>
+    <grid name="glc">ais8:gris4</grid>
+    <mask>tx2_0v1</mask>
   </model_grid>
 
   <model_grid alias="f10_f10_ais8gris4_mt233" compset="_CISM|_DGLC" not_compset="_MOM">
@@ -1037,6 +1067,13 @@
   </model_grid>
 
   <!--  spectral element grids -->
+  <model_grid alias="ne3_ne3_mt201" not_compset="_MOM">
+    <grid name="atm">ne3np4</grid>
+    <grid name="lnd">ne3np4</grid>
+    <grid name="ocnice">ne3np4</grid>
+    <mask>tx2_0v1</mask>
+  </model_grid>
+
   <model_grid alias="ne3_ne3_mt233" not_compset="_MOM">
     <grid name="atm">ne3np4</grid>
     <grid name="lnd">ne3np4</grid>
