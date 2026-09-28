@@ -2014,7 +2014,7 @@
     <mask>gx1v6</mask>
   </model_grid>
 
-  <model_grid alias="ne30_g16_rx1" compset="_DROF" not_compset="_MOM">
+  <model_grid alias="ne30_g17_rx1" compset="_DROF" not_compset="_MOM">
     <grid name="atm">ne30np4</grid>
     <grid name="lnd">ne30np4</grid>
     <grid name="ocnice">gx1v7</grid>
