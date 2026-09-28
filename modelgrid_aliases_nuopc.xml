@@ -927,6 +927,13 @@
     <mask>gx1v7</mask>
   </model_grid>
 
+  <model_grid alias="f45_t201" not_compset="_MOM">
+    <grid name="atm">4x5</grid>
+    <grid name="lnd">4x5</grid>
+    <grid name="ocnice">tx2_0v1</grid>
+    <mask>tx2_0v1</mask>
+  </model_grid>
+
   <model_grid alias="f45_g37" not_compset="_MOM">
     <grid name="atm">4x5</grid>
     <grid name="lnd">4x5</grid>
@@ -960,6 +967,13 @@
     <grid name="lnd">2.5x3.33</grid>
     <grid name="ocnice">2.5x3.33</grid>
     <mask>gx1v7</mask>
+  </model_grid>
+
+  <model_grid alias="f45_f45_mt201" not_compset="_MOM">
+    <grid name="atm">4x5</grid>
+    <grid name="lnd">4x5</grid>
+    <grid name="ocnice">4x5</grid>
+    <mask>tx2_0v1</mask>
   </model_grid>
 
   <model_grid alias="f45_f45_mg37" not_compset="_MOM">
@@ -1916,6 +1930,14 @@
     <grid name="ocnice">gx3v7</grid>
     <grid name="rof">rx1</grid>
     <mask>gx3v7</mask>
+  </model_grid>
+
+  <model_grid alias="f45_mt201_rx1" compset="_DROF" not_compset="_MOM">
+    <grid name="atm">4x5</grid>
+    <grid name="lnd">4x5</grid>
+    <grid name="ocnice">tx2_0v1</grid>
+    <grid name="rof">rx1</grid>
+    <mask>tx2_0v1</mask>
   </model_grid>
 
   <model_grid alias="f45_g37_rx1" compset="_DROF" not_compset="_MOM">
