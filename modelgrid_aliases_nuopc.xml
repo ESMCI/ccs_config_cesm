@@ -785,7 +785,7 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="f19_t233" not_compset="_MOM">
+  <model_grid alias="f19_t233">
     <grid name="atm">1.9x2.5</grid>
     <grid name="lnd">1.9x2.5</grid>
     <grid name="ocnice">tx2_3v3</grid>
