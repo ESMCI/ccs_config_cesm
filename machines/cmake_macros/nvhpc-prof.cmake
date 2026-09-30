@@ -10,9 +10,7 @@ endif()
 if(NOT DEBUG)
   string(APPEND CFLAGS " -O -Mnofma")
   string(APPEND CXXFLAGS " -O2 -Mnofma")
-  # Temporary workaround for nvhpc/25.9 LLVM backend causing non-bit-for-bit
-  # restarts; add issue/release-note link here if/when available.
-  string(APPEND FFLAGS " -O -Mnofma -MllvmO0")
+  string(APPEND FFLAGS " -O -Mnofma")
 else()
   # -Kieee use IEEE division and enbale trps
   # -Ktrap=fp Floating point trapping for invalid, division by zero, and overflow
@@ -33,7 +31,7 @@ set(CXX_LINKER "CXX")
 set(FC_AUTO_R8 "-r8")
 
 # -Mflushz does flush-to-zero for floating pointer operations
-string(APPEND FFLAGS " -i4 -gopt -time -Mextend -byteswapio -Mflushz -Kieee")
+string(APPEND FFLAGS " -i4 -gopt -Mextend -byteswapio -Mflushz -Kieee")
 string(APPEND CXXFLAGS " -Mflushz -Kieee")
 
 # -Mnovect turn off vectorization for the CDEPS models
@@ -45,7 +43,7 @@ set(FFLAGS_NOOPT "-O0")
 set(FIXEDFLAGS "-Mfixed")
 set(FREEFLAGS "-Mfree")
 set(HAS_F2008_CONTIGUOUS "FALSE")
-set(LDFLAGS "-time -Wl,--allow-multiple-definition")
+set(LDFLAGS "-Wl,--allow-multiple-definition")
 
 if(compile_threaded)
   string(APPEND CFLAGS " -mp")
