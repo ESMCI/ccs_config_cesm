@@ -846,7 +846,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="f19_g17_gris4" compset="_CISM|_DGLC|_DGLC" not_compset="_MOM">
+  <model_grid alias="f19_g17_gris4" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">1.9x2.5</grid>
     <grid name="lnd">1.9x2.5</grid>
     <grid name="ocnice">gx1v7</grid>
