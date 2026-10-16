@@ -1,5 +1,5 @@
 # ==============================================================================
-# machines/cmake_macros/gnu_Darwin.cmake
+# machines/cmake_macros/Darwin_gnu.cmake
 # macOS (Darwin) specific compiler flags for GNU (GCC / gfortran)
 # ==============================================================================
 
