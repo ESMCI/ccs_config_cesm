@@ -14,6 +14,11 @@ if (DEFINED MAC_PREFIX AND EXISTS "${MAC_PREFIX}")
   string(APPEND LDFLAGS " -L${MAC_PREFIX}/lib -Wl,-rpath,${MAC_PREFIX}/lib")
 endif()
 
+# Additional runtime library search path if NETCDF_PATH is set outside MAC_PREFIX
+if (DEFINED NETCDF_PATH AND EXISTS "${NETCDF_PATH}/lib")
+  string(APPEND LDFLAGS " -Wl,-rpath,${NETCDF_PATH}/lib")
+endif()
+
 # Fortran Legacy Mismatch Flags (GCC 10+)
 if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10 OR NOT DEFINED CMAKE_Fortran_COMPILER_VERSION)
   string(APPEND FFLAGS " -fallow-argument-mismatch -fallow-invalid-boz")

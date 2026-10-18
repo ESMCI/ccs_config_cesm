@@ -17,11 +17,9 @@ Setup
 
   - install third party libraries from homebrew or macports.
 
-      - home brew
+      - homebrew
 
-        Install science tap : <https://github.com/Homebrew/homebrew-science>
-
-            brew install gcc --without-multilib cmake mpich hdf5 --enable-fortran netcdf --enable-fortran
+            brew install gcc cmake mpich hdf5 netcdf netcdf-fortran
 
 
       - macports

@@ -13,10 +13,7 @@
       your machine name and the NODENAME_REGEX to something matching
       your machine's hostname.  With (2), you should not need the
       `--machine` argument, because the machine should be determined
-      automatically.  However, with (2), you will also need to copy the
-      homebrew-specific settings in config_compilers.xml into a
-      config_compilers.xml file in your personal .cime directory, again
-      changing the machine name (MACH="homebrew") to your machine name.
+      automatically.
 
     </DESC>
     <!--  Moved to top level config_machines.xml
@@ -24,6 +21,7 @@
         -->
     <OS>Darwin</OS>
     <COMPILERS>gnu</COMPILERS>
+    <!-- Switch MPILIBS to 'openmpi' if using OpenMPI instead of MPICH -->
     <MPILIBS>mpich</MPILIBS>
     <CIME_OUTPUT_ROOT>$ENV{HOME}/projects/scratch</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{HOME}/projects/cesm-inputdata</DIN_LOC_ROOT>
@@ -41,11 +39,17 @@
       <executable>mpirun</executable>
       <arguments>
         <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
+        <!-- To output which MPI process is logging, use '-prepend-rank' for MPICH, or '--tag-output' for OpenMPI -->
         <arg name="labelstdout">-prepend-rank</arg>
       </arguments>
     </mpirun>
     <module_system type="none"/>
     <environment_variables>
       <env name="NETCDF_PATH">/opt/homebrew</env>
+      <!-- Uncomment and set to where you installed ESMF (typically built from source
+           from https://github.com/esmf-org/esmf, or installed via conda/spack).
+           Note ESMF is not strictly needed if you are only running fortran unit tests locally.
+      <env name="ESMFMKFILE">/path/to/esmf.mk</env>
+      -->
     </environment_variables>
   </machine>
