@@ -2,6 +2,8 @@
 
 <grids>
 
+  <!-- Throughout this file, gx grids for POP should be deprecated and, when appropriate, removed -->
+
   <model_grid_defaults>
     <grid name="atm"       compset="SATM"        >null</grid>
     <grid name="lnd"       compset="SLND"        >null</grid>
@@ -25,7 +27,7 @@
     <grid name="iac"       compset="SIAC"        >null</grid>
   </model_grid_defaults>
 
-  <model_grid alias="g16_g16" compset="DATM.+DROF">
+  <model_grid alias="g16_g16" compset="DATM.+DROF" not_compset="_MOM">
     <grid name="atm">gx1v6</grid>
     <grid name="lnd">gx1v6</grid>
     <grid name="ocnice">gx1v6</grid>
@@ -194,14 +196,14 @@
 
   <!-- eulerian grids -->
 
-  <model_grid alias="T31_g37">
+  <model_grid alias="T31_g37" not_compset="_MOM">
     <grid name="atm">T31</grid>
     <grid name="lnd">T31</grid>
     <grid name="ocnice">gx3v7</grid>
     <mask>gx3v7</mask>
   </model_grid>
 
-  <model_grid alias="T31_g37_gris4" compset="_CISM|_DGLC">
+  <model_grid alias="T31_g37_gris4" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">T31</grid>
     <grid name="lnd">T31</grid>
     <grid name="ocnice">gx3v7</grid>
@@ -209,7 +211,7 @@
     <mask>gx3v7</mask>
   </model_grid>
 
-  <model_grid alias="T31_g37_gris20" compset="_CISM|_DGLC">
+  <model_grid alias="T31_g37_gris20" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">T31</grid>
     <grid name="lnd">T31</grid>
     <grid name="ocnice">gx3v7</grid>
@@ -273,7 +275,7 @@
     <mask>tx0.1v2</mask>
   </model_grid>
 
-  <model_grid alias="T62_g37" not_compset="_CAM">
+  <model_grid alias="T62_g37" not_compset="_CAM|_MOM">
     <grid name="atm">T62</grid>
     <grid name="lnd">T62</grid>
     <grid name="ocnice">gx3v7</grid>
@@ -830,7 +832,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="f19_g17_gris4" compset="_CISM|_DGLC">
+  <model_grid alias="f19_g17_gris4" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">1.9x2.5</grid>
     <grid name="lnd">1.9x2.5</grid>
     <grid name="ocnice">gx1v7</grid>
@@ -1002,7 +1004,7 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
-  <model_grid alias="f10_f10_ais8_mt201" compset="_CISM|_DGLC">
+  <model_grid alias="f10_f10_mt201_ais8" compset="_CISM|_DGLC">
     <grid name="atm">10x15</grid>
     <grid name="lnd">10x15</grid>
     <grid name="ocnice">10x15</grid>
@@ -1010,7 +1012,7 @@
     <mask>tx2_0v1</mask>
   </model_grid>
 
-  <model_grid alias="f10_f10_ais8_mt233" compset="_CISM|_DGLC">
+  <model_grid alias="f10_f10_mt233_ais8" compset="_CISM|_DGLC">
     <grid name="atm">10x15</grid>
     <grid name="lnd">10x15</grid>
     <grid name="ocnice">10x15</grid>
@@ -1018,7 +1020,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="f10_f10_ais8_mg37" compset="_CISM|_DGLC">
+  <model_grid alias="f10_f10_ais8_mg37" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">10x15</grid>
     <grid name="lnd">10x15</grid>
     <grid name="ocnice">10x15</grid>
@@ -1026,7 +1028,7 @@
     <mask>gx3v7</mask>
   </model_grid>
 
-  <model_grid alias="f10_f10_ais8gris4_mt201" compset="_CISM|_DGLC">
+  <model_grid alias="f10_f10_mt201_ais8gris4" compset="_CISM|_DGLC">
     <grid name="atm">10x15</grid>
     <grid name="lnd">10x15</grid>
     <grid name="ocnice">10x15</grid>
@@ -1034,7 +1036,7 @@
     <mask>tx2_0v1</mask>
   </model_grid>
 
-  <model_grid alias="f10_f10_ais8gris4_mt233" compset="_CISM|_DGLC">
+  <model_grid alias="f10_f10_mt233_ais8gris4" compset="_CISM|_DGLC">
     <grid name="atm">10x15</grid>
     <grid name="lnd">10x15</grid>
     <grid name="ocnice">10x15</grid>
@@ -1042,7 +1044,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="f10_f10_ais8gris4_mg37" compset="_CISM|_DGLC">
+  <model_grid alias="f10_f10_ais8gris4_mg37" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">10x15</grid>
     <grid name="lnd">10x15</grid>
     <grid name="ocnice">10x15</grid>
