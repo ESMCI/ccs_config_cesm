@@ -208,24 +208,8 @@
     <grid name="glc">gris4</grid>
     <mask>gx3v7</mask>
   </model_grid>
-  <!-- Backwards compatibility with old use of _gl for Greenland grid -->
-  <model_grid alias="T31_g37_gl4" compset="_CISM|_DGLC">
-    <grid name="atm">T31</grid>
-    <grid name="lnd">T31</grid>
-    <grid name="ocnice">gx3v7</grid>
-    <grid name="glc">gris4</grid>
-    <mask>gx3v7</mask>
-  </model_grid>
 
   <model_grid alias="T31_g37_gris20" compset="_CISM|_DGLC">
-    <grid name="atm">T31</grid>
-    <grid name="lnd">T31</grid>
-    <grid name="ocnice">gx3v7</grid>
-    <grid name="glc">gris20</grid>
-    <mask>gx3v7</mask>
-  </model_grid>
-  <!-- Backwards compatibility with old use of _gl for Greenland grid -->
-  <model_grid alias="T31_g37_gl20" compset="_CISM|_DGLC">
     <grid name="atm">T31</grid>
     <grid name="lnd">T31</grid>
     <grid name="ocnice">gx3v7</grid>
@@ -847,14 +831,6 @@
   </model_grid>
 
   <model_grid alias="f19_g17_gris4" compset="_CISM|_DGLC">
-    <grid name="atm">1.9x2.5</grid>
-    <grid name="lnd">1.9x2.5</grid>
-    <grid name="ocnice">gx1v7</grid>
-    <grid name="glc">gris4</grid>
-    <mask>gx1v7</mask>
-  </model_grid>
-  <!-- Backwards compatibility with old use of _gl for Greenland grid -->
-  <model_grid alias="f19_g17_gl4" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">1.9x2.5</grid>
     <grid name="lnd">1.9x2.5</grid>
     <grid name="ocnice">gx1v7</grid>
