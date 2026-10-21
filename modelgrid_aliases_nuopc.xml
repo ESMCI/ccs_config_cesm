@@ -459,14 +459,14 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
-  <model_grid alias="f09_t232_gris4">
+  <model_grid alias="f09_t232_gris4" compset="_CISM|_DGLC">
     <grid name="atm">0.9x1.25</grid>
     <grid name="lnd">0.9x1.25</grid>
     <grid name="ocnice">tx2_3v2</grid>
     <grid name="glc">gris4</grid>
   </model_grid>
 
-    <model_grid alias="f09_t232_ais8gris4">
+    <model_grid alias="f09_t232_ais8gris4" compset="_CISM|_DGLC">
     <grid name="atm">0.9x1.25</grid>
     <grid name="lnd">0.9x1.25</grid>
     <grid name="ocnice">tx2_3v2</grid>
@@ -480,14 +480,14 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="f09_t233_gris4">
+  <model_grid alias="f09_t233_gris4" compset="_CISM|_DGLC">
     <grid name="atm">0.9x1.25</grid>
     <grid name="lnd">0.9x1.25</grid>
     <grid name="ocnice">tx2_3v3</grid>
     <grid name="glc">gris4</grid>
   </model_grid>
 
-  <model_grid alias="f09_t233_ais8gris4">
+  <model_grid alias="f09_t233_ais8gris4" compset="_CISM|_DGLC">
     <grid name="atm">0.9x1.25</grid>
     <grid name="lnd">0.9x1.25</grid>
     <grid name="ocnice">tx2_3v3</grid>
@@ -1173,7 +1173,7 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_g17_gris4" not_compset="_MOM">
+  <model_grid alias="ne30pg3_g17_gris4" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">gx1v7</grid>
@@ -1181,7 +1181,7 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_g17_ais8gris4" not_compset="_MOM">
+  <model_grid alias="ne30pg3_g17_ais8gris4" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">gx1v7</grid>
@@ -1206,7 +1206,7 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t232_gris4">
+  <model_grid alias="ne30pg3_t232_gris4" compset="_CISM|_DGLC">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
@@ -1214,7 +1214,7 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t232_gris4">
+  <model_grid alias="ne30pg3_t232_gris4" compset="_CISM|_DGLC">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
@@ -1223,7 +1223,7 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t232_ais8gris4">
+  <model_grid alias="ne30pg3_t232_ais8gris4" compset="_CISM|_DGLC">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
@@ -1231,7 +1231,7 @@
     <mask>tx2_3v2</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t232_ais8">
+  <model_grid alias="ne30pg3_t232_ais8" compset="_CISM|_DGLC">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v2</grid>
@@ -1255,7 +1255,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t233_gris4">
+  <model_grid alias="ne30pg3_t233_gris4" compset="_CISM|_DGLC">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v3</grid>
@@ -1263,7 +1263,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t233_wg37_gris4">
+  <model_grid alias="ne30pg3_t233_wg37_gris4" compset="_CISM|_DGLC">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v3</grid>
@@ -1272,7 +1272,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t233_ais8gris4">
+  <model_grid alias="ne30pg3_t233_ais8gris4" compset="_CISM|_DGLC">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v3</grid>
@@ -1280,7 +1280,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="ne30pg3_t233_ais8">
+  <model_grid alias="ne30pg3_t233_ais8" compset="_CISM|_DGLC">
     <grid name="atm">ne30np4.pg3</grid>
     <grid name="lnd">ne30np4.pg3</grid>
     <grid name="ocnice">tx2_3v3</grid>
@@ -2058,7 +2058,7 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="C96_C96_mg17" not_compset="_MOM">
+  <model_grid alias="C96_C96_mg17" compset="_CISM|_DGLC" not_compset="_MOM">
     <grid name="atm">C96</grid>
     <grid name="lnd">C96</grid>
     <grid name="ocnice">C96</grid>
