@@ -626,6 +626,12 @@
     <desc>wtx2_3v2 is tripole v2 2/3-deg WW3 grid based on MOM6 grid</desc>
     <support>MOM6 tx2_3v2-based WW3 grid where cells above 88N are masked</support>
   </domain>
+  <domain name="wu2r05">
+    <nx>16160</nx> <ny>1</ny>
+    <mesh>$DIN_LOC_ROOT/share/meshes/wu2r05_260910_ESMFmesh.nc</mesh>
+    <desc>wu2r05 is a global unstructured WW3 grid, 2-deg open ocean refined to 0.5-deg on the US coast (16160 nodes)</desc>
+    <support>Unstructured (PDLIB) WW3; requires WW3_UNSTRUCT and a ParMETIS-enabled build</support>
+  </domain>
 
   <!-- ======================================================== -->
   <!-- ATM/LND domains for single point cmeps driver -->

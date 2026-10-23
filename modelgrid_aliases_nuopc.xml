@@ -433,6 +433,21 @@
     <grid name="wav">wtx2_3v2</grid>
   </model_grid>
 
+  <model_grid alias="TL319_wu2r05" compset="_WW3" not_compset="_MOM|_CAM">
+    <grid name="atm">TL319</grid>
+    <grid name="wav">wu2r05</grid>
+    <support>Unstructured WW3 forced by JRA DATM; ocn, lnd, rof and glc default to null</support>
+  </model_grid>
+
+  <model_grid alias="TL319_t233_wu2r05" compset="DATM%JRA">
+    <grid name="atm">TL319</grid>
+    <grid name="lnd">TL319</grid>
+    <grid name="ocnice">tx2_3v3</grid>
+    <grid name="rof">JRA025</grid>
+    <grid name="wav">wu2r05</grid>
+    <support>Unstructured WW3 coupled to MOM6 and CICE with JRA DATM forcing</support>
+  </model_grid>
+
   <model_grid alias="T62_t233" not_compset="_CAM">
     <grid name="atm">T62</grid>
     <grid name="lnd">T62</grid>
