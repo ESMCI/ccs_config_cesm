@@ -135,10 +135,10 @@
       <env name="MPICH_GPU_MANAGED_MEMORY_SUPPORT_ENABLED">0</env>
     </environment_variables>
     <!-- TODO: hardcoded spack prefix until CISL provides a parmetis module -->
-    <environment_variables compiler="intel" mpilib="mpich" WW3_UNSTRUCT="TRUE">
+    <environment_variables compiler="intel" mpilib="mpich" COMP_WAV="ww3" WW3_UNSTRUCT="TRUE">
       <env name="WW3_PARMETIS_ROOT">/glade/u/apps/derecho/25.10/spack/opt/spack/parmetis/4.0.3/cray-mpich/8.1.32/intel-oneapi-compilers/2025.3.2/kzdz</env>
     </environment_variables>
-    <environment_variables compiler="gnu" mpilib="mpich" WW3_UNSTRUCT="TRUE">
+    <environment_variables compiler="gnu" mpilib="mpich" COMP_WAV="ww3" WW3_UNSTRUCT="TRUE">
       <env name="WW3_PARMETIS_ROOT">/glade/u/apps/derecho/25.10/spack/opt/spack/parmetis/4.0.3/cray-mpich/8.1.32/gcc/14.3.0/5ev5</env>
     </environment_variables>
 </machine>
