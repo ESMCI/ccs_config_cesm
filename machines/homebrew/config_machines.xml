@@ -21,8 +21,10 @@
         -->
     <OS>Darwin</OS>
     <COMPILERS>gnu</COMPILERS>
-    <!-- Switch MPILIBS to 'openmpi' if using OpenMPI instead of MPICH -->
-    <MPILIBS>mpich</MPILIBS>
+    <!-- This configuration supports both openmpi and mpich. If openmpi is present
+         (detected by the presence of ompi_info in the user's path) then openmpi is the
+         default; if not then mpich is the default. -->
+    <MPILIBS>$SHELL{if command -v ompi_info >/dev/null; then echo openmpi,mpich; else echo mpich,openmpi; fi}</MPILIBS>
     <CIME_OUTPUT_ROOT>$ENV{HOME}/projects/scratch</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{HOME}/projects/cesm-inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>$ENV{HOME}/projects/ptclm-data</DIN_LOC_ROOT_CLMFORC>
@@ -30,17 +32,28 @@
     <BASELINE_ROOT>$ENV{HOME}/projects/baselines</BASELINE_ROOT>
     <CCSM_CPRNC>$ENV{HOME}/cesm/tools/cprnc/cprnc</CCSM_CPRNC>
     <GMAKE>make</GMAKE>
-    <GMAKE_J>4</GMAKE_J>
+    <!-- It should be okay to use 8 build threads even on machines with fewer than 8
+         cores, but this can be set to a lower value if there are issues such as memory
+         problems. -->
+    <GMAKE_J>8</GMAKE_J>
     <BATCH_SYSTEM>none</BATCH_SYSTEM>
-    <SUPPORTED_BY>__YOUR_NAME_HERE__</SUPPORTED_BY>
-    <MAX_TASKS_PER_NODE>8</MAX_TASKS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>4</MAX_MPITASKS_PER_NODE>
-    <mpirun mpilib="default">
+    <SUPPORTED_BY>cseg</SUPPORTED_BY>
+    <!-- Default to 4 tasks, but allow this to be overridden by the CIME_MACOS_NUM_CORES
+         environment variable. -->
+    <MAX_TASKS_PER_NODE>$SHELL{printenv CIME_MACOS_NUM_CORES || echo 4}</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>$SHELL{printenv CIME_MACOS_NUM_CORES || echo 4}</MAX_MPITASKS_PER_NODE>
+    <mpirun mpilib="mpich">
       <executable>mpirun</executable>
       <arguments>
         <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
-        <!-- To output which MPI process is logging, use '-prepend-rank' for MPICH, or '--tag-output' for OpenMPI -->
         <arg name="labelstdout">-prepend-rank</arg>
+      </arguments>
+    </mpirun>
+    <mpirun mpilib="openmpi">
+      <executable>mpirun</executable>
+      <arguments>
+        <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
+        <arg name="labelstdout">--tag-output</arg>
       </arguments>
     </mpirun>
     <module_system type="none"/>
