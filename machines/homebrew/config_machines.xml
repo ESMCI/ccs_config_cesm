@@ -19,29 +19,42 @@
     <!--  Moved to top level config_machines.xml
         <NODENAME_REGEX> something.matching.your.machine.hostname </NODENAME_REGEX>
         -->
+
     <OS>Darwin</OS>
+
     <COMPILERS>gnu</COMPILERS>
+
     <!-- This configuration supports both openmpi and mpich. If openmpi is present
          (detected by the presence of ompi_info in the user's path) then openmpi is the
          default; if not then mpich is the default. -->
     <MPILIBS>$SHELL{if command -v ompi_info >/dev/null; then echo openmpi,mpich; else echo mpich,openmpi; fi}</MPILIBS>
+
     <CIME_OUTPUT_ROOT>$ENV{HOME}/projects/scratch</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>$ENV{HOME}/projects/cesm-inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>$ENV{HOME}/projects/ptclm-data</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$ENV{HOME}/projects/scratch/archive/$CASE</DOUT_S_ROOT>
     <BASELINE_ROOT>$ENV{HOME}/projects/baselines</BASELINE_ROOT>
     <CCSM_CPRNC>$ENV{HOME}/cesm/tools/cprnc/cprnc</CCSM_CPRNC>
+
+    <!-- Setting GMAKE to make uses Apple's built-in make tool (in /usr/bin/make) unless
+         the user has installed a different version of make in their path. Since Apple's
+         make is a version of GNU Make, this should be okay. But this can be changed to
+         gmake on a machine that has gmake installed if there are problems with the
+         built-in make. -->
     <GMAKE>make</GMAKE>
     <!-- It should be okay to use 8 build threads even on machines with fewer than 8
          cores, but this can be set to a lower value if there are issues such as memory
          problems. -->
     <GMAKE_J>8</GMAKE_J>
+
     <BATCH_SYSTEM>none</BATCH_SYSTEM>
     <SUPPORTED_BY>cseg</SUPPORTED_BY>
+
     <!-- Default to 4 tasks, but allow this to be overridden by the CIME_MACOS_NUM_CORES
          environment variable. -->
     <MAX_TASKS_PER_NODE>$SHELL{printenv CIME_MACOS_NUM_CORES || echo 4}</MAX_TASKS_PER_NODE>
     <MAX_MPITASKS_PER_NODE>$SHELL{printenv CIME_MACOS_NUM_CORES || echo 4}</MAX_MPITASKS_PER_NODE>
+
     <mpirun mpilib="mpich">
       <executable>mpirun</executable>
       <arguments>
@@ -56,7 +69,9 @@
         <arg name="labelstdout">--tag-output</arg>
       </arguments>
     </mpirun>
+
     <module_system type="none"/>
+
     <environment_variables>
       <env name="NETCDF_PATH">/opt/homebrew</env>
       <!-- Uncomment and set to where you installed ESMF (typically built from source
