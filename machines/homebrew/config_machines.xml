@@ -55,10 +55,11 @@
     <BATCH_SYSTEM>none</BATCH_SYSTEM>
     <SUPPORTED_BY>cseg</SUPPORTED_BY>
 
-    <!-- Default to 4 tasks, but allow this to be overridden by the CIME_MACOS_NUM_CORES
-         environment variable. -->
-    <MAX_TASKS_PER_NODE>$SHELL{printenv CIME_MACOS_NUM_CORES || echo 4}</MAX_TASKS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>$SHELL{printenv CIME_MACOS_NUM_CORES || echo 4}</MAX_MPITASKS_PER_NODE>
+    <!-- If CIME_MACOS_NUM_CORES is set, that specifies the number of tasks per node.
+         Otherwise, auto-detect via `sysctl -n hw.perflevel0.physicalcpu` if present, or
+         else `sysctl -n hw.physicalcpu`. -->
+    <MAX_TASKS_PER_NODE>$SHELL{if [ -n "$CIME_MACOS_NUM_CORES" ]; then echo "$CIME_MACOS_NUM_CORES"; else /usr/sbin/sysctl -n hw.perflevel0.physicalcpu 2>/dev/null || /usr/sbin/sysctl -n hw.physicalcpu; fi}</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>$SHELL{if [ -n "$CIME_MACOS_NUM_CORES" ]; then echo "$CIME_MACOS_NUM_CORES"; else /usr/sbin/sysctl -n hw.perflevel0.physicalcpu 2>/dev/null || /usr/sbin/sysctl -n hw.physicalcpu; fi}</MAX_MPITASKS_PER_NODE>
 
     <mpirun mpilib="mpich">
       <executable>mpirun</executable>
