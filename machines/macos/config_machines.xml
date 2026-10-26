@@ -16,9 +16,6 @@
       automatically.
 
     </DESC>
-    <!--  Moved to top level config_machines.xml
-        <NODENAME_REGEX> something.matching.your.machine.hostname </NODENAME_REGEX>
-        -->
 
     <OS>Darwin</OS>
 
