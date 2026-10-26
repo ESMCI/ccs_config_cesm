@@ -14,6 +14,7 @@
   <queues>
     <queue walltimemax="1:00:00" jobmin="1" jobmax="63" >develop</queue>
     <queue walltimemax="12:00:00" jobmin="64" jobmax="318464" >main</queue>
+    <queue walltimemax="12:00:00" jobmin="64" jobmax="318464" >tutorial</queue>
   </queues>
 </batch_system>
 

@@ -129,6 +129,15 @@
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
+    <environment_variables comp_interface="nuopc" esmf_aware_threading="TRUE">
+      <!-- ESMF-aware threading launches NTASKS*NTHRDS MPI ranks, one per core, and
+           ESMF merges every NTHRDS neighbouring ranks into one component PET: the
+           first rank runs the component with NTHRDS OpenMP threads on its own core
+           plus the cores of the other (idle) ranks.  Its worker threads must be
+           free to move onto those cores, which OMP_PROC_BIND=close (the mpibind
+           default) would prevent by pinning them to the first rank's core. -->
+      <env name="OMP_PROC_BIND">false</env>
+    </environment_variables>
     <environment_variables gpu_type="!none">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
       <env name="MPICH_GPU_IPC_ENABLED">0</env>
