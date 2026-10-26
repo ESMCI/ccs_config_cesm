@@ -23,3 +23,10 @@ endif()
 if (NOT "$ENV{PFUNIT_PATH}" STREQUAL "")
   set(PFUNIT_PATH "$ENV{PFUNIT_PATH}")
 endif()
+
+# If using an external PIO (PIO set, e.g., via config_machines.xml), point the
+# Makefile-based builds to it
+if (NOT "$ENV{PIO}" STREQUAL "")
+  set(PIO_LIBDIR "$ENV{PIO}/lib")
+  set(PIO_INCDIR "$ENV{PIO}/include")
+endif()
