@@ -1,19 +1,68 @@
   <machine MACH="macos">
     <DESC>
 
-      Customize these fields as appropriate for your system,
-      particularly changing MAX_TASKS_PER_NODE and MAX_MPITASKS_PER_NODE to the
-      number of cores on your machine.  You may also want to change
-      instances of '$ENV{HOME}/projects' to your desired directory
-      organization.  You can use this in either of two ways: (1)
-      Without making any changes, by adding `--machine macos` to
-      create_newcase or create_test (2) Copying this into a
-      config_machines.xml file in your personal .cime directory and
-      then changing the machine name (MACH="macos") to
-      your machine name and the NODENAME_REGEX to something matching
-      your machine's hostname.  With (2), you should not need the
-      `--machine` argument, because the machine should be determined
-      automatically.
+      Generic Mac with GNU compilers, with libraries (MPI, NetCDF, etc.) from a package
+      manager such as Homebrew or MacPorts. Use it by adding `--machine macos` to
+      create_newcase or create_test.
+
+      The MPI library defaults to openmpi if ompi_info is in your PATH, otherwise mpich;
+      use `--mpilib` to choose a different one.
+
+      System-specific customizations can be provided via environment variables, as
+      described below. Of these, the most critical is ESMFMKFILE, which is needed to build
+      CESM; the others are needed only in certain cases.
+
+      Defaults can be overridden with these environment variables:
+
+        CIME_MACOS_ROOTDIR: Parent of the scratch (CIME_OUTPUT_ROOT), cesm-inputdata
+          (DIN_LOC_ROOT) and cesm-baselines (BASELINE_ROOT) directories. Default:
+          $HOME/projects
+
+        CIME_MACOS_NUM_CORES: Cores available for running (MAX_TASKS_PER_NODE,
+          MAX_MPITASKS_PER_NODE). Default: number of performance cores
+
+        CIME_MACOS_CPRNC: Path to a pre-built cprnc executable. Default: cprnc is built
+          when a test needs it
+
+      The following variables FOO are set in the case's environment from
+      CIME_MACOS_[COMPILER]_[MPILIB]_FOO if set (e.g., CIME_MACOS_GNU_OPENMPI_PIO,
+      CIME_MACOS_GNU_MPISERIAL_PIO), else from FOO; if neither is set, FOO is left unset:
+
+        ESMFMKFILE: Path to esmf.mk of an ESMF built with this compiler and MPI library;
+          needed to build CESM
+
+        PIO, PIO_VERSION_MAJOR, PIO_TYPENAME_VALID_VALUES: Pre-built PIO install
+          directory, its major version (e.g., 2) and the I/O types it supports (e.g.,
+          netcdf or netcdf,netcdf4c). Set all or none. Default: PIO is built with the
+          model
+
+        NETCDF_PATH: NetCDF install directory, if in a non-standard location. Default: the
+          package manager prefix (/opt/homebrew, /opt/local or /usr/local)
+
+        PFUNIT_PATH: pFUnit install directory; needed for Fortran unit tests
+
+        MPISERIAL: Pre-built mpi-serial library; needed by some unit test builds
+
+      All of these variables are read whenever CIME loads a case's settings, not just at
+      case creation, so keep them consistent for the life of a case.
+
+      Example (e.g., in ~/.bashrc), supporting openmpi for model runs and mpi-serial
+      for unit tests; note that each MPI library needs its own ESMF and PIO builds.
+      Setting CIME_MACHINE makes the `--machine` argument unnecessary:
+
+        export CIME_MODEL=cesm
+        export CIME_MACHINE=macos
+        export CIME_MACOS_CPRNC=$HOME/cprnc_builds/cprnc_v1.1.0-4-gf4979ab
+        export CIME_MACOS_GNU_OPENMPI_ESMFMKFILE=$HOME/esmf_builds/esmfv8.8.0_openmpi/install_dir/lib/libg/Darwin.gfortranclang.64.openmpi.default/esmf.mk
+        export CIME_MACOS_GNU_OPENMPI_PIO=$HOME/pio_builds/pio2_6_5
+        export CIME_MACOS_GNU_OPENMPI_PIO_VERSION_MAJOR=2
+        export CIME_MACOS_GNU_OPENMPI_PIO_TYPENAME_VALID_VALUES=netcdf
+        export CIME_MACOS_GNU_MPISERIAL_ESMFMKFILE=$HOME/esmf_builds/esmfv8.8.0_mpiuni/install_dir/lib/libg/Darwin.gfortranclang.64.mpiuni.default/esmf.mk
+        export CIME_MACOS_GNU_MPISERIAL_PIO=$HOME/pio_builds/pio2_6_5_mpiserial
+        export CIME_MACOS_GNU_MPISERIAL_PIO_VERSION_MAJOR=2
+        export CIME_MACOS_GNU_MPISERIAL_PIO_TYPENAME_VALID_VALUES=netcdf
+        export CIME_MACOS_GNU_MPISERIAL_PFUNIT_PATH=$HOME/pfunit_builds/pfunit4.11.1-gfortran14.2.0/install
+        export CIME_MACOS_GNU_MPISERIAL_MPISERIAL=$HOME/mpi-serial_builds/MPIserial_2.5.2
 
     </DESC>
 
