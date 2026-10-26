@@ -31,11 +31,11 @@
 
     <!-- The following paths default to subdirectories of $HOME/projects, but this can be
          overridden by setting $CIME_MACOS_ROOTDIR -->
-    <CIME_OUTPUT_ROOT>$SHELL{if [ -n "$CIME_MACOS_ROOTDIR" ]; then echo "$CIME_MACOS_ROOTDIR"; else echo "$HOME/projects"; fi}/scratch</CIME_OUTPUT_ROOT>
-    <DIN_LOC_ROOT>$SHELL{if [ -n "$CIME_MACOS_ROOTDIR" ]; then echo "$CIME_MACOS_ROOTDIR"; else echo "$HOME/projects"; fi}/cesm-inputdata</DIN_LOC_ROOT>
+    <CIME_OUTPUT_ROOT>$SHELL{printenv CIME_MACOS_ROOTDIR || echo "$HOME/projects"}/scratch</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>$SHELL{printenv CIME_MACOS_ROOTDIR || echo "$HOME/projects"}/cesm-inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>$DIN_LOC_ROOT/atm/datm7</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
-    <BASELINE_ROOT>$SHELL{if [ -n "$CIME_MACOS_ROOTDIR" ]; then echo "$CIME_MACOS_ROOTDIR"; else echo "$HOME/projects"; fi}/cesm-baselines</BASELINE_ROOT>
+    <BASELINE_ROOT>$SHELL{printenv CIME_MACOS_ROOTDIR || echo "$HOME/projects"}/cesm-baselines</BASELINE_ROOT>
 
     <!-- CIME_MACOS_CPRNC can point to a pre-built cprnc executable. If it isn't set,
          cprnc will be built if needed by a test case. -->
@@ -58,8 +58,8 @@
     <!-- If CIME_MACOS_NUM_CORES is set, that specifies the number of tasks per node.
          Otherwise, auto-detect via `sysctl -n hw.perflevel0.physicalcpu` if present, or
          else `sysctl -n hw.physicalcpu`. -->
-    <MAX_TASKS_PER_NODE>$SHELL{if [ -n "$CIME_MACOS_NUM_CORES" ]; then echo "$CIME_MACOS_NUM_CORES"; else /usr/sbin/sysctl -n hw.perflevel0.physicalcpu 2>/dev/null || /usr/sbin/sysctl -n hw.physicalcpu; fi}</MAX_TASKS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>$SHELL{if [ -n "$CIME_MACOS_NUM_CORES" ]; then echo "$CIME_MACOS_NUM_CORES"; else /usr/sbin/sysctl -n hw.perflevel0.physicalcpu 2>/dev/null || /usr/sbin/sysctl -n hw.physicalcpu; fi}</MAX_MPITASKS_PER_NODE>
+    <MAX_TASKS_PER_NODE>$SHELL{printenv CIME_MACOS_NUM_CORES || /usr/sbin/sysctl -n hw.perflevel0.physicalcpu 2>/dev/null || /usr/sbin/sysctl -n hw.physicalcpu}</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>$SHELL{printenv CIME_MACOS_NUM_CORES || /usr/sbin/sysctl -n hw.perflevel0.physicalcpu 2>/dev/null || /usr/sbin/sysctl -n hw.physicalcpu}</MAX_MPITASKS_PER_NODE>
 
     <mpirun mpilib="mpich">
       <executable>mpirun</executable>
