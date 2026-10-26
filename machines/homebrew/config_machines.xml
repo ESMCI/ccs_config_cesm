@@ -29,12 +29,17 @@
          default; if not then mpich is the default. -->
     <MPILIBS>$SHELL{if command -v ompi_info >/dev/null; then echo openmpi,mpich; else echo mpich,openmpi; fi}</MPILIBS>
 
-    <CIME_OUTPUT_ROOT>$ENV{HOME}/projects/scratch</CIME_OUTPUT_ROOT>
-    <DIN_LOC_ROOT>$ENV{HOME}/projects/cesm-inputdata</DIN_LOC_ROOT>
+    <!-- The following paths default to subdirectories of $HOME/projects, but this can be
+         overridden by setting $CIME_MACOS_ROOTDIR -->
+    <CIME_OUTPUT_ROOT>$SHELL{if [ -n "$CIME_MACOS_ROOTDIR" ]; then echo "$CIME_MACOS_ROOTDIR"; else echo "$HOME/projects"; fi}/scratch</CIME_OUTPUT_ROOT>
+    <DIN_LOC_ROOT>$SHELL{if [ -n "$CIME_MACOS_ROOTDIR" ]; then echo "$CIME_MACOS_ROOTDIR"; else echo "$HOME/projects"; fi}/cesm-inputdata</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>$DIN_LOC_ROOT/atm/datm7</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
-    <BASELINE_ROOT>$ENV{HOME}/projects/cesm-baselines</BASELINE_ROOT>
-    <CCSM_CPRNC>$ENV{HOME}/projects/cesm-tools/cprnc/cprnc</CCSM_CPRNC>
+    <BASELINE_ROOT>$SHELL{if [ -n "$CIME_MACOS_ROOTDIR" ]; then echo "$CIME_MACOS_ROOTDIR"; else echo "$HOME/projects"; fi}/cesm-baselines</BASELINE_ROOT>
+
+    <!-- CIME_MACOS_CPRNC can point to a pre-built cprnc executable. If it isn't set,
+         cprnc will be built if needed by a test case. -->
+    <CCSM_CPRNC>$SHELL{printenv CIME_MACOS_CPRNC || true}</CCSM_CPRNC>
 
     <!-- Setting GMAKE to make uses Apple's built-in make tool (in /usr/bin/make) unless
          the user has installed a different version of make in their path. Since Apple's
@@ -73,11 +78,40 @@
     <module_system type="none"/>
 
     <environment_variables>
-      <env name="NETCDF_PATH">/opt/homebrew</env>
-      <!-- Uncomment and set to where you installed ESMF (typically built from source
-           from https://github.com/esmf-org/esmf, or installed via conda/spack).
-           Note ESMF is not strictly needed if you are only running fortran unit tests locally.
-      <env name="ESMFMKFILE">/path/to/esmf.mk</env>
+
+      <!-- The following variables are taken from environment variables in the user's
+           shell. Each variable FOO can be set in one of two ways:
+
+           (1) CIME_MACOS_<COMPILER>_<MPILIB>_FOO, for the case's compiler and MPI
+               library, converted to uppercase with hyphens removed. For example:
+               CIME_MACOS_GNU_OPENMPI_FOO or CIME_MACOS_GNU_MPISERIAL_FOO.
+
+           (2) FOO itself.
+
+           If both (1) and (2) are set, (1) takes precedence. If neither is set, CIME
+           leaves FOO unset.
+
+           These variables are read each time CIME loads the environment (case.setup,
+           case.build, case.submit), so keep them consistent for the life of a case.
       -->
+
+      <!-- Path to the esmf.mk file of an ESMF built with the case's compiler and MPI
+           library (typically built from source from https://github.com/esmf-org/esmf, or
+           installed via conda/spack). -->
+      <env name="ESMFMKFILE">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_ESMFMKFILE || printenv ESMFMKFILE || true}</env>
+
+      <!-- These PIO variables are optional but recommended. With them, you can point to a
+           pre-built PIO, which should be the same PIO used to build the ESMF library. If
+           these are not set, PIO will be built as part of building the model. If any of
+           these are set, all of them should be set. -->
+      <env name="PIO">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_PIO || printenv PIO || true}</env>
+      <env name="PIO_VERSION_MAJOR">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_PIO_VERSION_MAJOR || printenv PIO_VERSION_MAJOR || true}</env>
+      <env name="PIO_TYPENAME_VALID_VALUES">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_PIO_TYPENAME_VALID_VALUES || printenv PIO_TYPENAME_VALID_VALUES || true}</env>
+
+      <!-- NETCDF_PATH is only needed if NetCDF is installed outside of the standard
+           location for this software stack (e.g., /opt/homebrew/ for a homebrew-based
+           setup). -->
+      <env name="NETCDF_PATH">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_NETCDF_PATH || printenv NETCDF_PATH || true}</env>
+
     </environment_variables>
   </machine>
