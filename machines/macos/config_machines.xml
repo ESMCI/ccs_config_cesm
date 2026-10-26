@@ -1,4 +1,4 @@
-  <machine MACH="homebrew">
+  <machine MACH="macos">
     <DESC>
 
       Customize these fields as appropriate for your system,
@@ -6,10 +6,10 @@
       number of cores on your machine.  You may also want to change
       instances of '$ENV{HOME}/projects' to your desired directory
       organization.  You can use this in either of two ways: (1)
-      Without making any changes, by adding `--machine homebrew` to
+      Without making any changes, by adding `--machine macos` to
       create_newcase or create_test (2) Copying this into a
       config_machines.xml file in your personal .cime directory and
-      then changing the machine name (MACH="homebrew") to
+      then changing the machine name (MACH="macos") to
       your machine name and the NODENAME_REGEX to something matching
       your machine's hostname.  With (2), you should not need the
       `--machine` argument, because the machine should be determined
