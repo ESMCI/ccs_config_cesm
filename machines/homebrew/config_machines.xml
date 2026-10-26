@@ -114,5 +114,16 @@
            setup). -->
       <env name="NETCDF_PATH">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_NETCDF_PATH || printenv NETCDF_PATH || true}</env>
 
+      <!-- PFUNIT_PATH is only needed for running Fortran unit tests. It should point to a
+           pFUnit installation built with the compiler and MPI library used for the unit
+           tests (typically mpi-serial). -->
+      <env name="PFUNIT_PATH">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_PFUNIT_PATH || printenv PFUNIT_PATH || true}</env>
+
+      <!-- MPISERIAL is optional: it points to a pre-built mpi-serial library, which is
+           needed for some unit test builds. It is only used with the mpi-serial MPI
+           library, so the compiler-specific setting is, e.g.,
+           CIME_MACOS_GNU_MPISERIAL_MPISERIAL. -->
+      <env name="MPISERIAL">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_MPISERIAL || printenv MPISERIAL || true}</env>
+
     </environment_variables>
   </machine>

@@ -18,3 +18,8 @@ endif()
 if (NOT NETCDF_PATH STREQUAL MAC_PREFIX AND EXISTS "${NETCDF_PATH}/lib")
   string(APPEND LDFLAGS " -Wl,-rpath,${NETCDF_PATH}/lib")
 endif()
+
+# Use PFUNIT_PATH from the environment if set (e.g., via config_machines.xml).
+if (NOT "$ENV{PFUNIT_PATH}" STREQUAL "")
+  set(PFUNIT_PATH "$ENV{PFUNIT_PATH}")
+endif()
