@@ -778,7 +778,7 @@
     <mask>tx2_3v3</mask>
   </model_grid>
 
-  <model_grid alias="f19_t233_rx1" compset="_DROF" not_compset="_MOM">
+  <model_grid alias="f19_t233_rx1" compset="_DROF">
     <grid name="atm">1.9x2.5</grid>
     <grid name="lnd">1.9x2.5</grid>
     <grid name="ocnice">tx2_3v3</grid>
@@ -913,7 +913,7 @@
     <mask>gx1v7</mask>
   </model_grid>
 
-  <model_grid alias="f45_t201" not_compset="_MOM">
+  <model_grid alias="f45_t201">
     <grid name="atm">4x5</grid>
     <grid name="lnd">4x5</grid>
     <grid name="ocnice">tx2_0v1</grid>
@@ -1974,7 +1974,7 @@
     <mask>gx3v7</mask>
   </model_grid>
 
-  <model_grid alias="f45_t201_rx1" compset="_DROF" not_compset="_MOM">
+  <model_grid alias="f45_t201_rx1" compset="_DROF">
     <grid name="atm">4x5</grid>
     <grid name="lnd">4x5</grid>
     <grid name="ocnice">tx2_0v1</grid>
