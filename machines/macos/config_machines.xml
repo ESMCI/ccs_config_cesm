@@ -26,7 +26,11 @@
 
       The following variables FOO are set in the case's environment from
       CIME_MACOS_[COMPILER]_[MPILIB]_FOO if set (e.g., CIME_MACOS_GNU_OPENMPI_PIO,
-      CIME_MACOS_GNU_MPISERIAL_PIO), else from FOO; if neither is set, FOO is left unset:
+      CIME_MACOS_GNU_MPISERIAL_PIO), else from FOO; if neither is set, FOO is left unset.
+      Setting FOO directly is simplest if you have a single set of builds (or if FOO is
+      set by modules you load yourself); the longer form lets you keep builds for
+      multiple compiler/MPI combinations, with each case automatically using the
+      matching one. The variables are:
 
         ESMFMKFILE: Path to esmf.mk of an ESMF built with this compiler and MPI library;
           needed to build CESM
@@ -137,6 +141,14 @@
 
            If both (1) and (2) are set, (1) takes precedence. If neither is set, CIME
            leaves FOO unset.
+
+           The short form (2) is intended for simple setups with a single set of builds,
+           or for systems where FOO is set by loading a module (this machine doesn't use
+           CIME's module system, so any such modules must be loaded manually, and
+           consistently, before every case operation). The long form (1) is intended for
+           systems with builds for multiple compiler/MPI combinations: it lets each case
+           select the matching build automatically, which also avoids accidentally using
+           a mismatched build when the environment changes between steps of a case.
 
            These variables are read each time CIME loads the environment (case.setup,
            case.build, case.submit), so keep them consistent for the life of a case.
