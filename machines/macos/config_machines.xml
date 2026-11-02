@@ -184,4 +184,10 @@
       <env name="MPISERIAL">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_MPISERIAL || printenv MPISERIAL || true}</env>
 
     </environment_variables>
+
+    <environment_variables comp_interface="nuopc">
+      <!-- required on all systems for timing file output -->
+      <env name="ESMF_RUNTIME_PROFILE">ON</env>
+      <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
+    </environment_variables>
   </machine>
