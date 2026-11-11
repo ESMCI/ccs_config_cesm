@@ -39,7 +39,7 @@
       <executable>mpirun</executable>
       <arguments>
         <arg name="anum_tasks"> -np {{ total_tasks }}</arg>
-        <!-- To output which MPI process is logging, use '-prepend-rank' for MPICH, or '--tag-output' for OpenMPI -->
+        <!-- To output which MPI process is logging, use the 'prepend-rank' option for MPICH, or the 'tag-output' option for OpenMPI -->
         <arg name="labelstdout">-prepend-rank</arg>
       </arguments>
     </mpirun>
