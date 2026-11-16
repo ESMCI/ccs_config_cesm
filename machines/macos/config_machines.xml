@@ -51,7 +51,9 @@
       case creation, so keep them consistent for the life of a case.
 
       For unit tests: we recommend using a second ESMF built with ESMF_COMM=mpiuni. If you
-      reuse an MPI-based ESMF, set HWLOC_COMPONENTS=-opencl in your environment.
+      reuse an MPI-based ESMF, set HWLOC_COMPONENTS=-opencl in your environment. (See
+      https://github.com/ESMCI/ccs_config_cesm/pull/316#issuecomment-6560109603 for
+      details.)
 
       Example (e.g., in ~/.bashrc), supporting openmpi for model runs and mpi-serial
       for unit tests; note that each MPI library needs its own ESMF and PIO builds.
