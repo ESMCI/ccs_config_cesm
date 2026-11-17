@@ -35,13 +35,12 @@
         ESMFMKFILE: Path to esmf.mk of an ESMF built with this compiler and MPI library;
           needed to build CESM
 
+        NETCDF_PATH: NetCDF install directory (e.g., /opt/homebrew); required
+
         PIO, PIO_VERSION_MAJOR, PIO_TYPENAME_VALID_VALUES: Pre-built PIO install
           directory, its major version (e.g., 2) and the I/O types it supports (e.g.,
           netcdf or netcdf,netcdf4c). Set all or none. Default: PIO is built with the
           model
-
-        NETCDF_PATH: NetCDF install directory, if in a non-standard location. Default: the
-          package manager prefix (/opt/homebrew, /opt/local or /usr/local)
 
         PFUNIT_PATH: pFUnit install directory; needed for Fortran unit tests
 
@@ -63,10 +62,12 @@
         export CIME_MACHINE=macos
         export CIME_MACOS_CPRNC=$HOME/cprnc_builds/cprnc_v1.1.0-4-gf4979ab
         export CIME_MACOS_GNU_OPENMPI_ESMFMKFILE=$HOME/esmf_builds/esmfv8.8.0_openmpi/install_dir/lib/libg/Darwin.gfortranclang.64.openmpi.default/esmf.mk
+        export CIME_MACOS_GNU_OPENMPI_NETCDF_PATH=/opt/homebrew
         export CIME_MACOS_GNU_OPENMPI_PIO=$HOME/pio_builds/pio2_6_5
         export CIME_MACOS_GNU_OPENMPI_PIO_VERSION_MAJOR=2
         export CIME_MACOS_GNU_OPENMPI_PIO_TYPENAME_VALID_VALUES=netcdf
         export CIME_MACOS_GNU_MPISERIAL_ESMFMKFILE=$HOME/esmf_builds/esmfv8.8.0_mpiuni/install_dir/lib/libg/Darwin.gfortranclang.64.mpiuni.default/esmf.mk
+        export CIME_MACOS_GNU_MPISERIAL_NETCDF_PATH=/opt/homebrew
         export CIME_MACOS_GNU_MPISERIAL_PIO=$HOME/pio_builds/pio2_6_5_mpiserial
         export CIME_MACOS_GNU_MPISERIAL_PIO_VERSION_MAJOR=2
         export CIME_MACOS_GNU_MPISERIAL_PIO_TYPENAME_VALID_VALUES=netcdf
@@ -172,9 +173,8 @@
       <env name="PIO_VERSION_MAJOR">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_PIO_VERSION_MAJOR || printenv PIO_VERSION_MAJOR || true}</env>
       <env name="PIO_TYPENAME_VALID_VALUES">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_PIO_TYPENAME_VALID_VALUES || printenv PIO_TYPENAME_VALID_VALUES || true}</env>
 
-      <!-- NETCDF_PATH is only needed if NetCDF is installed outside of the standard
-           location for this software stack (e.g., /opt/homebrew/ for a homebrew-based
-           setup). -->
+      <!-- NETCDF_PATH is the NetCDF install directory (e.g., /opt/homebrew for a
+           Homebrew-based setup). It is required. -->
       <env name="NETCDF_PATH">$SHELL{printenv CIME_MACOS_$(echo $COMPILER_$MPILIB | tr a-z A-Z | tr -d -)_NETCDF_PATH || printenv NETCDF_PATH || true}</env>
 
       <!-- PFUNIT_PATH is only needed for running Fortran unit tests. It should point to a
