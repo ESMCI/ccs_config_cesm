@@ -10,7 +10,8 @@ mo_aerosol_optics_rrtmgp_merra.o         mo_cloud_optics_rrtmgp.o \
 mo_gas_optics_rrtmgp.o                   mo_gas_optics_rrtmgp_kernels.o \
 mo_rte_sw.o                              mo_rte_lw.o \
 mo_rte_util_array_validation.o           mo_rte_util_array.o \
-mo_fluxes_broadband_kernels.o
+mo_fluxes_broadband_kernels.o            mo_gas_optics_utils.o \
+mo_cloud_optics_rrtmgp_kernels.o
 
 $(RRTMGP_OBJS): %.o: %.F90
 	$(FC) -c $(INCLDIR) $(INCS) $(FFLAGS) $(FREEFLAGS) -fno-openmp $<
